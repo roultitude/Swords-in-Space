@@ -14,6 +14,7 @@ public class PlayerMover : NetworkBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+
     private void Update()
     {
         

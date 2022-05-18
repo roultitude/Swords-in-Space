@@ -94,6 +94,7 @@ MonoBehaviour:
   _networkBehaviours:
   - {fileID: 1826261824456996877}
   - {fileID: 1826261824456996879}
+  - {fileID: 1382259179212633641}
   SceneTransformProperties:
     Position: {x: -3.1764176, y: 1.5102918, z: -0.041546013}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -168,6 +169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfa8a7bb37b4444e9b7111ad0b566ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 2
+  _addedNetworkObject: {fileID: 1826261824456996876}
+  _networkObjectCache: {fileID: 1826261824456996876}
 --- !u!1 &2853691003124763337
 GameObject:
   m_ObjectHideFlags: 0
