@@ -11,7 +11,7 @@ public class PlayerMover : NetworkBehaviour
     private Rigidbody2D rb;
     private void Awake()
     {
-        rb = GetComponentInChildren<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
