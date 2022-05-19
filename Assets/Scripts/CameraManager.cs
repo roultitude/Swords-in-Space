@@ -1,29 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-using FishNet.Object;
-public class CameraManager : NetworkBehaviour
+
+
+namespace SwordsInSpace
 {
-    ICinemachineCamera virtualCamera;
-    // Start is called before the first frame update
-    void Start()
+    public class CameraManager : MonoBehaviour
     {
+        public static CameraManager Instance;
 
-    }
+        [SerializeField]
+        private CinemachineVirtualCamera playerVCam;
+        [SerializeField]
+        private CinemachineVirtualCamera shipVCam;
+        [SerializeField]
+        private Transform ship;
 
-    public override void OnStartClient()
-    {
-        base.OnStartClient();
-        if (!IsOwner)
+        private void Awake()
         {
-            return;
+            Instance = this;
         }
-        
+        private void Start()
+        {
+            shipVCam.Follow = ship;
+        }
 
-        virtualCamera = Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera;
-        virtualCamera.Follow = transform;
+        public void AttachToPlayer(GameObject player)
+        {
+            playerVCam.Follow = player.transform;
+        }
+
+        public void ToggleShipCamera()
+        {
+            int tmp = playerVCam.Priority;
+            playerVCam.Priority = shipVCam.Priority;
+            shipVCam.Priority = tmp;
+        }
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                ToggleShipCamera();
+            }
+        }
     }
-
-
 }
