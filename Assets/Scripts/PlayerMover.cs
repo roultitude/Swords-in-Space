@@ -19,6 +19,14 @@ public class PlayerMover : NetworkBehaviour
     {
         
     }
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if (!IsOwner)
+        {
+            Destroy(rb);
+        }
+    }
     private void FixedUpdate()
     {
         Move();
