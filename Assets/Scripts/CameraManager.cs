@@ -2,18 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-
-namespace SwordsInSpace
+using FishNet.Object;
+public class CameraManager : NetworkBehaviour
 {
-    public class CameraManager : MonoBehaviour
+    ICinemachineCamera virtualCamera;
+    // Start is called before the first frame update
+    void Start()
     {
-        ICinemachineCamera virtualCamera;
-        // Start is called before the first frame update
-        void Start()
-        {
-            virtualCamera = Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera;
-            virtualCamera.Follow = transform;
-        }
 
     }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if (!IsOwner)
+        {
+            return;
+        }
+        
+
+        virtualCamera = Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera;
+        virtualCamera.Follow = transform;
+    }
+
+
 }
