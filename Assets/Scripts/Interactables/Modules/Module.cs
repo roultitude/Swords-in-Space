@@ -5,12 +5,9 @@ using UnityEngine;
 namespace SwordsInSpace {
     public abstract class Module : Interactable
     {
-
-        [SerializeField]
-        private float MaxHp;
-
-        [SerializeField]
-        private float Hp;
+        /*
+            Modules are unable to move and are spawned in at predefined locations.
+        */
 
         // Start is called before the first frame update
         void Start()

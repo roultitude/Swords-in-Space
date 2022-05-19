@@ -5,6 +5,13 @@ namespace SwordsInSpace
 {
     public abstract class Interactable : MonoBehaviour
     {
+        /*
+            Interactables are objects in the game that can be interacted by the User via 
+            interact button (Pick up / Use).
+            
+            They do not change/interact when the User enters / leaves its collider.
+        */
+
         // Start is called before the first frame update
         void Start()
         {
@@ -16,8 +23,15 @@ namespace SwordsInSpace
         {
 
         }
+        [SerializeField]
+        public int Hp;
+
+        [SerializeField]
+        public int MaxHp;
 
         public abstract void Interact(GameObject player);
+
+        
 
 
 

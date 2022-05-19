@@ -6,7 +6,7 @@ using FishNet.Connection;
 
 namespace SwordsInSpace
 {
-    public class Interaction : NetworkBehaviour
+    public class PlayerInteractionManager : NetworkBehaviour
     {
 
         private static Dictionary<int, List<int>> data;
@@ -59,7 +59,8 @@ namespace SwordsInSpace
         [TargetRpc]
         void ReplyInteractQuery(NetworkConnection conn, int interactableId)
         {
-            Debug.Log(interactableId);
+            Debug.Log(interactables.GetInteractable(interactableId));
+            interactables.GetInteractable(interactableId).Interact(gameObject);
         }
 
 
