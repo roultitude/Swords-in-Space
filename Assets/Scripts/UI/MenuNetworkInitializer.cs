@@ -13,6 +13,7 @@ namespace SwordsInSpace
         private void Awake()
         {
             networkManager = InstanceFinder.NetworkManager;
+            InstanceFinder.ServerManager.OnServerConnectionState += ServerStarted;
         }
 
         public void SetPort(string port)
@@ -47,9 +48,14 @@ namespace SwordsInSpace
         {
             if (networkManager == null) return;
             networkManager.ServerManager.StartConnection();
-            networkManager.ClientManager.StartConnection();
-            SceneLoadData sld = new SceneLoadData("LobbyScene") {ReplaceScenes = ReplaceOption.All};
+        }
+
+        private void ServerStarted(FishNet.Transporting.ServerConnectionStateArgs args)
+        {
+            Debug.Log("kekw");
+            SceneLoadData sld = new SceneLoadData("GameScene") { ReplaceScenes = ReplaceOption.All };
             networkManager.SceneManager.LoadGlobalScenes(sld);
+            networkManager.ClientManager.StartConnection();
         }
     }
 }
