@@ -24,7 +24,7 @@ public class PlayerMover : NetworkBehaviour
         base.OnStartClient();
         if (!IsOwner)
         {
-            Destroy(rb);
+            rb.bodyType = RigidbodyType2D.Kinematic;
         }
     }
     private void FixedUpdate()
