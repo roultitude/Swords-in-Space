@@ -6,25 +6,28 @@ using FishNet.Connection;
 
 namespace SwordsInSpace
 {
-    public class Interaction : NetworkBehaviour
+    public class PlayerInteractionManager : NetworkBehaviour
     {
-        private List<Interactable> interactables;
-        private static Dictionary<NetworkConnection, List<Interactable>> data;
+
+        private static Dictionary<int, List<int>> data;
+        private InteractableIdManager interactables;
 
         // Start is called before the first frame update
         void Start()
         {
             if (base.IsServer && data == null)
             {
-                data = new Dictionary<NetworkConnection, List<Interactable>>();
+                data = new Dictionary<int, List<int>>();
 
             }
 
             if (base.IsServer)
             {
-                interactables = new List<Interactable>();
-                data.Add(base.Owner, interactables);
+               
+                data.Add(base.Owner.ClientId, new List<int>());
             }
+
+            interactables = GameObject.FindObjectOfType<InteractableIdManager>();
 
 
         }
@@ -49,14 +52,15 @@ namespace SwordsInSpace
         [ServerRpc]
         void InteractQuery(NetworkConnection conn = null)
         {
-            Debug.Log(data[conn][0]);
-            //ReplyInteractQuery(conn, data[conn][0]);
+            Debug.Log(conn.ClientId);
+            ReplyInteractQuery(conn, data[conn.ClientId][0]);
         }
 
         [TargetRpc]
-        void ReplyInteractQuery(NetworkConnection conn, string element)
+        void ReplyInteractQuery(NetworkConnection conn, int interactableId)
         {
-            Debug.Log(element);
+            Debug.Log(interactables.GetInteractable(interactableId));
+            interactables.GetInteractable(interactableId).Interact(gameObject);
         }
 
 
@@ -67,9 +71,10 @@ namespace SwordsInSpace
 
 
             Interactable otherInteractable = other.gameObject.GetComponentInParent<Interactable>();
+            
             if (otherInteractable)
             {
-                interactables.Add(otherInteractable);
+                data[base.Owner.ClientId].Add(interactables.GetId(otherInteractable));
             }
 
 
@@ -86,7 +91,7 @@ namespace SwordsInSpace
 
             if (otherInteractable)
             {
-                interactables.Remove(otherInteractable);
+                data[base.Owner.ClientId].Remove(interactables.GetId(otherInteractable));
             }
 
         }
