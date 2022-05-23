@@ -27,7 +27,7 @@ namespace SwordsInSpace
             base.OnStartClient();
             if (IsClientOnly)
             {
-                rb.isKinematic = true;
+                //rb.isKinematic = true;
             }
         }
 
