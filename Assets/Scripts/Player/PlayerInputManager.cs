@@ -65,6 +65,11 @@ namespace SwordsInSpace
             {
                 interactor.Interact();
             }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+               CameraManager.instance.ToggleShipCamera();
+                mover.canMove = !mover.canMove;
+            }
         }
 
         void CheckInput(out MoveData md)
