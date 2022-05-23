@@ -8,20 +8,21 @@ namespace SwordsInSpace
 {
     public class PlayerMover : NetworkBehaviour
     {
+        public Rigidbody2D rb;
+        public bool canMove;
+
         [SerializeField]
         private float speed, rotationSpeed;
+
         private float lastInputAngle;
-        public Rigidbody2D rb;
+
+
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
+            canMove = true; //canMove from start for testing.
         }
 
-
-        private void Update()
-        {
-
-        }
         public override void OnStartClient()
         {
             base.OnStartClient();
@@ -33,6 +34,7 @@ namespace SwordsInSpace
 
         public void Move(PlayerInputManager.MoveData md, bool asServer, bool replaying = false)
         {
+            if (!canMove) return;
             MovePredict(md, asServer, replaying);
         }
         [Replicate]
