@@ -11,6 +11,7 @@ namespace SwordsInSpace
 
         private static Dictionary<int, List<int>> data;
         private InteractableIdManager interactables;
+ 
 
         // Start is called before the first frame update
         void Start()
