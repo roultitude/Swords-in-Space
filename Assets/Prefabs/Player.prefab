@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 1826261824456996882}
   - component: {fileID: 1826261824456996876}
   - component: {fileID: 1826261824456996879}
-  - component: {fileID: 7027173476093319662}
   - component: {fileID: 1382259179212633641}
   - component: {fileID: 8521876381648262751}
   - component: {fileID: 5198408479492109837}
   - component: {fileID: 5489958029282922365}
   - component: {fileID: 2562620515417929168}
+  - component: {fileID: 8582065100134496628}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -54,7 +54,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _networkBehaviours:
   - {fileID: 1826261824456996879}
-  - {fileID: 7027173476093319662}
   - {fileID: 1382259179212633641}
   - {fileID: 8521876381648262751}
   - {fileID: 5489958029282922365}
@@ -88,21 +87,6 @@ MonoBehaviour:
   speed: 1000
   rotationSpeed: 8
   rb: {fileID: 0}
---- !u!114 &7027173476093319662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1826261824456996878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c8aa2383ac11994284d7297bea5375d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 1
-  _addedNetworkObject: {fileID: 1826261824456996876}
-  _networkObjectCache: {fileID: 1826261824456996876}
 --- !u!114 &1382259179212633641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5dc75482a1bdb458482e4b95c056d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 2
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 1826261824456996876}
   _networkObjectCache: {fileID: 1826261824456996876}
 --- !u!114 &8521876381648262751
@@ -130,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b24cc80b7ff3d45990ad5f0fb1e1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 3
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 1826261824456996876}
   _networkObjectCache: {fileID: 1826261824456996876}
 --- !u!50 &5198408479492109837
@@ -166,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402926ef33e0a894d9fec352693988ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 4
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 1826261824456996876}
   _networkObjectCache: {fileID: 1826261824456996876}
   _graphicalObject: {fileID: 8760791468650330625}
@@ -193,6 +177,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
+--- !u!114 &8582065100134496628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826261824456996878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75aebdf8a57e2ef48ba223dae4a1109f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 1826261824456996876}
+  _networkObjectCache: {fileID: 0}
+  spawnTransform: {fileID: 0}
+  controllingUser: {fileID: 0}
+  health: 0
 --- !u!1 &2853691003124763337
 GameObject:
   m_ObjectHideFlags: 0

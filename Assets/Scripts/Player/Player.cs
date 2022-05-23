@@ -16,5 +16,13 @@ namespace SwordsInSpace
 
         [SyncVar]
         public float health;
+
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            if (!IsOwner) return;
+            controllingUser = User.localUser;
+            CameraManager.instance.AttachToPlayer(transform);
+        }
     } 
 }

@@ -6,7 +6,7 @@ namespace SwordsInSpace
 {
     public class CameraManager : MonoBehaviour
     {
-        public static CameraManager Instance;
+        public static CameraManager instance;
 
         [SerializeField]
         private CinemachineVirtualCamera playerVCam;
@@ -17,16 +17,16 @@ namespace SwordsInSpace
 
         private void Awake()
         {
-            Instance = this;
+            instance = this;
         }
         private void Start()
         {
             shipVCam.Follow = ship;
         }
 
-        public void AttachToPlayer(GameObject player)
+        public void AttachToPlayer(Transform playerTransform)
         {
-            playerVCam.Follow = player.transform;
+            playerVCam.Follow = playerTransform;
         }
 
         public void ToggleShipCamera()
@@ -34,13 +34,6 @@ namespace SwordsInSpace
             int tmp = playerVCam.Priority;
             playerVCam.Priority = shipVCam.Priority;
             shipVCam.Priority = tmp;
-        }
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                ToggleShipCamera();
-            }
         }
     }
 }

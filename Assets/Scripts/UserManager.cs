@@ -22,6 +22,9 @@ namespace SwordsInSpace
             instance = this;
         }
 
+        private void Update()
+        {
+        }
 
     }
 }

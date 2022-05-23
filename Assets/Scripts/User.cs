@@ -42,6 +42,7 @@ namespace SwordsInSpace
             GameObject player = Instantiate(UserManager.instance.playerPrefab, UserManager.instance.spawnTransform.position, Quaternion.identity);
 
             Spawn(player, Owner);
+            
         }
     }
 }
