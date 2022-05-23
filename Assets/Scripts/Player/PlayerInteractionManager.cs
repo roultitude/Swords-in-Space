@@ -35,14 +35,11 @@ namespace SwordsInSpace
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown("f"))
-            {
-                Interact();
-            }
+            
 
         }
 
-        void Interact()
+        public void Interact()
         {
             if (!base.IsOwner) { return; }
             InteractQuery(base.Owner);
