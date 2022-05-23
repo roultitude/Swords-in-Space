@@ -16,15 +16,22 @@ namespace SwordsInSpace
         [SyncVar]
         public Player controlledPlayer;
 
+
+
         public override void OnStartClient()
         {
             base.OnStartClient();
-            if (IsOwner) localUser = this;
+            if (IsOwner)
+            {
+                localUser = this;
+            }
             ServerSpawnPlayer();
         }
         public override void OnStartServer()
         {
+
             base.OnStartServer();
+            username = "Player " + Owner.ClientId;
             UserManager.instance.users.Add(this);
             ServerSpawnPlayer();
         }
@@ -40,7 +47,6 @@ namespace SwordsInSpace
         public void ServerSpawnPlayer()
         {
             GameObject player = Instantiate(UserManager.instance.playerPrefab, UserManager.instance.spawnTransform.position, Quaternion.identity);
-
             Spawn(player, Owner);
             
         }
