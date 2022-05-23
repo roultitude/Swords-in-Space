@@ -10,6 +10,7 @@ namespace SwordsInSpace
     {
         public static UserManager instance;
 
+
         public GameObject playerPrefab;
 
         public Transform spawnTransform;
@@ -17,10 +18,13 @@ namespace SwordsInSpace
         [SyncObject]
         public readonly SyncList<User> users = new SyncList<User>();
 
+
+
         private void Awake()
         {
             instance = this;
         }
+
 
 
     }

@@ -9,34 +9,33 @@ namespace SwordsInSpace
     public class PlayerInteractionManager : NetworkBehaviour
     {
 
-        private static Dictionary<int, List<int>> data;
+        private static Dictionary<string, List<int>> data;
+
+        [SerializeField]
         private InteractableIdManager interactables;
- 
+        private UserManager userManager;
+
 
         // Start is called before the first frame update
         void Start()
         {
+            userManager = UserManager.instance;
             if (base.IsServer && data == null)
             {
-                data = new Dictionary<int, List<int>>();
+                data = new Dictionary<string, List<int>>();
 
             }
 
             if (base.IsServer)
             {
-               
-                data.Add(base.Owner.ClientId, new List<int>());
+                string username = GetUsernameFromConnection(Owner);
+                Debug.Log("Welcome on board, " + username);
+                if (!data.ContainsKey(username))
+                    data.Add(username, new List<int>());
             }
 
             interactables = GameObject.FindObjectOfType<InteractableIdManager>();
 
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            
 
         }
 
@@ -47,18 +46,52 @@ namespace SwordsInSpace
 
         }
 
+        private string GetUsernameFromConnection(NetworkConnection conn)
+        {
+            foreach (User user in userManager.users)
+            {
+                if (user.Owner.ClientId == conn.ClientId)
+                    return user.username;
+            }
+
+            return null;
+        }
+
+        private string GetUsernameFromId(int id)
+        {
+
+            foreach (User user in userManager.users)
+            {
+
+                if (user.Owner.ClientId == id)
+                {
+                    return user.username;
+                }
+
+            }
+
+            return null;
+        }
+
         [ServerRpc]
         void InteractQuery(NetworkConnection conn = null)
         {
-            Debug.Log(conn.ClientId);
-            ReplyInteractQuery(conn, data[conn.ClientId][0]);
+            string username = GetUsernameFromConnection(conn);
+            if (data.ContainsKey(username)
+                && data[username].Count >= 1
+                && data[username][0] >= 0)
+                ReplyInteractQuery(conn, data[username][0]);
         }
 
         [TargetRpc]
         void ReplyInteractQuery(NetworkConnection conn, int interactableId)
         {
-            Debug.Log(interactables.GetInteractable(interactableId));
-            interactables.GetInteractable(interactableId).Interact(gameObject);
+            Interactable obj = interactables.GetInteractable(interactableId);
+            if (obj)
+            {
+                obj.Interact(gameObject);
+            }
+
         }
 
 
@@ -69,10 +102,10 @@ namespace SwordsInSpace
 
 
             Interactable otherInteractable = other.gameObject.GetComponentInParent<Interactable>();
-            
+
             if (otherInteractable)
             {
-                data[base.Owner.ClientId].Add(interactables.GetId(otherInteractable));
+                data[GetUsernameFromId(base.Owner.ClientId)].Add(interactables.GetId(otherInteractable));
             }
 
 
@@ -89,7 +122,7 @@ namespace SwordsInSpace
 
             if (otherInteractable)
             {
-                data[base.Owner.ClientId].Remove(interactables.GetId(otherInteractable));
+                data[GetUsernameFromId(base.Owner.ClientId)].Remove(interactables.GetId(otherInteractable));
             }
 
         }
