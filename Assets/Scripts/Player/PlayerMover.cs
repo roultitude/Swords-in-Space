@@ -42,7 +42,7 @@ namespace SwordsInSpace
         private void MovePredict(PlayerInputManager.MoveData md, bool asServer, bool replaying = false)
         {
             Vector2 moveXY = new Vector2(md.Horizontal, md.Vertical).normalized * speed * (float)base.TimeManager.TickDelta;
-            Vector2 moveXYtrans = Ship.currentShip.shipTransform.TransformVector(moveXY);
+            Vector2 moveXYtrans = Ship.currentShip.shipExterior.TransformVector(moveXY);
             //Vector2 newPos = new Vector2(rb.transform.position.x + moveXY.x, rb.transform.position.y + moveXY.y);
             //rb.MovePosition(newPos);
             //rb.velocity = moveXY;

@@ -10,7 +10,8 @@ namespace SwordsInSpace
     {
         public static Ship currentShip;
         public ShipMover shipMover;
-        public Transform shipTransform;
+        public Transform shipExterior;
+        public Transform shipInterior;
         public Transform spawnTransform;
 
         private void Awake()
