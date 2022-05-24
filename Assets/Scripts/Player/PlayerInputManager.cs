@@ -65,9 +65,13 @@ namespace SwordsInSpace
             {
                 interactor.Interact();
             }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                UIManager.manager.Close();
+            }
             if (Input.GetKeyDown(KeyCode.R))
             {
-               CameraManager.instance.ToggleShipCamera();
+                CameraManager.instance.ToggleShipCamera();
                 mover.canMove = !mover.canMove;
             }
         }

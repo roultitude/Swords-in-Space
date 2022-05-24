@@ -23,6 +23,7 @@ namespace SwordsInSpace
         {
 
         }
+
         [SerializeField]
         public int Hp;
 
@@ -30,6 +31,9 @@ namespace SwordsInSpace
         public int MaxHp;
 
         public abstract void Interact(GameObject player);
+        
+
+
 
         
 

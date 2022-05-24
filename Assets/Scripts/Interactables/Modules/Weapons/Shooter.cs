@@ -51,11 +51,26 @@ namespace SwordsInSpace
             if (canFire)
             {
                 GameObject toAdd = Instantiate(data.bulletPrefab, transform.position, transform.rotation);
-                //toAdd.GetComponent<Bullet>().Move(new Vector2(1, 1));
+                toAdd.GetComponent<Bullet>().Setup(data.shotSpeed, data.shotLifeTime);
                 Spawn(toAdd);
-                rotation += 10f;
             }
         }
+
+        [ServerRpc(RequireOwnership = false)]
+        public void Left()
+        {
+            rotation -= 10f;
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        public void Right()
+        {
+            rotation += 10f;
+        }
+
+
+
+
 
 
 
