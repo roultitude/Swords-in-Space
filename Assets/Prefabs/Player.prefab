@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5489958029282922365}
   - component: {fileID: 2562620515417929168}
   - component: {fileID: 8582065100134496628}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 1826261824456996876}
   _networkObjectCache: {fileID: 1826261824456996876}
   _graphicalObject: {fileID: 8760791468650330625}
-  _smoothTicks: 1
+  _smoothTicks: 0
   _smoothingDuration: 0.2
   _predictionType: 2
   _rigidbody: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9115452589639929210}
   - component: {fileID: 4951341805601463025}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8214886594296278766}
   - component: {fileID: 6109355165424332753}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5336047371372628138}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8760791468650330625}
   - component: {fileID: 8760791468650330630}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

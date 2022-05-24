@@ -45,7 +45,7 @@ namespace SwordsInSpace
         [ServerRpc]
         public void ServerSpawnPlayer()
         {
-            GameObject player = Instantiate(UserManager.instance.playerPrefab, UserManager.instance.spawnTransform.position, Quaternion.identity,Ship.currentShip.transform);
+            GameObject player = Instantiate(UserManager.instance.playerPrefab, UserManager.instance.spawnTransform.position, Quaternion.identity,Ship.currentShip.spawnTransform);
             Spawn(player, Owner);
             Ship.currentShip.GiveOwnership(Owner);
         }

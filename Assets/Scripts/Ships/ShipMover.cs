@@ -31,7 +31,7 @@ namespace SwordsInSpace
 
         public void Move(PlayerInputManager.MoveData md, bool asServer, bool replaying = false)
         {
-            if (!canMove) return;
+            if (!canMove) md = default;
             MovePredict(md, asServer, replaying);
         }
 
@@ -42,8 +42,8 @@ namespace SwordsInSpace
             //rb.MovePosition(newPos);
             //rb.velocity = moveXY;
             rb.AddForce(md.Vertical * transform.right * speed * (float)base.TimeManager.TickDelta);
-            float targetRotation = rb.rotation + md.Horizontal * speed * (float)base.TimeManager.TickDelta;
-            rb.transform.rotation = Quaternion.Euler(0,0,Mathf.Lerp(rb.rotation, targetRotation, (float)base.TimeManager.TickDelta * turnSpeed));
+            float targetRotation = rb.rotation + md.Horizontal * turnSpeed;
+            rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, Quaternion.AngleAxis(targetRotation, Vector3.forward), (float)base.TimeManager.TickDelta * turnSpeed);
         }
 
         public void Reconciliation(PlayerInputManager.ReconcileData rd, bool asServer)

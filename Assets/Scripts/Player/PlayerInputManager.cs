@@ -20,11 +20,13 @@ namespace SwordsInSpace
             //public bool Interact;
             public float Horizontal;
             public float Vertical;
-            public MoveData(float horizontal, float vertical)
+            public float Anchor;
+            public MoveData(float horizontal, float vertical, float anchor)
             {
                 //Interact = interact;
                 Horizontal = horizontal;
                 Vertical = vertical;
+                Anchor = anchor;
             }
         }
 
@@ -46,7 +48,7 @@ namespace SwordsInSpace
         private void Awake()
         {
             mover = GetComponent<PlayerMover>();
-            shipMover = UserManager.instance.ship;
+            shipMover = Ship.currentShip.shipMover;
             interactor = GetComponent<PlayerInteractionManager>();
             rb = mover.rb;
 
@@ -85,7 +87,7 @@ namespace SwordsInSpace
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
             if (horizontal == 0f && vertical == 0f) return;
-            md = new MoveData(horizontal, vertical);
+            md = new MoveData(horizontal, vertical, 1);
         }
 
         private void TimeManager_OnTick()
@@ -103,8 +105,8 @@ namespace SwordsInSpace
             }
             if (base.IsServer)
             {
-                mover.Move(default, true);
-                shipMover.Move(default, true);
+                mover.Move(new MoveData(0f, 0f, 1f), true);
+                shipMover.Move(new MoveData(0f, 0f, 1f), true);
             }
         }
         private void TimeManager_OnPostTick()

@@ -23,6 +23,10 @@ namespace SwordsInSpace
         {
             shipVCam.Follow = ship;
         }
+        private void Update()
+        {
+            playerVCam.transform.rotation = ship.transform.rotation;
+        }
 
         public void AttachToPlayer(Transform playerTransform)
         {

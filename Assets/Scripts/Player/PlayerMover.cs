@@ -34,18 +34,20 @@ namespace SwordsInSpace
 
         public void Move(PlayerInputManager.MoveData md, bool asServer, bool replaying = false)
         {
-            if (!canMove) return;
+            if (!canMove) md = default;
             MovePredict(md, asServer, replaying);
         }
 
         [Replicate]
         private void MovePredict(PlayerInputManager.MoveData md, bool asServer, bool replaying = false)
         {
-            Vector2 moveXY = new Vector2(md.Horizontal,md.Vertical).normalized * speed * (float)base.TimeManager.TickDelta;
+            Vector2 moveXY = new Vector2(md.Horizontal, md.Vertical).normalized * speed * (float)base.TimeManager.TickDelta;
+            Vector2 moveXYtrans = Ship.currentShip.shipTransform.TransformVector(moveXY);
             //Vector2 newPos = new Vector2(rb.transform.position.x + moveXY.x, rb.transform.position.y + moveXY.y);
             //rb.MovePosition(newPos);
             //rb.velocity = moveXY;
-            rb.AddForce(moveXY);
+
+            rb.AddForce(moveXYtrans);
 
             float angle;
             if (md.Vertical == 0 && md.Horizontal == 0)
@@ -54,7 +56,7 @@ namespace SwordsInSpace
             }
             else
             {
-                angle = Mathf.Atan2(md.Vertical, md.Horizontal) * Mathf.Rad2Deg;
+                angle = Mathf.Atan2(moveXYtrans.y, moveXYtrans.x) * Mathf.Rad2Deg;
             }
             lastInputAngle = angle;
             

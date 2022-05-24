@@ -9,10 +9,14 @@ namespace SwordsInSpace
     public class Ship : NetworkBehaviour
     {
         public static Ship currentShip;
+        public ShipMover shipMover;
+        public Transform shipTransform;
+        public Transform spawnTransform;
 
         private void Awake()
         {
             currentShip = this;
+            shipMover = this.GetComponentInChildren<ShipMover>();
         }
     }
 
