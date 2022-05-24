@@ -16,7 +16,6 @@ namespace SwordsInSpace
         public int currentAmmo;
         [SerializeField]
         public GameObject uiScreen;
-        private bool uiShown = false;
         public Shooter[] shooters;
 
         private UIManager manager;
@@ -28,7 +27,6 @@ namespace SwordsInSpace
 
             foreach (Shooter comp in shooters)
             {
-                Debug.Log(comp.name);
                 comp.data = data;
             }
         }
@@ -36,7 +34,6 @@ namespace SwordsInSpace
         void Start()
         {
             uiScreen = Instantiate(uiScreen, Vector3.zero, Quaternion.identity);
-            uiShown = true;
             foreach (Button btn in uiScreen.GetComponentsInChildren<Button>())
             {
                 btn.onClick.AddListener(delegate { ButtonClicked(btn); });

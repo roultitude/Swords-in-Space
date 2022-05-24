@@ -54,9 +54,10 @@ namespace SwordsInSpace
             }
 
             currentTime += Time.deltaTime;
+
             if (currentTime > waitTime)
             {
-                timeout.Invoke();
+
                 if (repeat)
                 {
                     currentTime = 0;
@@ -65,6 +66,7 @@ namespace SwordsInSpace
                 {
                     Stop();
                 }
+                timeout.Invoke();
 
             }
 
@@ -80,6 +82,7 @@ namespace SwordsInSpace
             enabled = true;
             active = true;
             currentTime = 0;
+
         }
 
         public void Stop()
