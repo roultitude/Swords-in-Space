@@ -17,6 +17,7 @@ namespace SwordsInSpace
         [SyncVar]
         public float health;
 
+
         public override void OnStartClient()
         {
             base.OnStartClient();

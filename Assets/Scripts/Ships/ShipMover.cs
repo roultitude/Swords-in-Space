@@ -6,21 +6,18 @@ using FishNet.Object.Prediction;
 
 namespace SwordsInSpace
 {
-    public class PlayerMover : NetworkBehaviour
+    public class ShipMover : NetworkBehaviour
     {
         public Rigidbody2D rb;
         public bool canMove;
 
         [SerializeField]
-        private float speed, rotationSpeed;
-
-        private float lastInputAngle;
-
+        private float speed, turnSpeed;
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
-            canMove = true; //canMove from start for testing.
+            canMove = false; //canMove from start for testing.
         }
 
         public override void OnStartClient()
@@ -41,24 +38,12 @@ namespace SwordsInSpace
         [Replicate]
         private void MovePredict(PlayerInputManager.MoveData md, bool asServer, bool replaying = false)
         {
-            Vector2 moveXY = new Vector2(md.Horizontal,md.Vertical).normalized * speed * (float)base.TimeManager.TickDelta;
             //Vector2 newPos = new Vector2(rb.transform.position.x + moveXY.x, rb.transform.position.y + moveXY.y);
             //rb.MovePosition(newPos);
             //rb.velocity = moveXY;
-            rb.AddForce(moveXY);
-
-            float angle;
-            if (md.Vertical == 0 && md.Horizontal == 0)
-            {
-                angle = lastInputAngle;
-            }
-            else
-            {
-                angle = Mathf.Atan2(md.Vertical, md.Horizontal) * Mathf.Rad2Deg;
-            }
-            lastInputAngle = angle;
-            
-            rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, Quaternion.AngleAxis(angle, Vector3.forward), (float)base.TimeManager.TickDelta * rotationSpeed);
+            rb.AddForce(md.Vertical * transform.right * speed * (float)base.TimeManager.TickDelta);
+            float targetRotation = rb.rotation + md.Horizontal * speed * (float)base.TimeManager.TickDelta;
+            rb.transform.rotation = Quaternion.Euler(0,0,Mathf.Lerp(rb.rotation, targetRotation, (float)base.TimeManager.TickDelta * turnSpeed));
         }
 
         public void Reconciliation(PlayerInputManager.ReconcileData rd, bool asServer)
@@ -67,13 +52,12 @@ namespace SwordsInSpace
         }
 
         [Reconcile]
-        private void ReconciliationPredict(PlayerInputManager.ReconcileData rd,bool asServer)
+        private void ReconciliationPredict(PlayerInputManager.ReconcileData rd, bool asServer)
         {
             transform.position = rd.Position;
             transform.rotation = rd.Rotation;
             rb.velocity = rd.Velocity;
             rb.angularVelocity = rd.AngularVelocity;
         }
-
     }
 }

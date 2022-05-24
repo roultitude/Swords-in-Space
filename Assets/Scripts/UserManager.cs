@@ -9,7 +9,7 @@ namespace SwordsInSpace
     public class UserManager : NetworkBehaviour
     {
         public static UserManager instance;
-
+        public ShipMover ship;
 
         public GameObject playerPrefab;
 

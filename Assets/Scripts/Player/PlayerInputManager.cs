@@ -8,6 +8,9 @@ namespace SwordsInSpace
 {
     public class PlayerInputManager : NetworkBehaviour
     {
+
+        public ShipMover shipMover;
+
         private PlayerMover mover;
         private PlayerInteractionManager interactor;
         private Rigidbody2D rb;
@@ -43,8 +46,10 @@ namespace SwordsInSpace
         private void Awake()
         {
             mover = GetComponent<PlayerMover>();
+            shipMover = UserManager.instance.ship;
             interactor = GetComponent<PlayerInteractionManager>();
             rb = mover.rb;
+
             InstanceFinder.TimeManager.OnTick += TimeManager_OnTick;
             InstanceFinder.TimeManager.OnPostTick += TimeManager_OnPostTick;
         }
@@ -68,7 +73,8 @@ namespace SwordsInSpace
             if (Input.GetKeyDown(KeyCode.R))
             {
                CameraManager.instance.ToggleShipCamera();
-                mover.canMove = !mover.canMove;
+               mover.canMove = !mover.canMove;
+               shipMover.canMove = !shipMover.canMove;
             }
         }
 
@@ -89,18 +95,26 @@ namespace SwordsInSpace
                 mover.Reconciliation(default, false);
                 CheckInput(out MoveData md);
                 mover.Move(md, false);
+                if (Ship.currentShip.IsOwner) //add check for whether in steering
+                {
+                    shipMover.Reconciliation(default, false);
+                    shipMover.Move(md, false);
+                }
             }
             if (base.IsServer)
             {
                 mover.Move(default, true);
+                shipMover.Move(default, true);
             }
         }
         private void TimeManager_OnPostTick()
         {
             if (base.IsServer)
             {
-                ReconcileData rd = new ReconcileData(mover.transform.position, mover.transform.rotation, rb.velocity, rb.angularVelocity);
-                mover.Reconciliation(rd, true);
+                ReconcileData rdMover = new ReconcileData(mover.transform.position, mover.transform.rotation, rb.velocity, rb.angularVelocity);
+                ReconcileData rdShip = new ReconcileData(shipMover.transform.position, shipMover.transform.rotation, shipMover.rb.velocity, shipMover.rb.angularVelocity);
+                mover.Reconciliation(rdMover, true);
+                shipMover.Reconciliation(rdShip, true);
             }
         }
     }
