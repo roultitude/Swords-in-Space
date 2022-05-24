@@ -8,10 +8,8 @@ namespace SwordsInSpace
     {
         public override void Shoot()
         {
-            Debug.Log("HELLOR SIR");
             foreach (Shooter comp in shooters)
             {
-                Debug.Log("WAKE UP");
                 comp.Fire();
             }
         }

@@ -33,7 +33,6 @@ namespace SwordsInSpace
 
         public override void Interact(GameObject player)
         {
-            Debug.Log("PEWPEW");
             Shoot();
         }
 
