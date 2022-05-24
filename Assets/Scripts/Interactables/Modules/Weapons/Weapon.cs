@@ -20,6 +20,7 @@ namespace SwordsInSpace
 
         private UIManager manager;
 
+
         void Awake()
         {
 
@@ -40,6 +41,7 @@ namespace SwordsInSpace
             }
             manager = UIManager.manager;
             uiScreen.SetActive(false);
+            UIManager.manager.UIClosed.AddListener(OnUIClosed);
         }
 
         // Update is called once per frame
@@ -48,9 +50,17 @@ namespace SwordsInSpace
 
         }
 
+        void OnUIClosed()
+        {
+            CameraManager.instance.ToggleWeaponCamera();
+        }
+
         public override void Interact(GameObject player)
         {
-            manager.Offer(uiScreen);
+            if (manager.Offer(uiScreen))
+            {
+                CameraManager.instance.ToggleWeaponCamera();
+            }
         }
 
         private void ButtonClicked(Button btn)

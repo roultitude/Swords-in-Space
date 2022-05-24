@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,11 +13,14 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
 
     public static UIManager manager;  //There can only be one.
+
+    public UnityEvent UIClosed;
     GameObject currentUiElement;
 
     private void Start()
     {
         UIManager.manager = this;
+        UIClosed = new UnityEvent();
     }
 
     public bool Offer(GameObject uiElement)
@@ -34,6 +38,7 @@ public class UIManager : MonoBehaviour
             return false;
         currentUiElement.SetActive(false);
         currentUiElement = null;
+        UIClosed.Invoke();
         return true;
     }
 }

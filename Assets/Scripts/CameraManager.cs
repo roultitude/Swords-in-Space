@@ -13,6 +13,8 @@ namespace SwordsInSpace
         [SerializeField]
         private CinemachineVirtualCamera shipVCam;
         [SerializeField]
+        private CinemachineVirtualCamera weaponVCam;
+        [SerializeField]
         private Transform ship;
 
         private void Awake()
@@ -34,6 +36,14 @@ namespace SwordsInSpace
             int tmp = playerVCam.Priority;
             playerVCam.Priority = shipVCam.Priority;
             shipVCam.Priority = tmp;
+        }
+
+        public void ToggleWeaponCamera()
+        {
+            int tmp = playerVCam.Priority;
+            playerVCam.Priority = weaponVCam.Priority;
+            weaponVCam.Priority = tmp;
+
         }
     }
 }

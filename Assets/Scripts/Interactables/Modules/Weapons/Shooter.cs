@@ -34,6 +34,8 @@ namespace SwordsInSpace
             this.atkTimer = gameObject.AddComponent<Timer>();
             this.atkTimer.Setup(data.atkCD, false, false);
             this.atkTimer.timeout.AddListener(FinishReload);
+
+
         }
 
         public void UpdateRotation(float oldVal, float newVal, bool isServer)
@@ -72,8 +74,8 @@ namespace SwordsInSpace
                 currentBurst = 0;
             }
 
-
         }
+
 
         private void spawnBullet()
         {

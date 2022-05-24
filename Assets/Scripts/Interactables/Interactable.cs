@@ -31,11 +31,10 @@ namespace SwordsInSpace
         public int MaxHp;
 
         public abstract void Interact(GameObject player);
-        
 
 
 
-        
+
 
 
 
