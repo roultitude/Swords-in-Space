@@ -15,6 +15,8 @@ namespace SwordsInSpace
 
         bool canFire = true;
 
+        bool autoFire = false;
+
 
         int currentBurst = 0;
 
@@ -29,7 +31,7 @@ namespace SwordsInSpace
             base.OnStartServer();
             this.burstTimer = gameObject.AddComponent<Timer>();
             this.burstTimer.Setup(data.burstCD, false, false);
-            this.burstTimer.timeout.AddListener(startBurst);
+            this.burstTimer.timeout.AddListener(StartBurst);
 
             this.atkTimer = gameObject.AddComponent<Timer>();
             this.atkTimer.Setup(data.atkCD, false, false);
@@ -43,10 +45,18 @@ namespace SwordsInSpace
             this.transform.rotation = Quaternion.Euler(0, 0, newVal);
         }
 
+        public void ToggleAutoFire()
+        {
+            autoFire = !autoFire;
+        }
+
         public void FinishReload()
         {
             canFire = true;
-            //atkTimer.Start();
+            if (autoFire)
+            {
+                StartAttack();
+            }
         }
 
         [ServerRpc(RequireOwnership = false)]
@@ -54,17 +64,29 @@ namespace SwordsInSpace
         {
             if (canFire)
             {
-                canFire = false;
-                atkTimer.Start();
-                startBurst();
+                StartAttack();
             }
         }
 
-        private void startBurst()
+        public void StartAttack()
         {
+            if (!IsServer) { return; }//Sanity check
+
+            canFire = false;
+            atkTimer.Start();
+            StartBurst();
+        }
+
+        private void StartBurst()
+        {
+            if (!IsServer) { return; }//Sanity check
+
             if (currentBurst < data.burst)
             {
-                spawnBullet();
+
+                if (autoFire)
+                    Left();
+                SpawnBullet();
                 currentBurst += 1;
                 this.burstTimer.Start();
 
@@ -77,7 +99,7 @@ namespace SwordsInSpace
         }
 
 
-        private void spawnBullet()
+        private void SpawnBullet()
         {
             GameObject toAdd = Instantiate(data.bulletPrefab, transform.position, transform.rotation);
             toAdd.GetComponent<Bullet>().Setup(data.shotSpeed, data.shotLifeTime);
@@ -85,15 +107,27 @@ namespace SwordsInSpace
         }
 
         [ServerRpc(RequireOwnership = false)]
-        public void Left()
+        public void RequestLeft()
         {
+            Left();
+        }
+
+        private void Left() //Separated from RPC to prevent too many calls
+        {
+            if (!IsServer) { return; }
             rotation -= 10f;
         }
 
-        [ServerRpc(RequireOwnership = false)]
-        public void Right()
+        private void Right()
         {
+            if (!IsServer) { return; }
             rotation += 10f;
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        public void RequestRight()
+        {
+            Right();
         }
 
 

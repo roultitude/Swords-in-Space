@@ -72,13 +72,13 @@ namespace SwordsInSpace
                     foreach (Shooter comp in shooters)
                     {
 
-                        comp.Left();
+                        comp.RequestLeft();
                     }
                     break;
                 case "RIGHT":
                     foreach (Shooter comp in shooters)
                     {
-                        comp.Right();
+                        comp.RequestRight();
                     }
                     break;
                 case "FIRE":
@@ -90,6 +90,7 @@ namespace SwordsInSpace
                 case "A.FIRE":
                     foreach (Shooter comp in shooters)
                     {
+                        comp.ToggleAutoFire();
                         comp.Fire();
                     }
                     break;
