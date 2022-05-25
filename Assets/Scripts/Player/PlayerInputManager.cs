@@ -14,6 +14,7 @@ namespace SwordsInSpace
         private PlayerMover mover;
         private PlayerInteractionManager interactor;
         private Rigidbody2D rb;
+        private bool awaitingDash;
 
         public struct MoveData
         {
@@ -21,12 +22,14 @@ namespace SwordsInSpace
             public float Horizontal;
             public float Vertical;
             public float Anchor;
-            public MoveData(float horizontal, float vertical, float anchor)
+            public bool Dashing;
+            public MoveData(float horizontal, float vertical, bool dashing, float anchor)
             {
                 //Interact = interact;
                 Horizontal = horizontal;
                 Vertical = vertical;
                 Anchor = anchor;
+                Dashing = dashing;
             }
         }
 
@@ -82,16 +85,21 @@ namespace SwordsInSpace
                mover.canMove = !mover.canMove;
                shipMover.canMove = !shipMover.canMove;
             }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                awaitingDash = true;
+            }
         }
 
         void CheckInput(out MoveData md)
         {
             md = default;
-
+            bool dashing = awaitingDash;
+            if (awaitingDash) awaitingDash = false;
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
             if (horizontal == 0f && vertical == 0f) return;
-            md = new MoveData(horizontal, vertical, 1);
+            md = new MoveData(horizontal, vertical, dashing, 1);
         }
 
         private void TimeManager_OnTick()
@@ -109,8 +117,8 @@ namespace SwordsInSpace
             }
             if (base.IsServer)
             {
-                mover.Move(new MoveData(0f, 0f, 1f), true);
-                shipMover.Move(new MoveData(0f, 0f, 1f), true);
+                mover.Move(new MoveData(0f, 0f, false, 1f), true);
+                shipMover.Move(new MoveData(0f, 0f, false, 1f), true);
             }
         }
         private void TimeManager_OnPostTick()

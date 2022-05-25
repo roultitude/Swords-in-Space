@@ -89,6 +89,7 @@ MonoBehaviour:
   canMove: 0
   speed: 1000
   rotationSpeed: 8
+  dashMultiplier: 1
 --- !u!114 &1382259179212633641
 MonoBehaviour:
   m_ObjectHideFlags: 0

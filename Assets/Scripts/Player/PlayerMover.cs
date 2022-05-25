@@ -12,7 +12,7 @@ namespace SwordsInSpace
         public bool canMove;
 
         [SerializeField]
-        private float speed, rotationSpeed;
+        private float speed, rotationSpeed, dashMultiplier;
 
         private float lastInputAngle;
 
@@ -46,9 +46,9 @@ namespace SwordsInSpace
             //Vector2 newPos = new Vector2(rb.transform.position.x + moveXY.x, rb.transform.position.y + moveXY.y);
             //rb.MovePosition(newPos);
             //rb.velocity = moveXY;
-
+            
             rb.AddForce(moveXYtrans);
-
+            if (md.Dashing) rb.AddForce(moveXYtrans * dashMultiplier, ForceMode2D.Impulse);
             float angle;
             if (md.Vertical == 0 && md.Horizontal == 0)
             {
