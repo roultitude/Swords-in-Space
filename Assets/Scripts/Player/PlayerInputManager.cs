@@ -36,12 +36,14 @@ namespace SwordsInSpace
             public Quaternion Rotation;
             public Vector2 Velocity;
             public float AngularVelocity;
-            public ReconcileData(Vector2 position, Quaternion rotation, Vector2 velocity, float angularVelocity)
+            public float Anchor;
+            public ReconcileData(Vector2 position, Quaternion rotation, Vector2 velocity, float angularVelocity, float anchor)
             {
                 Position = position;
                 Rotation = rotation;
                 Velocity = velocity;
                 AngularVelocity = angularVelocity;
+                Anchor = anchor;
             }
         }
 
@@ -117,8 +119,8 @@ namespace SwordsInSpace
         {
             if (base.IsServer)
             {
-                ReconcileData rdMover = new ReconcileData(mover.transform.position, mover.transform.rotation, rb.velocity, rb.angularVelocity);
-                ReconcileData rdShip = new ReconcileData(shipMover.transform.position, shipMover.transform.rotation, shipMover.rb.velocity, shipMover.rb.angularVelocity);
+                ReconcileData rdMover = new ReconcileData(mover.transform.position, mover.transform.rotation, rb.velocity, rb.angularVelocity, 1f);
+                ReconcileData rdShip = new ReconcileData(shipMover.transform.position, shipMover.transform.rotation, shipMover.rb.velocity, shipMover.rb.angularVelocity, 1f);
                 mover.Reconciliation(rdMover, true);
                 shipMover.Reconciliation(rdShip, true);
             }
