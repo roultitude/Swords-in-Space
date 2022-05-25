@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5489958029282922365}
   - component: {fileID: 2562620515417929168}
   - component: {fileID: 8582065100134496628}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,6 +57,7 @@ MonoBehaviour:
   - {fileID: 1382259179212633641}
   - {fileID: 8521876381648262751}
   - {fileID: 5489958029282922365}
+  - {fileID: 8582065100134496628}
   SceneTransformProperties:
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -84,9 +85,10 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 1826261824456996876}
   _networkObjectCache: {fileID: 1826261824456996876}
+  rb: {fileID: 0}
+  canMove: 0
   speed: 1000
   rotationSpeed: 8
-  rb: {fileID: 0}
 --- !u!114 &1382259179212633641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +104,7 @@ MonoBehaviour:
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 1826261824456996876}
   _networkObjectCache: {fileID: 1826261824456996876}
+  interactables: {fileID: 0}
 --- !u!114 &8521876381648262751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +120,7 @@ MonoBehaviour:
   _componentIndexCache: 2
   _addedNetworkObject: {fileID: 1826261824456996876}
   _networkObjectCache: {fileID: 1826261824456996876}
+  shipMover: {fileID: 0}
 --- !u!50 &5198408479492109837
 Rigidbody2D:
   serializedVersion: 4
@@ -154,7 +158,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 1826261824456996876}
   _networkObjectCache: {fileID: 1826261824456996876}
   _graphicalObject: {fileID: 8760791468650330625}
-  _smoothTicks: 1
+  _smoothTicks: 0
   _smoothingDuration: 0.2
   _predictionType: 2
   _rigidbody: {fileID: 0}
@@ -189,9 +193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75aebdf8a57e2ef48ba223dae4a1109f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 1826261824456996876}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 1826261824456996876}
   spawnTransform: {fileID: 0}
   controllingUser: {fileID: 0}
   health: 0
@@ -205,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9115452589639929210}
   - component: {fileID: 4951341805601463025}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8214886594296278766}
   - component: {fileID: 6109355165424332753}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5336047371372628138}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8760791468650330625}
   - component: {fileID: 8760791468650330630}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

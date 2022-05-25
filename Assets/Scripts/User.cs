@@ -29,7 +29,6 @@ namespace SwordsInSpace
         }
         public override void OnStartServer()
         {
-
             base.OnStartServer();
             username = "Player " + Owner.ClientId;
             UserManager.instance.users.Add(this);
@@ -46,9 +45,9 @@ namespace SwordsInSpace
         [ServerRpc]
         public void ServerSpawnPlayer()
         {
-            GameObject player = Instantiate(UserManager.instance.playerPrefab, UserManager.instance.spawnTransform.position, Quaternion.identity);
+            GameObject player = Instantiate(UserManager.instance.playerPrefab, UserManager.instance.spawnTransform.position, Quaternion.identity,Ship.currentShip.spawnTransform);
             Spawn(player, Owner);
-            
+            Ship.currentShip.GiveOwnership(Owner);
         }
     }
 }

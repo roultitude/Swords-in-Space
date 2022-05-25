@@ -12,8 +12,6 @@ namespace SwordsInSpace
         private CinemachineVirtualCamera playerVCam;
         [SerializeField]
         private CinemachineVirtualCamera shipVCam;
-        [SerializeField]
-        private Transform ship;
 
         private void Awake()
         {
@@ -21,12 +19,12 @@ namespace SwordsInSpace
         }
         private void Start()
         {
-            shipVCam.Follow = ship;
+            shipVCam.Follow = Ship.currentShip.shipExterior;
         }
-
         public void AttachToPlayer(Transform playerTransform)
         {
             playerVCam.Follow = playerTransform;
+            playerVCam.transform.SetParent(Ship.currentShip.shipInterior);
         }
 
         public void ToggleShipCamera()

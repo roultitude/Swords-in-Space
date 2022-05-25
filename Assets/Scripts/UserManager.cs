@@ -10,7 +10,6 @@ namespace SwordsInSpace
     {
         public static UserManager instance;
 
-
         public GameObject playerPrefab;
 
         public Transform spawnTransform;
