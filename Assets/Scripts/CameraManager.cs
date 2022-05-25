@@ -24,6 +24,7 @@ namespace SwordsInSpace
         private void Start()
         {
             shipVCam.Follow = Ship.currentShip.shipExterior;
+            weaponVCam.Follow = Ship.currentShip.shipExterior;
         }
         public void AttachToPlayer(Transform playerTransform)
         {
