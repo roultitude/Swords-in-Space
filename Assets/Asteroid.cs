@@ -20,4 +20,9 @@ public class Asteroid : NetworkBehaviour
     {
         transform.position += transform.right * Time.deltaTime * shotSpeed;
     }
+
+    public void OnTriggerEnter2D(Collider2D coll)
+    {
+        this.Despawn();
+    }
 }
