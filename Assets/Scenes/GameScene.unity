@@ -474,7 +474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 282490374975100857, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 282490374975100857, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: m_LocalPosition.x
@@ -702,7 +702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3449297175708672384, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3449297175708672384, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: _sceneNetworkObjects.Array.data[0]
@@ -720,6 +720,10 @@ PrefabInstance:
       propertyPath: _sceneNetworkObjects.Array.data[3]
       value: 
       objectReference: {fileID: 658579301}
+    - target: {fileID: 3449297175708672384, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+      propertyPath: _sceneNetworkObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 822332127}
     - target: {fileID: 5157932738261841881, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: _networkObjectCache
       value: 
@@ -745,6 +749,10 @@ PrefabInstance:
       value: 2550129400
       objectReference: {fileID: 0}
     - target: {fileID: 7386859886407666987, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+      propertyPath: _sceneNetworkObjects.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386859886407666987, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: _sceneNetworkObjects.Array.data[0]
       value: 
       objectReference: {fileID: 582949987}
@@ -760,6 +768,10 @@ PrefabInstance:
       propertyPath: _sceneNetworkObjects.Array.data[3]
       value: 
       objectReference: {fileID: 658579301}
+    - target: {fileID: 7386859886407666987, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+      propertyPath: _sceneNetworkObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 822332127}
     - target: {fileID: 7656373368596400237, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: _sceneId
       value: 10952722373993181130
@@ -769,6 +781,10 @@ PrefabInstance:
       value: 2550129400
       objectReference: {fileID: 0}
     - target: {fileID: 7656373368596400237, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+      propertyPath: _sceneNetworkObjects.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7656373368596400237, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: _sceneNetworkObjects.Array.data[0]
       value: 
       objectReference: {fileID: 582949987}
@@ -784,6 +800,10 @@ PrefabInstance:
       propertyPath: _sceneNetworkObjects.Array.data[3]
       value: 
       objectReference: {fileID: 658579301}
+    - target: {fileID: 7656373368596400237, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+      propertyPath: _sceneNetworkObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 822332127}
     - target: {fileID: 7842712743893761143, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: _sceneId
       value: 10952722374279902228
@@ -956,11 +976,11 @@ MonoBehaviour:
   _scenePathHash: 2550129400
   _sceneId: 10952722376779786206
   _sceneNetworkObjects:
-  - {fileID: 822332127}
   - {fileID: 582949987}
   - {fileID: 594552437}
   - {fileID: 594552438}
   - {fileID: 658579301}
+  - {fileID: 822332127}
 --- !u!4 &658579303
 Transform:
   m_ObjectHideFlags: 0
@@ -1262,11 +1282,11 @@ MonoBehaviour:
   _scenePathHash: 2550129400
   _sceneId: 10952722376991344566
   _sceneNetworkObjects:
-  - {fileID: 822332127}
   - {fileID: 582949987}
   - {fileID: 594552437}
   - {fileID: 594552438}
   - {fileID: 658579301}
+  - {fileID: 822332127}
 --- !u!1 &987129424
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,14 +1335,15 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 822332127}
   _networkObjectCache: {fileID: 822332127}
   asteroids:
-  - {fileID: 2450554185044598378, guid: 51917b43bd424a840b91a1a429ac5372, type: 3}
-  worldSize: 50
+  - {fileID: 637470136372733760, guid: 9b9e1e8d74bef484b932711ad5882942, type: 3}
+  worldSize: 200
   randomSeed: 1
   seed: {x: 0, y: 0}
   threshold: 0.7
-  density: 5
-  distance: 10
+  density: 5.5
+  distance: 20
   chance: 0.2
+  tile: {fileID: 11400000, guid: 90ac8fd3ec40bdf43bd6aa10a9ed630c, type: 2}
 --- !u!1 &1315727920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,7 +1614,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1832710280
 MonoBehaviour:

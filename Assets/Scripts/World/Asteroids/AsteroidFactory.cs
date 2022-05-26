@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+
 namespace SwordsInSpace
 {
     public class AsteroidFactory : NetworkBehaviour
@@ -34,8 +36,9 @@ namespace SwordsInSpace
         [SerializeField]
         public float distance = 64;
 
+
         [SerializeField]
-        public float chance = 0.2f;
+        public RuleTile tile;
 
         private Vector2 offset;
 
@@ -57,9 +60,9 @@ namespace SwordsInSpace
 
         private void MakeNoiseArray()
         {
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < worldSize; i++)
             {
-                for (int j = 0; j < 50; j++)
+                for (int j = 0; j < worldSize; j++)
                 {
                     noiseGrid[i, j] = Mathf.PerlinNoise((seed.x + i) * (1.0f / density) + 0.1f,
                         (seed.y + j) * (1.0f / density) + 0.1f);
@@ -70,29 +73,61 @@ namespace SwordsInSpace
 
         private void MakeAsteroids()
         {
-            for (int i = 0; i < 50; i++)
+            bool[,] hasSeen = new bool[worldSize, worldSize];
+
+            for (int i = 0; i < worldSize; i++)
             {
-                for (int j = 0; j < 50; j++)
+                for (int j = 0; j < worldSize; j++)
                 {
-                    if (noiseGrid[i, j] >= threshold)
+
+                    if (AboveThreshold(i, j) && !hasSeen[i, j])
                     {
-                        Debug.Log(noiseGrid[i, j]);
                         GameObject toAdd = Instantiate(asteroids[0]
                             , new Vector3(i * distance + offset.x, j * distance + offset.y, 0)
-                            , Quaternion.Euler(0, 0, Random.Range(0, 360)));
-                        if (Random.Range(0, 1 / chance) == 0)
-                            toAdd.GetComponent<Asteroid>().Setup(Random.Range(0f, 1f));
-                        else
-                            toAdd.GetComponent<Asteroid>().Setup(0f);
+                            //, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                            , Quaternion.Euler(0, 0, Random.Range(0, 0)));
+                        Tilemap currentMap = toAdd.GetComponentInChildren<Tilemap>();
+                        if (currentMap)
+                            Traverse(hasSeen, currentMap, i, j, 0, 0);
+
+                        toAdd.GetComponentInChildren<Asteroid>().Setup(0f);
 
                         Spawn(toAdd);
                     }
+
+
                 }
             }
         }
 
+        private bool AboveThreshold(int i, int j)
+        {
+            return noiseGrid[i, j] >= threshold;
+        }
+
+        private void Traverse(bool[,] hasSeen, Tilemap currentMap, int i, int j, int x, int y)
+        {
+            hasSeen[i, j] = true;
+            currentMap.SetTile(new Vector3Int(x, y, 0), tile);
+
+            if (i > 0 && !hasSeen[i - 1, j] && AboveThreshold(i - 1, j))
+            {
+                Traverse(hasSeen, currentMap, i - 1, j, x - 1, y);
+            }
+            if (i < worldSize - 1 && !hasSeen[i + 1, j] && AboveThreshold(i + 1, j))
+            {
+                Traverse(hasSeen, currentMap, i + 1, j, x + 1, y);
+            }
+            if (j < worldSize - 1 && !hasSeen[i, j + 1] && AboveThreshold(i, j + 1))
+            {
+                Traverse(hasSeen, currentMap, i, j + 1, x, y + 1);
+            }
+            if (j > 0 && !hasSeen[i, j - 1] && AboveThreshold(i, j - 1))
+            {
+                Traverse(hasSeen, currentMap, i, j - 1, x, y - 1);
+            }
 
 
-
+        }
     }
 };
