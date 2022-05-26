@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 0.32
       objectReference: {fileID: 0}
+    - target: {fileID: 8578976271361633770, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: m_Name
+      value: InteractZone
+      objectReference: {fileID: 0}
     - target: {fileID: 8578976271361633782, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_Size.x
       value: 0.32
@@ -79,8 +83,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Engine
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9045313329428337240, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8578976271361633769, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+    - {fileID: 898759745282394244, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+--- !u!1 &2641440193788499235 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7268751382060290517, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+  m_PrefabInstance: {fileID: 4645336583177143542}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &909221585954634315
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641440193788499235}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.011023805, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1710238
 --- !u!1 &3997270631367016323 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8578976272114121589, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
@@ -98,5 +129,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8b6307f6352eb4494b2da32738217e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHp: 0
   Hp: 0
+  MaxHp: 0
