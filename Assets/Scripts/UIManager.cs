@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
     public UnityEvent UIClosed;
     GameObject currentUiElement;
 
-    private void Start()
+    private void Awake()
     {
         UIManager.manager = this;
         UIClosed = new UnityEvent();

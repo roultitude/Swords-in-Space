@@ -44,7 +44,7 @@ namespace SwordsInSpace
         {
             this.transform.rotation = Quaternion.Euler(0, 0, newVal);
         }
-
+        [ServerRpc(RequireOwnership = false)]
         public void ToggleAutoFire()
         {
             autoFire = !autoFire;
