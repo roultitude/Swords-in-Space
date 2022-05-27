@@ -8,7 +8,7 @@ public class Asteroid : NetworkBehaviour
 {
     // Start is called before the first frame update
 
-    float shotSpeed = 1f;
+    float shotSpeed = 0f;
 
     public void Setup(float shotSpeed)
     {

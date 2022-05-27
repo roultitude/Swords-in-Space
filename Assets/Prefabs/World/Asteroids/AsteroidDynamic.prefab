@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5408929544899184431}
-  - component: {fileID: 5294108655302365047}
+  - component: {fileID: 7335390716017313648}
   m_Layer: 0
   m_Name: AsteroidDynamic
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5294108655302365047
+--- !u!114 &7335390716017313648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,7 +117,6 @@ GameObject:
   - component: {fileID: 7334649562807822883}
   - component: {fileID: 3887189769646272001}
   - component: {fileID: 5188396879723023167}
-  - component: {fileID: 5826602412948072345}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -277,30 +276,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 5294108655302365047}
-  _networkObjectCache: {fileID: 5826602412948072345}
---- !u!114 &5826602412948072345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7935498849498875283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _networkBehaviours:
-  - {fileID: 5188396879723023167}
-  SceneTransformProperties:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: -0, y: -0, z: -0, w: 1}
-    LocalScale: {x: 1, y: 1, z: 1}
-  _isNetworked: 1
-  _hasParentNetworkObjectAtEdit: 0
-  NetworkObserver: {fileID: 0}
-  _prefabId: -1
-  _scenePathHash: 0
-  _sceneId: 0
-  _sceneNetworkObjects: []
+  _addedNetworkObject: {fileID: 7335390716017313648}
+  _networkObjectCache: {fileID: 7335390716017313648}

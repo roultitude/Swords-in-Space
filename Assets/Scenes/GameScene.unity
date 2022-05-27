@@ -228,7 +228,7 @@ MonoBehaviour:
   _attackResponseType: 1
   _ipv4BindAddress: 
   _ipv6BindAddress: 
-  _port: 7770
+  _port: 34197
   _maximumClients: 5237
   _clientAddress: localhost
   _timeout: 15
@@ -425,7 +425,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7757576, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -977,7 +977,6 @@ MonoBehaviour:
   _scenePathHash: 2550129400
   _sceneId: 10952722376779786206
   _sceneNetworkObjects:
-  - {fileID: 0}
   - {fileID: 582949987}
   - {fileID: 594552437}
   - {fileID: 594552438}
@@ -1337,14 +1336,13 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 822332127}
   _networkObjectCache: {fileID: 822332127}
   asteroids:
-  - {fileID: 637470136372733760, guid: 9b9e1e8d74bef484b932711ad5882942, type: 3}
+  - {fileID: 2450554185044598378, guid: 51917b43bd424a840b91a1a429ac5372, type: 3}
   worldSize: 200
   randomSeed: 1
   seed: {x: 0, y: 0}
   threshold: 0.7
   density: 5.5
   distance: 20
-  chance: 0.2
   tile: {fileID: 11400000, guid: 90ac8fd3ec40bdf43bd6aa10a9ed630c, type: 2}
 --- !u!1 &1315727920
 GameObject:
@@ -1725,7 +1723,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7757576, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1885,7 +1883,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7757576, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

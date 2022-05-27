@@ -85,10 +85,10 @@ namespace SwordsInSpace
                         GameObject toAdd = Instantiate(asteroids[0]
                             , new Vector3(i * distance + offset.x, j * distance + offset.y, 0)
                             //, Quaternion.Euler(0, 0, Random.Range(0, 360)));
-                            , Quaternion.Euler(0, 0, Random.Range(0, 0)));
-                        Tilemap currentMap = toAdd.GetComponentInChildren<Tilemap>();
-                        if (currentMap)
-                            Traverse(hasSeen, currentMap, i, j, 0, 0);
+                            , Quaternion.Euler(0, 0, 0));
+                        //Tilemap currentMap = toAdd.GetComponentInChildren<Tilemap>();
+                        //if (currentMap)
+                        //    Traverse(hasSeen, currentMap, i, j, 0, 0);
 
                         toAdd.GetComponentInChildren<Asteroid>().Setup(0f);
 
