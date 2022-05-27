@@ -1,3 +1,4 @@
+using FishNet.Component.Prediction;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System.Collections;
@@ -21,9 +22,20 @@ namespace SwordsInSpace
         public override void OnStartClient()
         {
             base.OnStartClient();
-            if (!IsOwner) return;
+            SetParent();
+            //GetComponent<PlayerInputManager>().enabled = IsOwner;
+
+            if (!IsOwner)
+            {
+                return;
+            }
             controllingUser = User.localUser;
             CameraManager.instance.AttachToPlayer(transform);
+        }
+
+        public void SetParent()
+        {
+            this.transform.parent = Ship.currentShip.spawnTransform;
         }
     } 
 }

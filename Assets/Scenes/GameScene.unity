@@ -228,7 +228,7 @@ MonoBehaviour:
   _attackResponseType: 1
   _ipv4BindAddress: 
   _ipv6BindAddress: 
-  _port: 7777
+  _port: 7770
   _maximumClients: 5237
   _clientAddress: localhost
   _timeout: 15
@@ -425,7 +425,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7757576, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -728,6 +728,14 @@ PrefabInstance:
       propertyPath: _componentIndexCache
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6624793884139345891, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+      propertyPath: speed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624793884139345891, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+      propertyPath: turnSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6779160803307298856, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -811,7 +819,7 @@ PrefabInstance:
     - target: {fileID: 7842712743893761143, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: _networkBehaviours.Array.data[5]
       value: 
-      objectReference: {fileID: 594552440}
+      objectReference: {fileID: 0}
     - target: {fileID: 7842712743893761143, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: _networkBehaviours.Array.data[6]
       value: 
@@ -852,11 +860,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8852630422741577111, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 528974401739796015, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
-    - {fileID: 4335041109987460485, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
-    - {fileID: 4528363472819656047, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
-    - {fileID: 7842712743893761143, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
 --- !u!114 &594552436 stripped
 MonoBehaviour:
@@ -902,17 +914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e781694f8801449ba80e6c329997fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &594552440 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3958186925094295863, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
-  m_PrefabInstance: {fileID: 594552435}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &658579300
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,6 +957,7 @@ MonoBehaviour:
   _scenePathHash: 2550129400
   _sceneId: 10952722376779786206
   _sceneNetworkObjects:
+  - {fileID: 0}
   - {fileID: 582949987}
   - {fileID: 594552437}
   - {fileID: 594552438}
@@ -1582,7 +1584,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7757576, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1742,7 +1744,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7757576, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

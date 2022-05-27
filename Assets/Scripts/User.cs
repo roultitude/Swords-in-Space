@@ -33,7 +33,6 @@ namespace SwordsInSpace
             base.OnStartServer();
             username = "Player " + Owner.ClientId;
             UserManager.instance.users.Add(this);
-            ServerSpawnPlayer();
         }
 
         public override void OnStopServer()

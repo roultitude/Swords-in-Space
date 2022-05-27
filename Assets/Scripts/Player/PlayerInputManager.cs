@@ -21,14 +21,16 @@ namespace SwordsInSpace
             //public bool Interact;
             public float Horizontal;
             public float Vertical;
-            public float Anchor;
+            //public float Anchor;
             public bool Dashing;
-            public MoveData(float horizontal, float vertical, bool dashing, float anchor)
+            public MoveData(float horizontal, float vertical, bool dashing
+                //, float anchor
+                )
             {
                 //Interact = interact;
                 Horizontal = horizontal;
                 Vertical = vertical;
-                Anchor = anchor;
+                //Anchor = anchor;
                 Dashing = dashing;
             }
         }
@@ -39,14 +41,34 @@ namespace SwordsInSpace
             public Quaternion Rotation;
             public Vector2 Velocity;
             public float AngularVelocity;
-            public float Anchor;
-            public ReconcileData(Vector2 position, Quaternion rotation, Vector2 velocity, float angularVelocity, float anchor)
+            //public float Anchor;
+            public ReconcileData(Vector2 position, Quaternion rotation, Vector2 velocity, float angularVelocity
+                //, float anchor
+                )
             {
                 Position = position;
                 Rotation = rotation;
                 Velocity = velocity;
                 AngularVelocity = angularVelocity;
-                Anchor = anchor;
+                //Anchor = anchor;
+            }
+        }
+
+        public struct PlayerReconcileData
+        {
+            public Vector2 LocalPosition;
+            public Quaternion LocalRotation;
+            public Vector2 Velocity;
+            public float AngularVelocity;
+            public PlayerReconcileData(Vector2 localPosition, Quaternion localRotation, Vector2 velocity, float angularVelocity
+                //, float anchor
+                )
+            {
+                LocalPosition = localPosition;
+                LocalRotation = localRotation;
+                Velocity = velocity;
+                AngularVelocity = angularVelocity;
+                //Anchor = anchor;
             }
         }
 
@@ -56,9 +78,21 @@ namespace SwordsInSpace
             shipMover = Ship.currentShip.shipMover;
             interactor = GetComponent<PlayerInteractionManager>();
             rb = mover.rb;
-
+        }
+        private void OnDisable()
+        {
+            InstanceFinder.TimeManager.OnTick -= TimeManager_OnTick;
+            InstanceFinder.TimeManager.OnPostTick -= TimeManager_OnPostTick;
+        }
+        private void OnEnable()
+        {
             InstanceFinder.TimeManager.OnTick += TimeManager_OnTick;
             InstanceFinder.TimeManager.OnPostTick += TimeManager_OnPostTick;
+        }
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+
         }
 
         private void OnDestroy()
@@ -101,7 +135,9 @@ namespace SwordsInSpace
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
             if (horizontal == 0f && vertical == 0f) return;
-            md = new MoveData(horizontal, vertical, dashing, 1);
+            md = new MoveData(horizontal, vertical, dashing
+                //, 1
+                );
         }
 
         private void TimeManager_OnTick()
@@ -110,25 +146,33 @@ namespace SwordsInSpace
             {
                 mover.Reconciliation(default, false);
                 CheckInput(out MoveData md);
-                mover.Move(md, false);
                 if (Ship.currentShip.IsOwner) //add check for whether in steering
                 {
                     shipMover.Reconciliation(default, false);
                     shipMover.Move(md, false);
                 }
+                mover.Move(md, false);
             }
             if (base.IsServer)
             {
-                mover.Move(new MoveData(0f, 0f, false, 1f), true);
-                shipMover.Move(new MoveData(0f, 0f, false, 1f), true);
+                mover.Move(new MoveData(0f, 0f, false
+                    //, 1f
+                    ), true);
+                shipMover.Move(new MoveData(0f, 0f, false
+                    //, 1f
+                    ), true);
             }
         }
         private void TimeManager_OnPostTick()
         {
             if (base.IsServer)
             {
-                ReconcileData rdMover = new ReconcileData(mover.transform.position, mover.transform.rotation, rb.velocity, rb.angularVelocity, 1f);
-                ReconcileData rdShip = new ReconcileData(shipMover.transform.position, shipMover.transform.rotation, shipMover.rb.velocity, shipMover.rb.angularVelocity, 1f);
+                PlayerReconcileData rdMover = new PlayerReconcileData(mover.transform.localPosition, mover.transform.localRotation, rb.velocity, rb.angularVelocity
+                    //, 1f
+                    );
+                ReconcileData rdShip = new ReconcileData(shipMover.transform.position, shipMover.transform.rotation, shipMover.rb.velocity, shipMover.rb.angularVelocity
+                    //, 1f
+                    );
                 mover.Reconciliation(rdMover, true);
                 shipMover.Reconciliation(rdShip, true);
             }
