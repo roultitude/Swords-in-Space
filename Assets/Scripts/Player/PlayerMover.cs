@@ -54,8 +54,8 @@ namespace SwordsInSpace
             //rb.MovePosition(newPos);
             //rb.velocity = moveXY;
             
-            rb.AddForce(moveXYtrans);
-            if (md.Dashing) rb.AddForce(moveXYtrans * dashMultiplier, ForceMode2D.Impulse);
+            rb.AddForce(moveXY);
+            if (md.Dashing) rb.AddForce(moveXY * dashMultiplier, ForceMode2D.Impulse);
             float angle;
             if (md.Vertical == 0 && md.Horizontal == 0)
             {
@@ -63,23 +63,23 @@ namespace SwordsInSpace
             }
             else
             {
-                angle = Mathf.Atan2(moveXYtrans.y, moveXYtrans.x) * Mathf.Rad2Deg;
+                angle = Mathf.Atan2(moveXY.y, moveXY.x) * Mathf.Rad2Deg;
             }
             lastInputAngle = angle;
             
             rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, Quaternion.AngleAxis(angle, Vector3.forward), (float)base.TimeManager.TickDelta * rotationSpeed);
         }
 
-        public void Reconciliation(PlayerInputManager.PlayerReconcileData rd, bool asServer)
+        public void Reconciliation(PlayerInputManager.ReconcileData rd, bool asServer)
         {
             ReconciliationPredict(rd, asServer);
         }
 
         [Reconcile]
-        private void ReconciliationPredict(PlayerInputManager.PlayerReconcileData rd,bool asServer)
+        private void ReconciliationPredict(PlayerInputManager.ReconcileData rd,bool asServer)
         {
-            transform.localPosition = rd.LocalPosition;
-            transform.localRotation = rd.LocalRotation;
+            transform.position = rd.Position;
+            transform.rotation = rd.Rotation;
             rb.velocity = rd.Velocity;
             rb.angularVelocity = rd.AngularVelocity;
         }

@@ -167,7 +167,7 @@ namespace SwordsInSpace
         {
             if (base.IsServer)
             {
-                PlayerReconcileData rdMover = new PlayerReconcileData(mover.transform.localPosition, mover.transform.localRotation, rb.velocity, rb.angularVelocity
+                ReconcileData rdMover = new ReconcileData(mover.transform.position, mover.transform.rotation, rb.velocity, rb.angularVelocity
                     //, 1f
                     );
                 ReconcileData rdShip = new ReconcileData(shipMover.transform.position, shipMover.transform.rotation, shipMover.rb.velocity, shipMover.rb.angularVelocity
