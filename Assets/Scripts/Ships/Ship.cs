@@ -12,8 +12,9 @@ namespace SwordsInSpace
         public ShipMover shipMover;
         public Transform shipExterior;
         public Transform shipInterior;
+        public Transform shipInteriorView;
         public Transform spawnTransform;
-
+        public Transform playerTracker;
         private void Awake()
         {
             currentShip = this;

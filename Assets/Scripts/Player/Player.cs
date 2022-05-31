@@ -30,6 +30,7 @@ namespace SwordsInSpace
                 return;
             }
             controllingUser = User.localUser;
+            controllingUser.controlledPlayer = this;
             CameraManager.instance.AttachToPlayer(transform);
         }
 

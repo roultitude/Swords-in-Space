@@ -16,19 +16,23 @@ namespace SwordsInSpace
         public int currentAmmo;
         [SerializeField]
         public GameObject uiScreen;
-        public Shooter[] shooters;
+        [SerializeField]
+        public GameObject[] shootersObj;
+
+        protected List<Shooter> shooters;
 
         private UIManager manager;
 
 
         void Awake()
         {
-
-            shooters = GetComponentsInChildren<Shooter>();
-
-            foreach (Shooter comp in shooters)
+            shooters = new List<Shooter>();
+            foreach (GameObject comp in shootersObj)
             {
-                comp.data = data;
+                Shooter compShooter = comp.GetComponentInChildren<Shooter>();
+                shooters.Add(compShooter);
+                compShooter.data = data;
+                compShooter.Setup();
             }
         }
 
@@ -42,6 +46,7 @@ namespace SwordsInSpace
             manager = UIManager.manager;
             uiScreen.SetActive(false);
             UIManager.manager.UIClosed.AddListener(OnUIClosed);
+
         }
 
         // Update is called once per frame

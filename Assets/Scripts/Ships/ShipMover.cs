@@ -42,7 +42,7 @@ namespace SwordsInSpace
             //rb.MovePosition(newPos);
             //rb.velocity = moveXY;
             rb.AddForce(md.Vertical * transform.right * speed);
-            float targetRotation = rb.rotation + md.Horizontal * turnSpeed;
+            float targetRotation = rb.rotation - md.Horizontal * turnSpeed;
             rb.rotation = targetRotation;
             //rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, Quaternion.AngleAxis(targetRotation, Vector3.forward), (float)base.TimeManager.TickDelta * turnSpeed);
         }

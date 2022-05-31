@@ -26,9 +26,8 @@ namespace SwordsInSpace
 
 
         public WeaponSO data;
-        public override void OnStartServer()
+        public void Setup()
         {
-            base.OnStartServer();
             this.burstTimer = gameObject.AddComponent<Timer>();
             this.burstTimer.Setup(data.burstCD, false, false);
             this.burstTimer.timeout.AddListener(StartBurst);
@@ -44,6 +43,7 @@ namespace SwordsInSpace
         {
             this.transform.rotation = Quaternion.Euler(0, 0, newVal);
         }
+
         [ServerRpc(RequireOwnership = false)]
         public void ToggleAutoFire()
         {
@@ -115,13 +115,13 @@ namespace SwordsInSpace
         private void Left() //Separated from RPC to prevent too many calls
         {
             if (!IsServer) { return; }
-            rotation -= 10f;
+            rotation += 10f;
         }
 
         private void Right()
         {
             if (!IsServer) { return; }
-            rotation += 10f;
+            rotation -= 10f;
         }
 
         [ServerRpc(RequireOwnership = false)]
