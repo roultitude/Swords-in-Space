@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5408929544899184431}
   - component: {fileID: 7335390716017313648}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AsteroidDynamic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9135484121365416262}
   - component: {fileID: 6288927151948614916}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 7334649562807822883}
   - component: {fileID: 3887189769646272001}
   - component: {fileID: 5188396879723023167}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ TilemapCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

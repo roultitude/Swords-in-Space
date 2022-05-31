@@ -107,11 +107,13 @@ namespace SwordsInSpace
 
                 }
 
-                ProcessAsteroids();
             }
+
+            ProcessAsteroids();
 
 
         }
+
         [ObserversRpc(IncludeOwner = true, BufferLast = true)]
         private void ProcessAsteroids()
         {
@@ -131,6 +133,7 @@ namespace SwordsInSpace
                 loc.y * distance + offset.y, 0);
 
             }
+            AstarPath.active.Scan();
 
         }
 
