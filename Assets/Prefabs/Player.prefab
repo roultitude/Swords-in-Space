@@ -159,7 +159,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 1826261824456996876}
   _networkObjectCache: {fileID: 1826261824456996876}
   _graphicalObject: {fileID: 8760791468650330625}
-  _smoothTicks: 0
+  _smoothTicks: 1
   _smoothingDuration: 0.2
   _predictionType: 2
   _rigidbody: {fileID: 0}

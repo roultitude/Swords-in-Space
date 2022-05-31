@@ -41,9 +41,10 @@ namespace SwordsInSpace
             //Vector2 newPos = new Vector2(rb.transform.position.x + moveXY.x, rb.transform.position.y + moveXY.y);
             //rb.MovePosition(newPos);
             //rb.velocity = moveXY;
-            rb.AddForce(md.Vertical * transform.right * speed * (float)base.TimeManager.TickDelta);
+            rb.AddForce(md.Vertical * transform.right * speed);
             float targetRotation = rb.rotation + md.Horizontal * turnSpeed;
-            rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, Quaternion.AngleAxis(targetRotation, Vector3.forward), (float)base.TimeManager.TickDelta * turnSpeed);
+            rb.rotation = targetRotation;
+            //rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, Quaternion.AngleAxis(targetRotation, Vector3.forward), (float)base.TimeManager.TickDelta * turnSpeed);
         }
 
         public void Reconciliation(PlayerInputManager.ReconcileData rd, bool asServer)

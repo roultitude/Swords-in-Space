@@ -10,17 +10,19 @@ public class ShipInteriorSyncer : NetworkBehaviour
 
     private void Awake()
     {
-        InstanceFinder.TimeManager.OnFixedUpdate += OnTick;
+        //InstanceFinder.TimeManager.OnFixedUpdate += OnTick;
     }
 
     public override void OnStartNetwork()
     {
         base.OnStartNetwork();
-        
     }
     private void OnTick()
     {
-        //if (!IsServer) return;
+        
+    }
+    private void Update()
+    {
         transform.position = syncTarget.position;
         transform.rotation = syncTarget.rotation;
     }

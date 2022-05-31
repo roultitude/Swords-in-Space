@@ -20,7 +20,7 @@ namespace SwordsInSpace
 
         [SerializeField]
         bool randomSeed = true;
-        [SerializeField]
+        [SerializeField, SyncVar]
         public Vector2 seed = new Vector2(1f, 1f);
 
         public float[,] noiseGrid;
@@ -56,6 +56,14 @@ namespace SwordsInSpace
             }
         }
 
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            noiseGrid = new float[worldSize, worldSize];
+            offset = new Vector2(-worldSize / 2 * distance, -worldSize / 2 * distance);
+            MakeNoiseArray();
+        }
+
 
 
         private void MakeNoiseArray()
@@ -84,8 +92,9 @@ namespace SwordsInSpace
                     {
                         GameObject toAdd = Instantiate(asteroids[0]
                             , new Vector3(i * distance + offset.x, j * distance + offset.y, 0)
+                            //, new Vector3(i, j, 0)
                             //, Quaternion.Euler(0, 0, Random.Range(0, 360)));
-                            , Quaternion.Euler(0, 0, Random.Range(0, 0)));
+                            , Quaternion.Euler(0, 0, 0));
                         Tilemap currentMap = toAdd.GetComponentInChildren<Tilemap>();
                         if (currentMap)
                             Traverse(hasSeen, currentMap, i, j, 0, 0);
@@ -97,7 +106,32 @@ namespace SwordsInSpace
 
 
                 }
+
+                ProcessAsteroids();
             }
+
+
+        }
+        [ObserversRpc(IncludeOwner = true, BufferLast = true)]
+        private void ProcessAsteroids()
+        {
+            Asteroid[] asteroids = Object.FindObjectsOfType<Asteroid>();
+            bool[,] hasSeen = new bool[worldSize, worldSize];
+            foreach (Asteroid asteroid in asteroids)
+            {
+                Vector2 loc = new Vector2((asteroid.gameObject.transform.position.x - offset.x) / distance
+                , (asteroid.gameObject.transform.position.y - offset.y) / distance);
+                Tilemap currentMap = asteroid.GetComponentInChildren<Tilemap>();
+                if (currentMap)
+                    Traverse(hasSeen, currentMap, (int)loc.x, (int)loc.y, 0, 0);
+
+
+
+                asteroid.gameObject.transform.position = new Vector3(loc.x * distance + offset.x,
+                loc.y * distance + offset.y, 0);
+
+            }
+
         }
 
         private bool AboveThreshold(int i, int j)

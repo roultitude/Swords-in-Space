@@ -15,7 +15,7 @@ namespace SwordsInSpace
         private float speed, rotationSpeed, dashMultiplier;
 
         private float lastInputAngle;
-
+        private Vector2 shipLastFrame;
 
         private void Awake()
         {
@@ -30,8 +30,15 @@ namespace SwordsInSpace
             {
                 //rb.isKinematic = true;
             }
+            shipLastFrame = Ship.currentShip.transform.position;
         }
-
+        private void Update()
+        {
+            //Vector2 shipThisFrame = Ship.currentShip.transform.position;
+            //Vector2 positionOffset = shipThisFrame - shipLastFrame;
+           // shipLastFrame = shipThisFrame;
+           // transform.position = (Vector2) transform.position + positionOffset;
+        }
         public void Move(PlayerInputManager.MoveData md, bool asServer, bool replaying = false)
         {
             if (!canMove) md = default;
@@ -63,16 +70,16 @@ namespace SwordsInSpace
             rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, Quaternion.AngleAxis(angle, Vector3.forward), (float)base.TimeManager.TickDelta * rotationSpeed);
         }
 
-        public void Reconciliation(PlayerInputManager.ReconcileData rd, bool asServer)
+        public void Reconciliation(PlayerInputManager.PlayerReconcileData rd, bool asServer)
         {
             ReconciliationPredict(rd, asServer);
         }
 
         [Reconcile]
-        private void ReconciliationPredict(PlayerInputManager.ReconcileData rd,bool asServer)
+        private void ReconciliationPredict(PlayerInputManager.PlayerReconcileData rd,bool asServer)
         {
-            transform.position = rd.Position;
-            transform.rotation = rd.Rotation;
+            transform.localPosition = rd.LocalPosition;
+            transform.localRotation = rd.LocalRotation;
             rb.velocity = rd.Velocity;
             rb.angularVelocity = rd.AngularVelocity;
         }

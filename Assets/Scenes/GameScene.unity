@@ -228,7 +228,7 @@ MonoBehaviour:
   _attackResponseType: 1
   _ipv4BindAddress: 
   _ipv6BindAddress: 
-  _port: 7777
+  _port: 7770
   _maximumClients: 5237
   _clientAddress: localhost
   _timeout: 15
@@ -732,6 +732,14 @@ PrefabInstance:
       propertyPath: _componentIndexCache
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6624793884139345891, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+      propertyPath: speed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624793884139345891, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+      propertyPath: turnSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6779160803307298856, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -831,7 +839,7 @@ PrefabInstance:
     - target: {fileID: 7842712743893761143, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: _networkBehaviours.Array.data[5]
       value: 
-      objectReference: {fileID: 594552440}
+      objectReference: {fileID: 0}
     - target: {fileID: 7842712743893761143, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: _networkBehaviours.Array.data[6]
       value: 
@@ -872,11 +880,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8852630422741577111, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 528974401739796015, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
-    - {fileID: 4335041109987460485, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
-    - {fileID: 4528363472819656047, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
-    - {fileID: 7842712743893761143, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
 --- !u!114 &594552436 stripped
 MonoBehaviour:
@@ -920,17 +932,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6e781694f8801449ba80e6c329997fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &594552440 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3958186925094295863, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
-  m_PrefabInstance: {fileID: 594552435}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &658579300
@@ -1340,10 +1341,9 @@ MonoBehaviour:
   randomSeed: 1
   seed: {x: 0, y: 0}
   threshold: 0.7
-  density: 5.5
-  distance: 20
-  chance: 0.2
-  tile: {fileID: 11400000, guid: 90ac8fd3ec40bdf43bd6aa10a9ed630c, type: 2}
+  density: 15
+  distance: 5
+  tile: {fileID: 11400000, guid: 790c5c8742001644a85285917735e060, type: 2}
 --- !u!1 &1315727920
 GameObject:
   m_ObjectHideFlags: 0
