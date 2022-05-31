@@ -310,8 +310,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 0, z: -3}
-  m_XDamping: 0
-  m_YDamping: 0
+  m_XDamping: 1
+  m_YDamping: 1
   m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
@@ -425,7 +425,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7783375, y: 1}
+    m_SensorSize: {x: 1.776435, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1912,6 +1912,14 @@ PrefabInstance:
       propertyPath: _sceneNetworkObjects.Array.data[5]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8462298545277585973, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462298545277585973, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 8476521955087796132, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
       propertyPath: _networkObjectCache
       value: 
@@ -2815,7 +2823,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7783375, y: 1}
+    m_SensorSize: {x: 1.776435, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2975,7 +2983,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7783375, y: 1}
+    m_SensorSize: {x: 1.776435, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

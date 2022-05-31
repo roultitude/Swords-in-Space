@@ -28,7 +28,6 @@ namespace SwordsInSpace
         {
             playerVCam.Follow = Ship.currentShip.playerTracker;
             playerVCam.transform.SetParent(Ship.currentShip.shipInteriorView);
-            
         }
 
         public void ToggleShipCamera()
