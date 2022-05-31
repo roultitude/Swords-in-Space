@@ -317,7 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 3251584837082039592}
-  _networkObjectCache: {fileID: 3251584837082039592}
+  _networkObjectCache: {fileID: 8819575145035472807}
   rb: {fileID: 4703744331782941198}
   canMove: 0
   speed: 1000
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 0}
-  _networkObjectCache: {fileID: 3251584837082039592}
+  _networkObjectCache: {fileID: 8819575145035472807}
   _graphicalObject: {fileID: 8138893596707659371}
   _smoothTicks: 1
   _smoothingDuration: 0.125
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _componentIndexCache: 2
   _addedNetworkObject: {fileID: 3251584837082039592}
-  _networkObjectCache: {fileID: 3251584837082039592}
+  _networkObjectCache: {fileID: 8819575145035472807}
   shipMover: {fileID: 0}
   shipExterior: {fileID: 6463308224519303839}
   shipInterior: {fileID: 3777107840797026398}
@@ -408,7 +408,7 @@ MonoBehaviour:
     Rotation: {x: -0, y: -0, z: -0, w: 1}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
-  _hasParentNetworkObjectAtEdit: 0
+  _hasParentNetworkObjectAtEdit: 1
   NetworkObserver: {fileID: 0}
   _prefabId: -1
   _scenePathHash: 0
@@ -514,7 +514,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2000, y: 2000}
+  m_SizeDelta: {x: 2048, y: 2048}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5279368935535181959
 Canvas:
@@ -716,6 +716,7 @@ MonoBehaviour:
   - {fileID: 9039525764540420404}
   - {fileID: 6746204671446895166}
   - {fileID: 8524240635559801792}
+  - {fileID: 840958035019083572}
   SceneTransformProperties:
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1125,6 +1126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6297bda6e55c144468e6b7794d3f428f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 7
+  _addedNetworkObject: {fileID: 8819575145035472807}
+  _networkObjectCache: {fileID: 8819575145035472807}
 --- !u!1 &6254536011999534425
 GameObject:
   m_ObjectHideFlags: 0
