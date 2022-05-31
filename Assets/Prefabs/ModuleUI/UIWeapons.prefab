@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 175365271833212235}
   - component: {fileID: 175365271833212234}
   m_Layer: 5
-  m_Name: UICanvas
+  m_Name: UIWeapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
