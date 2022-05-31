@@ -2396,14 +2396,14 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 822332127}
   _networkObjectCache: {fileID: 822332127}
   asteroids:
-  - {fileID: 2450554185044598378, guid: 51917b43bd424a840b91a1a429ac5372, type: 3}
+  - {fileID: 637470136372733760, guid: 9b9e1e8d74bef484b932711ad5882942, type: 3}
   worldSize: 200
   randomSeed: 1
   seed: {x: 0, y: 0}
   threshold: 0.7
-  density: 5.5
-  distance: 20
-  tile: {fileID: 11400000, guid: 90ac8fd3ec40bdf43bd6aa10a9ed630c, type: 2}
+  density: 15
+  distance: 5
+  tile: {fileID: 11400000, guid: 790c5c8742001644a85285917735e060, type: 2}
 --- !u!1 &1315727920
 GameObject:
   m_ObjectHideFlags: 0

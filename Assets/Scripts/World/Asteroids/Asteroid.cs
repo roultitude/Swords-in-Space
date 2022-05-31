@@ -15,6 +15,7 @@ public class Asteroid : NetworkBehaviour
         this.shotSpeed = shotSpeed;
     }
 
+
     // Update is called once per frame
     void Update()
     {
