@@ -1,27 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using FishNet.Object;
-using FishNet.Object.Synchronizing;
 using UnityEngine;
+using static Pathfinding.AIDestinationSetter;
 
 namespace SwordsInSpace
 {
-    public class EnemyAI : NetworkBehaviour
+    public class PlayerTargetter : MonoBehaviour
     {
-
-
         // Start is called before the first frame update
         void Start()
         {
+            gameObject.GetComponent<Pathfinding.AIDestinationSetter>().target = Ship.currentShip.transform;
 
         }
-
-        // Update is called once per framet
-        void Update()
-        {
-
-        }
-
 
     }
 };
