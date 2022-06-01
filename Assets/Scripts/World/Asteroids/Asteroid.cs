@@ -24,6 +24,7 @@ public class Asteroid : NetworkBehaviour
 
     public void OnTriggerEnter2D(Collider2D coll)
     {
+
         this.Despawn();
     }
 }

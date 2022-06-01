@@ -55,6 +55,7 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 3842234323794330338}
   _networkObjectCache: {fileID: 3842234323794330338}
+  maxHp: 0
 --- !u!114 &3842234323794330338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _networkBehaviours:
   - {fileID: 4801082456647798630}
+  - {fileID: 6549005045294038484}
   - {fileID: 2150578565774106529}
   SceneTransformProperties:
     Position: {x: 0, y: 0, z: 0}
@@ -93,9 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 3842234323794330338}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 3842234323794330338}
   _synchronizeParent: 0
   _packing:
     Position: 1
@@ -136,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  drawGizmos: 1
+  drawGizmos: 0
   detailedGizmos: 0
   startEndModifier:
     addPoints: 0
@@ -168,7 +170,7 @@ MonoBehaviour:
   height: 2
   canMove: 1
   maxSpeed: 10
-  gravity: {x: NaN, y: NaN, z: NaN}
+  gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -176,7 +178,7 @@ MonoBehaviour:
   repathRateCompatibility: NaN
   canSearchCompability: 0
   orientation: 1
-  enableRotation: 1
+  enableRotation: 0
   autoRepath:
     mode: 2
     interval: 0.5
@@ -185,10 +187,10 @@ MonoBehaviour:
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
-  rotationSpeed: 360
+  rotationSpeed: 1
   slowdownDistance: 0.6
   pickNextWaypointDist: 2
-  endReachedDistance: 0.2
+  endReachedDistance: 50
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -264,11 +266,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f837c231c60d99b45bdf6d1103820242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 1
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 3842234323794330338}
   _networkObjectCache: {fileID: 3842234323794330338}
   bullet: {fileID: 2590286623395873651, guid: 3f9c5556cb42f9142905538a99750657, type: 3}
-  range: 10
+  range: 100
 --- !u!114 &5009307279760647555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoplay: 1
   repeat: 1
-  waitTime: 0.8
+  waitTime: 2.7
   timeout:
     m_PersistentCalls:
       m_Calls:
@@ -310,6 +312,7 @@ GameObject:
   - component: {fileID: 2739013680238319648}
   - component: {fileID: 2398872284527371111}
   - component: {fileID: 1560602427826322351}
+  - component: {fileID: 2945182401669183132}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -420,3 +423,15 @@ PolygonCollider2D:
       - {x: 1, y: -1}
       - {x: 1, y: 0.09375}
       - {x: 0.875, y: 0.625}
+--- !u!114 &2945182401669183132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8943456316866189084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17930bc2f5631c45a1eb5a7ec7efa7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
