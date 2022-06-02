@@ -80,6 +80,7 @@ namespace SwordsInSpace
             interactor = GetComponent<PlayerInteractionManager>();
             rb = mover.rb;
             playerInput = GetComponent<PlayerInput>();
+            playerInput.actions.FindActionMap("AlwaysOn").Enable();
         }
         private void OnDisable()
         {
@@ -90,9 +91,20 @@ namespace SwordsInSpace
         {
             InstanceFinder.TimeManager.OnTick += TimeManager_OnTick;
             InstanceFinder.TimeManager.OnPostTick += TimeManager_OnPostTick;
+        }
+
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            if (!base.IsOwner) return;
             playerInput.actions["Interact"].performed += context => interactor.Interact();
             playerInput.actions["Dash"].performed += context => { awaitingDash = true; };
-
+            playerInput.actions["ExitUI"].performed += context => ExitUI();
+            playerInput.actions["SteerTest"].performed += context => {
+                CameraManager.instance.ToggleShipCamera();
+                mover.canMove = !mover.canMove;
+                shipMover.canMove = !shipMover.canMove;
+            };
         }
 
         private void OnDestroy()
@@ -106,17 +118,9 @@ namespace SwordsInSpace
 
         private void Update()
         {
-            if (!base.IsOwner) return; //guard for not owner
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                UIManager.manager.Close();
-            }
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-               CameraManager.instance.ToggleShipCamera();
-               mover.canMove = !mover.canMove;
-               shipMover.canMove = !shipMover.canMove;
-            }
+
+            if (!base.IsOwner)return; //guard for not owner
+
         }
 
         void CheckInput(out MoveData md)
@@ -168,6 +172,10 @@ namespace SwordsInSpace
                 mover.Reconciliation(rdMover, true);
                 shipMover.Reconciliation(rdShip, true);
             }
+        }
+        private void ExitUI()
+        {
+            UIManager.manager.Close();
         }
     }
 

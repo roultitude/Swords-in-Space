@@ -115,13 +115,13 @@ namespace SwordsInSpace
         private void Left() //Separated from RPC to prevent too many calls
         {
             if (!IsServer) { return; }
-            rotation += 10f;
+            rotation += data.rotationSpeed;
         }
 
         private void Right()
         {
             if (!IsServer) { return; }
-            rotation -= 10f;
+            rotation -= data.rotationSpeed;
         }
 
         [ServerRpc(RequireOwnership = false)]
