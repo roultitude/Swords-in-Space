@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
 using FishNet;
+using UnityEngine.InputSystem;
 
 namespace SwordsInSpace
 {
@@ -15,7 +16,7 @@ namespace SwordsInSpace
         private PlayerInteractionManager interactor;
         private Rigidbody2D rb;
         private bool awaitingDash;
-
+        private PlayerInput playerInput;
         public struct MoveData
         {
             //public bool Interact;
@@ -78,6 +79,8 @@ namespace SwordsInSpace
             shipMover = Ship.currentShip.shipMover;
             interactor = GetComponent<PlayerInteractionManager>();
             rb = mover.rb;
+            playerInput = GetComponent<PlayerInput>();
+            playerInput.actions.FindActionMap("AlwaysOn").Enable();
         }
         private void OnDisable()
         {
@@ -89,10 +92,19 @@ namespace SwordsInSpace
             InstanceFinder.TimeManager.OnTick += TimeManager_OnTick;
             InstanceFinder.TimeManager.OnPostTick += TimeManager_OnPostTick;
         }
+
         public override void OnStartClient()
         {
             base.OnStartClient();
-
+            if (!base.IsOwner) return;
+            playerInput.actions["Interact"].performed += context => interactor.Interact();
+            playerInput.actions["Dash"].performed += context => { awaitingDash = true; };
+            playerInput.actions["ExitUI"].performed += context => ExitUI();
+            playerInput.actions["SteerTest"].performed += context => {
+                CameraManager.instance.ToggleShipCamera();
+                mover.canMove = !mover.canMove;
+                shipMover.canMove = !shipMover.canMove;
+            };
         }
 
         private void OnDestroy()
@@ -106,25 +118,9 @@ namespace SwordsInSpace
 
         private void Update()
         {
-            if (!base.IsOwner) return; //guard for not owner
-            if (Input.GetKeyDown("f"))
-            {
-                interactor.Interact();
-            }
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                UIManager.manager.Close();
-            }
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-               CameraManager.instance.ToggleShipCamera();
-               mover.canMove = !mover.canMove;
-               shipMover.canMove = !shipMover.canMove;
-            }
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                awaitingDash = true;
-            }
+
+            if (!base.IsOwner)return; //guard for not owner
+
         }
 
         void CheckInput(out MoveData md)
@@ -132,8 +128,8 @@ namespace SwordsInSpace
             md = default;
             bool dashing = awaitingDash;
             if (awaitingDash) awaitingDash = false;
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
+            float horizontal = playerInput.actions["Move"].ReadValue<Vector2>().x;
+            float vertical = playerInput.actions["Move"].ReadValue<Vector2>().y;
             if (horizontal == 0f && vertical == 0f) return;
             md = new MoveData(horizontal, vertical, dashing
                 //, 1
@@ -176,6 +172,10 @@ namespace SwordsInSpace
                 mover.Reconciliation(rdMover, true);
                 shipMover.Reconciliation(rdShip, true);
             }
+        }
+        private void ExitUI()
+        {
+            UIManager.manager.Close();
         }
     }
 

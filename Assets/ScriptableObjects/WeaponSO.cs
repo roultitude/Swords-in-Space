@@ -26,5 +26,7 @@ namespace SwordsInSpace
         public double atkCD = 5;
 
         public double burstCD = 0.3;
+
+        public float rotationSpeed = 10f;
     }
 };
