@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using FishNet.Object;
-using FishNet.Object.Synchronizing;
+using UnityEngine;
 namespace SwordsInSpace
 {
     public class EnemySpawner : NetworkBehaviour
@@ -12,10 +9,13 @@ namespace SwordsInSpace
         Timer SpawnCD;
 
         [SerializeField]
-        int minDensity;
+        int minPackDensity;
 
         [SerializeField]
-        int maxDensity;
+        int maxPackDensity;
+
+        [SerializeField]
+        Vector2 packSpawnRadius;
 
         [System.Serializable]
         public struct SpawnInfo
@@ -41,11 +41,7 @@ namespace SwordsInSpace
             }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
 
-        }
 
         public void Spawn()
         {
@@ -60,11 +56,13 @@ namespace SwordsInSpace
                     break;
                 }
             }
-
-            int size = Random.Range(minDensity, maxDensity);
+            Vector3 loc = getRandomPosition();
+            int size = Random.Range(minPackDensity, maxPackDensity);
             for (int i = 0; i < size; i++)
             {
-                GameObject toAdd = Instantiate(toSpawn, getRandomPosition(), transform.rotation);
+                GameObject toAdd = Instantiate(toSpawn, new Vector3(loc.x + Random.Range(-packSpawnRadius.x / 2, packSpawnRadius.x / 2),
+                    loc.y + Random.Range(-packSpawnRadius.y / 2, packSpawnRadius.y / 2),
+                    loc.z), transform.rotation);
                 Spawn(toAdd);
 
             }
@@ -73,7 +71,7 @@ namespace SwordsInSpace
 
         private Vector3 getRandomPosition()
         {
-            return new Vector3(Random.Range(-worldSize.x / 4, worldSize.x / 4), Random.Range(-worldSize.y / 4, worldSize.y / 4), 0);
+            return new Vector3(Random.Range(-worldSize.x / 3, worldSize.x / 3), Random.Range(-worldSize.y / 3, worldSize.y / 3), 0);
         }
 
         public void StopSpawn()

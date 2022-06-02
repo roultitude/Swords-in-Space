@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine;
+using TMPro;
 
 namespace SwordsInSpace
 {
@@ -10,26 +11,42 @@ namespace SwordsInSpace
     {
         [SerializeField]
         public int maxHp;
+        [SyncVar(OnChange = nameof(UpdateHpText))]
         private int currentHp;
+
+        [SerializeField]
+        TMPro.TextMeshProUGUI hpBar;
 
         // Start is called before the first frame update
         void Start()
         {
             currentHp = maxHp;
-            GetComponentInChildren<DamageListener>().onDamage.AddListener(Damage);
+            hpBar.text = currentHp + " / " + maxHp;
+
+            if (!IsServer)
+            {
+                GetComponent<Rigidbody2D>().isKinematic = true;
+            }
         }
 
-        // Update is called once per framet
-        void Update()
+        private void UpdateHpText(int oldint, int newint, bool server)
+        {
+            hpBar.text = currentHp + " / " + maxHp;
+
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
 
-        }
 
-        public void Damage()
-        {
-            Debug.Log("hit enemy");
-        }
+            Bullet bullet = collision.gameObject.GetComponentInParent<Bullet>();
+            if (bullet != null && bullet.gameObject.tag == "Friendly")
+            {
+                currentHp -= 1;
+            }
 
+        }
 
     }
+
 };
