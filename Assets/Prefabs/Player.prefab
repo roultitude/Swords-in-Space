@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5489958029282922365}
   - component: {fileID: 2562620515417929168}
   - component: {fileID: 8582065100134496628}
+  - component: {fileID: 1836518971643897993}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MonoBehaviour:
   _isNetworked: 1
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
-  _prefabId: 2
+  _prefabId: 4
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects:
@@ -200,6 +201,36 @@ MonoBehaviour:
   spawnTransform: {fileID: 0}
   controllingUser: {fileID: 0}
   health: 0
+--- !u!114 &1836518971643897993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826261824456996878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 20af81d46126877488dcf0b8b2f78d8e, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 98bd7db0-909d-47eb-b3b3-1391216cc2e6
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &2853691003124763337
 GameObject:
   m_ObjectHideFlags: 0
