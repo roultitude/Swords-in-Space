@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
 using FishNet.Connection;
+using FishNet.Object.Synchronizing;
 
 public class Asteroid : NetworkBehaviour
 {
     // Start is called before the first frame update
 
     float shotSpeed = 0f;
+    [SyncVar]
+    public int hp = 10;
 
     public void Setup(float shotSpeed)
     {
@@ -24,7 +27,10 @@ public class Asteroid : NetworkBehaviour
 
     public void OnTriggerEnter2D(Collider2D coll)
     {
-
-        this.Despawn();
+        if (!IsServer)
+            return;
+        hp -= 1;
+        if (hp <= 0)
+            this.Despawn();
     }
 }

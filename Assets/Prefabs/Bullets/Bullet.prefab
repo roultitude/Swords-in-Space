@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6945184148484533132}
   - component: {fileID: 3635347029885365998}
-  - component: {fileID: 2154732406619088952}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -85,22 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2154732406619088952
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 982542819005227445}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
 --- !u!1 &2590286623395873651
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,6 +97,7 @@ GameObject:
   - component: {fileID: 1002268136253259172}
   - component: {fileID: 5659850497119933468}
   - component: {fileID: 1579795028985909499}
+  - component: {fileID: 4241005189686297144}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -155,6 +139,7 @@ MonoBehaviour:
   timeout:
     m_PersistentCalls:
       m_Calls: []
+  currentTime: 0
 --- !u!114 &1002268136253259172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,3 +223,19 @@ MonoBehaviour:
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects: []
+--- !u!58 &4241005189686297144
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590286623395873651}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.09
