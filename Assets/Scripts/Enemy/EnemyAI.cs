@@ -15,24 +15,30 @@ namespace SwordsInSpace
         private int currentHp;
 
         [SerializeField]
-        TMPro.TextMeshProUGUI hpBar;
+        Sprite whitePixel;
+
+        HealthBar hpBar;
+
 
         // Start is called before the first frame update
         void Start()
         {
             currentHp = maxHp;
-            hpBar.text = currentHp + " / " + maxHp;
 
             if (!IsServer)
             {
                 GetComponent<Rigidbody2D>().isKinematic = true;
             }
+
+            hpBar = HealthBar.Create(new Vector2(0, 50), new Vector2(maxHp * 250, 25), 5f, gameObject, whitePixel);
+            hpBar.transform.parent = gameObject.transform;
+            hpBar.DoFade(0.8f);
         }
 
         private void UpdateHpText(int oldint, int newint, bool server)
         {
-            hpBar.text = currentHp + " / " + maxHp;
-
+            if (hpBar != null)
+                hpBar.setSize((float)currentHp / (float)maxHp);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -43,9 +49,21 @@ namespace SwordsInSpace
             if (bullet != null && bullet.gameObject.tag == "Friendly")
             {
                 currentHp -= 1;
+                if (currentHp <= 0)
+                {
+                    onDeath();
+                }
             }
 
         }
+
+        private void onDeath()
+        {
+            this.Despawn();
+        }
+
+
+
 
     }
 
