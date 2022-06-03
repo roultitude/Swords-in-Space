@@ -340,10 +340,10 @@ PrefabInstance:
     - target: {fileID: 1185405697126653920, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 7386859886407666987}
+      objectReference: {fileID: 3601184386634946468}
     - target: {fileID: 2439950168033329262, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2439950168033329262, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -376,10 +376,10 @@ PrefabInstance:
     - target: {fileID: 2974684135176937384, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 7386859886407666987}
+      objectReference: {fileID: 3601184386634946468}
     - target: {fileID: 3251584837082039592, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3251584837082039592, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -416,10 +416,10 @@ PrefabInstance:
     - target: {fileID: 3550607494104016276, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 7656373368596400237}
+      objectReference: {fileID: 3601184386634946468}
     - target: {fileID: 3550607494104016276, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4485076214342864807, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: data
@@ -428,7 +428,7 @@ PrefabInstance:
     - target: {fileID: 4485076214342864807, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 7386859886407666987}
+      objectReference: {fileID: 3601184386634946468}
     - target: {fileID: 5221657397174509498, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -488,6 +488,10 @@ PrefabInstance:
     - target: {fileID: 5221657397174509500, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: m_Name
       value: ShipStarter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221657397174509500, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: m_TagString
+      value: Friendly
       objectReference: {fileID: 0}
     - target: {fileID: 5221657397174509501, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: m_SortingOrder
@@ -4436,10 +4440,10 @@ PrefabInstance:
     - target: {fileID: 6746204671446895166, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 7656373368596400237}
+      objectReference: {fileID: 3601184386634946468}
     - target: {fileID: 6746204671446895166, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _componentIndexCache
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8524240635559801792, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _componentIndexCache
@@ -4480,10 +4484,10 @@ PrefabInstance:
     - target: {fileID: 9039525764540420404, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 7656373368596400237}
+      objectReference: {fileID: 3601184386634946468}
     - target: {fileID: 9039525764540420404, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _componentIndexCache
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
@@ -4492,6 +4496,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5221657397174509498, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
   m_PrefabInstance: {fileID: 5448395415315220483}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &282490374975100863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5221657397174509500, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+  m_PrefabInstance: {fileID: 5448395415315220483}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2676040109902978392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282490374975100863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df116c3261302534d94fb0bfb9b2cdb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Friendly
 --- !u!4 &1310228999907998364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6463308224519303839, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
@@ -4513,6 +4535,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7108309777361262545, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
   m_PrefabInstance: {fileID: 5448395415315220483}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3601184386634946468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8819575145035472807, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+  m_PrefabInstance: {fileID: 5448395415315220483}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282490374975100863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3958186925094295863 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9039525764540420404, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
@@ -4685,7 +4718,7 @@ PrefabInstance:
     - target: {fileID: 7663618118891403403, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 7386859886407666987}
+      objectReference: {fileID: 3601184386634946468}
     - target: {fileID: 7663618118891403403, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _componentIndexCache
       value: 3

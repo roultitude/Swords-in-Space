@@ -22,7 +22,8 @@ namespace SwordsInSpace
         }
         public void OnTriggerEnter2D(Collider2D coll)
         {
-            if (IsServer)
+
+            if (IsServer & gameObject.tag != coll.gameObject.tag)
                 Despawn();
         }
 
