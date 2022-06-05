@@ -20,15 +20,15 @@ namespace SwordsInSpace
         ShipSO data;
 
         [SerializeField]
-        GameObject uihpbar;
+        GameObject UiHpBar;
 
-        private double currentHp;
+        private double CurrentHp;
 
         private void Awake()
         {
             currentShip = this;
             shipMover = this.GetComponentInChildren<ShipMover>();
-            currentHp = data.MaxHp;
+            CurrentHp = data.MaxHp;
 
         }
 
@@ -44,12 +44,11 @@ namespace SwordsInSpace
             if (bullet != null && (bullet.gameObject.tag == null || bullet.gameObject.tag != "Friendly"))
             {
 
-                currentHp -= 1;
+                CurrentHp -= 1;
                 bullet.OnHit();
-                Debug.Log("ow");
-                uihpbar.GetComponent<UIHpBar>().Resize((float)currentHp / (float)data.MaxHp);
+                UiHpBar.GetComponent<UIHpBar>().Resize((float)CurrentHp / (float)data.MaxHp);
 
-                if (currentHp <= 0)
+                if (CurrentHp <= 0)
                 {
                     Despawn();
                 }
