@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7335390716017313648}
   m_Layer: 8
   m_Name: AsteroidDynamic
-  m_TagString: Untagged
+  m_TagString: Neutral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 6288927151948614916}
   m_Layer: 8
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Neutral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 7271112709426719719}
   m_Layer: 8
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Neutral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -363,6 +363,7 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 7335390716017313648}
   _networkObjectCache: {fileID: 7335390716017313648}
+  hp: 10
 --- !u!114 &7271112709426719719
 MonoBehaviour:
   m_ObjectHideFlags: 0

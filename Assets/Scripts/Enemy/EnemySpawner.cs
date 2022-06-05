@@ -27,6 +27,7 @@ namespace SwordsInSpace
         [SerializeField]
         SpawnInfo[] spawninfos;
 
+
         int totalWeight;
 
         [SerializeField]
@@ -76,7 +77,7 @@ namespace SwordsInSpace
 
         public void StopSpawn()
         {
-
+            SpawnCD.Stop();
         }
     }
 };

@@ -20,10 +20,9 @@ namespace SwordsInSpace
             timer.timeout.AddListener(OnTimeout);
 
         }
-        public void OnTriggerEnter2D(Collider2D coll)
+        public void OnHit()
         {
-
-            if (IsServer & gameObject.tag != coll.gameObject.tag)
+            if (IsServer)
                 Despawn();
         }
 

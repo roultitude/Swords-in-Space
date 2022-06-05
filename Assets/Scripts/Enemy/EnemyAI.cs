@@ -46,9 +46,10 @@ namespace SwordsInSpace
 
 
             Bullet bullet = collision.gameObject.GetComponentInParent<Bullet>();
-            if (bullet != null && bullet.gameObject.tag == "Friendly")
+            if (bullet != null && gameObject.tag != collision.gameObject.tag)
             {
                 currentHp -= 1;
+                bullet.OnHit();
                 if (currentHp <= 0)
                 {
                     onDeath();
