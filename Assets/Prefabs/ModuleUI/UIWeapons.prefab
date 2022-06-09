@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 175365272319318401}
   - component: {fileID: 175365272319318400}
   - component: {fileID: 175365272319318407}
-  - component: {fileID: 7430852285280885689}
+  - component: {fileID: 1346675488989603923}
   m_Layer: 5
   m_Name: ButtonExit
   m_TagString: Untagged
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7430852285280885689
+--- !u!114 &1346675488989603923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1366,8 +1366,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.1448469, g: 0.8773585, b: 0.8556188, a: 1}
+    m_PressedColor: {r: 1, g: 0.3160377, b: 0.3160377, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1

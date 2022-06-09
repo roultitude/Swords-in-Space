@@ -1271,7 +1271,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7754385, y: 1}
+    m_SensorSize: {x: 1.7791045, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1350,7 +1350,7 @@ MonoBehaviour:
   _scenePathHash: 2550129400
   _sceneId: 10952722376779786206
   _sceneNetworkObjects:
-  - {fileID: 0}
+  - {fileID: 29494765}
   - {fileID: 29494766}
   - {fileID: 29494767}
   - {fileID: 29494768}
@@ -2064,7 +2064,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7754385, y: 1}
+    m_SensorSize: {x: 1.7791045, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2224,7 +2224,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7754385, y: 1}
+    m_SensorSize: {x: 1.7791045, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2350,11 +2350,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359121, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: waitTime
-      value: 5
+      value: 99999
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359121, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: currentTime
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359123, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}

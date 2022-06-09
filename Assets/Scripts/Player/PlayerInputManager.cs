@@ -85,7 +85,11 @@ namespace SwordsInSpace
         public override void OnStartClient()
         {
             base.OnStartClient();
-            if (!base.IsOwner) return;
+            if (!base.IsOwner)
+            {
+                playerInput.enabled = false;
+                return;
+            } 
             playerInput.actions["Interact"].performed += context => interactor.Interact();
             playerInput.actions["Dash"].performed += context => { awaitingDash = true; };
             playerInput.actions["ExitUI"].performed += context => OnExitUI(context);
@@ -175,16 +179,16 @@ namespace SwordsInSpace
                 {
                     currentInputMap.Disable();
                     currentInputMap = playerInput.actions.FindActionMap(viewName);
-                    StartCoroutine(DelayByOne(currentInputMap));
+                    StartCoroutine(DelayEnableByOne(currentInputMap));
                     //currentInputMap.Enable();
                 }
                 //currentInputMap = playerInput.actions.FindActionMap(viewName);
 
             }
-            Debug.Log(currentInputMap.name);
+            Debug.Log(currentInputMap.name + " " + playerInput.currentControlScheme);
         }
 
-        IEnumerator DelayByOne(InputActionMap map) //temp to prevent assert failure
+        IEnumerator DelayEnableByOne(InputActionMap map) //temp to prevent assert failure
         {
             yield return new WaitForEndOfFrame();
             map.Enable();
