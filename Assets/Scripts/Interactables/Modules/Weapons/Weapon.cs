@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using FishNet;
+using FishNet.Object;
 
 namespace SwordsInSpace
 {
@@ -15,15 +17,16 @@ namespace SwordsInSpace
 
         public int currentAmmo;
         [SerializeField]
-        public GameObject uiScreen;
+        public GameObject UIDisplay;
         [SerializeField]
         public GameObject[] shootersObj;
 
         protected List<Shooter> shooters;
-
-        private UIManager manager;
-
-
+        PlayerInputManager currentPlayerInput;
+        private DisplayManager manager;
+        private Vector2 turnAxis;
+        private bool togglingAutoFire;
+        private bool firing;
         void Awake()
         {
             shooters = new List<Shooter>();
@@ -38,75 +41,101 @@ namespace SwordsInSpace
 
         void Start()
         {
-            uiScreen = Instantiate(uiScreen, Vector3.zero, Quaternion.identity);
-            foreach (Button btn in uiScreen.GetComponentsInChildren<Button>())
-            {
-                btn.onClick.AddListener(delegate { ButtonClicked(btn); });
-            }
-            manager = UIManager.manager;
-            uiScreen.SetActive(false);
-            UIManager.manager.UIClosed.AddListener(OnUIClosed);
+            UIDisplay = Instantiate(UIDisplay, Vector3.zero, Quaternion.identity);
+            manager = DisplayManager.instance;
+            UIDisplay.SetActive(false);
 
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnEnable()
         {
-
+            //InstanceFinder.TimeManager.OnTick += OnTick;
         }
-
-        void OnUIClosed()
+        private void OnDisable()
+        {
+            InstanceFinder.TimeManager.OnTick -= OnTick;
+        }
+        void OnDisplayClosed()
         {
             CameraManager.instance.ToggleWeaponCamera();
+            currentPlayerInput.playerInput.actions["Move"].performed -= WeaponInputMove;
+            currentPlayerInput.playerInput.actions["Fire"].performed -= WeaponInputFire;
+            currentPlayerInput.playerInput.actions["ToggleAutoFire"].performed -= WeaponInputAutoFire;
+            DisplayManager.instance.DisplayCloseEvent -= OnDisplayClosed;
+            DisplayManager.instance.toggleMobilePlayerDisplay(true);
+            currentPlayerInput.SwitchView("PlayerView");
+            currentPlayerInput = null;
+            InstanceFinder.TimeManager.OnTick -= OnTick;
         }
 
         public override void Interact(GameObject player)
         {
-            if (manager.Offer(uiScreen))
+            if (manager.Offer(UIDisplay))
             {
+                InstanceFinder.TimeManager.OnTick += OnTick;
                 CameraManager.instance.ToggleWeaponCamera();
+                currentPlayerInput = player.GetComponent<PlayerInputManager>();
+                currentPlayerInput.SwitchView("WeaponView");
+                DisplayManager.instance.toggleMobilePlayerDisplay(false);
+                currentPlayerInput.playerInput.actions["Move"].performed += WeaponInputMove;
+                currentPlayerInput.playerInput.actions["Fire"].performed += WeaponInputFire;
+                currentPlayerInput.playerInput.actions["ToggleAutoFire"].performed += WeaponInputAutoFire;
+                DisplayManager.instance.DisplayCloseEvent += OnDisplayClosed;
+                player.GetComponent<PlayerMover>().canMove = false;
             }
         }
 
-        private void ButtonClicked(Button btn)
+        private void WeaponInputMove(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            string btnText = btn.gameObject.GetComponentInChildren<TextMeshProUGUI>().text;
-            switch (btnText)
-            {
-                case "LEFT":
-                    foreach (Shooter comp in shooters)
-                    {
 
-                        comp.RequestLeft();
-                    }
-                    break;
-                case "RIGHT":
-                    foreach (Shooter comp in shooters)
-                    {
-                        comp.RequestRight();
-                    }
-                    break;
-                case "FIRE":
-                    foreach (Shooter comp in shooters)
-                    {
-                        comp.Fire();
-                    }
-                    break;
-                case "A.FIRE":
-                    foreach (Shooter comp in shooters)
-                    {
-                        comp.ToggleAutoFire();
-                        comp.Fire();
-                    }
-                    break;
-                case "EXIT":
-                    manager.Close();
-                    break;
-            }
+            if (obj.performed) turnAxis = obj.ReadValue<Vector2>();
+            if (obj.canceled) turnAxis = Vector2.zero;
+        }
+
+        private void WeaponInputFire(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            if (obj.performed) firing = true;
+        }
+
+        private void WeaponInputAutoFire(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            if (obj.performed) togglingAutoFire = true;
         }
 
         public abstract void Shoot();
 
+        [ServerRpc(RequireOwnership = false)]
+        private void SyncTurnAxis(Vector2 turnAxis)
+        {
+            foreach (Shooter comp in shooters)
+            {
+                comp.turnAxis = turnAxis;
+            }
+        }
+
+
+        public void OnTick()
+        {
+            SyncTurnAxis(turnAxis);
+            if (firing) 
+            {
+                foreach (Shooter comp in shooters)
+                {
+                    comp.Fire();
+                }
+                firing = false;
+            }
+                
+            if (togglingAutoFire)
+            {
+                foreach (Shooter comp in shooters)
+                {
+                    comp.ToggleAutoFire();
+                    comp.Fire();
+                }
+                togglingAutoFire = false;
+            }
+        }
 
     }
 };

@@ -47,7 +47,6 @@ namespace SwordsInSpace
         {
             GameObject player = Instantiate(UserManager.instance.playerPrefab, Ship.currentShip.spawnTransform.position, Quaternion.identity,Ship.currentShip.spawnTransform);
             Spawn(player, Owner);
-            Ship.currentShip.GiveOwnership(Owner);
         }
     }
 }

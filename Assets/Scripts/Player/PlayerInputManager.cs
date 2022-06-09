@@ -7,71 +7,58 @@ using UnityEngine.InputSystem;
 
 namespace SwordsInSpace
 {
+    public struct MoveData
+    {
+        //public bool Interact;
+        public float Horizontal;
+        public float Vertical;
+        //public float Anchor;
+        public bool Dashing;
+        public MoveData(float horizontal, float vertical, bool dashing
+            //, float anchor
+            )
+        {
+            //Interact = interact;
+            Horizontal = horizontal;
+            Vertical = vertical;
+            //Anchor = anchor;
+            Dashing = dashing;
+        }
+    }
+
+    public struct ReconcileData
+    {
+        public Vector2 Position;
+        public Quaternion Rotation;
+        public Vector2 Velocity;
+        public float AngularVelocity;
+        //public float Anchor;
+        public ReconcileData(Vector2 position, Quaternion rotation, Vector2 velocity, float angularVelocity
+            //, float anchor
+            )
+        {
+            Position = position;
+            Rotation = rotation;
+            Velocity = velocity;
+            AngularVelocity = angularVelocity;
+            //Anchor = anchor;
+        }
+    }
     public class PlayerInputManager : NetworkBehaviour
     {
 
         public ShipMover shipMover;
+        public PlayerInput playerInput;
 
         private PlayerMover mover;
         private PlayerInteractionManager interactor;
         private Rigidbody2D rb;
         private bool awaitingDash;
-        private PlayerInput playerInput;
-        public struct MoveData
-        {
-            //public bool Interact;
-            public float Horizontal;
-            public float Vertical;
-            //public float Anchor;
-            public bool Dashing;
-            public MoveData(float horizontal, float vertical, bool dashing
-                //, float anchor
-                )
-            {
-                //Interact = interact;
-                Horizontal = horizontal;
-                Vertical = vertical;
-                //Anchor = anchor;
-                Dashing = dashing;
-            }
-        }
+        private InputActionMap alwaysOnInput;
+        private InputActionMap currentInputMap;
 
-        public struct ReconcileData
-        {
-            public Vector2 Position;
-            public Quaternion Rotation;
-            public Vector2 Velocity;
-            public float AngularVelocity;
-            //public float Anchor;
-            public ReconcileData(Vector2 position, Quaternion rotation, Vector2 velocity, float angularVelocity
-                //, float anchor
-                )
-            {
-                Position = position;
-                Rotation = rotation;
-                Velocity = velocity;
-                AngularVelocity = angularVelocity;
-                //Anchor = anchor;
-            }
-        }
 
-        public struct PlayerReconcileData
-        {
-            public Vector2 LocalPosition;
-            public Quaternion LocalRotation;
-            public Vector2 Velocity;
-            public float AngularVelocity;
-            public PlayerReconcileData(Vector2 localPosition, Quaternion localRotation, Vector2 velocity, float angularVelocity
-                //, float anchor
-                )
-            {
-                LocalPosition = localPosition;
-                LocalRotation = localRotation;
-                Velocity = velocity;
-                AngularVelocity = angularVelocity;
-                //Anchor = anchor;
-            }
-        }
+
 
         private void Awake()
         {
@@ -80,7 +67,9 @@ namespace SwordsInSpace
             interactor = GetComponent<PlayerInteractionManager>();
             rb = mover.rb;
             playerInput = GetComponent<PlayerInput>();
-            playerInput.actions.FindActionMap("AlwaysOn").Enable();
+            alwaysOnInput = playerInput.actions.FindActionMap("AlwaysOn");
+            alwaysOnInput.Enable();
+            currentInputMap = playerInput.actions.FindActionMap("PlayerView");
         }
         private void OnDisable()
         {
@@ -99,12 +88,7 @@ namespace SwordsInSpace
             if (!base.IsOwner) return;
             playerInput.actions["Interact"].performed += context => interactor.Interact();
             playerInput.actions["Dash"].performed += context => { awaitingDash = true; };
-            playerInput.actions["ExitUI"].performed += context => ExitUI();
-            playerInput.actions["SteerTest"].performed += context => {
-                CameraManager.instance.ToggleShipCamera();
-                mover.canMove = !mover.canMove;
-                shipMover.canMove = !shipMover.canMove;
-            };
+            playerInput.actions["ExitUI"].performed += context => OnExitUI(context);
         }
 
         private void OnDestroy()
@@ -114,13 +98,6 @@ namespace SwordsInSpace
                 InstanceFinder.TimeManager.OnTick -= TimeManager_OnTick;
                 InstanceFinder.TimeManager.OnPostTick -= TimeManager_OnPostTick;
             }
-        }
-
-        private void Update()
-        {
-
-            if (!base.IsOwner)return; //guard for not owner
-
         }
 
         void CheckInput(out MoveData md)
@@ -173,9 +150,53 @@ namespace SwordsInSpace
                 shipMover.Reconciliation(rdShip, true);
             }
         }
-        private void ExitUI()
+
+        public void SwitchView(string viewName)
         {
-            UIManager.manager.Close();
+
+            DisplayManager.instance.toggleMobilePlayerDisplay(viewName == "PlayerView");
+
+            if(currentInputMap.name == "PlayerView")
+            {
+                if (viewName == "PlayerView") 
+                {
+                    mover.canMove = true;
+                    return; 
+                } 
+                currentInputMap.Disable(); // exiting player view
+                currentInputMap = playerInput.actions.FindActionMap(viewName);
+                currentInputMap.Enable();
+                mover.canMove = false;
+            }
+            else
+            {
+                 //if not playerview controls dont move player body
+                if(viewName != currentInputMap.name)
+                {
+                    currentInputMap.Disable();
+                    currentInputMap = playerInput.actions.FindActionMap(viewName);
+                    StartCoroutine(DelayByOne(currentInputMap));
+                    //currentInputMap.Enable();
+                }
+                //currentInputMap = playerInput.actions.FindActionMap(viewName);
+
+            }
+            Debug.Log(currentInputMap.name);
+        }
+
+        IEnumerator DelayByOne(InputActionMap map) //temp to prevent assert failure
+        {
+            yield return new WaitForEndOfFrame();
+            map.Enable();
+        }
+        private void OnExitUI(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            if (obj.ReadValue<float>() == 1)
+            {
+                Debug.Log("esc pressed");
+                DisplayManager.instance.Close();
+                mover.canMove = true;
+            }
         }
     }
 

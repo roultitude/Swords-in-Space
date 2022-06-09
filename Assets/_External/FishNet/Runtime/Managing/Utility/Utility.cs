@@ -18,19 +18,21 @@ namespace FishNet.Managing.Utility
             * This is because a broadcast receiver may not
             * be set, which could be intentional. Because of this
             * length is always sent to skip
-            * past the broadcast data. */
-            if ((PacketId)packetId == PacketId.Broadcast)
+            * past the broadcast data. 
+            *
+            * Reliables also need length read in the instance a client
+            * sends data to an object which server is despawning. Without
+            * parsing length the remainer data from client will be corrupt. */
+            PacketId pid = (PacketId)packetId;
+            if (channel == Channel.Reliable ||
+                pid == PacketId.Broadcast ||
+                pid == PacketId.SyncVar
+                )
             {
                 return reader.ReadInt32();
             }
-            //Reliables should never be missing. No length required.
-            else if (channel == Channel.Reliable)
-            {
-                return (int)MissingObjectPacketLength.Reliable;
-                //return reader.ReadInt32();
-            }
             //Unreliable purges remaining.
-            if (channel == Channel.Unreliable)
+            else if (channel == Channel.Unreliable)
             {
                 return (int)MissingObjectPacketLength.PurgeRemaiming;
             }

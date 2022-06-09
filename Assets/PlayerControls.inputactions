@@ -17,16 +17,7 @@
                 {
                     "name": "Interact",
                     "type": "Button",
-                    "id": "18afdd53-1b68-4ed0-88a1-478924b04ede",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SteerTest",
-                    "type": "Button",
-                    "id": "1c3feecd-e084-4e94-93f2-15df99de0cba",
+                    "id": "8bc5f1de-e25d-41ad-802e-39ea1aad2f2b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -47,23 +38,12 @@
                 },
                 {
                     "name": "",
-                    "id": "c8750410-212b-4203-b88f-083e08cd534b",
+                    "id": "4b5dce7c-8f51-4f5e-958e-e4288a808476",
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "813a9515-1130-4991-b0ad-b672a0c721e4",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SteerTest",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -74,10 +54,37 @@
             "id": "0347baa0-3295-436a-8ae4-c752517820ae",
             "actions": [
                 {
-                    "name": "SteerTurnLeftRight",
-                    "type": "PassThrough",
-                    "id": "8e607c43-77ab-415d-a876-7dafe7c4cf23",
-                    "expectedControlType": "Axis",
+                    "name": "NitroThrust",
+                    "type": "Button",
+                    "id": "97e37869-17fc-423a-9f73-f28a2b7f670f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ForwardThrust",
+                    "type": "Button",
+                    "id": "200175e2-a8ef-4363-a2d7-4dd0d0916cbd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OffThrust",
+                    "type": "Button",
+                    "id": "1979d0a0-a702-4faf-a228-508f99dd758e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BackThrust",
+                    "type": "Button",
+                    "id": "9bbf4c52-0e73-4ce2-b555-8d0479a890f9",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -85,70 +92,48 @@
             ],
             "bindings": [
                 {
-                    "name": "Keyboard",
-                    "id": "e6ca4a21-d12c-4625-b95b-890d0604807e",
-                    "path": "1DAxis",
+                    "name": "",
+                    "id": "be1b3977-e229-4a91-a1b7-2229dd684835",
+                    "path": "<Keyboard>/numpad9",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SteerTurnLeftRight",
-                    "isComposite": true,
+                    "action": "NitroThrust",
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "bfce0f32-30a8-40ba-bd3e-41090f7b55a9",
-                    "path": "<Keyboard>/a",
+                    "name": "",
+                    "id": "02a70e13-bce6-4968-be55-d89333ca0741",
+                    "path": "<Keyboard>/numpad6",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SteerTurnLeftRight",
+                    "action": "ForwardThrust",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "13ecb59f-18ae-4a71-ab4c-aa467f7ed39b",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SteerTurnLeftRight",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Gamepad/Mobile",
-                    "id": "e3d71f24-dfd2-4ffb-8cdc-432c8297cf1e",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SteerTurnLeftRight",
-                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "b5a841c7-85e0-4338-acb1-0ad89ffa296e",
-                    "path": "<Gamepad>/dpad/left",
+                    "name": "",
+                    "id": "b4c9f0d3-006d-4303-a2a7-4c5b676ecd87",
+                    "path": "<Keyboard>/numpad3",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SteerTurnLeftRight",
+                    "action": "OffThrust",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "positive",
-                    "id": "c1c19426-d27a-415d-8a6d-506e6c33349e",
-                    "path": "<Gamepad>/dpad/right",
+                    "name": "",
+                    "id": "a6672cb5-d230-4409-b4a1-3eb5ea242d9c",
+                    "path": "<Keyboard>/numpadPeriod",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SteerTurnLeftRight",
+                    "action": "BackThrust",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -157,18 +142,18 @@
             "id": "33cb8946-9e2c-4a06-be4d-72c3f6a6d287",
             "actions": [
                 {
-                    "name": "WeaponTurnLeftRight",
+                    "name": "Fire",
                     "type": "PassThrough",
-                    "id": "03c70e70-864c-4bcf-bfbe-295eeebcaa93",
-                    "expectedControlType": "Axis",
+                    "id": "81118847-c8ed-4776-8c7f-a682635e328f",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Fire",
-                    "type": "PassThrough",
-                    "id": "81118847-c8ed-4776-8c7f-a682635e328f",
+                    "name": "SteerTest",
+                    "type": "Button",
+                    "id": "86369d71-b7a4-491e-83c9-bcce40af21e2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -185,72 +170,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "Keyboard",
-                    "id": "31216590-22b1-42f7-b664-78b1499bbdbd",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WeaponTurnLeftRight",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "0aa9732e-c87a-4044-a4c7-91a77bed1620",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WeaponTurnLeftRight",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "0afcfbf7-b4ac-4560-a209-7c9cdfb7260c",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WeaponTurnLeftRight",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Gamepad/Mobile",
-                    "id": "363c3faa-f1d7-426e-94c0-e43526972b67",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WeaponTurnLeftRight",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "31ae19cf-3c3e-40ea-adb0-04937fdf0fad",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WeaponTurnLeftRight",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "92f09258-2133-44ae-a991-27c06ed55dbc",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WeaponTurnLeftRight",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
                 {
                     "name": "",
                     "id": "0e2933dc-2a7b-4cf5-a87d-6b933e3f4e41",
@@ -270,6 +189,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ToggleAutoFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a8824e4-4ab6-4902-a3f8-a889f27d7524",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SteerTest",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

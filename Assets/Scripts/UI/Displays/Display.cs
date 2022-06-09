@@ -9,17 +9,19 @@ namespace SwordsInSpace
         [SerializeField]
         private bool mobileOnly;
 
-
+        public virtual void Setup(Interactable callingInteractable = null) {}
 
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
         private void Awake()
         {
-            gameObject.SetActive(true);
+            //gameObject.SetActive(true);
+            
         }
 #else
         private void Awake()
         {
-                gameObject.SetActive(!mobileOnly);
+            //if (mobileOnly) Destroy(gameObject);
+            //gameObject.SetActive(!mobileOnly);
         }
 #endif
     }

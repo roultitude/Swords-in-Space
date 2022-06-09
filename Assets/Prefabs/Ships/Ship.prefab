@@ -82,11 +82,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3777107840797026398}
-  - component: {fileID: 3550607494104016276}
   - component: {fileID: 7750103762623040915}
-  - component: {fileID: 9039525764540420404}
-  - component: {fileID: 2439950168033329262}
-  - component: {fileID: 6746204671446895166}
   m_Layer: 6
   m_Name: ShipInterior
   m_TagString: Untagged
@@ -115,22 +111,6 @@ Transform:
   m_Father: {fileID: 5221657397174509498}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3550607494104016276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233124608600775111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1340d34fbded0f74fae656d13b17ebf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 3
-  _addedNetworkObject: {fileID: 2439950168033329262}
-  _networkObjectCache: {fileID: 8819575145035472807}
-  syncTarget: {fileID: 6463308224519303839}
 --- !u!114 &7750103762623040915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,98 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f849697bb0ba9540965818ea33964eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9039525764540420404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233124608600775111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 4
-  _addedNetworkObject: {fileID: 2439950168033329262}
-  _networkObjectCache: {fileID: 8819575145035472807}
-  _synchronizeParent: 0
-  _packing:
-    Position: 1
-    Rotation: 1
-    Scale: 0
-  _interpolation: 2
-  _extrapolation: 2
-  _enableTeleport: 0
-  _teleportThreshold: 1
-  _clientAuthoritative: 0
-  _sendToOwner: 0
-  _interval: 1
-  _synchronizePosition: 1
-  _positionSnapping:
-    X: 0
-    Y: 0
-    Z: 0
-  _synchronizeRotation: 1
-  _rotationSnapping:
-    X: 0
-    Y: 0
-    Z: 0
-  _synchronizeScale: 1
-  _scaleSnapping:
-    X: 0
-    Y: 0
-    Z: 0
---- !u!114 &2439950168033329262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233124608600775111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _networkBehaviours:
-  - {fileID: 3550607494104016276}
-  - {fileID: 9039525764540420404}
-  - {fileID: 6746204671446895166}
-  SceneTransformProperties:
-    Position: {x: 1000, y: 1000, z: 0}
-    Rotation: {x: -0, y: -0, z: -0, w: 1}
-    LocalScale: {x: 1, y: 1, z: 1}
-  _isNetworked: 1
-  _hasParentNetworkObjectAtEdit: 1
-  NetworkObserver: {fileID: 0}
-  _prefabId: -1
-  _scenePathHash: 0
-  _sceneId: 0
-  _sceneNetworkObjects: []
---- !u!114 &6746204671446895166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233124608600775111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 402926ef33e0a894d9fec352693988ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 5
-  _addedNetworkObject: {fileID: 2439950168033329262}
-  _networkObjectCache: {fileID: 8819575145035472807}
-  _graphicalObject: {fileID: 5221657397505194590}
-  _smoothTicks: 1
-  _smoothingDuration: 0.125
-  _predictionType: 0
-  _rigidbody: {fileID: 0}
-  _rigidbody2d: {fileID: 0}
-  _networkTransform: {fileID: 9039525764540420404}
-  _predictionRatio: 0
 --- !u!1 &611136254937875391
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 3251584837082039592}
-  _networkObjectCache: {fileID: 8819575145035472807}
+  _networkObjectCache: {fileID: 3251584837082039592}
   rb: {fileID: 4703744331782941198}
   canMove: 0
   speed: 1000
@@ -336,7 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 0}
-  _networkObjectCache: {fileID: 8819575145035472807}
+  _networkObjectCache: {fileID: 3251584837082039592}
   _graphicalObject: {fileID: 8138893596707659371}
   _smoothTicks: 1
   _smoothingDuration: 0.125
@@ -380,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _componentIndexCache: 2
   _addedNetworkObject: {fileID: 3251584837082039592}
-  _networkObjectCache: {fileID: 8819575145035472807}
+  _networkObjectCache: {fileID: 3251584837082039592}
   shipMover: {fileID: 0}
   shipExterior: {fileID: 6463308224519303839}
   shipInterior: {fileID: 3777107840797026398}
@@ -408,7 +296,7 @@ MonoBehaviour:
     Rotation: {x: -0, y: -0, z: -0, w: 1}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
-  _hasParentNetworkObjectAtEdit: 1
+  _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
   _prefabId: -1
   _scenePathHash: 0
@@ -670,7 +558,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5221657397174509498}
-  - component: {fileID: 8819575145035472807}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -696,38 +583,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8819575145035472807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5221657397174509500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _networkBehaviours:
-  - {fileID: 1185405697126653920}
-  - {fileID: 2974684135176937384}
-  - {fileID: 4485076214342864807}
-  - {fileID: 3550607494104016276}
-  - {fileID: 9039525764540420404}
-  - {fileID: 6746204671446895166}
-  - {fileID: 8524240635559801792}
-  - {fileID: 840958035019083572}
-  SceneTransformProperties:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-    LocalScale: {x: 1, y: 1, z: 1}
-  _isNetworked: 1
-  _hasParentNetworkObjectAtEdit: 0
-  NetworkObserver: {fileID: 0}
-  _prefabId: -1
-  _scenePathHash: 0
-  _sceneId: 0
-  _sceneNetworkObjects: []
 --- !u!1 &5221657397505194560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,9 +981,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6297bda6e55c144468e6b7794d3f428f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 7
-  _addedNetworkObject: {fileID: 8819575145035472807}
-  _networkObjectCache: {fileID: 8819575145035472807}
+  _componentIndexCache: 4
+  _addedNetworkObject: {fileID: 0}
+  _networkObjectCache: {fileID: 0}
 --- !u!1 &6254536011999534425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,9 +1030,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1340d34fbded0f74fae656d13b17ebf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 6
-  _addedNetworkObject: {fileID: 8819575145035472807}
-  _networkObjectCache: {fileID: 8819575145035472807}
+  _componentIndexCache: 3
+  _addedNetworkObject: {fileID: 0}
+  _networkObjectCache: {fileID: 0}
   syncTarget: {fileID: 6463308224519303839}
 --- !u!1 &7352440916063919843
 GameObject:

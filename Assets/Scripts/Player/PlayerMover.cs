@@ -39,17 +39,17 @@ namespace SwordsInSpace
            // shipLastFrame = shipThisFrame;
            // transform.position = (Vector2) transform.position + positionOffset;
         }
-        public void Move(PlayerInputManager.MoveData md, bool asServer, bool replaying = false)
+        public void Move(MoveData md, bool asServer, bool replaying = false)
         {
             if (!canMove) md = default;
             MovePredict(md, asServer, replaying);
         }
 
         [Replicate]
-        private void MovePredict(PlayerInputManager.MoveData md, bool asServer, bool replaying = false)
+        private void MovePredict(MoveData md, bool asServer, bool replaying = false)
         {
             Vector2 moveXY = new Vector2(md.Horizontal, md.Vertical).normalized * speed * (float)base.TimeManager.TickDelta;
-            Vector2 moveXYtrans = Ship.currentShip.shipExterior.TransformVector(moveXY);
+            //Vector2 moveXYtrans = Ship.currentShip.shipExterior.TransformVector(moveXY);
             //Vector2 newPos = new Vector2(rb.transform.position.x + moveXY.x, rb.transform.position.y + moveXY.y);
             //rb.MovePosition(newPos);
             //rb.velocity = moveXY;
@@ -70,13 +70,13 @@ namespace SwordsInSpace
             rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, Quaternion.AngleAxis(angle, Vector3.forward), (float)base.TimeManager.TickDelta * rotationSpeed);
         }
 
-        public void Reconciliation(PlayerInputManager.ReconcileData rd, bool asServer)
+        public void Reconciliation(ReconcileData rd, bool asServer)
         {
             ReconciliationPredict(rd, asServer);
         }
 
         [Reconcile]
-        private void ReconciliationPredict(PlayerInputManager.ReconcileData rd,bool asServer)
+        private void ReconciliationPredict(ReconcileData rd,bool asServer)
         {
             transform.position = rd.Position;
             transform.rotation = rd.Rotation;

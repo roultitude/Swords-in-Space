@@ -268,7 +268,16 @@ namespace FishNet.Transporting.Tugboat
         /// <returns></returns>
         public override float GetTimeout(bool asServer)
         {
-            return (asServer) ? -1f : (float)_timeout;
+            //Server and client uses the same timeout.
+            return (float)_timeout;
+        }
+        /// <summary>
+        /// Sets how long in seconds until either the server or client socket must go without data before being timed out.
+        /// </summary>
+        /// <param name="asServer">True to set the timeout for the server socket, false for the client socket.</param>
+        public override void SetTimeout(float value, bool asServer)
+        {
+            _timeout = (ushort)value;
         }
         /// <summary>
         /// Returns the maximum number of clients allowed to connect to the server. If the transport does not support this method the value -1 is returned.
@@ -379,10 +388,12 @@ namespace FishNet.Transporting.Tugboat
         /// Stops a remote client from the server, disconnecting the client.
         /// </summary>
         /// <param name="connectionId">ConnectionId of the client to disconnect.</param>
-        /// <param name="immediately">True to abrutly stp the client socket without waiting socket thread.</param>
+        /// <param name="immediately">True to abrutly stop the client socket. The technique used to accomplish immediate disconnects may vary depending on the transport.
+        /// When not using immediate disconnects it's recommended to perform disconnects using the ServerManager rather than accessing the transport directly.
+        /// </param>
         public override bool StopConnection(int connectionId, bool immediately)
         {
-            return StopClient(connectionId, immediately);
+            return _server.StopConnection(connectionId);
         }
 
         /// <summary>
@@ -442,16 +453,6 @@ namespace FishNet.Transporting.Tugboat
         private bool StopClient()
         {
             return _client.StopConnection();
-        }
-
-        /// <summary>
-        /// Stops a remote client on the server.
-        /// </summary>
-        /// <param name="connectionId"></param>
-        /// <param name="immediately">True to abrutly stp the client socket without waiting socket thread.</param>
-        private bool StopClient(int connectionId, bool immediately)
-        {
-            return _server.StopConnection(connectionId, immediately);
         }
         #endregion
         #endregion

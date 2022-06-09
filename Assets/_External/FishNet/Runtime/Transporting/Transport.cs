@@ -145,11 +145,16 @@ namespace FishNet.Transporting
         /// </summary>
         public virtual bool IsLocalTransport(int connectionid) => false;
         /// <summary>
-        /// How long in seconds until either the server or client socket must go without data before being timed out.
+        /// Gets how long in seconds until either the server or client socket must go without data before being timed out.
         /// </summary>
         /// <param name="asServer">True to get the timeout for the server socket, false for the client socket.</param>
         /// <returns></returns>
         public virtual float GetTimeout(bool asServer) => -1f;
+        /// <summary>
+        /// Sets how long in seconds until either the server or client socket must go without data before being timed out.
+        /// </summary>
+        /// <param name="asServer">True to set the timeout for the server socket, false for the client socket.</param>
+        public virtual void SetTimeout(float value, bool asServer) { }
         /// <summary>
         /// Returns the maximum number of clients allowed to connect to the server. If the transport does not support this method the value -1 is returned.
         /// </summary>
@@ -184,7 +189,7 @@ namespace FishNet.Transporting
         /// Sets which address the server will bind to.
         /// </summary>
         /// <param name="address">Address server will bind to.</param>
-        [Obsolete("Use SetServerBindAddress(IPAddressType)")] //Remove on 01/01/2023
+        [Obsolete("Use SetServerBindAddress(string, IPAddressType)")] //Remove on 01/01/2023
         public virtual void SetServerBindAddress(string address) { }
         /// <summary>
         /// Gets which address the server will bind to.
@@ -228,7 +233,9 @@ namespace FishNet.Transporting
         /// Stops a remote client from the server, disconnecting the client.
         /// </summary>
         /// <param name="connectionId">ConnectionId of the client to disconnect.</param>
-        /// <param name="immediately">True to abrutly stp the client socket without waiting socket thread.</param>
+        /// <param name="immediately">True to abrutly stop the client socket. The technique used to accomplish immediate disconnects may vary depending on the transport.
+        /// When not using immediate disconnects it's recommended to perform disconnects using the ServerManager rather than accessing the transport directly.
+        /// </param>
         public abstract bool StopConnection(int connectionId, bool immediately);
         /// <summary>
         /// Stops both client and server.
