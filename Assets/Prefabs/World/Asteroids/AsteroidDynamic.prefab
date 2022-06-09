@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5408929544899184431}
   - component: {fileID: 7335390716017313648}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AsteroidDynamic
-  m_TagString: Untagged
+  m_TagString: Neutral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,9 +68,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9135484121365416262}
   - component: {fileID: 6288927151948614916}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Neutral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,9 +117,10 @@ GameObject:
   - component: {fileID: 7334649562807822883}
   - component: {fileID: 3887189769646272001}
   - component: {fileID: 5188396879723023167}
-  m_Layer: 0
+  - component: {fileID: 7271112709426719719}
+  m_Layer: 8
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Neutral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,7 +321,7 @@ TilemapCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -362,3 +363,20 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 7335390716017313648}
   _networkObjectCache: {fileID: 7335390716017313648}
+  hp: 10
+--- !u!114 &7271112709426719719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935498849498875283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 8284406695472042418
+  updateError: 1
+  checkTime: 0.2

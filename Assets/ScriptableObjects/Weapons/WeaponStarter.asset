@@ -22,3 +22,4 @@ MonoBehaviour:
   ammoRefill: 1
   atkCD: 5
   burstCD: 0.3
+  rotationSpeed: 80

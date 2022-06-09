@@ -16,14 +16,9 @@ namespace SwordsInSpace
         bool canFire = true;
 
         bool autoFire = false;
-
+        public Vector2 turnAxis;
 
         int currentBurst = 0;
-
-        [SyncVar(OnChange = nameof(UpdateRotation))]
-        float rotation;
-
-
 
         public WeaponSO data;
         public void Setup()
@@ -37,11 +32,6 @@ namespace SwordsInSpace
             this.atkTimer.timeout.AddListener(FinishReload);
 
 
-        }
-
-        public void UpdateRotation(float oldVal, float newVal, bool isServer)
-        {
-            this.transform.rotation = Quaternion.Euler(0, 0, newVal);
         }
 
         [ServerRpc(RequireOwnership = false)]
@@ -71,7 +61,6 @@ namespace SwordsInSpace
         public void StartAttack()
         {
             if (!IsServer) { return; }//Sanity check
-
             canFire = false;
             atkTimer.Start();
             StartBurst();
@@ -83,9 +72,8 @@ namespace SwordsInSpace
 
             if (currentBurst < data.burst)
             {
-
-                if (autoFire)
-                    Left();
+                if (autoFire) {; }
+                    //Left();
                 SpawnBullet();
                 currentBurst += 1;
                 this.burstTimer.Start();
@@ -101,34 +89,22 @@ namespace SwordsInSpace
 
         private void SpawnBullet()
         {
+            if (!IsServer)
+                return;
             GameObject toAdd = Instantiate(data.bulletPrefab, transform.position, transform.rotation);
             toAdd.GetComponent<Bullet>().Setup(data.shotSpeed, data.shotLifeTime);
+            toAdd.tag = "Friendly";
             Spawn(toAdd);
         }
 
-        [ServerRpc(RequireOwnership = false)]
-        public void RequestLeft()
+        private void Update()
         {
-            Left();
+            if (!IsServer) return; //only rotate on server
+            transform.localRotation = Quaternion.Euler(0,0, transform.localRotation.eulerAngles.z - data.rotationSpeed * turnAxis.x * Time.fixedDeltaTime);
         }
 
-        private void Left() //Separated from RPC to prevent too many calls
-        {
-            if (!IsServer) { return; }
-            rotation += data.rotationSpeed;
-        }
 
-        private void Right()
-        {
-            if (!IsServer) { return; }
-            rotation -= data.rotationSpeed;
-        }
 
-        [ServerRpc(RequireOwnership = false)]
-        public void RequestRight()
-        {
-            Right();
-        }
 
 
 

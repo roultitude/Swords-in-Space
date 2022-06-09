@@ -20,7 +20,7 @@ namespace SwordsInSpace
 
         public override void Interact(GameObject player)
         {
-            Debug.Log("Hello!");
+            Debug.Log("Hello!" + gameObject.name);
         }
     }
 };

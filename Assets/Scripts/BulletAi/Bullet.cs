@@ -20,14 +20,16 @@ namespace SwordsInSpace
             timer.timeout.AddListener(OnTimeout);
 
         }
-        public void OnHit(Collider2D coll)
+        public void OnHit()
         {
-            Debug.Log("boom");
+            if (IsServer)
+                Despawn();
         }
 
         public void OnTimeout()
         {
-            Destroy(gameObject);
+            if (IsServer)
+                Despawn();
         }
 
         // Update is called once per frame

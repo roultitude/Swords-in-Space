@@ -1,9 +1,10 @@
+using FishNet.Object;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace SwordsInSpace
 {
-    public abstract class Interactable : MonoBehaviour
+    public abstract class Interactable : NetworkBehaviour
     {
         /*
             Interactables are objects in the game that can be interacted by the User via 

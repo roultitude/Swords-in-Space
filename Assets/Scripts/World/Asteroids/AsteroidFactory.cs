@@ -42,6 +42,7 @@ namespace SwordsInSpace
 
         private Vector2 offset;
 
+        private int hp;
         public override void OnStartServer()
         {
             base.OnStartServer();
@@ -107,11 +108,13 @@ namespace SwordsInSpace
 
                 }
 
-                ProcessAsteroids();
             }
+
+            ProcessAsteroids();
 
 
         }
+
         [ObserversRpc(IncludeOwner = true, BufferLast = true)]
         private void ProcessAsteroids()
         {
@@ -123,7 +126,14 @@ namespace SwordsInSpace
                 , (asteroid.gameObject.transform.position.y - offset.y) / distance);
                 Tilemap currentMap = asteroid.GetComponentInChildren<Tilemap>();
                 if (currentMap)
+                {
+                    hp = 0;
                     Traverse(hasSeen, currentMap, (int)loc.x, (int)loc.y, 0, 0);
+
+                    if (IsServer)
+                        asteroid.hp = hp;
+                }
+
 
 
 
@@ -131,6 +141,8 @@ namespace SwordsInSpace
                 loc.y * distance + offset.y, 0);
 
             }
+            if (IsServer)
+                AstarPath.active.Scan();
 
         }
 
@@ -142,6 +154,7 @@ namespace SwordsInSpace
         private void Traverse(bool[,] hasSeen, Tilemap currentMap, int i, int j, int x, int y)
         {
             hasSeen[i, j] = true;
+            hp++;
             currentMap.SetTile(new Vector3Int(x, y, 0), tile);
 
             if (i > 0 && !hasSeen[i - 1, j] && AboveThreshold(i - 1, j))

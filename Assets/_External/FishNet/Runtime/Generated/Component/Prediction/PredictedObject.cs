@@ -41,6 +41,17 @@ namespace FishNet.Component.Prediction
         [SerializeField]
         private bool _smoothTicks = true;
         /// <summary>
+        /// Sets the value for SmoothTicks.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public void SetSmoothTicks(bool value) => _smoothTicks = value;
+        /// <summary>
+        /// Gets the value for SmoothTicks.
+        /// </summary>
+        /// <returns></returns>
+        public bool GetSmoothTicks() => _smoothTicks;
+        /// <summary>
         /// Duration to smooth desynchronizations over.
         /// </summary>
         [Tooltip("Duration to smooth desynchronizations over.")]
@@ -124,17 +135,36 @@ namespace FishNet.Component.Prediction
 
         private void Awake()
         {
+            if (Application.isPlaying)
+            {
+                if (!InitializeOnce())
+                {
+                    this.enabled = false;
+                    return;
+                }
+            }
+
             ConfigureNetworkTransform();
             //Set in awake so they arent default.
             SetPreviousTransformProperties();
-
-            if (Application.isPlaying)
-                InitializeOnce();
-            PartialRigidbodies_Awake();
-            PartialDifferenceSmoother_Awake();
         }
-        partial void PartialRigidbodies_Awake();
-        partial void PartialDifferenceSmoother_Awake();
+
+        private void OnEnable()
+        {
+            /* Only subscribe if client. Client may not be set
+             * yet but that's okay because the OnStartClient
+             * callback will catch the subscription. This is here
+             * should the user disable then re-enable the object after
+             * it's initialized. */
+            if (base.IsClient)
+                ChangeSubscriptions(true);
+        }
+        private void OnDisable()
+        {
+            //Only unsubscribe if client.
+            if (base.IsClient)
+                ChangeSubscriptions(false);
+        }
 
         public override void OnStartNetwork()
         {
@@ -142,67 +172,50 @@ namespace FishNet.Component.Prediction
             base.TimeManager.OnPostTick += TimeManager_OnPostTick;
             _instantiatedLocalPosition = _graphicalObject.localPosition;
             _instantiatedLocalRotation = _graphicalObject.localRotation;
-            PartialRigidbodies_OnStartNetwork();
         }
-        partial void PartialRigidbodies_OnStartNetwork();
 
         public override void OnStartClient()
         {
             base.OnStartClient();
             ChangeSubscriptions(true);
-            PartialRigidbodies_OnStartClient();
         }
-        partial void PartialRigidbodies_OnStartClient();
 
         public override void OnStopClient()
         {
             base.OnStopClient();
             ChangeSubscriptions(false);
-            PartialRigidbodies_OnStopClient();
         }
-        partial void PartialRigidbodies_OnStopClient();
-
         public override void OnStopNetwork()
         {
             base.OnStopNetwork();
             if (base.TimeManager != null)
                 base.TimeManager.OnPostTick -= TimeManager_OnPostTick;
-            PartialRigidbodies_OnStopNetwork();
         }
-        partial void PartialRigidbodies_OnStopNetwork();
 
         private void Update()
         {
-            PartialRigidbodies_Update();
-            PartialDifferenceSmoother_Update();
+            DifferenceSmoother_Update();
         }
-        partial void PartialRigidbodies_Update();
-        partial void PartialDifferenceSmoother_Update();
-
 
 
         protected void TimeManager_OnPostTick()
         {
             if (CanSmooth())
             {
-                SetTransformMoveRates();
                 ResetToTransformPreviousProperties();
+                SetTransformMoveRates();
             }
-            PartialRigidbodies_TimeManager_OnPostTick();
+            Rigidbodies_TimeManager_OnPostTick();
         }
-        partial void PartialRigidbodies_TimeManager_OnPostTick();
-
 
         /// <summary>
         /// Called before performing a reconcile on NetworkBehaviour.
         /// </summary>
         protected virtual void TimeManager_OnPreReconcile(NetworkBehaviour obj)
         {
-            PartialRigidbodies_TimeManager_OnPreReconcile(obj);
-            PartialDifferenceSmoother_TimeManager_OnPreReconcile(obj);
+            Rigidbodies_TimeManager_OnPreReconcile(obj);
+            DifferenceSmoother_TimeManager_OnPreReconcile(obj);
         }
-        partial void PartialRigidbodies_TimeManager_OnPreReconcile(NetworkBehaviour obj);
-        partial void PartialDifferenceSmoother_TimeManager_OnPreReconcile(NetworkBehaviour obj);
 
         /// <summary>
         /// Called before physics is simulated when replaying a replicate method.
@@ -210,21 +223,17 @@ namespace FishNet.Component.Prediction
         /// </summary>
         protected virtual void TimeManager_OnPostReplicateReplay(PhysicsScene ps, PhysicsScene2D ps2d)
         {
-            PartialRigidbodies_TimeManager_OnPostReplicateReplay(ps, ps2d);
+            Rigidbodies_TimeManager_OnPostReplicateReplay(ps, ps2d);
         }
-        partial void PartialRigidbodies_TimeManager_OnPostReplicateReplay(PhysicsScene ps, PhysicsScene2D ps2d);
 
         /// <summary>
         /// Called after performing a reconcile on a NetworkBehaviour.
         /// </summary>
         protected virtual void TimeManager_OnPostReconcile(NetworkBehaviour obj)
         {
-            PartialRigidbodies_TimeManager_OnPostReconcile(obj);
-            PartialDifferenceSmoother_TimeManager_OnPostReconcile(obj);
+            Rigidbodies_TimeManager_OnPostReconcile(obj);
+            DifferenceSmoother_TimeManager_OnPostReconcile(obj);
         }
-        partial void PartialRigidbodies_TimeManager_OnPostReconcile(NetworkBehaviour obj);
-        partial void PartialDifferenceSmoother_TimeManager_OnPostReconcile(NetworkBehaviour obj);
-
 
         private void TimeManager_OnPreTick()
         {
@@ -263,18 +272,21 @@ namespace FishNet.Component.Prediction
 
 
         /// <summary>
-        /// Initializes this script for use.
+        /// Initializes this script for use. Returns true for success.
         /// </summary>
-        private void InitializeOnce()
+        private bool InitializeOnce()
         {
             //No graphical object, cannot smooth.
             if (_graphicalObject == null)
             {
                 if (NetworkManager.StaticCanLog(LoggingType.Error))
                     Debug.LogError($"GraphicalObject is not set on {gameObject.name}. Initialization will fail.");
-                return;
+                return false;
             }
+
+            return true;
         }
+
 
         /// <summary>
         /// Returns if prediction can be used on this rigidbody.
@@ -347,8 +359,7 @@ namespace FishNet.Component.Prediction
         /// </summary>
         private void ResetToTransformPreviousProperties()
         {
-            _graphicalObject.position = _previousPosition;
-            _graphicalObject.rotation = _previousRotation;
+            _graphicalObject.SetPositionAndRotation(_previousPosition, _previousRotation);
         }
 
 

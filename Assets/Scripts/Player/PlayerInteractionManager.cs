@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
 using FishNet.Connection;
+using FishNet.Object.Synchronizing;
 
 namespace SwordsInSpace
 {
     public class PlayerInteractionManager : NetworkBehaviour
     {
-
-        private static Dictionary<string, List<int>> data;
+        public static Dictionary<string, List<int>> data;
 
         [SerializeField]
         private InteractableIdManager interactables;

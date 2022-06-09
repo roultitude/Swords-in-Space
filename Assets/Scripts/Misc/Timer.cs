@@ -13,7 +13,7 @@ namespace SwordsInSpace
 
         public UnityEvent timeout;
         private bool active = false;
-        private double currentTime = 0.0;
+        public double currentTime = 0.0;
 
         public void Setup(double waitTime, bool repeat, bool autoplay)
         {

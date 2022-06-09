@@ -4,13 +4,7 @@ namespace FishNet.Component.Prediction
 {
     public partial class PredictedObject : NetworkBehaviour
     {
-        private void OnDisable()
-        {
-            ChangeSubscriptions(false);
-        }
-
-
-        partial void PartialDifferenceSmoother_Update()
+        private void DifferenceSmoother_Update()
         {
             MoveToTarget();
         }
@@ -19,7 +13,7 @@ namespace FishNet.Component.Prediction
         /// <summary>
         /// Called before performing a reconcile on NetworkBehaviour.
         /// </summary> 
-        partial void PartialDifferenceSmoother_TimeManager_OnPreReconcile(NetworkBehaviour obj)
+        private void DifferenceSmoother_TimeManager_OnPreReconcile(NetworkBehaviour obj)
         {
             //Requires to be owner.
             if (!base.IsOwner)
@@ -27,14 +21,13 @@ namespace FishNet.Component.Prediction
             if (_smoothTicks)
                 return;
 
-            _previousPosition = _graphicalObject.position;
-            _previousRotation = _graphicalObject.rotation;
+            SetPreviousTransformProperties();
         }
 
         /// <summary>
         /// Called after performing a reconcile on a NetworkBehaviour.
         /// </summary>
-        partial void PartialDifferenceSmoother_TimeManager_OnPostReconcile(NetworkBehaviour obj)
+        private void DifferenceSmoother_TimeManager_OnPostReconcile(NetworkBehaviour obj)
         {
             //Requires to be owner.
             if (!base.IsOwner)
@@ -42,8 +35,7 @@ namespace FishNet.Component.Prediction
             if (!CanSmooth())
                 return;
 
-            //Set transform back to where it was before reconcile so there's no visual disturbances.
-            _graphicalObject.SetPositionAndRotation(_previousPosition, _previousRotation);
+            ResetToTransformPreviousProperties();
             SetTransformMoveRates(_smoothingDuration);
         }
 
