@@ -61,6 +61,7 @@ namespace SwordsInSpace
         public void changePilot(NetworkConnection conn = null)
         {
             if (Owner.IsActive) return; //serverside check for ownership
+            Debug.Log("pilot changed to " + conn.ClientId);
             base.GiveOwnership(conn);
         }
         [ServerRpc(RequireOwnership = false)]
@@ -69,6 +70,7 @@ namespace SwordsInSpace
             if(Owner == conn)
             {
                 base.RemoveOwnership();
+                Debug.Log("pilot changed to none");
             }
         }
     }

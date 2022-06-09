@@ -95,21 +95,25 @@ namespace SwordsInSpace
         private void SteeringInputNitro(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
             if (obj.performed) ChangeSteerState(SteerState.NITRO);
+            Debug.Log("trying change nitro");
         }
 
         private void SteeringInputForward(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
             if (obj.performed) ChangeSteerState(SteerState.FORWARD);
+            Debug.Log("trying change forward");
         }
 
         private void SteeringInputOff(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
             if (obj.performed) ChangeSteerState(SteerState.OFF);
+            Debug.Log("trying change off");
         }
 
         private void SteeringInputBack(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
             if (obj.performed) ChangeSteerState(SteerState.BACKWARD);
+            Debug.Log("trying change back");
         }
 
 

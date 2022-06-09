@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 2974684135176937384}
   - component: {fileID: 4703744331782941198}
   - component: {fileID: 4485076214342864807}
-  - component: {fileID: 3251584837082039592}
+  - component: {fileID: 3006086760405494744}
   m_Layer: 7
   m_Name: ShipExterior
   m_TagString: Untagged
@@ -204,12 +204,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 3251584837082039592}
-  _networkObjectCache: {fileID: 3251584837082039592}
+  _addedNetworkObject: {fileID: 0}
+  _networkObjectCache: {fileID: 0}
   rb: {fileID: 4703744331782941198}
   canMove: 0
+  currentSteerState: 0
   speed: 1000
   turnSpeed: 10
+  nitroMult: 0
+  backMult: 0
 --- !u!114 &2974684135176937384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 0}
-  _networkObjectCache: {fileID: 3251584837082039592}
+  _networkObjectCache: {fileID: 0}
   _graphicalObject: {fileID: 8138893596707659371}
   _smoothTicks: 1
   _smoothingDuration: 0.125
@@ -267,8 +270,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 2
-  _addedNetworkObject: {fileID: 3251584837082039592}
-  _networkObjectCache: {fileID: 3251584837082039592}
+  _addedNetworkObject: {fileID: 0}
+  _networkObjectCache: {fileID: 0}
   shipMover: {fileID: 0}
   shipExterior: {fileID: 6463308224519303839}
   shipInterior: {fileID: 3777107840797026398}
@@ -276,34 +279,33 @@ MonoBehaviour:
   spawnTransform: {fileID: 3376241738065158074}
   playerTracker: {fileID: 7927405157388670407}
   data: {fileID: 0}
-  uihpbar: {fileID: 3520883478350620201}
---- !u!114 &3251584837082039592
-MonoBehaviour:
+  UiHpBar: {fileID: 3520883478350620201}
+--- !u!61 &3006086760405494744
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249428066534560750}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _networkBehaviours:
-  - {fileID: 1185405697126653920}
-  - {fileID: 2974684135176937384}
-  - {fileID: 4485076214342864807}
-  SceneTransformProperties:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: -0, y: -0, z: -0, w: 1}
-    LocalScale: {x: 1, y: 1, z: 1}
-  _isNetworked: 1
-  _hasParentNetworkObjectAtEdit: 0
-  NetworkObserver: {fileID: 0}
-  _prefabId: -1
-  _scenePathHash: 0
-  _sceneId: 0
-  _sceneNetworkObjects: []
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.03027153, y: 0.030271769}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 9.991718, y: 5.9958587}
+  m_EdgeRadius: 0
 --- !u!1 &2990162776273223609
 GameObject:
   m_ObjectHideFlags: 0
