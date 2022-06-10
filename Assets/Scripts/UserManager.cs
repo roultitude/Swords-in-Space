@@ -12,11 +12,10 @@ namespace SwordsInSpace
 
         public GameObject playerPrefab;
 
-        public Transform spawnTransform;
+        public UserData localUserData;
 
         [SyncObject]
         public readonly SyncList<User> users = new SyncList<User>();
-
 
 
         private void Awake()

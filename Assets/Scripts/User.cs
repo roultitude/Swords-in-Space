@@ -25,13 +25,15 @@ namespace SwordsInSpace
             if (IsOwner)
             {
                 localUser = this;
+                UpdateUsername(UserManager.instance.localUserData.username);
+                ServerSpawnPlayer();
+                
             }
-            ServerSpawnPlayer();
+            
         }
         public override void OnStartServer()
         {
             base.OnStartServer();
-            username = "Player " + Owner.ClientId;
             UserManager.instance.users.Add(this);
         }
 
@@ -46,7 +48,16 @@ namespace SwordsInSpace
         public void ServerSpawnPlayer()
         {
             GameObject player = Instantiate(UserManager.instance.playerPrefab, Ship.currentShip.spawnTransform.position, Quaternion.identity,Ship.currentShip.spawnTransform);
+            controlledPlayer = player.GetComponent<Player>();
+            controlledPlayer.controllingUser = this;
             Spawn(player, Owner);
         }
+
+        [ServerRpc]
+        public void UpdateUsername(string name)
+        {
+            username = name;
+        }
+
     }
 }
