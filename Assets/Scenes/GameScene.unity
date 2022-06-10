@@ -2352,6 +2352,10 @@ PrefabInstance:
       propertyPath: spawnCullingRadius
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: UnitsFromAsteroid
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359121, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: waitTime
       value: 5
