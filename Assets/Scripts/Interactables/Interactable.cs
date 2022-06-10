@@ -31,6 +31,9 @@ namespace SwordsInSpace
         [SerializeField]
         public int MaxHp;
 
+        [SerializeField]
+        public bool canUseOnPowerOut = false;
+
         public abstract void Interact(GameObject player);
 
 

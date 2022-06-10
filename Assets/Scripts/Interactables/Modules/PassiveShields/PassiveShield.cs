@@ -42,6 +42,7 @@ namespace SwordsInSpace
                 currentPlayerInput.playerInput.actions["RightDrumstick"].performed += PassiveShieldInputRight;
 
                 DisplayManager.instance.DisplayCloseEvent += OnDisplayClosed;
+                display.startGame();
 
 
             }

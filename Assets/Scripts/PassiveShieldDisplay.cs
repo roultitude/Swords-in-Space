@@ -57,7 +57,11 @@ namespace SwordsInSpace
             increment = 0;
             updateAll();
             beatTracker.Start();
-
+            while (drumbeats.Count > 0)
+            {
+                Destroy(drumbeats[0].gameObject);
+                drumbeats.RemoveAt(0);
+            }
 
 
         }

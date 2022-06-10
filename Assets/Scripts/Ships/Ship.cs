@@ -4,6 +4,8 @@ using FishNet.Object.Synchronizing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 namespace SwordsInSpace
 {
@@ -23,7 +25,15 @@ namespace SwordsInSpace
         [SerializeField]
         GameObject UiHpBar;
 
+        [SerializeField]
+        Color TintNoPower;
+
+        [SerializeField]
+        GameObject background;
+
         public double CurrentHp;
+
+        public bool isPowerUp = true;
 
         private void Awake()
         {
@@ -31,6 +41,21 @@ namespace SwordsInSpace
             shipMover = this.GetComponentInChildren<ShipMover>();
             CurrentHp = data.MaxHp;
 
+        }
+
+        public void powerDown()
+        {
+
+            background.GetComponent<RawImage>().color = TintNoPower;
+            isPowerUp = false;
+            //Kick everyone out of their UI!
+            User.localUser.controlledPlayer.gameObject.GetComponent<PlayerInputManager>().ExitUI();
+        }
+
+        public void powerUp()
+        {
+            background.GetComponent<RawImage>().color = Color.white;
+            isPowerUp = true;
         }
 
         public void OnTriggerEnter2D(Collider2D collision)
