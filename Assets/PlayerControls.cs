@@ -331,6 +331,76 @@ namespace SwordsInSpace
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""PassiveShieldView"",
+            ""id"": ""a84d04c3-f281-479e-a025-a626f29083c9"",
+            ""actions"": [
+                {
+                    ""name"": ""LeftDrumstick"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""0fbb38bd-e296-4b14-b57d-0dd62d4b5122"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightDrumstick"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""ddda6858-afae-4258-b56b-5b54126be2f5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4e85c9ba-3f90-4872-929a-9b4b58f9576a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftDrumstick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""807e1ec6-c7f6-45b6-8d45-6a0487dad97a"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftDrumstick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d26ee8c2-72a4-45c7-9af9-e569c0492396"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightDrumstick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac87f17d-0a2e-4302-a76a-44c4bc99bd9b"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightDrumstick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -354,6 +424,10 @@ namespace SwordsInSpace
             m_AlwaysOn = asset.FindActionMap("AlwaysOn", throwIfNotFound: true);
             m_AlwaysOn_ExitUI = m_AlwaysOn.FindAction("ExitUI", throwIfNotFound: true);
             m_AlwaysOn_Move = m_AlwaysOn.FindAction("Move", throwIfNotFound: true);
+            // PassiveShieldView
+            m_PassiveShieldView = asset.FindActionMap("PassiveShieldView", throwIfNotFound: true);
+            m_PassiveShieldView_LeftDrumstick = m_PassiveShieldView.FindAction("LeftDrumstick", throwIfNotFound: true);
+            m_PassiveShieldView_RightDrumstick = m_PassiveShieldView.FindAction("RightDrumstick", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -597,6 +671,47 @@ namespace SwordsInSpace
             }
         }
         public AlwaysOnActions @AlwaysOn => new AlwaysOnActions(this);
+
+        // PassiveShieldView
+        private readonly InputActionMap m_PassiveShieldView;
+        private IPassiveShieldViewActions m_PassiveShieldViewActionsCallbackInterface;
+        private readonly InputAction m_PassiveShieldView_LeftDrumstick;
+        private readonly InputAction m_PassiveShieldView_RightDrumstick;
+        public struct PassiveShieldViewActions
+        {
+            private @PlayerControls m_Wrapper;
+            public PassiveShieldViewActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @LeftDrumstick => m_Wrapper.m_PassiveShieldView_LeftDrumstick;
+            public InputAction @RightDrumstick => m_Wrapper.m_PassiveShieldView_RightDrumstick;
+            public InputActionMap Get() { return m_Wrapper.m_PassiveShieldView; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(PassiveShieldViewActions set) { return set.Get(); }
+            public void SetCallbacks(IPassiveShieldViewActions instance)
+            {
+                if (m_Wrapper.m_PassiveShieldViewActionsCallbackInterface != null)
+                {
+                    @LeftDrumstick.started -= m_Wrapper.m_PassiveShieldViewActionsCallbackInterface.OnLeftDrumstick;
+                    @LeftDrumstick.performed -= m_Wrapper.m_PassiveShieldViewActionsCallbackInterface.OnLeftDrumstick;
+                    @LeftDrumstick.canceled -= m_Wrapper.m_PassiveShieldViewActionsCallbackInterface.OnLeftDrumstick;
+                    @RightDrumstick.started -= m_Wrapper.m_PassiveShieldViewActionsCallbackInterface.OnRightDrumstick;
+                    @RightDrumstick.performed -= m_Wrapper.m_PassiveShieldViewActionsCallbackInterface.OnRightDrumstick;
+                    @RightDrumstick.canceled -= m_Wrapper.m_PassiveShieldViewActionsCallbackInterface.OnRightDrumstick;
+                }
+                m_Wrapper.m_PassiveShieldViewActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @LeftDrumstick.started += instance.OnLeftDrumstick;
+                    @LeftDrumstick.performed += instance.OnLeftDrumstick;
+                    @LeftDrumstick.canceled += instance.OnLeftDrumstick;
+                    @RightDrumstick.started += instance.OnRightDrumstick;
+                    @RightDrumstick.performed += instance.OnRightDrumstick;
+                    @RightDrumstick.canceled += instance.OnRightDrumstick;
+                }
+            }
+        }
+        public PassiveShieldViewActions @PassiveShieldView => new PassiveShieldViewActions(this);
         public interface IPlayerViewActions
         {
             void OnDash(InputAction.CallbackContext context);
@@ -619,6 +734,11 @@ namespace SwordsInSpace
         {
             void OnExitUI(InputAction.CallbackContext context);
             void OnMove(InputAction.CallbackContext context);
+        }
+        public interface IPassiveShieldViewActions
+        {
+            void OnLeftDrumstick(InputAction.CallbackContext context);
+            void OnRightDrumstick(InputAction.CallbackContext context);
         }
     }
 }
