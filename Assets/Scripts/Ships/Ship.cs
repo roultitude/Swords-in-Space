@@ -23,7 +23,7 @@ namespace SwordsInSpace
         [SerializeField]
         GameObject UiHpBar;
 
-        private double CurrentHp;
+        public double CurrentHp;
 
         private void Awake()
         {
@@ -47,7 +47,7 @@ namespace SwordsInSpace
 
                 CurrentHp -= 1;
                 bullet.OnHit();
-                UiHpBar.GetComponent<UIHpBar>().Resize((float)CurrentHp / (float)data.MaxHp);
+                updateHpBar();
 
                 if (CurrentHp <= 0)
                 {
@@ -56,8 +56,23 @@ namespace SwordsInSpace
 
             }
         }
+        [ObserversRpc]
+        public void updateHpBar()
+        {
+            UiHpBar.GetComponent<UIHpBar>().Resize((float)CurrentHp / (float)data.MaxHp);
+        }
 
-        [ServerRpc(RequireOwnership =false)]
+        [ServerRpc(RequireOwnership = false)]
+        public void addHp(int amt)
+        {
+            CurrentHp += amt;
+            if (CurrentHp > data.MaxHp)
+                CurrentHp = data.MaxHp;
+
+            updateHpBar();
+        }
+
+        [ServerRpc(RequireOwnership = false)]
         public void changePilot(NetworkConnection conn = null)
         {
             if (Owner.IsActive) return; //serverside check for ownership
@@ -67,7 +82,7 @@ namespace SwordsInSpace
         [ServerRpc(RequireOwnership = false)]
         public void leavePilot(NetworkConnection conn = null)
         {
-            if(Owner == conn)
+            if (Owner == conn)
             {
                 base.RemoveOwnership();
                 Debug.Log("pilot changed to none");

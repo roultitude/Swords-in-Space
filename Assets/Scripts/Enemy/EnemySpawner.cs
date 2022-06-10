@@ -53,6 +53,8 @@ namespace SwordsInSpace
         public override void OnStartClient()
         {
             base.OnStartClient();
+            if (IsServer)
+                return;
             foreach (Timer time in GetComponents<Timer>())
             {
                 time.Stop();

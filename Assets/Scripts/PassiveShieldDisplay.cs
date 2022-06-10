@@ -43,6 +43,7 @@ namespace SwordsInSpace
         private int defaultCurrentShake = 5;
         private int currentShake = 5;
 
+        private int cullDrumBeatsAt = -400;
 
         public void Start()
         {
@@ -99,6 +100,15 @@ namespace SwordsInSpace
             }
         }
 
+        public void Update()
+        {
+            if (drumbeats.Count == 0)
+                return;
+            Drumbeat drumbeat = drumbeats[0];
+            if (drumbeat.gameObject.transform.position.y < cullDrumBeatsAt)
+                Drum("Fail");
+        }
+
         public void Drum(string dir)
         {
             if (drumbeats.Count == 0)
@@ -113,6 +123,7 @@ namespace SwordsInSpace
             else
             {
                 Debug.Log("CCCCOMBO BREAKER\t Combos achieved:\t" + increment);
+                Ship.currentShip.addHp((int)increment / 5);
                 increment = 0;
                 while (drumbeats.Count > 0)
                 {

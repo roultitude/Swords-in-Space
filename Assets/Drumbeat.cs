@@ -28,11 +28,6 @@ public class Drumbeat : MonoBehaviour
     void Update()
     {
         rt.position -= new Vector3(0, moveSpeed, 0) * Time.deltaTime;
-
-        if (rt.position.y < -2000)
-        {
-            Destroy(this);
-        }
     }
 
     public void SetIdentity(string dir)
