@@ -288,7 +288,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7754385, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -373,6 +373,34 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1218844901192628737, guid: b992a20dec09ec14bbbb78e6925f6028, type: 3}
+      propertyPath: _sceneNetworkObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321847813899183671, guid: b992a20dec09ec14bbbb78e6925f6028, type: 3}
+      propertyPath: _sceneId
+      value: 11933930298298915439
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321847813899183671, guid: b992a20dec09ec14bbbb78e6925f6028, type: 3}
+      propertyPath: _scenePathHash
+      value: 2778584672
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321847813899183671, guid: b992a20dec09ec14bbbb78e6925f6028, type: 3}
+      propertyPath: _networkBehaviours.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321847813899183671, guid: b992a20dec09ec14bbbb78e6925f6028, type: 3}
+      propertyPath: _sceneNetworkObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321847813899183671, guid: b992a20dec09ec14bbbb78e6925f6028, type: 3}
+      propertyPath: _networkBehaviours.Array.data[3]
+      value: 
+      objectReference: {fileID: 1142033330}
+    - target: {fileID: 1321847813899183671, guid: b992a20dec09ec14bbbb78e6925f6028, type: 3}
+      propertyPath: _networkBehaviours.Array.data[4]
+      value: 
+      objectReference: {fileID: 1142033329}
+    - target: {fileID: 1321847813899183671, guid: b992a20dec09ec14bbbb78e6925f6028, type: 3}
       propertyPath: _sceneNetworkObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1142033327}
@@ -712,7 +740,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: b992a20dec09ec14bbbb78e6925f6028, type: 3}
 --- !u!114 &1142033327 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1218844901192628737, guid: b992a20dec09ec14bbbb78e6925f6028, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1321847813899183671, guid: b992a20dec09ec14bbbb78e6925f6028, type: 3}
   m_PrefabInstance: {fileID: 1142033326}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

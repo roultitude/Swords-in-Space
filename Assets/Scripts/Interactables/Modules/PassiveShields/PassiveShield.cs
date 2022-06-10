@@ -48,7 +48,7 @@ namespace SwordsInSpace
         }
         void OnDisplayClosed()
         {
-            CameraManager.instance.ToggleShipCamera();
+
             currentPlayerInput.SwitchView("PlayerView");
 
             currentPlayerInput.playerInput.actions["LeftDrumstick"].performed -= PassiveShieldInputLeft;
