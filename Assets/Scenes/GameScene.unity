@@ -1653,17 +1653,41 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &816054237 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4444492387124331354, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+  m_PrefabInstance: {fileID: 4444492386302331271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &822332127 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4444492387124331352, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
   m_PrefabInstance: {fileID: 4444492386302331271}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 816054237}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &822332130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816054237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7678620060197e4899c9491a0ab45e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoplay: 1
+  repeat: 1
+  waitTime: 2.5
+  timeout:
+    m_PersistentCalls:
+      m_Calls: []
+  currentTime: 0
 --- !u!114 &990668983 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2150092535286631612, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}

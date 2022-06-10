@@ -36,6 +36,8 @@ namespace SwordsInSpace
         [SerializeField]
         Vector2 worldSize = new Vector2(1000, 1000);
 
+        public bool spawningComplete = false;
+
         private int MaxGetRandomPositionAttempts = 5;
         void Start()
         {
@@ -44,9 +46,18 @@ namespace SwordsInSpace
             {
                 totalWeight += info.weight;
             }
+
         }
 
 
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            foreach (Timer time in GetComponents<Timer>())
+            {
+                time.Stop();
+            }
+        }
 
         public void Spawn()
         {
@@ -96,6 +107,7 @@ namespace SwordsInSpace
         public void StopSpawn()
         {
             SpawnCD.Stop();
+            spawningComplete = true;
         }
     }
 };

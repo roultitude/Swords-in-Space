@@ -32,7 +32,11 @@ namespace SwordsInSpace
                     Color newColor = new Color(toChange.r, toChange.g, toChange.b, 1);
                     rend.color = newColor;
                     DOTween.To(() => rend.color.a
-                    , x => rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, x)
+                    , x =>
+                    {
+                        if (rend != null)
+                            rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, x);
+                    }
                     , 0, fadeDur);
                 }
 
