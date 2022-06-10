@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Drumbeat : MonoBehaviour
 {
     [SerializeField]
-    private static float moveSpeed = 0.25f;
+    public static float moveSpeed = 0.25f;
 
     [SerializeField]
     private Image image;
@@ -27,7 +27,7 @@ public class Drumbeat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rt.position -= new Vector3(0, moveSpeed, 0);
+        rt.position -= new Vector3(0, moveSpeed, 0) * Time.deltaTime;
 
         if (rt.position.y < -2000)
         {
@@ -37,6 +37,7 @@ public class Drumbeat : MonoBehaviour
 
     public void SetIdentity(string dir)
     {
+        identity = dir;
         switch (dir)
         {
             case "L":

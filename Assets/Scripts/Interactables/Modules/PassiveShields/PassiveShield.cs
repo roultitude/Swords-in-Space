@@ -27,11 +27,7 @@ namespace SwordsInSpace
         }
 
 
-        // Update is called once per frame
-        void Update()
-        {
 
-        }
 
         public override void Interact(GameObject player)
         {

@@ -338,7 +338,7 @@ namespace SwordsInSpace
             ""actions"": [
                 {
                     ""name"": ""LeftDrumstick"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""0fbb38bd-e296-4b14-b57d-0dd62d4b5122"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -347,7 +347,7 @@ namespace SwordsInSpace
                 },
                 {
                     ""name"": ""RightDrumstick"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""ddda6858-afae-4258-b56b-5b54126be2f5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -380,6 +380,17 @@ namespace SwordsInSpace
                 },
                 {
                     ""name"": """",
+                    ""id"": ""129db9bc-35b3-4eb7-8f20-f502b57942e2"",
+                    ""path"": ""<Keyboard>/#(A)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftDrumstick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""d26ee8c2-72a4-45c7-9af9-e569c0492396"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
@@ -393,6 +404,17 @@ namespace SwordsInSpace
                     ""name"": """",
                     ""id"": ""ac87f17d-0a2e-4302-a76a-44c4bc99bd9b"",
                     ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightDrumstick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""09da4df7-ef22-490d-ab34-40abcfdd7bf1"",
+                    ""path"": ""<Keyboard>/#(D)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
