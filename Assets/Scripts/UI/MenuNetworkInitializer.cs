@@ -4,16 +4,26 @@ using UnityEngine;
 using FishNet;
 using FishNet.Managing;
 using FishNet.Managing.Scened;
-
+using TMPro;
 namespace SwordsInSpace
 {
     public class MenuNetworkInitializer : MonoBehaviour
     {
+        [SerializeField]
+        private TMP_InputField usernameInput;
+        [SerializeField]
+        private UserData userData;
         private NetworkManager networkManager;
+
         private void Awake()
         {
             networkManager = InstanceFinder.NetworkManager;
             InstanceFinder.ServerManager.OnServerConnectionState += ServerStarted;
+            if(userData.username == "")
+            {
+                userData.setUsername("Player " + Random.Range(0, 10000).ToString());
+            }
+            usernameInput.text = userData.username;
         }
 
         public void SetPort(string port)
