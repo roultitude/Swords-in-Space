@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: ShipStarter
   m_EditorClassIdentifier: 
   MaxHp: 100
+  level: 1
+  currentExp: 0

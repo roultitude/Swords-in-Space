@@ -15,6 +15,10 @@ namespace SwordsInSpace
         private int currentHp;
 
         [SerializeField]
+        public float exp;
+
+
+        [SerializeField]
         Hpbar hpBar;
 
 

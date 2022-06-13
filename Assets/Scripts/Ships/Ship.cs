@@ -31,7 +31,12 @@ namespace SwordsInSpace
         [SerializeField]
         GameObject background;
 
+        [SerializeField]
+        ExpManager manager;
+
+
         public double CurrentHp;
+        public double CurrentMaxHp;
 
         public bool isPowerUp = true;
 
@@ -39,7 +44,13 @@ namespace SwordsInSpace
         {
             currentShip = this;
             shipMover = this.GetComponentInChildren<ShipMover>();
-            CurrentHp = data.MaxHp;
+            CurrentHp = data.ShipMaxHp;
+            CurrentMaxHp = data.ShipMaxHp;
+
+        }
+
+        public void ReloadStats()
+        {
 
         }
 
@@ -57,6 +68,8 @@ namespace SwordsInSpace
             background.GetComponent<RawImage>().color = Color.white;
             isPowerUp = true;
         }
+
+
 
         public void OnTriggerEnter2D(Collider2D collision)
         {
@@ -84,15 +97,15 @@ namespace SwordsInSpace
         [ObserversRpc]
         public void updateHpBar()
         {
-            UiHpBar.GetComponent<UIHpBar>().Resize((float)CurrentHp / (float)data.MaxHp);
+            UiHpBar.GetComponent<UIHpBar>().Resize((float)CurrentHp / (float)CurrentMaxHp);
         }
 
         [ServerRpc(RequireOwnership = false)]
         public void addHp(int amt)
         {
             CurrentHp += amt;
-            if (CurrentHp > data.MaxHp)
-                CurrentHp = data.MaxHp;
+            if (CurrentHp > CurrentMaxHp)
+                CurrentHp = CurrentMaxHp;
 
             updateHpBar();
         }

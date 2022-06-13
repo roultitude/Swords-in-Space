@@ -7,6 +7,6 @@ namespace SwordsInSpace
     [CreateAssetMenu(menuName = "Assets/ScriptableObjects")]
     public class ShipSO : ScriptableObject
     {
-        public double MaxHp;
+        public double ShipMaxHp;
     }
 };
