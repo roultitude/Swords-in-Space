@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SwordsInSpace
 {
-    [CreateAssetMenu(menuName = "Assets/ScriptableObjects")]
+    [CreateAssetMenu(fileName = "ShipSO", menuName = "Assets/ScriptableObjects/ShipSO")]
     public class ShipSO : ScriptableObject
     {
         public double ShipMaxHp;

@@ -374,10 +374,10 @@ PrefabInstance:
     - target: {fileID: 7689477023599607438, guid: 959f1685bc1e60b4896295b0b6e0f551, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8140873054501515022}
     - target: {fileID: 7689477023599607438, guid: 959f1685bc1e60b4896295b0b6e0f551, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 959f1685bc1e60b4896295b0b6e0f551, type: 3}
@@ -4118,6 +4118,10 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3456108306466875768, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
+      propertyPath: _hasParentNetworkObjectAtEdit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456108306466875768, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
       propertyPath: SceneTransformProperties.Position.x
       value: 1000.49
       objectReference: {fileID: 0}
@@ -4148,6 +4152,14 @@ PrefabInstance:
     - target: {fileID: 6373298081508993216, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
       propertyPath: drainRate
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373298081508993216, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
+      propertyPath: _networkObjectCache
+      value: 
+      objectReference: {fileID: 8140873054501515022}
+    - target: {fileID: 6373298081508993216, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
+      propertyPath: _componentIndexCache
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}

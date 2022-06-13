@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SwordsInSpace
 {
-    [CreateAssetMenu(menuName = "Assets/ScriptableObjects")]
+    [CreateAssetMenu(fileName = "WeaponSO", menuName = "Assets/ScriptableObjects/WeaponSO")]
     public class WeaponSO : ScriptableObject
     {
         public Sprite turretSprite;
