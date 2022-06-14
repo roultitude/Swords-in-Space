@@ -15,11 +15,13 @@ namespace SwordsInSpace
         private int currentHp;
 
         [SerializeField]
-        public float exp;
+        public double exp;
 
 
         [SerializeField]
         Hpbar hpBar;
+
+
 
         readonly float fadeTime = 0.8f;
 
@@ -54,14 +56,15 @@ namespace SwordsInSpace
                 bullet.OnHit();
                 if (currentHp <= 0)
                 {
-                    onDeath();
+                    OnDeath();
                 }
             }
 
         }
 
-        private void onDeath()
+        private void OnDeath()
         {
+            Ship.currentShip.expManager.AddExp(exp);
             this.Despawn();
         }
 

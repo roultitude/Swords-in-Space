@@ -40,12 +40,17 @@ namespace SwordsInSpace
         private int numUpgrades;
 
         public bool debugTrigger = false;
+
+        private string[] upgradeChoice;
+
+        PlayerInputManager currentPlayerInput;
         public void Update()
         {
             if (debugTrigger)
             {
                 debugTrigger = false;
                 TriggerUpgrades(2);
+
             }
         }
 
@@ -77,7 +82,7 @@ namespace SwordsInSpace
 
             this.numUpgrades = numUpgrades;
             RollUpgrades();
-            ShowUpgradeScreen();
+            BroadcastUpgradeScreen();
 
         }
 
@@ -113,11 +118,19 @@ namespace SwordsInSpace
                 thisTier = tier4Upgrade;
             }
 
-            uiUpgrades.SetUpgrades(thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name,
-                    thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name,
-                    thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name);
+            ShowUpgrades(thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name,
+        thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name,
+        thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name);
 
 
+        }
+
+        [ObserversRpc]
+        public void ShowUpgrades(string upgrade1, string upgrade2, string upgrade3)
+        {
+            upgradeChoice = new string[] { upgrade1, upgrade2, upgrade3 };
+            Debug.Log(upgrade1 + "\t" + upgrade2 + "\t" + upgrade3 + "\t" + uiUpgrades == null);
+            uiUpgrades.SetUpgrades(upgrade1, upgrade2, upgrade3);
 
         }
 
@@ -130,17 +143,34 @@ namespace SwordsInSpace
         {
             if (manager.Offer(UIDisplay))
             {
+
+                Player player = User.localUser.controlledPlayer;
+                currentPlayerInput = player.GetComponent<PlayerInputManager>();
+                currentPlayerInput.SwitchView("UpgradeView");
                 DisplayManager.instance.DisplayCloseEvent += OnDisplayClosed;
+                currentPlayerInput.playerInput.actions["Left"].performed += OnClickLeftButton;
+                currentPlayerInput.playerInput.actions["Middle"].performed += OnClickMiddleButton;
+                currentPlayerInput.playerInput.actions["Right"].performed += OnClickRightButton;
+                player.GetComponent<PlayerMover>().canMove = false;
+
             }
+        }
+
+        void OnDisplayClosed()
+        {
+            DisplayManager.instance.DisplayCloseEvent -= OnDisplayClosed;
+            currentPlayerInput.playerInput.actions["Left"].performed -= OnClickLeftButton;
+            currentPlayerInput.playerInput.actions["Middle"].performed -= OnClickMiddleButton;
+            currentPlayerInput.playerInput.actions["Right"].performed -= OnClickRightButton;
+            User.localUser.controlledPlayer.GetComponent<PlayerMover>().canMove = true;
+            currentPlayerInput.SwitchView("PlayerView");
+
         }
 
         [ObserversRpc]
         public void BroadcastUpgradeScreen()
         {
-            if (manager.Offer(UIDisplay))
-            {
-                DisplayManager.instance.DisplayCloseEvent += OnDisplayClosed;
-            }
+            ShowUpgradeScreen();
         }
 
 
@@ -154,19 +184,53 @@ namespace SwordsInSpace
             {
                 RollUpgrades();
             }
+            else
+            {
+                BroadcastCloseScreen();
+            }
         }
 
 
-        void OnDisplayClosed()
+        [ObserversRpc]
+        public void BroadcastCloseScreen()
         {
-            DisplayManager.instance.DisplayCloseEvent -= OnDisplayClosed;
-
+            manager.Close();
         }
+
+
+
+
 
 
         public UpgradeSO StringToUpgradeSO(string input)
         {
             return upgrades[input].upgradeSo;
+        }
+
+
+        public void OnClickLeftButton(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            SendRPCUpgrade(upgradeChoice[0]);
+
+        }
+
+
+
+        public void OnClickMiddleButton(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            SendRPCUpgrade(upgradeChoice[1]);
+        }
+
+
+        public void OnClickRightButton(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            SendRPCUpgrade(upgradeChoice[2]);
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        private void SendRPCUpgrade(string str)
+        {
+            AddUpgrade(str);
         }
 
     }

@@ -11,8 +11,12 @@ public class EnemyShooter : NetworkBehaviour
 
     [SerializeField]
     GameObject bullet;
+
     [SerializeField]
     public float range = 100f;
+
+    [SerializeField]
+    public double damage = 1.0;
 
     private bool IsInRange()
     {
@@ -44,7 +48,7 @@ public class EnemyShooter : NetworkBehaviour
 
             toAdd.transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360f);
 
-            toAdd.GetComponent<Bullet>().Setup(10f, 10f);
+            toAdd.GetComponent<Bullet>().Setup(10f, 10f, damage);
             Spawn(toAdd);
         }
     }

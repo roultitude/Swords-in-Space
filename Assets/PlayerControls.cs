@@ -423,6 +423,74 @@ namespace SwordsInSpace
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UpgradeView"",
+            ""id"": ""32fc0275-697c-492d-a6bb-65835b023a05"",
+            ""actions"": [
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""c91e8526-3e6f-4c21-94e1-219f599175e4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Middle"",
+                    ""type"": ""Button"",
+                    ""id"": ""d881b3fb-76aa-4db5-b05e-5556588a4b32"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""46a2f225-ad12-4928-9c80-6fbdc1e3ec91"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1ab4aeaa-6e5c-4c9d-8960-c6f91bdfb635"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb415dde-f776-4395-80b0-ab773933b6dd"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Middle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""06d34685-7e6b-4da2-b42a-341db0f41975"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -450,6 +518,11 @@ namespace SwordsInSpace
             m_PassiveShieldView = asset.FindActionMap("PassiveShieldView", throwIfNotFound: true);
             m_PassiveShieldView_LeftDrumstick = m_PassiveShieldView.FindAction("LeftDrumstick", throwIfNotFound: true);
             m_PassiveShieldView_RightDrumstick = m_PassiveShieldView.FindAction("RightDrumstick", throwIfNotFound: true);
+            // UpgradeView
+            m_UpgradeView = asset.FindActionMap("UpgradeView", throwIfNotFound: true);
+            m_UpgradeView_Left = m_UpgradeView.FindAction("Left", throwIfNotFound: true);
+            m_UpgradeView_Middle = m_UpgradeView.FindAction("Middle", throwIfNotFound: true);
+            m_UpgradeView_Right = m_UpgradeView.FindAction("Right", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -734,6 +807,55 @@ namespace SwordsInSpace
             }
         }
         public PassiveShieldViewActions @PassiveShieldView => new PassiveShieldViewActions(this);
+
+        // UpgradeView
+        private readonly InputActionMap m_UpgradeView;
+        private IUpgradeViewActions m_UpgradeViewActionsCallbackInterface;
+        private readonly InputAction m_UpgradeView_Left;
+        private readonly InputAction m_UpgradeView_Middle;
+        private readonly InputAction m_UpgradeView_Right;
+        public struct UpgradeViewActions
+        {
+            private @PlayerControls m_Wrapper;
+            public UpgradeViewActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Left => m_Wrapper.m_UpgradeView_Left;
+            public InputAction @Middle => m_Wrapper.m_UpgradeView_Middle;
+            public InputAction @Right => m_Wrapper.m_UpgradeView_Right;
+            public InputActionMap Get() { return m_Wrapper.m_UpgradeView; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(UpgradeViewActions set) { return set.Get(); }
+            public void SetCallbacks(IUpgradeViewActions instance)
+            {
+                if (m_Wrapper.m_UpgradeViewActionsCallbackInterface != null)
+                {
+                    @Left.started -= m_Wrapper.m_UpgradeViewActionsCallbackInterface.OnLeft;
+                    @Left.performed -= m_Wrapper.m_UpgradeViewActionsCallbackInterface.OnLeft;
+                    @Left.canceled -= m_Wrapper.m_UpgradeViewActionsCallbackInterface.OnLeft;
+                    @Middle.started -= m_Wrapper.m_UpgradeViewActionsCallbackInterface.OnMiddle;
+                    @Middle.performed -= m_Wrapper.m_UpgradeViewActionsCallbackInterface.OnMiddle;
+                    @Middle.canceled -= m_Wrapper.m_UpgradeViewActionsCallbackInterface.OnMiddle;
+                    @Right.started -= m_Wrapper.m_UpgradeViewActionsCallbackInterface.OnRight;
+                    @Right.performed -= m_Wrapper.m_UpgradeViewActionsCallbackInterface.OnRight;
+                    @Right.canceled -= m_Wrapper.m_UpgradeViewActionsCallbackInterface.OnRight;
+                }
+                m_Wrapper.m_UpgradeViewActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Left.started += instance.OnLeft;
+                    @Left.performed += instance.OnLeft;
+                    @Left.canceled += instance.OnLeft;
+                    @Middle.started += instance.OnMiddle;
+                    @Middle.performed += instance.OnMiddle;
+                    @Middle.canceled += instance.OnMiddle;
+                    @Right.started += instance.OnRight;
+                    @Right.performed += instance.OnRight;
+                    @Right.canceled += instance.OnRight;
+                }
+            }
+        }
+        public UpgradeViewActions @UpgradeView => new UpgradeViewActions(this);
         public interface IPlayerViewActions
         {
             void OnDash(InputAction.CallbackContext context);
@@ -761,6 +883,12 @@ namespace SwordsInSpace
         {
             void OnLeftDrumstick(InputAction.CallbackContext context);
             void OnRightDrumstick(InputAction.CallbackContext context);
+        }
+        public interface IUpgradeViewActions
+        {
+            void OnLeft(InputAction.CallbackContext context);
+            void OnMiddle(InputAction.CallbackContext context);
+            void OnRight(InputAction.CallbackContext context);
         }
     }
 }

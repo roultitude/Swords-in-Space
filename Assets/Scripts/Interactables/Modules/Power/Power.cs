@@ -42,12 +42,12 @@ namespace SwordsInSpace
             {
                 currentAmount = 0;
                 supplyingPower = false;
-                Ship.currentShip.powerDown();
+                Ship.currentShip.PowerDown();
             }
             else
             {
                 if (!supplyingPower)
-                    Ship.currentShip.powerUp();
+                    Ship.currentShip.PowerUp();
                 supplyingPower = true;
             }
 

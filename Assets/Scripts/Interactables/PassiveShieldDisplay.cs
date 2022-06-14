@@ -127,7 +127,7 @@ namespace SwordsInSpace
             else
             {
                 Debug.Log("CCCCOMBO BREAKER\t Combos achieved:\t" + increment);
-                Ship.currentShip.addHp((int)increment / 5);
+                Ship.currentShip.AddHp((int)increment / 5);
                 increment = 0;
                 while (drumbeats.Count > 0)
                 {

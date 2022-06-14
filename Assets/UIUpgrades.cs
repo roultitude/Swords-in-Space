@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace SwordsInSpace
 {
-    public class UIUpgrades : NetworkBehaviour
+    public class UIUpgrades : MonoBehaviour
     {
         // Start is called before the first frame update
 
@@ -17,24 +17,17 @@ namespace SwordsInSpace
         private UpgradeManager upgradeManager;
 
 
-        void Start()
-        {
-            this.upgradeManager = Ship.currentShip.upgradeManager;
 
-
-            upgrades = new UpgradeSO[3];
-
-            buttons[0].gameObject.GetComponent<Button>().onClick.AddListener(OnClickLeftButton);
-            buttons[1].gameObject.GetComponent<Button>().onClick.AddListener(OnClickMiddleButton);
-            buttons[2].gameObject.GetComponent<Button>().onClick.AddListener(OnClickRightButton);
-
-        }
-
-
-
-        [ObserversRpc]
         public void SetUpgrades(string upgradestr1, string upgradestr2, string upgradestr3)
         {
+            if (upgradeManager == null || upgrades == null)
+            {
+                this.upgradeManager = Ship.currentShip.upgradeManager;
+                upgrades = new UpgradeSO[3];
+            }
+
+
+
             UpgradeSO upgrade1 = upgradeManager.StringToUpgradeSO(upgradestr1);
             UpgradeSO upgrade2 = upgradeManager.StringToUpgradeSO(upgradestr2);
             UpgradeSO upgrade3 = upgradeManager.StringToUpgradeSO(upgradestr3);
@@ -53,23 +46,7 @@ namespace SwordsInSpace
 
 
 
-        [ServerRpc(RequireOwnership = false)]
-        public void OnClickLeftButton()
-        {
-            upgradeManager.AddUpgrade(upgrades[0].name);
-        }
 
-        [ServerRpc(RequireOwnership = false)]
-        public void OnClickMiddleButton()
-        {
-            upgradeManager.AddUpgrade(upgrades[1].name);
-        }
-
-        [ServerRpc(RequireOwnership = false)]
-        public void OnClickRightButton()
-        {
-            upgradeManager.AddUpgrade(upgrades[2].name);
-        }
 
     }
 };

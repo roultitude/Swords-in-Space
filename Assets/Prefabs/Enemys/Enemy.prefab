@@ -58,6 +58,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 3842234323794330338}
   _networkObjectCache: {fileID: 3842234323794330338}
   maxHp: 3
+  exp: 5
   hpBar: {fileID: 2887116319582651532}
 --- !u!114 &3842234323794330338
 MonoBehaviour:

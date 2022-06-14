@@ -19,6 +19,7 @@ namespace SwordsInSpace
         public Transform spawnTransform;
         public Transform playerTracker;
         public UpgradeManager upgradeManager;
+        public ExpManager expManager;
 
         [SerializeField]
         ShipSO data;
@@ -55,7 +56,7 @@ namespace SwordsInSpace
 
         }
 
-        public void powerDown()
+        public void PowerDown()
         {
 
             background.GetComponent<RawImage>().color = TintNoPower;
@@ -64,7 +65,7 @@ namespace SwordsInSpace
             User.localUser.controlledPlayer.gameObject.GetComponent<PlayerInputManager>().ExitUI();
         }
 
-        public void powerUp()
+        public void PowerUp()
         {
             background.GetComponent<RawImage>().color = Color.white;
             isPowerUp = true;
@@ -84,9 +85,9 @@ namespace SwordsInSpace
             if (bullet != null && (bullet.gameObject.tag == null || bullet.gameObject.tag != "Friendly"))
             {
 
-                CurrentHp -= 1;
+                CurrentHp -= bullet.damage;
                 bullet.OnHit();
-                updateHpBar();
+                UpdateHpBar();
 
                 if (CurrentHp <= 0)
                 {
@@ -96,30 +97,30 @@ namespace SwordsInSpace
             }
         }
         [ObserversRpc]
-        public void updateHpBar()
+        public void UpdateHpBar()
         {
             UiHpBar.GetComponent<UIHpBar>().Resize((float)CurrentHp / (float)CurrentMaxHp);
         }
 
         [ServerRpc(RequireOwnership = false)]
-        public void addHp(int amt)
+        public void AddHp(int amt)
         {
             CurrentHp += amt;
             if (CurrentHp > CurrentMaxHp)
                 CurrentHp = CurrentMaxHp;
 
-            updateHpBar();
+            UpdateHpBar();
         }
 
         [ServerRpc(RequireOwnership = false)]
-        public void changePilot(NetworkConnection conn = null)
+        public void ChangePilot(NetworkConnection conn = null)
         {
             if (Owner.IsActive) return; //serverside check for ownership
             Debug.Log("pilot changed to " + conn.ClientId);
             base.GiveOwnership(conn);
         }
         [ServerRpc(RequireOwnership = false)]
-        public void leavePilot(NetworkConnection conn = null)
+        public void LeavePilot(NetworkConnection conn = null)
         {
             if (Owner == conn)
             {
