@@ -89,7 +89,7 @@ namespace SwordsInSpace
             {
                 playerInput.enabled = false;
                 return;
-            } 
+            }
             playerInput.actions["Interact"].performed += context => interactor.Interact();
             playerInput.actions["Dash"].performed += context => { awaitingDash = true; };
             playerInput.actions["ExitUI"].performed += context => OnExitUI(context);
@@ -160,13 +160,13 @@ namespace SwordsInSpace
 
             DisplayManager.instance.toggleMobilePlayerDisplay(viewName == "PlayerView");
 
-            if(currentInputMap.name == "PlayerView")
+            if (currentInputMap.name == "PlayerView")
             {
-                if (viewName == "PlayerView") 
+                if (viewName == "PlayerView")
                 {
                     mover.canMove = true;
-                    return; 
-                } 
+                    return;
+                }
                 currentInputMap.Disable(); // exiting player view
                 currentInputMap = playerInput.actions.FindActionMap(viewName);
                 currentInputMap.Enable();
@@ -174,8 +174,8 @@ namespace SwordsInSpace
             }
             else
             {
-                 //if not playerview controls dont move player body
-                if(viewName != currentInputMap.name)
+                //if not playerview controls dont move player body
+                if (viewName != currentInputMap.name)
                 {
                     currentInputMap.Disable();
                     currentInputMap = playerInput.actions.FindActionMap(viewName);
@@ -197,10 +197,15 @@ namespace SwordsInSpace
         {
             if (obj.ReadValue<float>() == 1)
             {
-                Debug.Log("esc pressed");
-                DisplayManager.instance.Close();
-                mover.canMove = true;
+                ExitUI();
             }
+        }
+
+        public void ExitUI()
+        {
+            Debug.Log("esc pressed");
+            DisplayManager.instance.Close();
+            mover.canMove = true;
         }
     }
 

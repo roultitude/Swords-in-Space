@@ -42,6 +42,7 @@ namespace SwordsInSpace
         public void Interact()
         {
             if (!base.IsOwner) { return; }
+
             InteractQuery(base.Owner);
 
         }
@@ -89,7 +90,8 @@ namespace SwordsInSpace
             Interactable obj = interactables.GetInteractable(interactableId);
             if (obj)
             {
-                obj.Interact(gameObject);
+                if (Ship.currentShip.isPowerUp || obj.canUseOnPowerOut)
+                    obj.Interact(gameObject);
             }
 
         }

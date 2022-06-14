@@ -17,6 +17,9 @@ namespace SwordsInSpace
         [SerializeField]
         Vector2 packSpawnRadius;
 
+        [SerializeField]
+        int UnitsFromAsteroid = 3;
+
         [System.Serializable]
         public struct SpawnInfo
         {
@@ -33,6 +36,9 @@ namespace SwordsInSpace
         [SerializeField]
         Vector2 worldSize = new Vector2(1000, 1000);
 
+        public bool spawningComplete = false;
+
+        private int MaxGetRandomPositionAttempts = 5;
         void Start()
         {
             totalWeight = 0;
@@ -40,9 +46,20 @@ namespace SwordsInSpace
             {
                 totalWeight += info.weight;
             }
+
         }
 
 
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            if (IsServer)
+                return;
+            foreach (Timer time in GetComponents<Timer>())
+            {
+                time.Stop();
+            }
+        }
 
         public void Spawn()
         {
@@ -72,12 +89,27 @@ namespace SwordsInSpace
 
         private Vector3 getRandomPosition()
         {
-            return new Vector3(Random.Range(-worldSize.x / 3, worldSize.x / 3), Random.Range(-worldSize.y / 3, worldSize.y / 3), 0);
+
+            return getRandomPosition(MaxGetRandomPositionAttempts);
+        }
+
+        private Vector3 getRandomPosition(int attempts)
+        {
+
+            Vector3 pos = new Vector3(Random.Range(-worldSize.x / 3, worldSize.x / 3), Random.Range(-worldSize.y / 3, worldSize.y / 3), 0);
+
+            if (Physics2D.OverlapCircle(new Vector2(pos.x, pos.y), UnitsFromAsteroid) != null && attempts > 0)
+            {
+                return getRandomPosition(attempts--);
+            }
+            return pos;
+
         }
 
         public void StopSpawn()
         {
             SpawnCD.Stop();
+            spawningComplete = true;
         }
     }
 };

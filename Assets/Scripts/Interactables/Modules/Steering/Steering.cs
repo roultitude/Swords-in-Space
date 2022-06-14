@@ -13,8 +13,6 @@ namespace SwordsInSpace
     public enum SteerState { NITRO, FORWARD, OFF, BACKWARD }
     public class Steering : Module
     {
-        
-        public int currentAmmo;
 
         [SerializeField]
         public GameObject UIDisplay;
@@ -72,8 +70,8 @@ namespace SwordsInSpace
         public override void Interact(GameObject player)
         {
             if (Ship.currentShip.Owner.IsActive && !Ship.currentShip.IsOwner) return; //do nothing if someone else owns the ship
-            
-            if (manager.Offer(UIDisplay,this))
+
+            if (manager.Offer(UIDisplay, this))
             {
                 currentPlayerInput = player.GetComponent<PlayerInputManager>();
                 shipMover = Ship.currentShip.shipMover;

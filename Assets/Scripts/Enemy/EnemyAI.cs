@@ -15,9 +15,7 @@ namespace SwordsInSpace
         private int currentHp;
 
         [SerializeField]
-        Sprite whitePixel;
-
-        HealthBar hpBar;
+        Hpbar hpBar;
 
 
         // Start is called before the first frame update
@@ -30,15 +28,13 @@ namespace SwordsInSpace
                 GetComponent<Rigidbody2D>().isKinematic = true;
             }
 
-            hpBar = HealthBar.Create(new Vector2(0, 50), new Vector2(maxHp * 250, 25), 5f, gameObject, whitePixel);
-            hpBar.transform.parent = gameObject.transform;
             hpBar.DoFade(0.8f);
         }
 
         private void UpdateHpText(int oldint, int newint, bool server)
         {
             if (hpBar != null)
-                hpBar.setSize((float)currentHp / (float)maxHp);
+                hpBar.Resize((float)currentHp / (float)maxHp);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

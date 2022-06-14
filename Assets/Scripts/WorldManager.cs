@@ -7,6 +7,11 @@ namespace SwordsInSpace
     {
         // Start is called before the first frame update
 
+        [SerializeField]
+        EnemySpawner spawner;
+
+        private bool levelComplete = false;
+
         void Start()
         {
 
@@ -17,5 +22,15 @@ namespace SwordsInSpace
         {
 
         }
+
+        public void CheckIfComplete()
+        {
+            if (spawner.spawningComplete && !levelComplete && FindObjectOfType(typeof(EnemyAI)) == null)
+            {
+                levelComplete = true;
+            }
+        }
+
+
     }
 };

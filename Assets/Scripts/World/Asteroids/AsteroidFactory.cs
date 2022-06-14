@@ -40,6 +40,9 @@ namespace SwordsInSpace
         [SerializeField]
         public RuleTile tile;
 
+        [SerializeField]
+        public int spawnCullingRadius;
+
         private Vector2 offset;
 
         private int hp;
@@ -89,7 +92,7 @@ namespace SwordsInSpace
                 for (int j = 0; j < worldSize; j++)
                 {
 
-                    if (AboveThreshold(i, j) && !hasSeen[i, j])
+                    if (AboveThreshold(i, j) && !hasSeen[i, j] && (i * i + j * j) > spawnCullingRadius * spawnCullingRadius)
                     {
                         GameObject toAdd = Instantiate(asteroids[0]
                             , new Vector3(i * distance + offset.x, j * distance + offset.y, 0)
