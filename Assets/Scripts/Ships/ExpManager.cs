@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace SwordsInSpace
 {
-    public class LevelManager : MonoBehaviour
+    public class ExpManager : MonoBehaviour
     {
         private int baseExpToLevel = 50;
 

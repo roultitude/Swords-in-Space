@@ -9,12 +9,11 @@ namespace SwordsInSpace
     {
         Timer timer;
         double shotSpeed;
-        double shotLifeTime;
+
 
         public void Setup(double shotSpeed, double shotLifeTime)
         {
             timer = gameObject.AddComponent<Timer>();
-            this.shotLifeTime = shotLifeTime;
             this.shotSpeed = shotSpeed;
             timer.Setup(shotLifeTime, false, true);
             timer.timeout.AddListener(OnTimeout);

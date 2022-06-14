@@ -18,6 +18,7 @@ namespace SwordsInSpace
         public Transform shipInteriorView;
         public Transform spawnTransform;
         public Transform playerTracker;
+        public UpgradeManager upgradeManager;
 
         [SerializeField]
         ShipSO data;
@@ -31,8 +32,8 @@ namespace SwordsInSpace
         [SerializeField]
         GameObject background;
 
-        [SerializeField]
-        ExpManager manager;
+
+
 
 
         public double CurrentHp;

@@ -21,6 +21,8 @@ namespace SwordsInSpace
         [SerializeField]
         Hpbar hpBar;
 
+        readonly float fadeTime = 0.8f;
+
 
         // Start is called before the first frame update
         void Start()
@@ -32,7 +34,7 @@ namespace SwordsInSpace
                 GetComponent<Rigidbody2D>().isKinematic = true;
             }
 
-            hpBar.DoFade(0.8f);
+            hpBar.DoFade(fadeTime);
         }
 
         private void UpdateHpText(int oldint, int newint, bool server)
