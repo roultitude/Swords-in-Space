@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using FishNet.Object.Synchronizing;
 using UnityEngine;
+using FishNet.Object;
+using FishNet.Connection;
+
 namespace SwordsInSpace
 {
 
@@ -54,12 +57,19 @@ namespace SwordsInSpace
             bar.Resize(currentAmount / maxAmount);
         }
 
+
         public override void Interact(GameObject obj)
+        {
+            FillPower();
+        }
+        [ServerRpc(RequireOwnership = false)]
+        public void FillPower()
         {
             currentAmount += refillRate;
             if (currentAmount > maxAmount)
                 currentAmount = maxAmount;
         }
+
     }
 }
 ;

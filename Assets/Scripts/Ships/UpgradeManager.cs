@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static SwordsInSpace.UpgradeSO;
 using Random = UnityEngine.Random;
 
 namespace SwordsInSpace
@@ -186,6 +187,7 @@ namespace SwordsInSpace
             }
             else
             {
+                Ship.currentShip.ReloadStats();
                 BroadcastCloseScreen();
             }
         }
@@ -197,6 +199,32 @@ namespace SwordsInSpace
             manager.Close();
         }
 
+
+        public Dictionary<UpgradeTypes, float> TallyUpgrades()
+        {
+            Dictionary<UpgradeTypes, float> stats = new Dictionary<UpgradeTypes, float>();
+            foreach (Upgrade up in upgrades.Values)
+            {
+                if (up.upgradeCount == 0)
+                    continue;
+
+                foreach (UpgradeAttributes a in up.upgradeSo.statChanges)
+                {
+                    if (!stats.ContainsKey(a.type))
+                    {
+                        stats.Add(a.type, a.amount * up.upgradeCount);
+                    }
+                    else
+                    {
+                        stats[a.type] += a.amount * up.upgradeCount;
+                    }
+
+
+                }
+            }
+
+            return stats;
+        }
 
 
 

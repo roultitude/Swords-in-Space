@@ -12,24 +12,28 @@ namespace SwordsInSpace
 
         public int currentLevel = 0;
         public double currentExp = 0;
+        public int storedLevels = 0;
 
         public UnityEvent onLevel;
 
         public void Start()
         {
             onLevel = new UnityEvent();
+            storedLevels = 0;
         }
 
         public int ExpToLevel(int level)
         {
+
             int a = baseExpToLevel * level;
             return baseExpToLevel + (int)(5 * level / Mathf.Log(a));
         }
 
         public void AddExp(double exp)
         {
+
             currentExp += exp;
-            if (currentExp >= ExpToLevel(currentLevel))
+            while (currentExp >= ExpToLevel(currentLevel))
             {
                 LevelUp();
             }
@@ -39,7 +43,15 @@ namespace SwordsInSpace
         {
             currentExp -= ExpToLevel(currentLevel);
             currentLevel += 1;
+            storedLevels += 1;
             onLevel.Invoke();
+        }
+
+        public int GetStoredLevels()
+        {
+            int output = storedLevels;
+            storedLevels = 0;
+            return output;
         }
     }
 };
