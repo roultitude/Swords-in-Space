@@ -41,13 +41,12 @@ namespace SwordsInSpace
         {
             base.OnStopServer();
             UserManager.instance.users.Remove(this);
-
         }
 
         [ServerRpc]
         public void ServerSpawnPlayer()
         {
-            GameObject player = Instantiate(UserManager.instance.playerPrefab, Ship.currentShip.spawnTransform.position, Quaternion.identity,Ship.currentShip.spawnTransform);
+            GameObject player = Instantiate(UserManager.instance.playerPrefab, Ship.currentShip.spawnTransform.position, Quaternion.identity);
             controlledPlayer = player.GetComponent<Player>();
             controlledPlayer.controllingUser = this;
             Spawn(player, Owner);

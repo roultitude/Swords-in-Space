@@ -20,7 +20,13 @@ namespace SwordsInSpace
 
         private void Awake()
         {
-            instance = this;
+
+            if (instance)
+            {
+                Debug.Log("there exists a UserManager already!");
+                Destroy(this);
+            }
+            else instance = this;
         }
 
         private void Update()

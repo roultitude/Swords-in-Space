@@ -7,7 +7,10 @@ namespace SwordsInSpace
 {
     public class PlayerTracker : NetworkBehaviour
     {
+        [SerializeField]
+        private Transform interiorTransform;
         private Transform realPlayer;
+
         private void Update()
         {
             if (IsServerOnly) return;
@@ -17,8 +20,8 @@ namespace SwordsInSpace
             }
             if(realPlayer) transform.localPosition
                         = new Vector2(
-                            Mathf.Lerp(transform.localPosition.x,realPlayer.localPosition.x,0.03f),
-                            Mathf.Lerp(transform.localPosition.y, realPlayer.localPosition.y, 0.03f)
+                            Mathf.Lerp(transform.localPosition.x, interiorTransform.InverseTransformPoint(realPlayer.position).x, 0.15f),
+                            Mathf.Lerp(transform.localPosition.y, interiorTransform.InverseTransformPoint(realPlayer.position).y, 0.15f)
                             );
         }
         public override void OnStartClient()

@@ -127,10 +127,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 0}
-  _networkObjectCache: {fileID: 0}
+  _addedNetworkObject: {fileID: 5199958325795699492}
+  _networkObjectCache: {fileID: 5199958325795699492}
   Hp: 0
   MaxHp: 0
-  currentAmmo: 0
-  UIDisplay: {fileID: 2941157506514726687, guid: 8640bdbd3fef30042a60623b4e8fea44, type: 3}
+  canUseOnPowerOut: 0
+  UIDisplayPrefab: {fileID: 2941157506514726687, guid: 8640bdbd3fef30042a60623b4e8fea44, type: 3}
   currentSteerState: 0
+--- !u!114 &5199958325795699492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5790167024248225744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _networkBehaviours:
+  - {fileID: 7689477023599607438}
+  SceneTransformProperties:
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    LocalScale: {x: 1, y: 1, z: 0}
+  _isNetworked: 1
+  _hasParentNetworkObjectAtEdit: 0
+  NetworkObserver: {fileID: 0}
+  _prefabId: -1
+  _scenePathHash: 0
+  _sceneId: 0
+  _sceneNetworkObjects: []

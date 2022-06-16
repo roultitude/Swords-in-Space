@@ -17,9 +17,22 @@ namespace SwordsInSpace
 
         private void Awake()
         {
-            instance = this;
+            if (instance)
+            {
+                Debug.Log("There exists a CameraManager already! Destroying self!");
+                Destroy(this);
+            } else instance = this;
+            GameManager.OnNewSceneLoadEvent += () =>
+            {
+                SetupShipCams();
+            };
         }
         private void Start()
+        {
+            if (!Ship.currentShip) return;
+            SetupShipCams(); //after ship is spawned
+        }
+        public void SetupShipCams()
         {
             shipVCam.Follow = Ship.currentShip.shipExterior;
             weaponVCam.Follow = Ship.currentShip.shipExterior;

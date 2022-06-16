@@ -8,25 +8,30 @@ namespace SwordsInSpace
     {
         // Start is called before the first frame update
         [SerializeField]
-        public GameObject UIDisplay;
+        public GameObject UIDisplayPrefab;
         private DisplayManager manager;
 
         private PassiveShieldDisplay display;
 
-
-
-
+        private GameObject UIDisplay;
         PlayerInputManager currentPlayerInput;
-        void Start()
+
+        private void OnEnable()
         {
-            UIDisplay = Instantiate(UIDisplay, Vector3.zero, Quaternion.identity);
+            GameManager.OnNewSceneLoadEvent += SetupUI;
+        }
+        void OnDisable()
+        {
+            GameManager.OnNewSceneLoadEvent -= SetupUI;
+        }
+
+        void SetupUI()
+        {
+            UIDisplay = Instantiate(UIDisplayPrefab, Vector3.zero, Quaternion.identity);
             manager = DisplayManager.instance;
             UIDisplay.SetActive(false);
             display = UIDisplay.GetComponent<PassiveShieldDisplay>();
-
         }
-
-
 
 
         public override void Interact(GameObject player)

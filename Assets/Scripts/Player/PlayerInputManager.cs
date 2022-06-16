@@ -70,6 +70,10 @@ namespace SwordsInSpace
             alwaysOnInput = playerInput.actions.FindActionMap("AlwaysOn");
             alwaysOnInput.Enable();
             currentInputMap = playerInput.actions.FindActionMap("PlayerView");
+            GameManager.OnNewSceneLoadEvent += () =>
+            {
+                shipMover = Ship.currentShip.shipMover;
+            };
         }
         private void OnDisable()
         {
@@ -85,6 +89,7 @@ namespace SwordsInSpace
         public override void OnStartClient()
         {
             base.OnStartClient();
+            Debug.Log("onclientstart");
             if (!base.IsOwner)
             {
                 playerInput.enabled = false;
@@ -93,6 +98,14 @@ namespace SwordsInSpace
             playerInput.actions["Interact"].performed += context => interactor.Interact();
             playerInput.actions["Dash"].performed += context => { awaitingDash = true; };
             playerInput.actions["ExitUI"].performed += context => OnExitUI(context);
+            playerInput.actions["NextLevel"].performed += context => { 
+                if (context.performed) 
+                { 
+                    GameManager.instance.GoToNextLevel();
+                    Debug.Log("nextlvlbutton down");
+                
+                } 
+            };
         }
 
         private void OnDestroy()

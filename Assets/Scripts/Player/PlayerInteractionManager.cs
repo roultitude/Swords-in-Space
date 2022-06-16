@@ -15,7 +15,13 @@ namespace SwordsInSpace
         private InteractableIdManager interactables;
         private UserManager userManager;
 
-
+        private void Awake()
+        {
+            GameManager.OnNewSceneLoadEvent += () =>
+            {
+                interactables = Ship.currentShip.shipInterior.GetComponent<InteractableIdManager>();
+            };
+        }
         // Start is called before the first frame update
         void Start()
         {
@@ -33,10 +39,7 @@ namespace SwordsInSpace
                 if (!data.ContainsKey(username))
                     data.Add(username, new List<int>());
             }
-
             interactables = GameObject.FindObjectOfType<InteractableIdManager>();
-
-
         }
 
         public void Interact()
@@ -88,8 +91,12 @@ namespace SwordsInSpace
         void ReplyInteractQuery(NetworkConnection conn, int interactableId)
         {
             Interactable obj = interactables.GetInteractable(interactableId);
+            Debug.Log(interactables);
+            Debug.Log(obj);
             if (obj)
             {
+               
+                Debug.Log(Ship.currentShip.isPowerUp);
                 if (Ship.currentShip.isPowerUp || obj.canUseOnPowerOut)
                     obj.Interact(gameObject);
             }

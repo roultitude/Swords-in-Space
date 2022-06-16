@@ -25,7 +25,12 @@ namespace SwordsInSpace
 
         private void Awake()
         {
-            DisplayManager.instance = this;
+            if (instance) //override singleton, destroy oldest
+            {
+                Destroy(instance);
+            }
+            instance = this;
+            mobilePlayerDisplay = Instantiate(mobilePlayerDisplay);
         }
 
         public bool Offer(GameObject display, Interactable interactable = null)
