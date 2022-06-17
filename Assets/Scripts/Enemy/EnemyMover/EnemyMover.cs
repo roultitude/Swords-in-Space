@@ -1,0 +1,93 @@
+using System.Collections;
+using System.Collections.Generic;
+using Pathfinding;
+using UnityEngine;
+using UnityEngine.Events;
+
+namespace SwordsInSpace
+{
+    public class EnemyMover : MonoBehaviour
+    {
+        protected AIPath ai;
+
+        public bool debugCanSeePlayer = false;
+        protected UnityEvent onDash;
+
+        public void Start()
+        {
+            ai = gameObject.GetComponent<AIPath>();
+            onDash = new UnityEvent();
+        }
+
+        protected void StopAstar()
+        {
+            ai.canMove = false;
+            ai.isStopped = true;
+
+        }
+
+        protected void ContinueAstar()
+        {
+            ai.canMove = true;
+            ai.isStopped = false;
+        }
+
+        protected void LookAt(Transform trans)
+        {
+            Vector3 myLocation = transform.position;
+            Vector3 targetLocation = trans.position;
+            targetLocation.z = myLocation.z;
+            Vector3 vectorToTarget = targetLocation - myLocation;
+
+            Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 90) * vectorToTarget;
+            Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
+            Quaternion rotation = Quaternion.LookRotation(Ship.currentShip.gameObject.transform.position - gameObject.transform.position, Vector3.forward);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360f);
+
+        }
+
+        protected void LookAtPlayer()
+        {
+            LookAt(Ship.currentShip.transform);
+        }
+
+        public bool CanSeePlayer()
+        {
+            Transform trans = Ship.currentShip.gameObject.transform;
+            Vector3 difference = trans.position - transform.position;
+            Vector2 difference2D = new Vector2(difference.x, difference.y);
+
+
+            RaycastHit2D[] collide = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y),
+            difference2D.normalized,
+            difference2D.magnitude);
+
+
+            Debug.Log(collide.Length);
+
+            foreach (RaycastHit2D hit in collide)
+            {
+                if (hit.collider.gameObject == Ship.currentShip.shipExterior)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public IEnumerator Dash(double speed, float time)
+        {
+            float currentTime = 0;
+            while (currentTime < time)
+            {
+                transform.position += transform.right * Time.deltaTime * (float)speed;
+                currentTime += time;
+                yield return null;
+            }
+
+            onDash.Invoke();
+        }
+
+
+    }
+};

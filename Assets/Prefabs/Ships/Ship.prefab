@@ -316,6 +316,7 @@ MonoBehaviour:
   TintNoPower: {r: 0, g: 0, b: 0, a: 0}
   background: {fileID: 220810308338604789}
   CurrentHp: 0
+  isPowerUp: 1
 --- !u!61 &3006086760405494744
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -630,6 +631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5221657397174509498}
   - component: {fileID: 4280291196299355917}
+  - component: {fileID: 6737697124839144559}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -685,6 +687,19 @@ MonoBehaviour:
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects: []
+--- !u!114 &6737697124839144559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5221657397174509500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df116c3261302534d94fb0bfb9b2cdb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Friendly
 --- !u!1 &5221657397505194560
 GameObject:
   m_ObjectHideFlags: 0
