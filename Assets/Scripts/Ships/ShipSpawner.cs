@@ -12,6 +12,9 @@ namespace SwordsInSpace
 
         public GameObject defaultShipPrefab;
 
+        public GameObject lobbyShipPrefab;
+
+        public bool spawnLobbyShip;
         public override void OnStartServer()
         {
             base.OnStartServer();
@@ -24,10 +27,18 @@ namespace SwordsInSpace
             else
             {
                 if (!shipPrefab) shipPrefab = defaultShipPrefab;
-                GameObject shipObject = Instantiate(shipPrefab);
+                GameObject shipObject;
+                if (!spawnLobbyShip)
+                {
+                    shipObject = Instantiate(shipPrefab);
+                }
+                else
+                {
+                    shipObject = Instantiate(lobbyShipPrefab);
+                }
                 Spawn(shipObject);
                 CameraManager.instance.SetupShipCams();
-                Destroy(this);
+                Destroy(this.gameObject);
             }
         }
     }

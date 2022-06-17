@@ -62,7 +62,7 @@ namespace SwordsInSpace
 
         private void ServerStarted(FishNet.Transporting.ServerConnectionStateArgs args)
         {
-            SceneLoadData sld = new SceneLoadData("GameScene") { ReplaceScenes = ReplaceOption.All };
+            SceneLoadData sld = new SceneLoadData("LobbyScene") { ReplaceScenes = ReplaceOption.All };
             networkManager.SceneManager.LoadGlobalScenes(sld);
             networkManager.ClientManager.StartConnection();
         }

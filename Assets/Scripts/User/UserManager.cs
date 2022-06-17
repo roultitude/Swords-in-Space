@@ -1,8 +1,10 @@
+using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace SwordsInSpace
 {
@@ -14,16 +16,19 @@ namespace SwordsInSpace
 
         public UserData localUserData;
 
+
         [SyncObject]
         public readonly SyncList<User> users = new SyncList<User>();
 
+        [SyncVar]
+        public bool allUsersReady;
 
         private void Awake()
         {
 
             if (instance)
             {
-                Debug.Log("there exists a UserManager already!");
+                Debug.Log("there exists a UserManager already!"); //destroy newest
                 Destroy(this);
             }
             else instance = this;
@@ -31,8 +36,8 @@ namespace SwordsInSpace
 
         private void Update()
         {
+            allUsersReady = users.All(user => user.isReady);
         }
-
 
     }
 }

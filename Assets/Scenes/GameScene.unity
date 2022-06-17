@@ -523,7 +523,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7756233, y: 1}
+    m_SensorSize: {x: 1.7791045, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -625,6 +625,8 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 661997860}
   _networkObjectCache: {fileID: 661997860}
   defaultShipPrefab: {fileID: 282490374975100863, guid: f9ce8e21ffaf47d4481e204f63dfd164, type: 3}
+  lobbyShipPrefab: {fileID: 0}
+  spawnLobbyShip: 0
 --- !u!1 &759863975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,7 +1241,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7756233, y: 1}
+    m_SensorSize: {x: 1.7791045, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1399,7 +1401,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7756233, y: 1}
+    m_SensorSize: {x: 1.7791045, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

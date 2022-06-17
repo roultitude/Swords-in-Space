@@ -15,6 +15,11 @@ namespace SwordsInSpace
         public delegate void OnNewSceneLoad();
         public static OnNewSceneLoad OnNewSceneLoadEvent;
 
+
+        int currentLevel;
+        List<NetworkObject> CarryNetworkObjects;
+        bool nextSceneLobby;
+
         private bool transitioning;
 
         private void Awake()
@@ -24,10 +29,7 @@ namespace SwordsInSpace
                 Debug.Log("More than 1 GameManager present at once! Destroying old GameManager.");
                 Destroy(instance);
             }
-            else
-            {
-                instance = this;
-            }
+            instance = this;
         }
 
         public override void OnStartServer()
@@ -38,30 +40,26 @@ namespace SwordsInSpace
             SceneManager.OnClientPresenceChangeEnd += arg => OnNewSceneBroadcast(arg.Connection);
         }
 
-        int currentLevel;
-        List<NetworkObject> CarryNetworkObjects;
+        [ServerRpc(RequireOwnership = false)]
+        public void OnLoseGame()
+        {
+            Ship.currentShip.AllPlayerExitUI();
+            CarryNetworkObjects = new List<NetworkObject>();
+            GetCarryNetworkObjects(false, false);
+            SceneLoadData sld = new SceneLoadData("LobbyScene") { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
+            InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sld);
+        }
 
-        
+
         [ServerRpc(RequireOwnership =false)]
-        public void GoToNextLevel()
+        public void GoToLevel(string sceneName, bool bringShip = false, bool bringPlayers = true)
         {
             //if (transitioning) return;
             //transitioning = true;
-            Ship.currentShip.powerDown();
-            Ship.currentShip.powerUp(); //rmb to change
-            GetCarryNetworkObjects();
-            foreach (User user in UserManager.instance.users) //remove owner for all nobs
-            {
-                //user.controlledPlayer.RemoveOwnership();
-            }
-            //SceneLoadData sld = new SceneLoadData("GameScene") { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
-            SceneLoadData sldTemp = new SceneLoadData("TempScene") { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
-            InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sldTemp);
-            //InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sld);
-            foreach (User user in UserManager.instance.users) //remove owner for all nobs
-            {
-                //user.controlledPlayer.GiveOwnership(user.Owner);
-            }
+            Ship.currentShip.AllPlayerExitUI();
+            GetCarryNetworkObjects(bringShip,bringPlayers);
+            SceneLoadData sld= new SceneLoadData(sceneName) { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
+            InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sld);
         }
 
         [TargetRpc]
@@ -72,17 +70,20 @@ namespace SwordsInSpace
             //transitioning = false;
         }
 
-        public void GetCarryNetworkObjects()
+        public void GetCarryNetworkObjects(bool includeShip, bool includePlayers)
         {
             CarryNetworkObjects = new List<NetworkObject>();
             foreach (User user in UserManager.instance.users) //get all connected users
             {
                 CarryNetworkObjects.Add(user.GetComponent<NetworkObject>());
-                CarryNetworkObjects.Add(user.controlledPlayer.GetComponent<NetworkObject>());
-                user.controlledPlayer.DetachUsernameCanvas(false);
+                if (includePlayers) 
+                {
+                    CarryNetworkObjects.Add(user.controlledPlayer.GetComponent<NetworkObject>());
+                    user.controlledPlayer.DetachUsernameCanvas(false);
+                }
             }
-            CarryNetworkObjects.Add(Ship.currentShip.GetComponentInParent<NetworkObject>()); //get current ship
-            CarryNetworkObjects.Add(UserManager.instance.GetComponentInParent<NetworkObject>());
+            if(includeShip) CarryNetworkObjects.Add(Ship.currentShip.GetComponentInParent<NetworkObject>()); //get current ship
+            CarryNetworkObjects.Add(UserManager.instance.GetComponent<NetworkObject>());
         }
     }
 

@@ -13,10 +13,11 @@ namespace SwordsInSpace
         [SyncVar]
         public string username;
 
-        [SyncVar]
+        [SyncVar(OnChange = nameof(OnPlayerSpawned))]
         public Player controlledPlayer;
 
-
+        [SyncVar]
+        public bool isReady;
 
 
         public override void OnStartClient()
@@ -27,10 +28,33 @@ namespace SwordsInSpace
                 localUser = this;
                 UpdateUsername(UserManager.instance.localUserData.username);
                 ServerSpawnPlayer();
-                
             }
-            
         }
+
+        private void OnEnable()
+        {
+            GameManager.OnNewSceneLoadEvent += OnNewSceneLoaded;
+        }
+        private void OnDisable()
+        {
+            GameManager.OnNewSceneLoadEvent -= OnNewSceneLoaded;
+        }
+
+        public void OnPlayerSpawned(Player oldPlayer, Player newPlayer, bool onServer)
+        {
+            Debug.Log(newPlayer);
+            if (!newPlayer) return;
+            controlledPlayer.SetupPlayer();
+        }
+        private void OnNewSceneLoaded()
+        {
+            if(!controlledPlayer) ServerSpawnPlayer();
+            else
+            {
+                controlledPlayer.SetupPlayer();
+            }
+        }
+
         public override void OnStartServer()
         {
             base.OnStartServer();
@@ -43,7 +67,7 @@ namespace SwordsInSpace
             UserManager.instance.users.Remove(this);
         }
 
-        [ServerRpc]
+        [ServerRpc(RequireOwnership =false)]
         public void ServerSpawnPlayer()
         {
             GameObject player = Instantiate(UserManager.instance.playerPrefab, Ship.currentShip.spawnTransform.position, Quaternion.identity);
@@ -56,6 +80,12 @@ namespace SwordsInSpace
         public void UpdateUsername(string name)
         {
             username = name;
+        }
+
+        [ServerRpc]
+        public void ServerSetIsReady(bool ready)
+        {
+            isReady = ready;
         }
 
     }

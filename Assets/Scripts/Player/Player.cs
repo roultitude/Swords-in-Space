@@ -31,28 +31,24 @@ namespace SwordsInSpace
         public override void OnStartClient()
         {
             base.OnStartClient();
-            Debug.Log("player started on client");
+            
             SetParent();
             //playerCanvas = Instantiate(playerCanvasPrefab).GetComponent<Canvas>();
             if(offset == 0) offset = playerCanvas.transform.localPosition.y;
             StartCoroutine(checkForUsernameUpdate(controllingUser.username));
-            DetachUsernameCanvas(true);
 
-            GameManager.OnNewSceneLoadEvent += () =>
-            {
-                Debug.Log("NewSceneLoadEvent fired");
-                if(IsServer) DetachUsernameCanvas(true);
-            };
-            
             if (!IsOwner)
             {
                 return;
             }
-            CameraManager.instance.AttachToPlayer(transform);
-            GameManager.OnNewSceneLoadEvent += () => { CameraManager.instance.AttachToPlayer(transform); };
-            
         }
-        
+
+        public void SetupPlayer()
+        {
+            DetachUsernameCanvas(true);
+            if (!IsOwner) return;
+            CameraManager.instance.AttachToPlayer(transform);
+        }
         public void SetParent()
         {
             //this.transform.parent = Ship.currentShip.spawnTransform;

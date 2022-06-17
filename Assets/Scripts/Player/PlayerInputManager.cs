@@ -100,10 +100,9 @@ namespace SwordsInSpace
             playerInput.actions["ExitUI"].performed += context => OnExitUI(context);
             playerInput.actions["NextLevel"].performed += context => { 
                 if (context.performed) 
-                { 
-                    GameManager.instance.GoToNextLevel();
-                    Debug.Log("nextlvlbutton down");
-                
+                {
+                    GameManager.instance.OnLoseGame();
+                    //GameManager.instance.GoToLevel("GameScene");
                 } 
             };
         }
@@ -157,14 +156,14 @@ namespace SwordsInSpace
         {
             if (base.IsServer)
             {
+                
                 ReconcileData rdMover = new ReconcileData(mover.transform.position, mover.transform.rotation, rb.velocity, rb.angularVelocity
                     //, 1f
                     );
-                ReconcileData rdShip = new ReconcileData(shipMover.transform.position, shipMover.transform.rotation, shipMover.rb.velocity, shipMover.rb.angularVelocity
-                    //, 1f
-                    );
+                ReconcileData rdShip = default;
+                if (shipMover) rdShip = new ReconcileData(shipMover.transform.position, shipMover.transform.rotation, shipMover.rb.velocity, shipMover.rb.angularVelocity);
                 mover.Reconciliation(rdMover, true);
-                shipMover.Reconciliation(rdShip, true);
+                if (shipMover) shipMover.Reconciliation(rdShip, true);
             }
         }
 

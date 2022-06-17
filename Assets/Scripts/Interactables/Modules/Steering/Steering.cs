@@ -56,7 +56,7 @@ namespace SwordsInSpace
             InstanceFinder.TimeManager.OnTick -= OnTick;
             DisplayManager.instance.DisplayCloseEvent -= OnDisplayClosed;
 
-            Ship.currentShip.leavePilot();
+            Ship.currentShip.LeavePilot();
             shipMover.canMove = false;
             currentPlayerInput = null;
         }
@@ -79,7 +79,7 @@ namespace SwordsInSpace
                 DisplayManager.instance.DisplayCloseEvent += OnDisplayClosed;
                 InstanceFinder.TimeManager.OnTick += OnTick;
 
-                Ship.currentShip.changePilot();
+                Ship.currentShip.ChangePilot();
                 shipMover.canMove = true;
             }
         }
