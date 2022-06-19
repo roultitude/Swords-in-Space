@@ -58,6 +58,17 @@ namespace SwordsInSpace
             isPowerUp = true;
         }
 
+        public void TakeDamage(double amt)
+        {
+            CurrentHp -= 1;
+            updateHpBar();
+
+            if (CurrentHp <= 0)
+            {
+                Despawn();
+            }
+        }
+
         public void OnTriggerEnter2D(Collider2D collision)
         {
             if (!IsServer)
@@ -69,15 +80,10 @@ namespace SwordsInSpace
             //Debug.Log(bullet.gameObject.tag);
             if (bullet != null && (bullet.gameObject.tag == null || bullet.gameObject.tag != "Friendly"))
             {
+                TakeDamage(bullet.damage);
 
-                CurrentHp -= 1;
                 bullet.OnHit();
-                updateHpBar();
 
-                if (CurrentHp <= 0)
-                {
-                    Despawn();
-                }
 
             }
         }

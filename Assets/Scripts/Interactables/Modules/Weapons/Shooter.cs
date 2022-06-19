@@ -73,7 +73,7 @@ namespace SwordsInSpace
             if (currentBurst < data.burst)
             {
                 if (autoFire) {; }
-                    //Left();
+                //Left();
                 SpawnBullet();
                 currentBurst += 1;
                 this.burstTimer.Start();
@@ -92,7 +92,7 @@ namespace SwordsInSpace
             if (!IsServer)
                 return;
             GameObject toAdd = Instantiate(data.bulletPrefab, transform.position, transform.rotation);
-            toAdd.GetComponent<Bullet>().Setup(data.shotSpeed, data.shotLifeTime);
+            toAdd.GetComponent<Bullet>().Setup(data.shotSpeed, data.shotLifeTime, data.damage);
             toAdd.tag = "Friendly";
             Spawn(toAdd);
         }
@@ -100,7 +100,7 @@ namespace SwordsInSpace
         private void Update()
         {
             if (!IsServer) return; //only rotate on server
-            transform.localRotation = Quaternion.Euler(0,0, transform.localRotation.eulerAngles.z - data.rotationSpeed * turnAxis.x * Time.fixedDeltaTime);
+            transform.localRotation = Quaternion.Euler(0, 0, transform.localRotation.eulerAngles.z - data.rotationSpeed * turnAxis.x * Time.fixedDeltaTime);
         }
 
 

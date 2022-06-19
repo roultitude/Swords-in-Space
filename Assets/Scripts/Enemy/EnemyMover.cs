@@ -11,12 +11,10 @@ namespace SwordsInSpace
         protected AIPath ai;
 
         public bool debugCanSeePlayer = false;
-        protected UnityEvent onDash;
 
         public void Start()
         {
             ai = gameObject.GetComponent<AIPath>();
-            onDash = new UnityEvent();
         }
 
         protected void StopAstar()
@@ -62,12 +60,10 @@ namespace SwordsInSpace
             difference2D.normalized,
             difference2D.magnitude);
 
-
-            Debug.Log(collide.Length);
-
             foreach (RaycastHit2D hit in collide)
             {
-                if (hit.collider.gameObject == Ship.currentShip.shipExterior)
+
+                if (hit.collider.gameObject.GetComponent<ShipMover>() != null)
                 {
                     return true;
                 }
@@ -75,18 +71,6 @@ namespace SwordsInSpace
             return false;
         }
 
-        public IEnumerator Dash(double speed, float time)
-        {
-            float currentTime = 0;
-            while (currentTime < time)
-            {
-                transform.position += transform.right * Time.deltaTime * (float)speed;
-                currentTime += time;
-                yield return null;
-            }
-
-            onDash.Invoke();
-        }
 
 
     }

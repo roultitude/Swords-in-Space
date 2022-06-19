@@ -14,6 +14,8 @@ public class EnemyShooter : NetworkBehaviour
     [SerializeField]
     public float range = 100f;
 
+    public double damage;
+
     private bool IsInRange()
     {
         return range > Vector3.Distance(gameObject.transform.position, Ship.currentShip.gameObject.transform.position);
@@ -44,7 +46,7 @@ public class EnemyShooter : NetworkBehaviour
 
             toAdd.transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360f);
 
-            toAdd.GetComponent<Bullet>().Setup(10f, 10f);
+            toAdd.GetComponent<Bullet>().Setup(10f, 10f, damage);
             Spawn(toAdd);
         }
     }
