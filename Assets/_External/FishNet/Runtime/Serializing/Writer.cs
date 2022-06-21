@@ -927,7 +927,6 @@ namespace FishNet.Serializing
             }
             else
             {
-
                 //Make sure values cannot cause out of bounds.
                 if ((offset + count > value.Count))
                     count = 0;
