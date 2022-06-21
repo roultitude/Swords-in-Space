@@ -59,7 +59,7 @@ namespace SwordsInSpace
         private void onDeath()
         {
             if (!IsServer) return;
-            WorldManager.currentWorld.CheckIfComplete();
+            WorldManager.currentWorld.StartCoroutine(WorldManager.currentWorld.CheckIfComplete());
             this.Despawn();
         }
 

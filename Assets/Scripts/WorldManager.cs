@@ -38,8 +38,9 @@ namespace SwordsInSpace
             }
         }
 
-        public void CheckIfComplete()
+        public IEnumerator CheckIfComplete()
         {
+            yield return 0;
             if (spawner.spawningComplete && !levelComplete && FindObjectOfType(typeof(EnemyAI)) == null)
             {
                 levelComplete = true;
