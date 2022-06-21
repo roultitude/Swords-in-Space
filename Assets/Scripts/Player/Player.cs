@@ -34,8 +34,8 @@ namespace SwordsInSpace
             
             SetParent();
             //playerCanvas = Instantiate(playerCanvasPrefab).GetComponent<Canvas>();
-            if(offset == 0) offset = playerCanvas.transform.localPosition.y;
             StartCoroutine(checkForUsernameUpdate(controllingUser.username));
+            SetupPlayer();
 
             if (!IsOwner)
             {
@@ -45,9 +45,12 @@ namespace SwordsInSpace
 
         public void SetupPlayer()
         {
+            if (offset == 0) offset = playerCanvas.transform.localPosition.y;
             DetachUsernameCanvas(true);
+            transform.position = Ship.currentShip.spawnTransform.position;
             if (!IsOwner) return;
             CameraManager.instance.AttachToPlayer(transform);
+            
         }
         public void SetParent()
         {

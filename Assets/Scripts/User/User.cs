@@ -27,8 +27,13 @@ namespace SwordsInSpace
             {
                 localUser = this;
                 UpdateUsername(UserManager.instance.localUserData.username);
-                ServerSpawnPlayer();
             }
+        }
+        public override void OnStartServer()
+        {
+            base.OnStartServer();
+            UserManager.instance.users.Add(this);
+            if (!controlledPlayer) ServerSpawnPlayer();
         }
 
         private void OnEnable()
@@ -55,12 +60,6 @@ namespace SwordsInSpace
             }
         }
 
-        public override void OnStartServer()
-        {
-            base.OnStartServer();
-            UserManager.instance.users.Add(this);
-        }
-
         public override void OnStopServer()
         {
             base.OnStopServer();
@@ -70,6 +69,7 @@ namespace SwordsInSpace
         [ServerRpc(RequireOwnership =false)]
         public void ServerSpawnPlayer()
         {
+            if (controlledPlayer) return;
             GameObject player = Instantiate(UserManager.instance.playerPrefab, Ship.currentShip.spawnTransform.position, Quaternion.identity);
             controlledPlayer = player.GetComponent<Player>();
             controlledPlayer.controllingUser = this;

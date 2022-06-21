@@ -36,6 +36,7 @@ namespace SwordsInSpace
 
         private void Update()
         {
+            if (!IsServer) return;
             allUsersReady = users.All(user => user.isReady);
         }
 
