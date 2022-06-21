@@ -77,7 +77,7 @@ namespace SwordsInSpace
         protected void SpawnLocalRotation(Quaternion rot)
         {
             GameObject toAdd = Instantiate(bullet, transform.position, gameObject.transform.rotation);
-            toAdd.transform.localRotation = rot;
+            toAdd.transform.rotation = rot * transform.rotation;
             toAdd.GetComponent<Bullet>().Setup(shotSpeed, shotLifetime, damage);
             Spawn(toAdd);
         }

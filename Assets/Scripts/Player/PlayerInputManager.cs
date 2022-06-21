@@ -101,7 +101,8 @@ namespace SwordsInSpace
             playerInput.actions["NextLevel"].performed += context => { 
                 if (context.performed) 
                 {
-                    GameManager.instance.OnLoseGame();
+                    WorldManager.currentWorld.levelComplete = true;
+                    //GameManager.instance.OnLoseGame();
                     //GameManager.instance.GoToLevel("GameScene");
                 } 
             };

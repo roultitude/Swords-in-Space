@@ -1,26 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FishNet;
+
+
 namespace SwordsInSpace
 {
     public class WorldManager : MonoBehaviour
     {
+        public static WorldManager currentWorld;
+        
         // Start is called before the first frame update
 
         [SerializeField]
         EnemySpawner spawner;
 
-        private bool levelComplete = false;
+        public bool levelComplete = false;
 
         void Start()
         {
-
+            if (currentWorld)
+            {
+                Debug.Log("World exists, replacing with new world.");
+                Destroy(currentWorld);
+            }
+            currentWorld = this;
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            if (!InstanceFinder.IsServer) return;
+            if (levelComplete)
+            {
+                GameManager.instance.OnLevelComplete();
+                levelComplete = false;
+            }
         }
 
         public void CheckIfComplete()

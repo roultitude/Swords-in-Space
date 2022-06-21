@@ -90,11 +90,6 @@ namespace SwordsInSpace
 
                 bullet.OnHit();
 
-                if (CurrentHp <= 0)
-                {
-                    GameManager.instance.OnLoseGame();
-                }
-
             }
         }
         [ObserversRpc]

@@ -17,6 +17,7 @@ namespace SwordsInSpace
             User.localUser.ServerSetIsReady(!User.localUser.isReady);
         }
 
+        
         public void StartGame()
         {
             if (!UserManager.instance.allUsersReady) return;

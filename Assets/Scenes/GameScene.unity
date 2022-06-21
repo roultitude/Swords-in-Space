@@ -1533,6 +1533,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: World
       objectReference: {fileID: 0}
+    - target: {fileID: 4444492387124331367, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 4444492386302331272}
     - target: {fileID: 4444492387278712788, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: spawnCullingRadius
       value: 10
@@ -1553,5 +1557,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359135, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: waitTime
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+--- !u!114 &4444492386302331272 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+  m_PrefabInstance: {fileID: 4444492386302331271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc31d53fb9bd134d9053ffed6296fb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
