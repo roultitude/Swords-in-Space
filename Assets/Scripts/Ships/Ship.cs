@@ -58,6 +58,17 @@ namespace SwordsInSpace
             isPowerUp = true;
         }
 
+        public void TakeDamage(double amt)
+        {
+            CurrentHp -= 1;
+            updateHpBar();
+
+            if (CurrentHp <= 0)
+            {
+                Despawn();
+            }
+        }
+
         [ObserversRpc]
         public void AllPlayerExitUI()
         {
@@ -75,10 +86,9 @@ namespace SwordsInSpace
             //Debug.Log(bullet.gameObject.tag);
             if (bullet != null && (bullet.gameObject.tag == null || bullet.gameObject.tag != "Friendly"))
             {
+                TakeDamage(bullet.damage);
 
-                CurrentHp -= 1;
                 bullet.OnHit();
-                UpdateHpBar();
 
                 if (CurrentHp <= 0)
                 {

@@ -14,12 +14,14 @@ namespace SwordsInSpace
         [SyncVar(OnChange = nameof(UpdateHpText))]
         private int currentHp;
 
-        [SerializeField]
-        Hpbar hpBar;
+
+        public Hpbar hpBar;
+
+
 
 
         // Start is called before the first frame update
-        void Start()
+        protected void Start()
         {
             currentHp = maxHp;
 
@@ -37,7 +39,7 @@ namespace SwordsInSpace
                 hpBar.Resize((float)currentHp / (float)maxHp);
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        public void OnTriggerEnter2D(Collider2D collision)
         {
 
 

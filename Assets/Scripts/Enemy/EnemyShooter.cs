@@ -5,25 +5,51 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine;
 
-public class EnemyShooter : NetworkBehaviour
+namespace SwordsInSpace
 {
-    // Start is called before the first frame update
-
-    [SerializeField]
-    GameObject bullet;
-    [SerializeField]
-    public float range = 100f;
-
-    private bool IsInRange()
+    public class EnemyShooter : NetworkBehaviour
     {
-        return range > Vector3.Distance(gameObject.transform.position, Ship.currentShip.gameObject.transform.position);
-    }
+        // Start is called before the first frame update
 
+        [SerializeField]
+        protected GameObject bullet;
+        [SerializeField]
+        public float range = 100f;
 
+        public Timer bulletCd;
 
-    public void Shoot()
-    {
-        if (IsServer && IsInRange())
+        public double shotSpeed;
+        public double shotLifetime;
+        public double damage;
+        public bool canFire = true;
+
+        public bool timerComplete = false;
+        private bool IsInRange()
+        {
+            return range > Vector3.Distance(gameObject.transform.position, Ship.currentShip.gameObject.transform.position);
+        }
+
+        public void onTimerComplete()
+        {
+            timerComplete = true;
+        }
+
+        public void Update()
+        {
+            if (IsServer && canFire && timerComplete && IsInRange())
+            {
+                Shoot();
+                timerComplete = false;
+                bulletCd.Start();
+            }
+        }
+
+        public virtual void Shoot()
+        {
+            ShootAtPlayer();
+        }
+
+        protected void ShootAtPlayer()
         {
             Vector3 myLocation = transform.position;
             Vector3 targetLocation = Ship.currentShip.transform.position;
@@ -44,8 +70,16 @@ public class EnemyShooter : NetworkBehaviour
 
             toAdd.transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360f);
 
-            toAdd.GetComponent<Bullet>().Setup(10f, 10f);
+            toAdd.GetComponent<Bullet>().Setup(shotSpeed, shotLifetime, damage);
+            Spawn(toAdd);
+        }
+
+        protected void SpawnLocalRotation(Quaternion rot)
+        {
+            GameObject toAdd = Instantiate(bullet, transform.position, gameObject.transform.rotation);
+            toAdd.transform.localRotation = rot;
+            toAdd.GetComponent<Bullet>().Setup(shotSpeed, shotLifetime, damage);
             Spawn(toAdd);
         }
     }
-}
+};
