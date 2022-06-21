@@ -61,11 +61,11 @@ namespace SwordsInSpace
         public void TakeDamage(double amt)
         {
             CurrentHp -= 1;
-            updateHpBar();
+            UpdateHpBar();
 
             if (CurrentHp <= 0)
             {
-                Despawn();
+                GameManager.instance.OnLoseGame();
             }
         }
 

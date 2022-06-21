@@ -33,7 +33,11 @@ namespace SwordsInSpace
         {
             base.OnStartServer();
             UserManager.instance.users.Add(this);
-            if (!controlledPlayer) ServerSpawnPlayer();
+            if (!controlledPlayer)
+            {
+                ServerSpawnPlayer();
+            }
+                
         }
 
         private void OnEnable()
@@ -53,7 +57,10 @@ namespace SwordsInSpace
         }
         private void OnNewSceneLoaded()
         {
-            if(!controlledPlayer) ServerSpawnPlayer();
+            if (!controlledPlayer)
+            {
+                ServerSpawnPlayer();
+            }
             else
             {
                 controlledPlayer.SetupPlayer();
@@ -69,7 +76,7 @@ namespace SwordsInSpace
         [ServerRpc(RequireOwnership =false)]
         public void ServerSpawnPlayer()
         {
-            if (controlledPlayer) return;
+            if (controlledPlayer) return; //only one player at a time
             GameObject player = Instantiate(UserManager.instance.playerPrefab, Ship.currentShip.spawnTransform.position, Quaternion.identity);
             controlledPlayer = player.GetComponent<Player>();
             controlledPlayer.controllingUser = this;
