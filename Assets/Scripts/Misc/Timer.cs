@@ -77,6 +77,11 @@ namespace SwordsInSpace
             active = false;
         }
 
+        public void Continue()
+        {
+            active = true;
+        }
+
         public void Start()
         {
             enabled = true;

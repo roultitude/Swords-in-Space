@@ -6,11 +6,17 @@ namespace SwordsInSpace
     public class NeedleAI : EnemyAI
     {
         // Start is called before the first frame update
-        [SerializeField]
-        NeedleMover mover;
+
+        public NeedleMover mover;
+        public NeedleShooter shooter;
 
 
+        public void onStartStopDash()
+        {
 
+            shooter.canFire = !shooter.canFire;
+            Debug.Log(shooter.canFire);
+        }
         public void OnCollisionEnter2D(Collision2D collision)
         {
             //Debug.Log(collision.gameObject);
@@ -18,7 +24,7 @@ namespace SwordsInSpace
 
             if (obj != null)
             {
-                Ship.currentShip.TakeDamage(mover.dashSpeed / 10);
+                Ship.currentShip.TakeDamage(mover.dashImpulse / 10);
                 mover.OnTouchPlayer();
             }
 

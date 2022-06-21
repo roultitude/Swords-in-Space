@@ -17,6 +17,15 @@ namespace SwordsInSpace
             ai = gameObject.GetComponent<AIPath>();
         }
 
+        public void Update()
+        {
+            if (debugCanSeePlayer)
+            {
+                CanSeePlayer();
+                debugCanSeePlayer = false;
+            }
+        }
+
         protected void StopAstar()
         {
             ai.canMove = false;
@@ -62,7 +71,10 @@ namespace SwordsInSpace
 
             foreach (RaycastHit2D hit in collide)
             {
-
+                if (debugCanSeePlayer)
+                {
+                    Debug.Log(hit.collider.gameObject);
+                }
                 if (hit.collider.gameObject.GetComponent<ShipMover>() != null)
                 {
                     return true;

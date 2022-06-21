@@ -7,11 +7,12 @@ namespace SwordsInSpace
     {
 
         public float dashChargeTime;
-        public double dashSpeed;
+        public double dashImpulse;
         public float dashTime;
         public float dashCD;
 
-        private Vector2 targetLocation;
+        public NeedleAI needleAI;
+
 
         public enum STATE
         {
@@ -24,13 +25,15 @@ namespace SwordsInSpace
 
         private double currentTime = 0;
         Rigidbody2D rb;
+
         new public void Start()
         {
             base.Start();
             rb = GetComponent<Rigidbody2D>();
         }
-        public void Update()
+        new public void Update()
         {
+            base.Update();
             currentTime += Time.deltaTime;
 
 
@@ -69,11 +72,8 @@ namespace SwordsInSpace
         private void OnReachDestination()
         {
             currentTime = 0;
-            if (currentState == STATE.DASHING)
-                return;
-            currentState = STATE.DASHING;
+            currentState = STATE.CHARGEDASH;
             StopAstar();
-            targetLocation = Ship.currentShip.transform.position;
             LookAtPlayer();
         }
 
@@ -81,22 +81,25 @@ namespace SwordsInSpace
         {
             currentTime = 0;
             currentState = STATE.DASHING;
+            needleAI.onStartStopDash();
 
         }
 
         private void OnFinishDashing()
         {
+            needleAI.onStartStopDash();
             currentTime = 0;
             currentState = STATE.MOVING;
             rb.angularVelocity = 0f;
             rb.velocity = new Vector2(0, 0);
             ContinueAstar();
+
         }
 
 
         private void Dash()
         {
-            rb.AddRelativeForce(new Vector2((float)dashSpeed, 0), ForceMode2D.Impulse);
+            rb.AddRelativeForce(new Vector2((float)dashImpulse, 0), ForceMode2D.Impulse);
             rb.angularVelocity = 0f;
 
             //transform.position += transform.right * Time.deltaTime * (float)dashSpeed;

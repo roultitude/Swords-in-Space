@@ -55,8 +55,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _networkBehaviours:
   - {fileID: 0}
-  - {fileID: 6549005045294038484}
-  - {fileID: 2150578565774106529}
+  - {fileID: 0}
+  - {fileID: 0}
   SceneTransformProperties:
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -64,7 +64,7 @@ MonoBehaviour:
   _isNetworked: 1
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
-  _prefabId: -1
+  _prefabId: 5
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects: []
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 1
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: 3842234323794330338}
   _networkObjectCache: {fileID: 3842234323794330338}
   _synchronizeParent: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
     maximumInterval: 2
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
+  maxAcceleration: 10
   rotationSpeed: 1
   slowdownDistance: 0.6
   pickNextWaypointDist: 2
@@ -258,7 +258,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2241507642535770688}
-  - component: {fileID: 2150578565774106529}
   - component: {fileID: 5009307279760647555}
   m_Layer: 8
   m_Name: Shooter
@@ -282,24 +281,6 @@ Transform:
   m_Father: {fileID: 2739013680238319648}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2150578565774106529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3297842073833619420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f837c231c60d99b45bdf6d1103820242, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 2
-  _addedNetworkObject: {fileID: 3842234323794330338}
-  _networkObjectCache: {fileID: 3842234323794330338}
-  bullet: {fileID: 2590286623395873651, guid: 3f9c5556cb42f9142905538a99750657, type: 3}
-  range: 100
-  damage: 0
 --- !u!114 &5009307279760647555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,12 +294,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoplay: 1
-  repeat: 1
+  repeat: 0
   waitTime: 2.7
   timeout:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2150578565774106529}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EnemyShooter, Assembly-CSharp
         m_MethodName: Shoot
         m_Mode: 1

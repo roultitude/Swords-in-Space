@@ -14,8 +14,10 @@ namespace SwordsInSpace
         [SyncVar(OnChange = nameof(UpdateHpText))]
         private int currentHp;
 
-        [SerializeField]
-        Hpbar hpBar;
+
+        public Hpbar hpBar;
+
+
 
 
         // Start is called before the first frame update
