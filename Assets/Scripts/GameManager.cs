@@ -50,10 +50,8 @@ namespace SwordsInSpace
 
         public void OnLevelComplete()
         {
-            Ship.currentShip.AllPlayerExitUI();
-            GetCarryNetworkObjects(true,true);
-            SceneLoadData sld = new SceneLoadData("TempScene") { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
-            InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sld);
+            OnLevelCompleteRPC();
+            StartCoroutine(OnLevelCompleteStartCountdown());
         }
 
 
@@ -73,6 +71,20 @@ namespace SwordsInSpace
             OnNewSceneLoadEvent.Invoke();
         }
 
+        [ObserversRpc]
+        public void OnLevelCompleteRPC()
+        {
+            DisplayManager.instance.ShowLevelCompleteDisplay();
+        }
+
+        public IEnumerator OnLevelCompleteStartCountdown()
+        {
+            yield return new WaitForSeconds(10f);
+            Ship.currentShip.AllPlayerExitUI();
+            GetCarryNetworkObjects(true, true);
+            SceneLoadData sld = new SceneLoadData("TempScene") { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
+            InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sld);
+        }
         public void GetCarryNetworkObjects(bool includeShip, bool includePlayers)
         {
             CarryNetworkObjects = new List<NetworkObject>();

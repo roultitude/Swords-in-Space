@@ -61,7 +61,7 @@ namespace SwordsInSpace
             currentPlayerInput.playerInput.actions["Fire"].performed -= WeaponInputFire;
             currentPlayerInput.playerInput.actions["ToggleAutoFire"].performed -= WeaponInputAutoFire;
             DisplayManager.instance.DisplayCloseEvent -= OnDisplayClosed;
-            DisplayManager.instance.toggleMobilePlayerDisplay(true);
+            DisplayManager.instance.ToggleMobilePlayerDisplay(true);
             currentPlayerInput.SwitchView("PlayerView");
             currentPlayerInput = null;
             InstanceFinder.TimeManager.OnTick -= OnTick;
@@ -75,7 +75,7 @@ namespace SwordsInSpace
                 CameraManager.instance.ToggleWeaponCamera();
                 currentPlayerInput = player.GetComponent<PlayerInputManager>();
                 currentPlayerInput.SwitchView("WeaponView");
-                DisplayManager.instance.toggleMobilePlayerDisplay(false);
+                DisplayManager.instance.ToggleMobilePlayerDisplay(false);
                 currentPlayerInput.playerInput.actions["Move"].performed += WeaponInputMove;
                 currentPlayerInput.playerInput.actions["Fire"].performed += WeaponInputFire;
                 currentPlayerInput.playerInput.actions["ToggleAutoFire"].performed += WeaponInputAutoFire;

@@ -607,7 +607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _networkBehaviours: []
   SceneTransformProperties:
-    Position: {x: 298, y: 167.5, z: 0}
+    Position: {x: 298.5, y: 168, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
@@ -1129,6 +1129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobilePlayerDisplay: {fileID: 2041415490182988758, guid: 20533ce40f63d46468126a3ceecc48a2, type: 3}
+  levelCompleteDisplay: {fileID: 8165568111773633230, guid: 71ae7cd24612b144c962af5bae127e03, type: 3}
 --- !u!4 &899070378
 Transform:
   m_ObjectHideFlags: 0

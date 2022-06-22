@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobilePlayerDisplay: {fileID: 2041415490182988758, guid: 20533ce40f63d46468126a3ceecc48a2, type: 3}
+  levelCompleteDisplay: {fileID: 8165568111773633230, guid: 71ae7cd24612b144c962af5bae127e03, type: 3}
 --- !u!4 &100016503
 Transform:
   m_ObjectHideFlags: 0

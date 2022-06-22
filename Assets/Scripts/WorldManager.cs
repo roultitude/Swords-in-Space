@@ -17,6 +17,8 @@ namespace SwordsInSpace
 
         public bool levelComplete = false;
 
+        private bool levelFinished = false;
+
         void Start()
         {
             if (currentWorld)
@@ -31,10 +33,10 @@ namespace SwordsInSpace
         void Update()
         {
             if (!InstanceFinder.IsServer) return;
-            if (levelComplete)
+            if (levelComplete && !levelFinished)
             {
                 GameManager.instance.OnLevelComplete();
-                levelComplete = false;
+                levelFinished = true;
             }
         }
 
@@ -44,6 +46,7 @@ namespace SwordsInSpace
             if (spawner.spawningComplete && !levelComplete && FindObjectOfType(typeof(EnemyAI)) == null)
             {
                 levelComplete = true;
+
             }
         }
 

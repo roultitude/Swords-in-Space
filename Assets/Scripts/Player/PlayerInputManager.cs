@@ -171,7 +171,7 @@ namespace SwordsInSpace
         public void SwitchView(string viewName)
         {
 
-            DisplayManager.instance.toggleMobilePlayerDisplay(viewName == "PlayerView");
+            DisplayManager.instance.ToggleMobilePlayerDisplay(viewName == "PlayerView");
 
             if (currentInputMap.name == "PlayerView")
             {
