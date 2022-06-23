@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using static SwordsInSpace.UpgradeSO;
 
 namespace SwordsInSpace
 {
@@ -18,6 +19,8 @@ namespace SwordsInSpace
         public Transform shipInteriorView;
         public Transform spawnTransform;
         public Transform playerTracker;
+        public UpgradeManager upgradeManager;
+        public ExpManager expManager;
 
         [SerializeField]
         ShipSO data;
@@ -31,7 +34,14 @@ namespace SwordsInSpace
         [SerializeField]
         GameObject background;
 
+
+
+
+        [SyncVar]
         public double CurrentHp;
+
+        [SyncVar]
+        public double CurrentMaxHp;
 
         public bool isPowerUp = true;
 
@@ -39,8 +49,77 @@ namespace SwordsInSpace
         {
             currentShip = this;
             shipMover = this.GetComponentInChildren<ShipMover>();
-            CurrentHp = data.MaxHp;
+            CurrentHp = data.ShipMaxHp;
+            CurrentMaxHp = data.ShipMaxHp;
 
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        public void ReloadStats()
+        {
+            Dictionary<UpgradeTypes, float> stats = upgradeManager.TallyUpgrades();
+            double TallyMaxHp = data.ShipMaxHp;
+
+            //Base increases
+            foreach (UpgradeTypes type in stats.Keys)
+            {
+                switch (type)
+                {
+                    case UpgradeTypes.maxHp:
+                        TallyMaxHp += stats[type];
+
+                        break;
+
+                }
+            }
+
+            //%Increases, to be applied after base increase
+            foreach (UpgradeTypes type in stats.Keys)
+            {
+                switch (type)
+                {
+                    case UpgradeTypes.maxHpPercent:
+                        TallyMaxHp *= (100 + stats[type]) / 100;
+                        break;
+
+                }
+            }
+
+
+            //Assignment of values
+            if (CurrentMaxHp != TallyMaxHp)
+                SetMaxHp(TallyMaxHp);
+        }
+
+
+        [ServerRpc(RequireOwnership = false)]
+        private void SetMaxHp(double amt)
+        {
+            double hppercent = CurrentHp / CurrentMaxHp;
+
+            CurrentMaxHp = amt;
+
+            CurrentHp = CurrentMaxHp * hppercent;
+
+            if (CurrentMaxHp < CurrentHp)
+                CurrentHp = CurrentMaxHp;
+
+
+        }
+
+
+        public void LevelTransition()
+        {
+            if (!IsServer)
+            {
+                return;
+            }
+
+            int storedLevels = expManager.GetStoredLevels();
+            if (storedLevels > 0)
+            {
+                upgradeManager.TriggerUpgrades(storedLevels);
+            }
         }
 
         public void PowerDown()
@@ -95,15 +174,15 @@ namespace SwordsInSpace
         [ObserversRpc]
         public void UpdateHpBar()
         {
-            UiHpBar.GetComponent<UIHpBar>().Resize((float)CurrentHp / (float)data.MaxHp);
+            UiHpBar.GetComponent<UIHpBar>().Resize((float)CurrentHp / (float)CurrentMaxHp);
         }
 
         [ServerRpc(RequireOwnership = false)]
         public void AddHp(int amt)
         {
             CurrentHp += amt;
-            if (CurrentHp > data.MaxHp)
-                CurrentHp = data.MaxHp;
+            if (CurrentHp > CurrentMaxHp)
+                CurrentHp = CurrentMaxHp;
 
             UpdateHpBar();
         }

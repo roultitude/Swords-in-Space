@@ -15,13 +15,13 @@ namespace SwordsInSpace
         public void Setup(double shotSpeed, double shotLifeTime, double damage)
         {
             timer = gameObject.AddComponent<Timer>();
-            this.shotLifeTime = shotLifeTime;
             this.shotSpeed = shotSpeed;
             timer.Setup(shotLifeTime, false, true);
             timer.timeout.AddListener(OnTimeout);
             this.damage = damage;
 
         }
+
         public void OnHit()
         {
             if (IsServer)

@@ -14,10 +14,16 @@ namespace SwordsInSpace
         [SyncVar(OnChange = nameof(UpdateHpText))]
         private int currentHp;
 
+        [SerializeField]
+        public double exp;
 
-        public Hpbar hpBar;
+
+        [SerializeField]
+        Hpbar hpBar;
 
 
+
+        readonly float fadeTime = 0.8f;
 
 
         // Start is called before the first frame update
@@ -30,7 +36,7 @@ namespace SwordsInSpace
                 GetComponent<Rigidbody2D>().isKinematic = true;
             }
 
-            hpBar.DoFade(0.8f);
+            hpBar.DoFade(fadeTime);
         }
 
         private void UpdateHpText(int oldint, int newint, bool server)
@@ -50,16 +56,17 @@ namespace SwordsInSpace
                 bullet.OnHit();
                 if (currentHp <= 0)
                 {
-                    onDeath();
+                    OnDeath();
                 }
             }
 
         }
 
-        private void onDeath()
+        private void OnDeath()
         {
             if (!IsServer) return;
             WorldManager.currentWorld.StartCoroutine(WorldManager.currentWorld.CheckIfComplete());
+            Ship.currentShip.expManager.AddExp(exp);
             this.Despawn();
         }
 

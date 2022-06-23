@@ -15,11 +15,11 @@ MonoBehaviour:
   turretSprite: {fileID: 21300000, guid: c70f2c6a17f6c73419a2bedef141e647, type: 3}
   bulletPrefab: {fileID: 2590286623395873651, guid: 3f9c5556cb42f9142905538a99750657, type: 3}
   damage: 1
-  shotSpeed: 5
+  shotSpeed: 15
   shotLifeTime: 10
-  burst: 5
+  burst: 2
   maxAmmo: 5
   ammoRefill: 1
-  atkCD: 5
-  burstCD: 0.3
+  atkCD: 2
+  burstCD: 0.1
   rotationSpeed: 80
