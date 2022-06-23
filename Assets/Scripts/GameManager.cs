@@ -94,7 +94,7 @@ namespace SwordsInSpace
                 if (includePlayers) 
                 {
                     CarryNetworkObjects.Add(user.controlledPlayer.GetComponent<NetworkObject>());
-                    user.controlledPlayer.DetachUsernameCanvas(false);
+                    user.controlledPlayer.DetachUsernameCanvasRPC(false);
                 }
             }
             if(includeShip) CarryNetworkObjects.Add(Ship.currentShip.GetComponentInParent<NetworkObject>()); //get current ship

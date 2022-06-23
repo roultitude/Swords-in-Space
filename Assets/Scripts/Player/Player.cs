@@ -46,7 +46,12 @@ namespace SwordsInSpace
         public void SetupPlayer()
         {
             if (offset == 0) offset = playerCanvas.transform.localPosition.y;
-            DetachUsernameCanvas(true);
+            if (IsServer)
+            {
+                DetachUsernameCanvasRPC(true);
+            }
+            else DetachUsernameCanvas(true);
+
             transform.position = Ship.currentShip.spawnTransform.position;
             
             if (!IsOwner) return;
@@ -81,18 +86,23 @@ namespace SwordsInSpace
         }
 
         [ObserversRpc(RunLocally =true)]
-        public void DetachUsernameCanvas(bool detach)
+        public void DetachUsernameCanvasRPC(bool detach)
+        {
+            DetachUsernameCanvas(detach);
+        }
+
+
+        private void DetachUsernameCanvas(bool detach)
         {
             if (detach)
             {
                 playerCanvas.transform.SetParent(null);
                 playerCanvas.transform.rotation = Quaternion.identity;
-            } else
+            }
+            else
             {
                 playerCanvas.transform.SetParent(transform);
             }
-
-
         }
     } 
 }
