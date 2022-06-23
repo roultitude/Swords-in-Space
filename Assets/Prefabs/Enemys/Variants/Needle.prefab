@@ -51,9 +51,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 519005804873463880, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: maxAcceleration
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243098138462999814, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1386559295309661771, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Name
       value: Needle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386559295309661771, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1876378180998121174, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2029872035726437235, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_AngularDrag
@@ -68,12 +84,40 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 18ef26e0ded910043a330ba061921d02, type: 3}
     - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3297842073833619420, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3455073045956048090, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698697621999644424, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _prefabId
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _networkBehaviours.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[0]
@@ -87,6 +131,22 @@ PrefabInstance:
       propertyPath: _networkBehaviours.Array.data[2]
       value: 
       objectReference: {fileID: 7889098942661978653}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _networkBehaviours.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _networkBehaviours.Array.data[4]
+      value: 
+      objectReference: {fileID: 7889098942661978653}
+    - target: {fileID: 4801082456647798630, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: exp
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5009307279760647555, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: repeat
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5009307279760647555, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: waitTime
       value: 0.2
@@ -102,6 +162,18 @@ PrefabInstance:
     - target: {fileID: 5009307279760647555, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: timeout.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: onTimerComplete
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549005045294038484, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _componentIndexCache
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743148723566468320, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8943456316866189084, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
@@ -128,7 +200,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1.28, y: 1.28}
+    newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -250,6 +322,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5959219170562014505}
   _networkObjectCache: {fileID: 5959219170562014505}
   maxHp: 1
+  exp: 55
   hpBar: {fileID: 5760145152818412359}
   mover: {fileID: 7826549821664265833}
   shooter: {fileID: 7889098942661978653}

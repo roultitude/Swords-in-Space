@@ -118,22 +118,24 @@ namespace SwordsInSpace
             int storedLevels = expManager.GetStoredLevels();
             if (storedLevels > 0)
             {
+                Debug.Log("triggering levels: " + storedLevels);
                 upgradeManager.TriggerUpgrades(storedLevels);
+            } else
+            {
+                GameManager.instance.GoToLevel("GameScene", true, true);
             }
         }
 
         public void PowerDown()
         {
-
-            background.GetComponent<RawImage>().color = TintNoPower;
+            ChangeBackgroundColorRPC(TintNoPower);
             isPowerUp = false;
-            //Kick everyone out of their UI!
             AllPlayerExitUI();
         }
 
         public void PowerUp()
         {
-            background.GetComponent<RawImage>().color = Color.white;
+            ChangeBackgroundColorRPC(Color.white);
             isPowerUp = true;
         }
 
@@ -147,7 +149,11 @@ namespace SwordsInSpace
                 GameManager.instance.OnLoseGame();
             }
         }
-
+        [ObserversRpc]
+        public void ChangeBackgroundColorRPC(Color color)
+        {
+            background.GetComponent<RawImage>().color = color;
+        }
         [ObserversRpc]
         public void AllPlayerExitUI()
         {

@@ -10,7 +10,6 @@ namespace SwordsInSpace
 {
     public class GameManager : NetworkBehaviour
     {
-        public GameObject userManagerPrefab;
         public static GameManager instance;
         public delegate void OnNewSceneLoad();
         public static OnNewSceneLoad OnNewSceneLoadEvent;
@@ -35,8 +34,6 @@ namespace SwordsInSpace
         public override void OnStartServer()
         {
             base.OnStartServer();
-            GameObject userManager = Instantiate(userManagerPrefab);
-            Spawn(userManager);
             SceneManager.OnClientPresenceChangeEnd += arg => OnNewSceneBroadcast(arg.Connection);
         }
 
@@ -81,10 +78,15 @@ namespace SwordsInSpace
         {
             yield return new WaitForSeconds(10f);
             Ship.currentShip.AllPlayerExitUI();
+            yield return new WaitForSeconds(1f);
             GetCarryNetworkObjects(true, true);
             SceneLoadData sld = new SceneLoadData("TempScene") { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
             InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sld);
+            yield return new WaitForSeconds(5f);
+            Ship.currentShip.LevelTransition();
         }
+        
+
         public void GetCarryNetworkObjects(bool includeShip, bool includePlayers)
         {
             CarryNetworkObjects = new List<NetworkObject>();
@@ -98,7 +100,8 @@ namespace SwordsInSpace
                 }
             }
             if(includeShip) CarryNetworkObjects.Add(Ship.currentShip.GetComponentInParent<NetworkObject>()); //get current ship
-            CarryNetworkObjects.Add(UserManager.instance.GetComponent<NetworkObject>());
+            CarryNetworkObjects.Add(UserManager.instance.GetComponent<NetworkObject>()); //always bring UserManager and GameManager
+            CarryNetworkObjects.Add(GameManager.instance.GetComponent<NetworkObject>());
         }
     }
 

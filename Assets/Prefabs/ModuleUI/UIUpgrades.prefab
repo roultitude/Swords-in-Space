@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Upgrades Left:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 265d56a48a9206445bc7d944c8d989e3, type: 2}
+  m_sharedMaterial: {fileID: -5078580696487557892, guid: 265d56a48a9206445bc7d944c8d989e3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXIT
+  m_text: ' Debug Trigger'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -228,10 +228,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 44.1
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -340,8 +340,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 265d56a48a9206445bc7d944c8d989e3, type: 2}
+  m_sharedMaterial: {fileID: -5078580696487557892, guid: 265d56a48a9206445bc7d944c8d989e3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 5355206789088445754}
   - component: {fileID: 4767890373145658424}
   m_Layer: 5
-  m_Name: ButtonExit
+  m_Name: ButtonDebugTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -598,7 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6025669548485227291}
   m_Layer: 5
-  m_Name: ButtonHolderExit (1)
+  m_Name: ButtonHolderDebugTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -825,6 +825,7 @@ MonoBehaviour:
   - {fileID: 3800556217939862726}
   - {fileID: 5165411028905555709}
   - {fileID: 8094850396790781133}
+  upgradesRemainingText: {fileID: 6782802732535062031}
 --- !u!1 &9074896718283519273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,8 +1746,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: RIGHT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 265d56a48a9206445bc7d944c8d989e3, type: 2}
+  m_sharedMaterial: {fileID: -5078580696487557892, guid: 265d56a48a9206445bc7d944c8d989e3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2245,8 +2246,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LEFT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 265d56a48a9206445bc7d944c8d989e3, type: 2}
+  m_sharedMaterial: {fileID: -5078580696487557892, guid: 265d56a48a9206445bc7d944c8d989e3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2651,8 +2652,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: RIGHT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 265d56a48a9206445bc7d944c8d989e3, type: 2}
+  m_sharedMaterial: {fileID: -5078580696487557892, guid: 265d56a48a9206445bc7d944c8d989e3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

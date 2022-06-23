@@ -59,9 +59,29 @@ PrefabInstance:
       propertyPath: radius
       value: 1.3
       objectReference: {fileID: 0}
+    - target: {fileID: 519005804873463880, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: maxAcceleration
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243098138462999814, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1386559295309661771, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Name
       value: Donkey
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386559295309661771, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1876378180998121174, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029872035726437235, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 2150578565774106529, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: damage
@@ -72,12 +92,36 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 01c262992b492f74f8836d037f52faf4, type: 3}
     - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3297842073833619420, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3455073045956048090, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698697621999644424, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _prefabId
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -95,6 +139,18 @@ PrefabInstance:
       propertyPath: _networkBehaviours.Array.data[2]
       value: 
       objectReference: {fileID: 114230788736614587}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _networkBehaviours.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _networkBehaviours.Array.data[4]
+      value: 
+      objectReference: {fileID: 114230788736614587}
+    - target: {fileID: 4801082456647798630, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: exp
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5009307279760647555, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: repeat
       value: 0
@@ -133,6 +189,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6549005045294038484, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _componentIndexCache
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743148723566468320, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8943456316866189084, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -182,7 +246,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2, y: 2}
-    newSize: {x: 1.28, y: 1.28}
+    newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -221,6 +285,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 9217316466230567277}
   _networkObjectCache: {fileID: 9217316466230567277}
   maxHp: 3
+  exp: 55
   hpBar: {fileID: 7109283038549124867}
 --- !u!114 &7109283038549124867 stripped
 MonoBehaviour:

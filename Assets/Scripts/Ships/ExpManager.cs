@@ -45,6 +45,7 @@ namespace SwordsInSpace
             currentLevel += 1;
             storedLevels += 1;
             onLevel.Invoke();
+            Debug.Log("Leveled Up! " + currentLevel);
         }
 
         public int GetStoredLevels()

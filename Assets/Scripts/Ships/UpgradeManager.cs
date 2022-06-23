@@ -1,4 +1,5 @@
 using FishNet.Object;
+using FishNet.Object.Synchronizing;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,11 +34,12 @@ namespace SwordsInSpace
         public Dictionary<string, Upgrade> upgrades;
 
         [SerializeField]
-        public GameObject UpgradesDisplay;
+        public GameObject upgradesDisplay;
 
-        private UpgradesDisplay uiUpgrades => UpgradesDisplay.GetComponent<UpgradesDisplay>();
-
-        private int numUpgrades;
+        private UpgradesDisplay uiUpgrades => upgradesDisplay.GetComponent<UpgradesDisplay>();
+        
+        [SyncVar]
+        public int numUpgrades;
 
         public bool debugTrigger = false;
         private bool readyToUpgrade;
@@ -122,23 +124,18 @@ namespace SwordsInSpace
 
         }
 
-        [ObserversRpc]
+        [ObserversRpc(RunLocally = true)]
         public void ShowUpgrades(string upgrade1, string upgrade2, string upgrade3)
         {
             upgradeChoice = new string[] { upgrade1, upgrade2, upgrade3 };
             Debug.Log(upgrade1 + "\t" + upgrade2 + "\t" + upgrade3 + "\t" + uiUpgrades == null);
             uiUpgrades.SetUpgrades(upgrade1, upgrade2, upgrade3);
-
+            upgradesDisplay.GetComponentInChildren<VoteTimer>().ResetTimer();
         }
-
-
-
-
-
 
         public void ShowUpgradeScreen()
         {
-            if (DisplayManager.instance.Offer(UpgradesDisplay))
+            if (DisplayManager.instance.Offer(upgradesDisplay))
             {
 
                 Player player = User.localUser.controlledPlayer;
@@ -178,12 +175,14 @@ namespace SwordsInSpace
             Debug.Log("Upgrade Complete!");
             if (numUpgrades > 0)
             {
+                
                 RollUpgrades();
             }
             else
             {
                 Ship.currentShip.ReloadStats();
                 BroadcastCloseScreen();
+                GameManager.instance.GoToLevel("GameScene,true,true");
             }
         }
 
@@ -257,6 +256,12 @@ namespace SwordsInSpace
             readyToUpgrade = false;
             AddUpgrade(str);
         }
+
+        public void AddRandomUpgrade()
+        {
+            AddUpgrade(upgradeChoice[Random.Range(0, upgradeChoice.Length)]);
+        }
+
 
     }
 };

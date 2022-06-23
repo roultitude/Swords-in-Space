@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace SwordsInSpace
 {
@@ -10,15 +11,22 @@ namespace SwordsInSpace
     {
         // Start is called before the first frame update
 
-        UpgradeSO[] upgrades;
+        
 
         public UpgradeButton[] buttons;
 
-        private UpgradeManager upgradeManager;
+        [SerializeField]
+        private TMPro.TextMeshProUGUI upgradesRemainingText;
 
-        private void OnEnable()
+        private UpgradeManager upgradeManager;
+        private UpgradeSO[] upgrades;
+        private Canvas canvas;
+        public override void Awake()
         {
+            base.Awake();
             GameManager.OnNewSceneLoadEvent += OnNewSceneLoaded;
+            canvas = GetComponent<Canvas>();
+            canvas.enabled = false;
         }
 
         private void OnDisable()
@@ -28,13 +36,12 @@ namespace SwordsInSpace
 
         public void SetUpgrades(string upgradestr1, string upgradestr2, string upgradestr3)
         {
+            GetComponent<Canvas>().enabled = true;
             if (upgradeManager == null || upgrades == null)
             {
                 this.upgradeManager = Ship.currentShip.upgradeManager;
                 upgrades = new UpgradeSO[3];
             }
-
-
 
             UpgradeSO upgrade1 = upgradeManager.StringToUpgradeSO(upgradestr1);
             UpgradeSO upgrade2 = upgradeManager.StringToUpgradeSO(upgradestr2);
@@ -50,10 +57,16 @@ namespace SwordsInSpace
             buttons[2].UpdateButton(upgrade3);
 
         }
-
+        private void Update()
+        {
+            if (canvas.enabled)
+            {
+                upgradesRemainingText.text = "Upgrades Left: " + upgradeManager.numUpgrades;
+            }
+        }
         private void OnNewSceneLoaded()
         {
-            Ship.currentShip.upgradeManager.UpgradesDisplay = gameObject;
+            Ship.currentShip.upgradeManager.upgradesDisplay = gameObject;
         }
 
         public void triggerDebug()
