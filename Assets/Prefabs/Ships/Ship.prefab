@@ -200,6 +200,8 @@ GameObject:
   - component: {fileID: 2974684135176937384}
   - component: {fileID: 4703744331782941198}
   - component: {fileID: 4485076214342864807}
+  - component: {fileID: 7784500117912041229}
+  - component: {fileID: 3722305566664632514}
   - component: {fileID: 3006086760405494744}
   m_Layer: 7
   m_Name: ShipExterior
@@ -264,6 +266,8 @@ MonoBehaviour:
   _graphicalObject: {fileID: 8138893596707659371}
   _smoothTicks: 1
   _smoothingDuration: 0.125
+  _enableTeleport: 0
+  _teleportThreshold: 1
   _predictionType: 2
   _rigidbody: {fileID: 0}
   _rigidbody2d: {fileID: 4703744331782941198}
@@ -311,12 +315,62 @@ MonoBehaviour:
   shipInteriorView: {fileID: 1130353307318565334}
   spawnTransform: {fileID: 3376241738065158074}
   playerTracker: {fileID: 7927405157388670407}
+  upgradeManager: {fileID: 7784500117912041229}
+  expManager: {fileID: 3722305566664632514}
   data: {fileID: 0}
   UiHpBar: {fileID: 3520883478350620201}
   TintNoPower: {r: 0, g: 0, b: 0, a: 0}
   background: {fileID: 220810308338604789}
   CurrentHp: 0
+  CurrentMaxHp: 0
   isPowerUp: 1
+--- !u!114 &7784500117912041229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249428066534560750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2623b866e372ea40ab33257f469571d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 3
+  _addedNetworkObject: {fileID: 5412598000014957244}
+  _networkObjectCache: {fileID: 5412598000014957244}
+  tier1Upgrade:
+  - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
+    upgradeCount: 0
+  tier2Upgrade:
+  - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
+    upgradeCount: 0
+  tier3Upgrade:
+  - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
+    upgradeCount: 0
+  tier4Upgrade:
+  - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
+    upgradeCount: 0
+  UpgradesDisplay: {fileID: 0}
+  debugTrigger: 0
+--- !u!114 &3722305566664632514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249428066534560750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace2dd9983b50004ea3070eb47e78e85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: 0
+  currentExp: 0
+  storedLevels: 0
+  onLevel:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &3006086760405494744
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -673,6 +727,7 @@ MonoBehaviour:
   - {fileID: 1185405697126653920}
   - {fileID: 2974684135176937384}
   - {fileID: 4485076214342864807}
+  - {fileID: 7784500117912041229}
   - {fileID: 8524240635559801792}
   - {fileID: 840958035019083572}
   SceneTransformProperties:
@@ -1084,7 +1139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6297bda6e55c144468e6b7794d3f428f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 4
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 5412598000014957244}
   _networkObjectCache: {fileID: 5412598000014957244}
   interiorTransform: {fileID: 3777107840797026398}
@@ -1134,7 +1189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1340d34fbded0f74fae656d13b17ebf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 3
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 5412598000014957244}
   _networkObjectCache: {fileID: 5412598000014957244}
   syncTarget: {fileID: 6463308224519303839}

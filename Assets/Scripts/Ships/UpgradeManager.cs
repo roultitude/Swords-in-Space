@@ -33,15 +33,14 @@ namespace SwordsInSpace
         public Dictionary<string, Upgrade> upgrades;
 
         [SerializeField]
-        public GameObject UIDisplay;
-        private DisplayManager manager;
+        public GameObject UpgradesDisplay;
 
-        private UIUpgrades uiUpgrades;
+        private UpgradesDisplay uiUpgrades => UpgradesDisplay.GetComponent<UpgradesDisplay>();
 
         private int numUpgrades;
 
         public bool debugTrigger = false;
-
+        private bool readyToUpgrade;
         private string[] upgradeChoice;
 
         PlayerInputManager currentPlayerInput;
@@ -51,7 +50,6 @@ namespace SwordsInSpace
             {
                 debugTrigger = false;
                 TriggerUpgrades(2);
-
             }
         }
 
@@ -69,9 +67,7 @@ namespace SwordsInSpace
                     upgrades.Add(a.upgradeSo.name, a);
                 }
             }
-
-            manager = DisplayManager.instance;
-            uiUpgrades = UIDisplay.GetComponent<UIUpgrades>();
+           
         }
 
 
@@ -122,7 +118,7 @@ namespace SwordsInSpace
             ShowUpgrades(thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name,
         thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name,
         thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name);
-
+            readyToUpgrade = true;
 
         }
 
@@ -142,7 +138,7 @@ namespace SwordsInSpace
 
         public void ShowUpgradeScreen()
         {
-            if (manager.Offer(UIDisplay))
+            if (DisplayManager.instance.Offer(UpgradesDisplay))
             {
 
                 Player player = User.localUser.controlledPlayer;
@@ -175,7 +171,6 @@ namespace SwordsInSpace
         }
 
 
-        [ServerRpc(RequireOwnership = false)]
         public void AddUpgrade(string upgrd)
         {
             upgrades[upgrd].upgradeCount += 1;
@@ -196,7 +191,7 @@ namespace SwordsInSpace
         [ObserversRpc]
         public void BroadcastCloseScreen()
         {
-            manager.Close();
+            DisplayManager.instance.Close();
         }
 
 
@@ -258,6 +253,8 @@ namespace SwordsInSpace
         [ServerRpc(RequireOwnership = false)]
         private void SendRPCUpgrade(string str)
         {
+            if (!readyToUpgrade) return;
+            readyToUpgrade = false;
             AddUpgrade(str);
         }
 

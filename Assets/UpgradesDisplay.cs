@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace SwordsInSpace
 {
-    public class UIUpgrades : MonoBehaviour
+    public class UpgradesDisplay : Display
     {
         // Start is called before the first frame update
 
@@ -16,7 +16,15 @@ namespace SwordsInSpace
 
         private UpgradeManager upgradeManager;
 
+        private void OnEnable()
+        {
+            GameManager.OnNewSceneLoadEvent += OnNewSceneLoaded;
+        }
 
+        private void OnDisable()
+        {
+            GameManager.OnNewSceneLoadEvent -= OnNewSceneLoaded;
+        }
 
         public void SetUpgrades(string upgradestr1, string upgradestr2, string upgradestr3)
         {
@@ -43,7 +51,15 @@ namespace SwordsInSpace
 
         }
 
+        private void OnNewSceneLoaded()
+        {
+            Ship.currentShip.upgradeManager.UpgradesDisplay = gameObject;
+        }
 
+        public void triggerDebug()
+        {
+            Ship.currentShip.upgradeManager.debugTrigger = true;
+        }
 
 
 
