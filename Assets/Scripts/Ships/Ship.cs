@@ -22,6 +22,8 @@ namespace SwordsInSpace
         public UpgradeManager upgradeManager;
         public ExpManager expManager;
 
+        public FireManager fireManager;
+
         [SerializeField]
         ShipSO data;
 
@@ -120,7 +122,8 @@ namespace SwordsInSpace
             {
                 Debug.Log("triggering levels: " + storedLevels);
                 upgradeManager.TriggerUpgrades(storedLevels);
-            } else
+            }
+            else
             {
                 GameManager.instance.GoToLevel("GameScene", true, true);
             }

@@ -15,7 +15,6 @@ namespace SwordsInSpace
         {
 
             shooter.canFire = !shooter.canFire;
-            Debug.Log(shooter.canFire);
         }
         public void OnCollisionEnter2D(Collision2D collision)
         {
