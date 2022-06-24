@@ -15,7 +15,8 @@ namespace SwordsInSpace
 
         [SerializeField]
         private GameObject mobilePlayerDisplay;
-
+        [SerializeField]
+        private GameObject levelCompleteDisplay;
         public static DisplayManager instance;  //There can only be one.
 
         GameObject currentUIDisplay;
@@ -25,7 +26,14 @@ namespace SwordsInSpace
 
         private void Awake()
         {
-            DisplayManager.instance = this;
+            if (instance) //override singleton, destroy oldest
+            {
+                Destroy(instance);
+            }
+            instance = this;
+            mobilePlayerDisplay = Instantiate(mobilePlayerDisplay);
+            levelCompleteDisplay = Instantiate(levelCompleteDisplay);
+            levelCompleteDisplay.SetActive(false);
         }
 
         public bool Offer(GameObject display, Interactable interactable = null)
@@ -47,10 +55,16 @@ namespace SwordsInSpace
             return true;
         }
 
-        public void toggleMobilePlayerDisplay(bool on)
+        public void ToggleMobilePlayerDisplay(bool on)
         {
             if (!mobilePlayerDisplay) return;
             mobilePlayerDisplay.SetActive(on);
+        }
+
+        public void ShowLevelCompleteDisplay()
+        {
+            if (!levelCompleteDisplay) return;
+            levelCompleteDisplay.SetActive(true);
         }
     }
 

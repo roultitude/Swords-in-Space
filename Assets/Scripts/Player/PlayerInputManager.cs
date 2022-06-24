@@ -70,6 +70,10 @@ namespace SwordsInSpace
             alwaysOnInput = playerInput.actions.FindActionMap("AlwaysOn");
             alwaysOnInput.Enable();
             currentInputMap = playerInput.actions.FindActionMap("PlayerView");
+            GameManager.OnNewSceneLoadEvent += () =>
+            {
+                shipMover = Ship.currentShip.shipMover;
+            };
         }
         private void OnDisable()
         {
@@ -85,6 +89,7 @@ namespace SwordsInSpace
         public override void OnStartClient()
         {
             base.OnStartClient();
+            Debug.Log("onclientstart");
             if (!base.IsOwner)
             {
                 playerInput.enabled = false;
@@ -93,6 +98,14 @@ namespace SwordsInSpace
             playerInput.actions["Interact"].performed += context => interactor.Interact();
             playerInput.actions["Dash"].performed += context => { awaitingDash = true; };
             playerInput.actions["ExitUI"].performed += context => OnExitUI(context);
+            playerInput.actions["NextLevel"].performed += context => { 
+                if (context.performed) 
+                {
+                    WorldManager.currentWorld.levelComplete = true;
+                    //GameManager.instance.OnLoseGame();
+                    //GameManager.instance.GoToLevel("GameScene");
+                } 
+            };
         }
 
         private void OnDestroy()
@@ -144,21 +157,21 @@ namespace SwordsInSpace
         {
             if (base.IsServer)
             {
+                
                 ReconcileData rdMover = new ReconcileData(mover.transform.position, mover.transform.rotation, rb.velocity, rb.angularVelocity
                     //, 1f
                     );
-                ReconcileData rdShip = new ReconcileData(shipMover.transform.position, shipMover.transform.rotation, shipMover.rb.velocity, shipMover.rb.angularVelocity
-                    //, 1f
-                    );
+                ReconcileData rdShip = default;
+                if (shipMover) rdShip = new ReconcileData(shipMover.transform.position, shipMover.transform.rotation, shipMover.rb.velocity, shipMover.rb.angularVelocity);
                 mover.Reconciliation(rdMover, true);
-                shipMover.Reconciliation(rdShip, true);
+                if (shipMover) shipMover.Reconciliation(rdShip, true);
             }
         }
 
         public void SwitchView(string viewName)
         {
 
-            DisplayManager.instance.toggleMobilePlayerDisplay(viewName == "PlayerView");
+            DisplayManager.instance.ToggleMobilePlayerDisplay(viewName == "PlayerView");
 
             if (currentInputMap.name == "PlayerView")
             {

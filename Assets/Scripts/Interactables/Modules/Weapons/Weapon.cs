@@ -17,7 +17,7 @@ namespace SwordsInSpace
 
         public int currentAmmo;
         [SerializeField]
-        public GameObject UIDisplay;
+        public GameObject UIDisplayPrefab;
         [SerializeField]
         public GameObject[] shootersObj;
 
@@ -27,7 +27,8 @@ namespace SwordsInSpace
         private Vector2 turnAxis;
         private bool togglingAutoFire;
         private bool firing;
-        void Awake()
+        private GameObject UIDisplay;
+        void OnEnable()
         {
             shooters = new List<Shooter>();
             foreach (GameObject comp in shootersObj)
@@ -37,24 +38,22 @@ namespace SwordsInSpace
                 compShooter.data = data;
                 compShooter.Setup();
             }
+            GameManager.OnNewSceneLoadEvent += SetupUI;
         }
 
-        void Start()
+        void OnDisable()
         {
-            UIDisplay = Instantiate(UIDisplay, Vector3.zero, Quaternion.identity);
-            manager = DisplayManager.instance;
-            UIDisplay.SetActive(false);
-
-        }
-
-        private void OnEnable()
-        {
-            //InstanceFinder.TimeManager.OnTick += OnTick;
-        }
-        private void OnDisable()
-        {
+            GameManager.OnNewSceneLoadEvent -= SetupUI;
             InstanceFinder.TimeManager.OnTick -= OnTick;
         }
+
+        void SetupUI()
+        {
+            UIDisplay = Instantiate(UIDisplayPrefab, Vector3.zero, Quaternion.identity);
+            manager = DisplayManager.instance;
+            UIDisplay.SetActive(false);
+        }
+
         void OnDisplayClosed()
         {
             CameraManager.instance.ToggleWeaponCamera();
@@ -62,7 +61,7 @@ namespace SwordsInSpace
             currentPlayerInput.playerInput.actions["Fire"].performed -= WeaponInputFire;
             currentPlayerInput.playerInput.actions["ToggleAutoFire"].performed -= WeaponInputAutoFire;
             DisplayManager.instance.DisplayCloseEvent -= OnDisplayClosed;
-            DisplayManager.instance.toggleMobilePlayerDisplay(true);
+            DisplayManager.instance.ToggleMobilePlayerDisplay(true);
             currentPlayerInput.SwitchView("PlayerView");
             currentPlayerInput = null;
             InstanceFinder.TimeManager.OnTick -= OnTick;
@@ -76,7 +75,7 @@ namespace SwordsInSpace
                 CameraManager.instance.ToggleWeaponCamera();
                 currentPlayerInput = player.GetComponent<PlayerInputManager>();
                 currentPlayerInput.SwitchView("WeaponView");
-                DisplayManager.instance.toggleMobilePlayerDisplay(false);
+                DisplayManager.instance.ToggleMobilePlayerDisplay(false);
                 currentPlayerInput.playerInput.actions["Move"].performed += WeaponInputMove;
                 currentPlayerInput.playerInput.actions["Fire"].performed += WeaponInputFire;
                 currentPlayerInput.playerInput.actions["ToggleAutoFire"].performed += WeaponInputAutoFire;

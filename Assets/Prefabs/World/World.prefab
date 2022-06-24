@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 982c9327cffe1dd438c6dc52f286711a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
 --- !u!1 &4444492387278712791
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +257,7 @@ MonoBehaviour:
   density: 15
   distance: 5
   tile: {fileID: 11400000, guid: 790c5c8742001644a85285917735e060, type: 2}
+  spawnCullingRadius: 0
 --- !u!1 &4444492388093359123
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,10 +311,12 @@ MonoBehaviour:
   minPackDensity: 2
   maxPackDensity: 3
   packSpawnRadius: {x: 5, y: 5}
+  UnitsFromAsteroid: 3
   spawninfos:
-  - MobType: {fileID: 1386559295309661771, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+  - MobType: {fileID: 8421504617852582272, guid: 825b139ee6189d249af28744eb6ec63d, type: 3}
     weight: 1
   worldSize: {x: 1000, y: 1000}
+  spawningComplete: 0
 --- !u!114 &4444492388093359121
 MonoBehaviour:
   m_ObjectHideFlags: 0

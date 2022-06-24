@@ -7,21 +7,22 @@ namespace SwordsInSpace
     public class Display : MonoBehaviour
     {
         [SerializeField]
-        private bool mobileOnly;
+        protected bool mobileOnly;
 
         public virtual void Setup(Interactable callingInteractable = null) {}
 
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
-        private void Awake()
+        public virtual void Awake()
         {
-            //gameObject.SetActive(true);
-            
+            gameObject.SetActive(true);
         }
 #else
-        private void Awake()
+        public virtual void Awake()
         {
-            //if (mobileOnly) Destroy(gameObject);
-            //gameObject.SetActive(!mobileOnly);
+            if (mobileOnly)
+            {
+                Destroy(gameObject);
+            }
         }
 #endif
     }

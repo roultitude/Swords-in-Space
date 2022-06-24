@@ -15,7 +15,7 @@ namespace SwordsInSpace
     {
 
         [SerializeField]
-        public GameObject UIDisplay;
+        public GameObject UIDisplayPrefab;
 
         [SyncVar]
         public SteerState currentSteerState;
@@ -24,29 +24,23 @@ namespace SwordsInSpace
 
         Vector2 turnAxis;
         PlayerInputManager currentPlayerInput;
-        void Awake()
-        {
-            currentSteerState = SteerState.OFF;
-        }
+        private GameObject UIDisplay;
         private void OnEnable()
         {
+            currentSteerState = SteerState.OFF;
+            GameManager.OnNewSceneLoadEvent += SetupUI;
         }
         private void OnDisable()
         {
+            GameManager.OnNewSceneLoadEvent -= SetupUI;
             InstanceFinder.TimeManager.OnTick -= OnTick;
         }
-        void Start()
+
+        void SetupUI()
         {
-            UIDisplay = Instantiate(UIDisplay, Vector3.zero, Quaternion.identity);
+            UIDisplay = Instantiate(UIDisplayPrefab, Vector3.zero, Quaternion.identity);
             manager = DisplayManager.instance;
             UIDisplay.SetActive(false);
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
         void OnDisplayClosed()
@@ -62,7 +56,7 @@ namespace SwordsInSpace
             InstanceFinder.TimeManager.OnTick -= OnTick;
             DisplayManager.instance.DisplayCloseEvent -= OnDisplayClosed;
 
-            Ship.currentShip.leavePilot();
+            Ship.currentShip.LeavePilot();
             shipMover.canMove = false;
             currentPlayerInput = null;
         }
@@ -85,7 +79,7 @@ namespace SwordsInSpace
                 DisplayManager.instance.DisplayCloseEvent += OnDisplayClosed;
                 InstanceFinder.TimeManager.OnTick += OnTick;
 
-                Ship.currentShip.changePilot();
+                Ship.currentShip.ChangePilot();
                 shipMover.canMove = true;
             }
         }

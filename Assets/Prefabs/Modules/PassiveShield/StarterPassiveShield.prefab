@@ -119,7 +119,8 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 1089966707694479485}
   Hp: 0
   MaxHp: 0
-  UIDisplay: {fileID: 2820425106572785257, guid: 7066f820b3a9004489573ac7e8f4474b, type: 3}
+  canUseOnPowerOut: 0
+  UIDisplayPrefab: {fileID: 2820425106572785257, guid: 7066f820b3a9004489573ac7e8f4474b, type: 3}
 --- !u!114 &1089966707694479485
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ namespace SwordsInSpace
         private TextMeshProUGUI usernameText;
 
         [SerializeField]
-        private Canvas playerCanvas;
+        private GameObject playerCanvas;
 
         [SyncVar]
         public User controllingUser;
@@ -25,33 +25,46 @@ namespace SwordsInSpace
         public float health;
 
 
-        private float offset;
+        public float offset;
         private bool initialized;
+        //private Canvas playerCanvas;
         public override void OnStartClient()
         {
             base.OnStartClient();
+            
             SetParent();
-            offset = playerCanvas.transform.localPosition.y;
+            //playerCanvas = Instantiate(playerCanvasPrefab).GetComponent<Canvas>();
             StartCoroutine(checkForUsernameUpdate(controllingUser.username));
-            playerCanvas.transform.parent = null;
-            playerCanvas.transform.rotation = Quaternion.identity;
 
             if (!IsOwner)
             {
                 return;
             }
-            CameraManager.instance.AttachToPlayer(transform);
-
+            //SetupPlayer();
         }
 
+        public void SetupPlayer()
+        {
+            if (offset == 0) offset = playerCanvas.transform.localPosition.y;
+            if (IsServer)
+            {
+                DetachUsernameCanvasRPC(true);
+            }
+            else DetachUsernameCanvas(true);
+
+            transform.position = Ship.currentShip.spawnTransform.position;
+            
+            if (!IsOwner) return;
+            CameraManager.instance.AttachToPlayer(transform);
+        }
         public void SetParent()
         {
-            this.transform.parent = Ship.currentShip.spawnTransform;
+            //this.transform.parent = Ship.currentShip.spawnTransform;
         }
 
         public void updateUsernameText(string username)
         {
-            usernameText.text = username;
+            playerCanvas.GetComponentInChildren<TextMeshProUGUI>().text = username;
         }
 
         IEnumerator checkForUsernameUpdate(string username)
@@ -69,7 +82,27 @@ namespace SwordsInSpace
 
         private void Update()
         {
-            if(offset!= 0) playerCanvas.transform.position = new Vector2(transform.position.x, transform.position.y + offset);
+            if(offset!= 0 && playerCanvas) playerCanvas.transform.position = new Vector2(transform.position.x, transform.position.y + offset);
+        }
+
+        [ObserversRpc(RunLocally =true)]
+        public void DetachUsernameCanvasRPC(bool detach)
+        {
+            DetachUsernameCanvas(detach);
+        }
+
+
+        private void DetachUsernameCanvas(bool detach)
+        {
+            if (detach)
+            {
+                playerCanvas.transform.SetParent(null);
+                playerCanvas.transform.rotation = Quaternion.identity;
+            }
+            else
+            {
+                playerCanvas.transform.SetParent(transform);
+            }
         }
     } 
 }

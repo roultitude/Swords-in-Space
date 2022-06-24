@@ -15,7 +15,6 @@ namespace SwordsInSpace
         private float speed, rotationSpeed, dashMultiplier;
 
         private float lastInputAngle;
-        private Vector2 shipLastFrame;
 
         private void Awake()
         {
@@ -30,14 +29,10 @@ namespace SwordsInSpace
             {
                 //rb.isKinematic = true;
             }
-            shipLastFrame = Ship.currentShip.transform.position;
         }
         private void Update()
         {
-            //Vector2 shipThisFrame = Ship.currentShip.transform.position;
-            //Vector2 positionOffset = shipThisFrame - shipLastFrame;
-           // shipLastFrame = shipThisFrame;
-           // transform.position = (Vector2) transform.position + positionOffset;
+
         }
         public void Move(MoveData md, bool asServer, bool replaying = false)
         {
