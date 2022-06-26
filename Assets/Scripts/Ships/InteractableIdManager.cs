@@ -15,7 +15,7 @@ namespace SwordsInSpace
         public void RefreshData()
         {
             data = new List<Interactable>(GetComponentsInChildren<Interactable>());
-            // data.Sort((x, y) => x.name.CompareTo(y.name));
+
         }
 
         // Update is called once per frame
@@ -26,7 +26,7 @@ namespace SwordsInSpace
 
         public Interactable GetInteractable(int id)
         {
-            RefreshData();
+
             if (id < data.Count)
             {
                 return data[id];
@@ -36,7 +36,7 @@ namespace SwordsInSpace
 
         public int GetId(Interactable inp)
         {
-            RefreshData();
+
             if (data.Contains(inp))
             {
                 return data.IndexOf(inp);

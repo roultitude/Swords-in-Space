@@ -114,7 +114,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3777107840797026398}
   - component: {fileID: 7750103762623040915}
-  - component: {fileID: 7544719032202861395}
   m_Layer: 6
   m_Name: ShipInterior
   m_TagString: Untagged
@@ -157,30 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f849697bb0ba9540965818ea33964eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7544719032202861395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233124608600775111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd2f6b7bb71d184084c6d9d716cc2e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 4
-  _addedNetworkObject: {fileID: 5412598000014957244}
-  _networkObjectCache: {fileID: 5412598000014957244}
-  shipGrid: {fileID: 5221657398123396329}
-  fire: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
-  manager: {fileID: 7750103762623040915}
-  tileSize: {x: 32, y: 32}
-  isOnFire: 0
-  multipleFireSpreadChance: 0.1
-  tickChance: 0.10000000149011612
-  tickDur: 0.800000011920929
-  DebugStartFire: 0
 --- !u!1 &611136254937875391
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +317,8 @@ MonoBehaviour:
   playerTracker: {fileID: 7927405157388670407}
   upgradeManager: {fileID: 7784500117912041229}
   expManager: {fileID: 3722305566664632514}
-  fireManager: {fileID: 7544719032202861395}
+  fireContainer: {fileID: 0}
+  fireManager: {fileID: 0}
   data: {fileID: 0}
   UiHpBar: {fileID: 3520883478350620201}
   TintNoPower: {r: 0, g: 0, b: 0, a: 0}
@@ -755,7 +731,7 @@ MonoBehaviour:
   - {fileID: 2974684135176937384}
   - {fileID: 4485076214342864807}
   - {fileID: 7784500117912041229}
-  - {fileID: 7544719032202861395}
+  - {fileID: 0}
   - {fileID: 8524240635559801792}
   - {fileID: 840958035019083572}
   SceneTransformProperties:

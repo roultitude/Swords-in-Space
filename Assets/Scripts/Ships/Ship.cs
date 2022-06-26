@@ -21,6 +21,7 @@ namespace SwordsInSpace
         public Transform playerTracker;
         public UpgradeManager upgradeManager;
         public ExpManager expManager;
+        public Transform fireContainer;
 
         public FireManager fireManager;
 

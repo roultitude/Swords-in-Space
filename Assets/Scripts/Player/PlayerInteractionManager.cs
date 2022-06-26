@@ -39,7 +39,7 @@ namespace SwordsInSpace
         {
             if (!base.IsOwner) { return; }
 
-            interactables.RefreshData();
+
             InteractQuery(base.Owner);
 
 
@@ -75,11 +75,21 @@ namespace SwordsInSpace
         [ServerRpc]
         void InteractQuery(NetworkConnection conn = null)
         {
-            interactables.RefreshData();
 
             if (data.Count > 0)
             {
-                ReplyInteractQuery(conn, data[0]);
+                foreach (int a in data)
+                {
+                    Interactable obj = interactables.GetInteractable(a);
+
+                    if (obj)
+                    {
+                        if (Ship.currentShip.isPowerUp || obj.canUseOnPowerOut)
+                            ReplyInteractQuery(conn, a);
+                    }
+
+                }
+
             }
 
         }
@@ -87,7 +97,7 @@ namespace SwordsInSpace
         [TargetRpc]
         void ReplyInteractQuery(NetworkConnection conn, int interactableId)
         {
-            interactables.RefreshData();
+
             Interactable obj = interactables.GetInteractable(interactableId);
             Debug.Log(obj.transform);
             if (obj)
@@ -104,7 +114,6 @@ namespace SwordsInSpace
         {
             if (!base.IsServer) { return; }
             Debug.Log(other.gameObject);
-            interactables.RefreshData();
             Interactable otherInteractable = other.gameObject.GetComponentInParent<Interactable>();
 
             if (otherInteractable)
