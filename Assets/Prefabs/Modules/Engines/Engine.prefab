@@ -8,6 +8,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: m_Size.x
+      value: 0.25847816
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2899772
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.020927906
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0024383962
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 0.32
       objectReference: {fileID: 0}
@@ -129,5 +145,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8b6307f6352eb4494b2da32738217e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 5879751530695200182}
+  _networkObjectCache: {fileID: 5879751530695200182}
   Hp: 0
   MaxHp: 0
+  canUseOnPowerOut: 0
+--- !u!114 &5879751530695200182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997270631367016323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _networkBehaviours:
+  - {fileID: 1457822031181448514}
+  SceneTransformProperties:
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    LocalScale: {x: 1, y: 1, z: 0}
+  _isNetworked: 1
+  _hasParentNetworkObjectAtEdit: 0
+  NetworkObserver: {fileID: 0}
+  _prefabId: -1
+  _scenePathHash: 0
+  _sceneId: 0
+  _sceneNetworkObjects: []

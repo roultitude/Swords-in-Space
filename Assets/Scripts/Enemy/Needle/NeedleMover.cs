@@ -99,7 +99,7 @@ namespace SwordsInSpace
 
         private void Dash()
         {
-            rb.AddRelativeForce(new Vector2((float)dashImpulse, 0), ForceMode2D.Impulse);
+            rb.AddRelativeForce(new Vector2(0, (float)dashImpulse), ForceMode2D.Impulse);
             rb.angularVelocity = 0f;
 
             //transform.position += transform.right * Time.deltaTime * (float)dashSpeed;

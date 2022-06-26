@@ -9,10 +9,16 @@ namespace SwordsInSpace
 {
     public class Fire : Interactable
     {
-        [SyncVar]
+
         public int flameHp = 5;
 
         public override void Interact(GameObject player)
+        {
+            Damage();
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        private void Damage()
         {
             flameHp -= 1;
             if (flameHp < 0)

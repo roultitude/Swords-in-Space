@@ -1453,6 +1453,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4444492386751876084, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: data.dataString
+      value: UEsDBBQAAAgIAABAIezVmmSjWQIAABcFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMty2jAU/RVG69KxSYGku9YQ0kUCE9LJxhthXWMNsuTRIzwy/HuvZBu77nSFOOfcq3Mf8ifh0lSQWaVXmrNnxYB8HxF/Jl9GHfkEJ7pXcssv0GreObOFF9GgeaWWK8RjH2ZUCVbz7IfcCy+OEHSS50qXS7aHRBlrEM6pMICUVtZHS4Q+R+SEP+MHH3LG02TuTxc8PUSjKx4zkBZ0J22FraxWOZkJWlbAvOVOHEdRq/fHIJVYUKOa+PxKCG4aN8Seq1BtQivjsBYUME6xumDB6wvg+8IOg9d5bsA2tjQ9L7jGJtVZyU9Vd66k5lB7+6DCBQPTWfBUJ33+hx/Hgc61Kp/ae+NQki14dnil54wa22ttH150xuPQoiMVB7oT8F6AfFErrZxkSFrtfKgzMFl0f2+lJQVkhw6vrQ5AV/1/QL6Ga6j+lAhe7jz19VsNbIUK/Q7jB42T+YWGw3KYJgWi3sVvA29039+ihnjk2likmiqlt7dTTnspWYae+WqcTZSWEODGdAWSCnveYBo7HOGA6107YB6pfy/N5Q3XPoNBSIA7fRQNqI063oZlCnV8BlOsnRVcQmfaEy/Yp0RJWW9Yvydt2NbpnGZ9D3vH2d+7Rebx9D6Os/ldHs0mkM3HOWOTfHpP57t4t5vdURKWj0sslIpN7bTpD45NdqYkLlr7HRmtNK3CujNNjyt+KVWv51zmaptpALmuM9ycg8ZL8FmyJePYoS1Yy2UYOPlMiVDZAVh6S5SGUpcnq2naZUlJxT+U9UhKkvDhSImHb8u80fDB4egvb5NdyfUPUEsDBBQAAAgIAABAIewyQfBtbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrSSuaGphaFhsrlxmoGZUWqyuW5aSopRmqlFonmSYVKSmXGiUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAABAIezVmmSjWQIAABcFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAABAIewyQfBtbQAAAHgAAAAJACQAAAAAAAAAAAAAAKYCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAXgMAAAAA
+      objectReference: {fileID: 0}
     - target: {fileID: 4444492387124331352, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: _sceneId
       value: 10952722376991344566
@@ -1564,6 +1568,14 @@ PrefabInstance:
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: UnitsFromAsteroid
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: packSpawnRadius.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: packSpawnRadius.y
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359121, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: waitTime

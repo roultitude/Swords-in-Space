@@ -35,6 +35,8 @@ namespace SwordsInSpace
 
         private Vector2 offset;
 
+        private int fireid = 0;
+
         public void Awake()
         {
             shipGrid.CompressBounds();
@@ -56,15 +58,23 @@ namespace SwordsInSpace
                 }
             }
         }
+        private int test = 1000;
 
         public void Update()
         {
             if (DebugStartFire)
             {
                 DebugStartFire = false;
-                trySpawnFire();
-                Debug.Log("debug toggle");
+
             }
+
+            if (IsServer && test > 0)
+            {
+                test--;
+                if (test == 2)
+                    trySpawnFire();
+            }
+
         }
 
 
@@ -77,9 +87,11 @@ namespace SwordsInSpace
             {
                 Vector2 spawnLoc = new Vector2(Random.Range(0, spots.GetLength(0))
                 , Random.Range(0, spots.GetLength(1)));
+
+                Debug.Log(spawnLoc);
                 if (trySpawnFire(spawnLoc))
                 {
-                    Debug.Log("spawned");
+                    Debug.Log("spawned fire");
                     return;
                 }
             }
@@ -97,7 +109,8 @@ namespace SwordsInSpace
             GameObject toSpawn = Instantiate(fire, Ship.currentShip.shipInterior.transform);
 
             toSpawn.transform.localPosition = new Vector3(loc.x - offset.x, loc.y - offset.y, 0);
-
+            fireid++;
+            toSpawn.name = "fire" + fireid.ToString("D3");
             Spawn(toSpawn);
 
             manager.RefreshData();
@@ -110,10 +123,13 @@ namespace SwordsInSpace
         {
             while (isOnFire)
             {
+
                 if (Random.Range(0f, 1f) < tickChance)
                 {
                     Debug.Log("tick");
-                    doFireTick();
+                    StopCoroutine("doFireTick");
+                    StartCoroutine("doFireTick");
+
                 }
                 yield return new WaitForSeconds((float)tickDur);
             }
@@ -121,6 +137,7 @@ namespace SwordsInSpace
             ResetFire();
             yield break;
         }
+
 
         private void ResetFire()
         {
@@ -135,7 +152,7 @@ namespace SwordsInSpace
             return false; //Out of range
         }
 
-        public void doFireTick()
+        public IEnumerator doFireTick()
         {
 
             Stack<Vector2> copyActiveFire = new Stack<Vector2>();
@@ -161,7 +178,7 @@ namespace SwordsInSpace
 
                     if (trySpawnFire(loc + dir))
                     {
-
+                        yield return new WaitForSeconds((float)tickDur + 1f);
                         if (Random.Range(0f, 1f) < multipleFireSpreadChance)
                         {
                             continue;
@@ -172,6 +189,11 @@ namespace SwordsInSpace
                         }
                     }
                 }
+
+                if (possibledir.Count != 0)
+                {
+                    activeFire.Push(loc);
+                }
             }
         }
 
@@ -181,6 +203,23 @@ namespace SwordsInSpace
             loc += offset;
 
             fireLoc[(int)loc.x, (int)loc.y] = false;
+            if (activeFire.Contains(loc))
+            {
+
+                Stack<Vector2> copy = new Stack<Vector2>();
+                while (activeFire.Count > 0)
+                {
+                    Vector2 temp = activeFire.Pop();
+                    if (temp != loc)
+                    {
+                        copy.Push(temp);
+                    }
+                }
+
+                activeFire = copy;
+
+            }
+
             CheckIsOnFire();
         }
 

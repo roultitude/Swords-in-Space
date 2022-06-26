@@ -174,7 +174,13 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 5412598000014957244}
   shipGrid: {fileID: 5221657398123396329}
   fire: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+  manager: {fileID: 7750103762623040915}
   tileSize: {x: 32, y: 32}
+  isOnFire: 0
+  multipleFireSpreadChance: 0.1
+  tickChance: 0.10000000149011612
+  tickDur: 0.800000011920929
+  DebugStartFire: 0
 --- !u!1 &611136254937875391
 GameObject:
   m_ObjectHideFlags: 0

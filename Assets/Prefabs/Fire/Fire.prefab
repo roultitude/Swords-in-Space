@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 898759745282394244, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_Radius
-      value: 0.35911545
+      value: 0.14921704
       objectReference: {fileID: 0}
     - target: {fileID: 898759745282394244, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_Offset.x
@@ -17,19 +17,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_Size.x
-      value: 0.47715235
+      value: 0.2226597
       objectReference: {fileID: 0}
     - target: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_Size.y
-      value: 0.40092537
+      value: 0.18609393
       objectReference: {fileID: 0}
     - target: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_Offset.x
-      value: -0.0038457513
+      value: 0.000010222197
       objectReference: {fileID: 0}
     - target: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_Offset.y
-      value: 0.0008750409
+      value: -0.005184293
       objectReference: {fileID: 0}
     - target: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -41,11 +41,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8578976271361633782, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_Size.x
@@ -69,11 +69,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8578976272114121586, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 8578976272114121586, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 8578976272114121586, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -130,26 +130,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8578976272114121589, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
   m_PrefabInstance: {fileID: 2836698353403132637}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5715225817761966688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5788074847093031336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed6e4f051136ae439dfabd0aedb4c83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 5572512325420016896}
-  _networkObjectCache: {fileID: 5572512325420016896}
-  Hp: 0
-  MaxHp: 0
-  canUseOnPowerOut: 1
-  flameHp: 5
---- !u!114 &5572512325420016896
+--- !u!114 &1987812446387178485
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,7 +147,7 @@ MonoBehaviour:
   SceneTransformProperties:
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
-    LocalScale: {x: 0.5, y: 0.5, z: 0}
+    LocalScale: {x: 1.1, y: 1.1, z: 0}
   _isNetworked: 1
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
@@ -174,3 +155,22 @@ MonoBehaviour:
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects: []
+--- !u!114 &5715225817761966688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5788074847093031336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed6e4f051136ae439dfabd0aedb4c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 1987812446387178485}
+  _networkObjectCache: {fileID: 1987812446387178485}
+  Hp: 0
+  MaxHp: 0
+  canUseOnPowerOut: 1
+  flameHp: 3

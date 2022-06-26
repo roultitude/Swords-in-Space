@@ -399,7 +399,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7780548, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -618,7 +618,6 @@ MonoBehaviour:
   _sceneId: 11933930297575235145
   _sceneNetworkObjects:
   - {fileID: 524295176}
-  - {fileID: 0}
   - {fileID: 1533925759}
   - {fileID: 1717937846}
 --- !u!114 &524295177
@@ -998,7 +997,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7780548, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1443,7 +1442,6 @@ MonoBehaviour:
   _sceneId: 11933930298737225295
   _sceneNetworkObjects:
   - {fileID: 524295176}
-  - {fileID: 0}
   - {fileID: 1533925759}
   - {fileID: 1717937846}
 --- !u!114 &1717937847
@@ -1525,7 +1523,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7780548, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1705,13 +1703,21 @@ PrefabInstance:
       value: 2778584672
       objectReference: {fileID: 0}
     - target: {fileID: 6153494098683944332, guid: 619269146c2170d4cbe537504d80079a, type: 3}
+      propertyPath: _sceneNetworkObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153494098683944332, guid: 619269146c2170d4cbe537504d80079a, type: 3}
       propertyPath: _sceneNetworkObjects.Array.data[0]
       value: 
       objectReference: {fileID: 524295176}
     - target: {fileID: 6153494098683944332, guid: 619269146c2170d4cbe537504d80079a, type: 3}
       propertyPath: _sceneNetworkObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1533925759}
+    - target: {fileID: 6153494098683944332, guid: 619269146c2170d4cbe537504d80079a, type: 3}
+      propertyPath: _sceneNetworkObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 1717937846}
     - target: {fileID: 6153494098683944332, guid: 619269146c2170d4cbe537504d80079a, type: 3}
       propertyPath: _sceneNetworkObjects.Array.data[3]
       value: 

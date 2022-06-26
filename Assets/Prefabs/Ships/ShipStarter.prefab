@@ -499,7 +499,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 840958035019083572, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _componentIndexCache
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1185405697126653920, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: speed
@@ -3803,7 +3803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5412598000014957244, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _networkBehaviours.Array.size
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5412598000014957244, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _networkBehaviours.Array.data[0]
@@ -3856,9 +3856,13 @@ PrefabInstance:
     - target: {fileID: 5412598000014957244, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _networkBehaviours.Array.data[12]
       value: 
-      objectReference: {fileID: 4454263933897210819}
+      objectReference: {fileID: 0}
     - target: {fileID: 5412598000014957244, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _networkBehaviours.Array.data[13]
+      value: 
+      objectReference: {fileID: 4454263933897210819}
+    - target: {fileID: 5412598000014957244, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: _networkBehaviours.Array.data[14]
       value: 
       objectReference: {fileID: 4627228869314324279}
     - target: {fileID: 6479821685846568644, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
@@ -3931,7 +3935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8524240635559801792, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _componentIndexCache
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8640906010832014549, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: m_SortingOrder
