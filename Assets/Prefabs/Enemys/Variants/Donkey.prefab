@@ -284,8 +284,8 @@ MonoBehaviour:
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 9217316466230567277}
   _networkObjectCache: {fileID: 9217316466230567277}
-  maxHp: 3
-  exp: 55
+  maxHp: 5
+  exp: 10
   hpBar: {fileID: 7109283038549124867}
 --- !u!114 &7109283038549124867 stripped
 MonoBehaviour:
