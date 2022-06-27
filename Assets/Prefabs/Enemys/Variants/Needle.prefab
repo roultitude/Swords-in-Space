@@ -412,7 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugCanSeePlayer: 0
   dashChargeTime: 0.8
-  dashImpulse: 0.05
+  dashImpulse: 10
   dashTime: 2.2
   dashCD: 4
   needleAI: {fileID: 600845861269413000}
