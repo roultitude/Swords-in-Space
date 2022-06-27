@@ -25,7 +25,7 @@ namespace SwordsInSpace
                 foreach (Fire f in linkedFireCells)
                 {
                     f.onStartFire.AddListener(() => { OnFireNearby(); });
-                    f.onStartFire.AddListener(() => { OnFireExtinguishedNearby(); });
+                    f.onEndFire.AddListener(() => { OnFireExtinguishedNearby(); });
                     //Debug.Log("nice");
                 }
             }
