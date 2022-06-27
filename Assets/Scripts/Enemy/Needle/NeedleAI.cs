@@ -23,7 +23,7 @@ namespace SwordsInSpace
 
             if (obj != null)
             {
-                Ship.currentShip.TakeDamage(mover.dashImpulse / 10);
+                Ship.currentShip.TakeDamage(mover.rb.velocity.magnitude);
                 mover.OnTouchPlayer();
             }
 

@@ -18,6 +18,7 @@ namespace SwordsInSpace
 
         public float tickTime;
         public float tickChance;
+        public float fireStartOnCollideChance;
 
 
         private int a = 300;
@@ -91,5 +92,11 @@ namespace SwordsInSpace
             return i;
         }
 
+        public void FireEventTrigger()
+        {
+
+            if (IsServer && Random.Range(0f, 1f) < fireStartOnCollideChance)
+                StartFire();
+        }
     }
 };

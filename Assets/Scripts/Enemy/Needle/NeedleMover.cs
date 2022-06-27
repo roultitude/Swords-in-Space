@@ -24,7 +24,7 @@ namespace SwordsInSpace
         public STATE currentState = STATE.MOVING;
 
         private double currentTime = 0;
-        Rigidbody2D rb;
+        public Rigidbody2D rb;
 
         new public void Start()
         {
