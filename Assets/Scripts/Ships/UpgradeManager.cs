@@ -183,7 +183,7 @@ namespace SwordsInSpace
             {
                 Ship.currentShip.ReloadStats();
                 BroadcastCloseScreen();
-                GameManager.instance.GoToLevel("GameScene,true,true");
+                GameManager.instance.GoToLevel("GameScene",true,true);
             }
         }
 
