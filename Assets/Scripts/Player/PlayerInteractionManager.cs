@@ -138,8 +138,19 @@ namespace SwordsInSpace
             if (otherInteractable)
             {
                 data.Remove(interactables.GetId(otherInteractable));
+                TargetExitUi(Owner);
             }
 
+
+
+        }
+
+
+        [TargetRpc]
+        public void TargetExitUi(NetworkConnection conn)
+        {
+
+            GetComponent<PlayerInputManager>().ExitUI();
         }
 
 

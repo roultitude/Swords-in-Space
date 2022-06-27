@@ -4,19 +4,9 @@ using UnityEngine;
 
 namespace SwordsInSpace
 {
-    public abstract class Engine : Module
+    public class Engine : Module
     {
-        // Start is called before the first frame update
-        void Start()
-        {
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            
-        }
 
         public override void Interact(GameObject player)
         {

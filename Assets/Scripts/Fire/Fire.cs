@@ -4,6 +4,7 @@ using UnityEngine;
 using FishNet.Object;
 using FishNet.Connection;
 using FishNet.Object.Synchronizing;
+using UnityEngine.Events;
 
 namespace SwordsInSpace
 {
@@ -18,10 +19,14 @@ namespace SwordsInSpace
 
         public bool fireActive = false;
         public bool trigger;
+
+        public UnityEvent onStartFire = new();
+        public UnityEvent onEndFire = new();
         public void Start()
         {
-
+            gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
             SetActiveAllChildren(false);
+
         }
 
         public void Update()
@@ -52,6 +57,7 @@ namespace SwordsInSpace
             flameHp = 3;
             fireActive = true;
             SetActiveAllChildren(true);
+            onStartFire.Invoke();
         }
 
         [ObserversRpc]
@@ -59,6 +65,7 @@ namespace SwordsInSpace
         {
             fireActive = false;
             SetActiveAllChildren(false);
+            onEndFire.Invoke();
         }
 
 

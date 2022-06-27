@@ -60,6 +60,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 78c6d8e950f523a4eaac6f4ad65a0355, type: 3}
     - target: {fileID: 8578976271361633782, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578976271361633782, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
@@ -170,8 +174,6 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 1987812446387178485}
   _networkObjectCache: {fileID: 1987812446387178485}
-  Hp: 0
-  MaxHp: 0
   canUseOnPowerOut: 1
   Up: {fileID: 0}
   Down: {fileID: 0}
@@ -179,3 +181,9 @@ MonoBehaviour:
   Right: {fileID: 0}
   fireActive: 0
   trigger: 0
+  onStartFire:
+    m_PersistentCalls:
+      m_Calls: []
+  onEndFire:
+    m_PersistentCalls:
+      m_Calls: []

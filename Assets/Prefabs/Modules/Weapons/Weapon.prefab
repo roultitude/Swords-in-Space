@@ -139,6 +139,11 @@ PrefabInstance:
     - {fileID: 8578976271361633769, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
     - {fileID: 898759745282394244, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+--- !u!61 &4970288661495360416 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+  m_PrefabInstance: {fileID: 3743799997290169928}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4970288661826059581 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8578976272114121589, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
@@ -159,9 +164,9 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 7800811835471748682}
   _networkObjectCache: {fileID: 7800811835471748682}
-  Hp: 0
-  MaxHp: 0
   canUseOnPowerOut: 0
+  linkedFireCells: []
+  interactZone: {fileID: 4970288661495360416}
   data: {fileID: 0}
   currentAmmo: 3
   UIDisplayPrefab: {fileID: 175365271833212233, guid: 0663e54072b9f2c4bb5880f80b85611e, type: 3}
