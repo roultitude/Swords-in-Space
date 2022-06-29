@@ -12,16 +12,22 @@ namespace SwordsInSpace
     {
         // Update is called once per frame
         public LineRenderer rend;
+
+        public GameObject afterimage;
         public float fadeSpeed = 0.1f;
+        private double shotSpread;
         public float range = 600f;
         public bool hasShot = false;
+
+
+        private Shooter shooter;
 
         public void Update()
         {
             if (!hasShot && IsServer)
             {
                 hasShot = true;
-                DoRaycast();
+                StartCoroutine("LazerLifetime");
 
             }
 
@@ -29,8 +35,10 @@ namespace SwordsInSpace
 
         public void DoRaycast()
         {
-            RaycastHit2D[] collide = Physics2D.RaycastAll(gameObject.transform.position,
-            (gameObject.transform.position + gameObject.transform.right * range).normalized,
+
+
+            RaycastHit2D[] collide = Physics2D.RaycastAll(shooter.gameObject.transform.position,
+            (shooter.gameObject.transform.position + Quaternion.Euler(0, 0, UnityEngine.Random.Range((float)-shotSpread / 2, (float)shotSpread / 2)) * shooter.gameObject.transform.right * range).normalized,
             range);
 
 
@@ -42,8 +50,8 @@ namespace SwordsInSpace
 
 
                 EnemyAI enemy = hit.collider.gameObject.GetComponentInParent<EnemyAI>();
-                Vector3 mypos = gameObject.transform.position;
-                gameObject.transform.position = new Vector3(0, 0, 0);
+                Vector3 mypos = shooter.gameObject.transform.position;
+                //gameObject.transform.position = new Vector3(0, 0, 0);
 
                 if (enemy != null)
                 {
@@ -53,7 +61,7 @@ namespace SwordsInSpace
                 return;
             }
 
-            Connect(gameObject.transform.position, gameObject.transform.position + gameObject.transform.right * range);
+            Connect(shooter.gameObject.transform.position, shooter.gameObject.transform.position + shooter.gameObject.transform.right * range);
             return;
 
         }
@@ -70,17 +78,39 @@ namespace SwordsInSpace
 
             rend.positionCount = 2;
             rend.SetPositions(new Vector3[] { start, end });
-            //rend.material.DOFade(0, fadeDur).OnComplete(() => { Despawn(); });
 
-            StartCoroutine("Fadeout");
+
+            GameObject after = Instantiate<GameObject>(afterimage, new Vector3(0, 0, 0), Quaternion.identity);
+            after.GetComponent<LazerAfterimage>().Setup(start, end, fadeSpeed, rend.startColor, rend.endColor);
 
 
         }
 
-        public override void Setup(double shotSpeed, double shotLifeTime, double damage)
+        public override void Setup(double shotSpeed, double shotLifeTime, double damage, double spread)
         {
             this.damage = damage;
+            this.shotLifeTime = shotLifeTime;
+            this.shotSpread = spread;
+        }
 
+        public void setShooter(Shooter s)
+        {
+            shooter = s;
+        }
+
+        IEnumerator LazerLifetime()
+        {
+            double cd = shooter.data.burstCD;
+            double currentTime = 0;
+            while (currentTime < shotLifeTime)
+            {
+                DoRaycast();
+
+                yield return new WaitForSeconds((float)cd);
+                currentTime += cd;
+            }
+            StartCoroutine("Fadeout");
+            yield return null;
         }
 
         IEnumerator Fadeout()

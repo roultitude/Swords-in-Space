@@ -17,6 +17,8 @@ namespace SwordsInSpace
 
         public double shotLifeTime = 10;
 
+        public double shotSpread = 15;
+
         public int burst = 3;
 
         public int maxAmmo = 3;

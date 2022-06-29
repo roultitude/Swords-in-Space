@@ -10,7 +10,8 @@ namespace SwordsInSpace
     public abstract class Projectile : NetworkBehaviour
     {
         public double damage;
-        public abstract void Setup(double shotSpeed, double shotLifeTime, double damage);
+        public double shotLifeTime;
+        public abstract void Setup(double shotSpeed, double shotLifeTime, double damage, double spread);
 
     }
 };

@@ -9,10 +9,9 @@ namespace SwordsInSpace
     {
         Timer timer;
         double shotSpeed;
-        double shotLifeTime;
 
 
-        public override void Setup(double shotSpeed, double shotLifeTime, double damage)
+        public override void Setup(double shotSpeed, double shotLifeTime, double damage, double spread)
         {
             timer = gameObject.AddComponent<Timer>();
             this.shotSpeed = shotSpeed;
