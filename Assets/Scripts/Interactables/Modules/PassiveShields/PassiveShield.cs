@@ -48,8 +48,6 @@ namespace SwordsInSpace
 
                 DisplayManager.instance.DisplayCloseEvent += OnDisplayClosed;
                 display.startGame();
-
-
             }
         }
         void OnDisplayClosed()
@@ -63,6 +61,7 @@ namespace SwordsInSpace
 
             DisplayManager.instance.DisplayCloseEvent -= OnDisplayClosed;
             currentPlayerInput = null;
+
         }
 
         public void PassiveShieldInputLeft(UnityEngine.InputSystem.InputAction.CallbackContext obj)

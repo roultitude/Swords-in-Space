@@ -27,10 +27,7 @@ namespace SwordsInSpace
 
         [SerializeField]
         public Hpbar bar;
-        void Start()
-        {
 
-        }
 
         // Update is called once per frame
         void Update()

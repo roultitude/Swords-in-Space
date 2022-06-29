@@ -63,7 +63,7 @@ namespace SwordsInSpace
 
         public void Spawn()
         {
-            int currentWeight = totalWeight;
+            int currentWeight = Random.Range(0, totalWeight + 1);
             GameObject toSpawn = spawninfos[0].MobType;
             foreach (SpawnInfo info in spawninfos)
             {

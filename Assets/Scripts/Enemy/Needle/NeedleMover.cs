@@ -24,7 +24,7 @@ namespace SwordsInSpace
         public STATE currentState = STATE.MOVING;
 
         private double currentTime = 0;
-        Rigidbody2D rb;
+        public Rigidbody2D rb;
 
         new public void Start()
         {
@@ -99,7 +99,7 @@ namespace SwordsInSpace
 
         private void Dash()
         {
-            rb.AddRelativeForce(new Vector2((float)dashImpulse, 0), ForceMode2D.Impulse);
+            rb.AddRelativeForce(new Vector2(0, (float)dashImpulse * Time.deltaTime), ForceMode2D.Impulse);
             rb.angularVelocity = 0f;
 
             //transform.position += transform.right * Time.deltaTime * (float)dashSpeed;

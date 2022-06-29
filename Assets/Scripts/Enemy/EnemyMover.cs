@@ -46,7 +46,7 @@ namespace SwordsInSpace
             targetLocation.z = myLocation.z;
             Vector3 vectorToTarget = targetLocation - myLocation;
 
-            Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 90) * vectorToTarget;
+            Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 0) * vectorToTarget;
             Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
             Quaternion rotation = Quaternion.LookRotation(Ship.currentShip.gameObject.transform.position - gameObject.transform.position, Vector3.forward);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360f);

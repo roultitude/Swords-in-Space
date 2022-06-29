@@ -15,7 +15,6 @@ namespace SwordsInSpace
         {
 
             shooter.canFire = !shooter.canFire;
-            Debug.Log(shooter.canFire);
         }
         public void OnCollisionEnter2D(Collision2D collision)
         {
@@ -24,7 +23,7 @@ namespace SwordsInSpace
 
             if (obj != null)
             {
-                Ship.currentShip.TakeDamage(mover.dashImpulse / 10);
+                Ship.currentShip.TakeDamage(mover.rb.velocity.magnitude);
                 mover.OnTouchPlayer();
             }
 

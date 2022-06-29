@@ -37,7 +37,7 @@ namespace SwordsInSpace
         public GameObject upgradesDisplay;
 
         private UpgradesDisplay uiUpgrades => upgradesDisplay.GetComponent<UpgradesDisplay>();
-        
+
         [SyncVar]
         public int numUpgrades;
 
@@ -66,10 +66,11 @@ namespace SwordsInSpace
             {
                 foreach (Upgrade a in upgradeArr)
                 {
-                    upgrades.Add(a.upgradeSo.name, a);
+                    if (a != null && !upgrades.ContainsKey(a.upgradeSo.name))
+                        upgrades.Add(a.upgradeSo.name, a);
                 }
             }
-           
+
         }
 
 
@@ -175,14 +176,14 @@ namespace SwordsInSpace
             Debug.Log("Upgrade Complete!");
             if (numUpgrades > 0)
             {
-                
+
                 RollUpgrades();
             }
             else
             {
                 Ship.currentShip.ReloadStats();
                 BroadcastCloseScreen();
-                GameManager.instance.GoToLevel("GameScene,true,true");
+                GameManager.instance.GoToLevel("GameScene",true,true);
             }
         }
 

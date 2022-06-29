@@ -39,7 +39,9 @@ namespace SwordsInSpace
         {
             if (!base.IsOwner) { return; }
 
+
             InteractQuery(base.Owner);
+
 
         }
 
@@ -73,15 +75,31 @@ namespace SwordsInSpace
         [ServerRpc]
         void InteractQuery(NetworkConnection conn = null)
         {
-            string username = GetUsernameFromConnection(conn);
+
             if (data.Count > 0)
-                ReplyInteractQuery(conn, data[0]);
+            {
+                foreach (int a in data)
+                {
+                    Interactable obj = interactables.GetInteractable(a);
+
+                    if (obj)
+                    {
+                        if (Ship.currentShip.isPowerUp || obj.canUseOnPowerOut)
+                            ReplyInteractQuery(conn, a);
+                    }
+
+                }
+
+            }
+
         }
 
         [TargetRpc]
         void ReplyInteractQuery(NetworkConnection conn, int interactableId)
         {
+
             Interactable obj = interactables.GetInteractable(interactableId);
+            Debug.Log(obj.transform);
             if (obj)
             {
                 if (Ship.currentShip.isPowerUp || obj.canUseOnPowerOut)
@@ -95,8 +113,7 @@ namespace SwordsInSpace
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!base.IsServer) { return; }
-
-
+            Debug.Log(other.gameObject);
             Interactable otherInteractable = other.gameObject.GetComponentInParent<Interactable>();
 
             if (otherInteractable)
@@ -111,6 +128,8 @@ namespace SwordsInSpace
 
         private void OnTriggerExit2D(Collider2D other)
         {
+
+
             if (!base.IsServer) { return; }
 
 
@@ -119,8 +138,19 @@ namespace SwordsInSpace
             if (otherInteractable)
             {
                 data.Remove(interactables.GetId(otherInteractable));
+                TargetExitUi(Owner);
             }
 
+
+
+        }
+
+
+        [TargetRpc]
+        public void TargetExitUi(NetworkConnection conn)
+        {
+
+            GetComponent<PlayerInputManager>().ExitUI();
         }
 
 

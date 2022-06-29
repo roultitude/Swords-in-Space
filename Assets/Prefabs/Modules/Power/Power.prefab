@@ -97,6 +97,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+--- !u!61 &2851032637663029961 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+  m_PrefabInstance: {fileID: 5809153563362903841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2851032639059344467 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8578976272114121586, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
@@ -147,9 +152,9 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 3456108306466875768}
   _networkObjectCache: {fileID: 3456108306466875768}
-  Hp: 0
-  MaxHp: 0
   canUseOnPowerOut: 1
+  linkedFireCells: []
+  interactZone: {fileID: 2851032637663029961}
   maxAmount: 200
   drainRate: 50
   refillRate: 10

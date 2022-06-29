@@ -123,6 +123,7 @@ namespace SwordsInSpace
             if (drumbeat.identity == dir && distance < distanceThreshold * distanceThreshold)
             {
                 increment++;
+                Ship.currentShip.AddHp(1);
             }
             else
             {

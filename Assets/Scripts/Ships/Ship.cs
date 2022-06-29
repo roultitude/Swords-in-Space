@@ -21,6 +21,9 @@ namespace SwordsInSpace
         public Transform playerTracker;
         public UpgradeManager upgradeManager;
         public ExpManager expManager;
+        public Transform fireContainer;
+
+        public FireManager fireManager;
 
         [SerializeField]
         ShipSO data;
@@ -120,7 +123,8 @@ namespace SwordsInSpace
             {
                 Debug.Log("triggering levels: " + storedLevels);
                 upgradeManager.TriggerUpgrades(storedLevels);
-            } else
+            }
+            else
             {
                 GameManager.instance.GoToLevel("GameScene", true, true);
             }
@@ -177,6 +181,18 @@ namespace SwordsInSpace
 
             }
         }
+
+        public void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (IsServer)
+            {
+                fireManager.FireEventTrigger();
+                TakeDamage(shipMover.rb.velocity.magnitude);
+            }
+
+
+        }
+
         [ObserversRpc]
         public void UpdateHpBar()
         {

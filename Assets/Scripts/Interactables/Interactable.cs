@@ -13,24 +13,6 @@ namespace SwordsInSpace
             They do not change/interact when the User enters / leaves its collider.
         */
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        [SerializeField]
-        public int Hp;
-
-        [SerializeField]
-        public int MaxHp;
-
         [SerializeField]
         public bool canUseOnPowerOut = false;
 
