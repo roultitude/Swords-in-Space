@@ -11,7 +11,7 @@ namespace SwordsInSpace
 
         public GameObject bulletPrefab;
 
-        public int damage = 1;
+        public double damage = 1;
 
         public int shotSpeed = 1;
 

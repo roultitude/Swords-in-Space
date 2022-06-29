@@ -92,7 +92,7 @@ namespace SwordsInSpace
             if (!IsServer)
                 return;
             GameObject toAdd = Instantiate(data.bulletPrefab, transform.position, transform.rotation);
-            toAdd.GetComponent<Bullet>().Setup(data.shotSpeed, data.shotLifeTime, data.damage);
+            toAdd.GetComponent<Projectile>().Setup(data.shotSpeed, data.shotLifeTime, data.damage);
             toAdd.tag = "Friendly";
             Spawn(toAdd);
         }

@@ -5,14 +5,14 @@ using FishNet.Object;
 using FishNet.Connection;
 namespace SwordsInSpace
 {
-    public class Bullet : NetworkBehaviour
+    public class Bullet : Projectile
     {
         Timer timer;
         double shotSpeed;
         double shotLifeTime;
-        public double damage;
 
-        public void Setup(double shotSpeed, double shotLifeTime, double damage)
+
+        public override void Setup(double shotSpeed, double shotLifeTime, double damage)
         {
             timer = gameObject.AddComponent<Timer>();
             this.shotSpeed = shotSpeed;
