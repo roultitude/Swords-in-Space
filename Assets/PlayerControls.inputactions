@@ -487,6 +487,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ActiveShieldView",
+            "id": "6eac4b1b-6297-4c8b-a999-abd8f64274b2",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": []
