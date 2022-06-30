@@ -74,7 +74,6 @@ namespace SwordsInSpace
             toAdd.GetComponent<Bullet>().Setup(shotSpeed, shotLifetime, damage, shotSpread);
             Spawn(toAdd);
         }
-
         protected void SpawnLocalRotation(Quaternion rot)
         {
 

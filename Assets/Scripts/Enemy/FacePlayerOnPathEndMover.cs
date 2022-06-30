@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SwordsInSpace
 {
-    public class AntMover : EnemyMover
+    public class FacePlayerOnPathEndMover : EnemyMover
     {
         // Start is called before the first frame update
 
-        float rotationSpeed = 90f;
+        public float rotationSpeed = 90f;
         private void Update()
         {
             if (ai.reachedDestination)
