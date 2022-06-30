@@ -37,7 +37,10 @@ namespace SwordsInSpace
 
                 return;
             }
+
+
             currentAmount -= drainRate * Time.deltaTime;
+
             if (currentAmount < 0)
             {
                 currentAmount = 0;

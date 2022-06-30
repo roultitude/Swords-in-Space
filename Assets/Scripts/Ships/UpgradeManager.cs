@@ -1,3 +1,4 @@
+using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System;
@@ -42,10 +43,16 @@ namespace SwordsInSpace
         public int numUpgrades;
 
         public bool debugTrigger = false;
-        private bool readyToUpgrade;
+
         private string[] upgradeChoice;
 
+        private bool hasMadeChoice = false;
+
+        private int votesMade = 0;
+        private Dictionary<string, int> votes;
+
         PlayerInputManager currentPlayerInput;
+
         public void Update()
         {
             if (debugTrigger)
@@ -121,17 +128,31 @@ namespace SwordsInSpace
             ShowUpgrades(thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name,
         thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name,
         thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name);
-            readyToUpgrade = true;
+
+
 
         }
 
         [ObserversRpc(RunLocally = true)]
         public void ShowUpgrades(string upgrade1, string upgrade2, string upgrade3)
         {
+            hasMadeChoice = false;
             upgradeChoice = new string[] { upgrade1, upgrade2, upgrade3 };
             Debug.Log(upgrade1 + "\t" + upgrade2 + "\t" + upgrade3 + "\t" + uiUpgrades == null);
             uiUpgrades.SetUpgrades(upgrade1, upgrade2, upgrade3);
+
             upgradesDisplay.GetComponentInChildren<VoteTimer>().ResetTimer();
+
+            if (IsServer)
+            {
+                votesMade = 0;
+                votes = new Dictionary<string, int>();
+                votes.Add(upgrade1, 0);
+                if (!votes.ContainsKey(upgrade2))
+                    votes.Add(upgrade2, 0);
+                if (!votes.ContainsKey(upgrade3))
+                    votes.Add(upgrade3, 0);
+            }
         }
 
         public void ShowUpgradeScreen()
@@ -183,7 +204,7 @@ namespace SwordsInSpace
             {
                 Ship.currentShip.ReloadStats();
                 BroadcastCloseScreen();
-                GameManager.instance.GoToLevel("GameScene",true,true);
+                GameManager.instance.GoToLevel("GameScene", true, true);
             }
         }
 
@@ -233,7 +254,11 @@ namespace SwordsInSpace
 
         public void OnClickLeftButton(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            SendRPCUpgrade(upgradeChoice[0]);
+            if (hasMadeChoice)
+                return;
+
+            hasMadeChoice = true;
+            SendRPCUpgrade(upgradeChoice[0], 0, User.localUser.username);
 
         }
 
@@ -241,26 +266,73 @@ namespace SwordsInSpace
 
         public void OnClickMiddleButton(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            SendRPCUpgrade(upgradeChoice[1]);
+            if (hasMadeChoice)
+                return;
+
+            hasMadeChoice = true;
+            SendRPCUpgrade(upgradeChoice[1], 1, User.localUser.username);
+
         }
 
 
         public void OnClickRightButton(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            SendRPCUpgrade(upgradeChoice[2]);
+            if (hasMadeChoice)
+                return;
+
+            hasMadeChoice = true;
+            SendRPCUpgrade(upgradeChoice[2], 2, User.localUser.username);
+
+
+
+        }
+
+        [ObserversRpc]
+        public void AddVote(int num, string username)
+        {
+            uiUpgrades.AddVote(num, username);
+
         }
 
         [ServerRpc(RequireOwnership = false)]
-        private void SendRPCUpgrade(string str)
+        private void SendRPCUpgrade(string str, int num, string username)
         {
-            if (!readyToUpgrade) return;
-            readyToUpgrade = false;
-            AddUpgrade(str);
+
+            votesMade++;
+            votes[str] += 1;
+
+
+            if (votesMade >= UserManager.instance.users.Count)
+            {
+                List<String> ties = new List<String>();
+                int maxValue = -1;
+                foreach (String key in votes.Keys) //n = 3
+                {
+                    if (votes[key] > maxValue)
+                    {
+                        ties.Clear();
+                        ties.Add(key);
+                    }
+                    else if (votes[key] == maxValue)
+                    {
+                        ties.Add(key);
+                    }
+                }
+
+                AddUpgrade(ties[Random.Range(0, ties.Count)]);
+                return;
+
+            }
+            AddVote(num, username);
         }
 
         public void AddRandomUpgrade()
         {
-            AddUpgrade(upgradeChoice[Random.Range(0, upgradeChoice.Length)]);
+            if (hasMadeChoice)
+                return;
+            hasMadeChoice = false;
+            int randomupgradenum = Random.Range(0, upgradeChoice.Length);
+            SendRPCUpgrade(upgradeChoice[randomupgradenum], randomupgradenum, User.localUser.username);
         }
 
 

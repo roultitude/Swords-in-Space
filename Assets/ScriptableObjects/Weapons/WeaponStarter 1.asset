@@ -17,6 +17,7 @@ MonoBehaviour:
   damage: 1
   shotSpeed: 15
   shotLifeTime: 10
+  shotSpread: 15
   burst: 2
   maxAmmo: 5
   ammoRefill: 1

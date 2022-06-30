@@ -23,7 +23,6 @@ namespace SwordsInSpace
             rend.endColor = endColor;
 
             StartCoroutine("Fadeout");
-            Debug.Log("Spawning Afterimage");
         }
 
 
@@ -41,7 +40,7 @@ namespace SwordsInSpace
                 yield return null;
             }
 
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 };
