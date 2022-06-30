@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 056fd61e35aa87f4f8474af336847957, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5179334, g: 0.95297176, b: 0.9716981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,10 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1640be67244831345ad9e26f199a8ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 0
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 1271647602566972295}
-  _networkObjectCache: {fileID: 1271647602566972295}
-  size: {x: 10, y: 40}
+  _networkObjectCache: {fileID: 0}
+  size: {x: 10, y: 10}
+  turnAxis: {x: 0, y: 0}
+  turnSpeed: 2
 --- !u!114 &1271647602566972295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _networkBehaviours:
   - {fileID: 5150511420309096475}
+  - {fileID: 8013606181629481083}
   SceneTransformProperties:
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -125,7 +128,7 @@ MonoBehaviour:
   _isNetworked: 1
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
-  _prefabId: -1
+  _prefabId: 13
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects: []
@@ -167,9 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 1271647602566972295}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 1271647602566972295}
   _synchronizeParent: 0
   _packing:
     Position: 1
