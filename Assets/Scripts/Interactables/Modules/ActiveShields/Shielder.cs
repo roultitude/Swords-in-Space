@@ -12,19 +12,22 @@ namespace SwordsInSpace
     {
 
         public Vector2 size = new Vector2(10, 10);
+        public Vector2 turnAxis = new Vector2(0,0);
 
+        [SerializeField]
+        private float turnSpeed;
         // Start is called before the first frame update
-        [SyncVar]
         private float pos = 0f;
-
+        
 
         private void Update()
         {
-            pos += 0.01f;
+            if (!IsServer) return;
+            pos += turnAxis.x * turnSpeed * Time.deltaTime;
             Reposition(pos);
 
-            var rot = Quaternion.LookRotation(gameObject.transform.position);
-            gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, rot, 360f);
+            var rot = Quaternion.LookRotation(Vector3.forward, gameObject.transform.localPosition) * Quaternion.Euler(0,0,90);
+            gameObject.transform.localRotation = Quaternion.RotateTowards(gameObject.transform.rotation, rot, 360f);
 
         }
 
@@ -33,7 +36,7 @@ namespace SwordsInSpace
 
         public void Reposition(float pos)
         {
-            transform.position = new Vector2(size.x * (float)Math.Sin(pos), size.y * (float)Math.Cos(pos));
+            transform.localPosition = new Vector2(size.x * (float)Math.Sin(pos), size.y * (float)Math.Cos(pos));
         }
 
         public void OnTriggerEnter2D(Collider2D collision)

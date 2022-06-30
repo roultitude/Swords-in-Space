@@ -80,7 +80,6 @@ namespace SwordsInSpace
                 currentPlayerInput.playerInput.actions["Fire"].performed += WeaponInputFire;
                 currentPlayerInput.playerInput.actions["ToggleAutoFire"].performed += WeaponInputAutoFire;
                 DisplayManager.instance.DisplayCloseEvent += OnDisplayClosed;
-                player.GetComponent<PlayerMover>().canMove = false;
             }
         }
 

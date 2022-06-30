@@ -40,7 +40,7 @@ namespace SwordsInSpace
 
 
 
-        [SyncVar]
+        [SyncVar(OnChange = nameof(UpdateHpBar))]
         public double CurrentHp;
 
         [SyncVar]
@@ -146,7 +146,6 @@ namespace SwordsInSpace
         public void TakeDamage(double amt)
         {
             CurrentHp -= 1;
-            UpdateHpBar();
 
             if (CurrentHp <= 0)
             {
@@ -193,10 +192,9 @@ namespace SwordsInSpace
 
         }
 
-        [ObserversRpc]
-        public void UpdateHpBar()
+        public void UpdateHpBar(double oldHp, double newHp, bool isServer)
         {
-            UiHpBar.GetComponent<UIHpBar>().Resize((float)CurrentHp / (float)CurrentMaxHp);
+            UiHpBar.GetComponent<UIHpBar>().Resize((float) newHp / (float)CurrentMaxHp);
         }
 
         [ServerRpc(RequireOwnership = false)]
@@ -205,8 +203,6 @@ namespace SwordsInSpace
             CurrentHp += amt;
             if (CurrentHp > CurrentMaxHp)
                 CurrentHp = CurrentMaxHp;
-
-            UpdateHpBar();
         }
 
         [ServerRpc(RequireOwnership = false)]
