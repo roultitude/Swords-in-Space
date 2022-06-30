@@ -3954,7 +3954,7 @@ PrefabInstance:
     - target: {fileID: 6735194044421036099, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: data
       value: 
-      objectReference: {fileID: 11400000, guid: a2a1aa4bd32bc6f43b11748523f567de, type: 2}
+      objectReference: {fileID: 11400000, guid: 83d1fe3f9d39f6343921338ac7fd41c0, type: 2}
     - target: {fileID: 6735194044421036099, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: _addedNetworkObject
       value: 

@@ -32,6 +32,8 @@ namespace SwordsInSpace
             Votes.text += name + "\n";
         }
 
+
+
         public void ClearVote()
         {
             Votes.text = "";

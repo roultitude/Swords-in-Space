@@ -733,6 +733,7 @@ MonoBehaviour:
   - {fileID: 2974684135176937384}
   - {fileID: 4485076214342864807}
   - {fileID: 7784500117912041229}
+  - {fileID: 0}
   - {fileID: 8524240635559801792}
   - {fileID: 840958035019083572}
   SceneTransformProperties:
@@ -1188,7 +1189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6297bda6e55c144468e6b7794d3f428f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 5
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 5412598000014957244}
   _networkObjectCache: {fileID: 5412598000014957244}
   interiorTransform: {fileID: 3777107840797026398}
@@ -1238,7 +1239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1340d34fbded0f74fae656d13b17ebf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 4
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 5412598000014957244}
   _networkObjectCache: {fileID: 5412598000014957244}
   syncTarget: {fileID: 6463308224519303839}
