@@ -10,9 +10,9 @@ namespace SwordsInSpace
     public class EnemyAI : NetworkBehaviour
     {
         [SerializeField]
-        public int maxHp;
+        public double maxHp;
         [SyncVar(OnChange = nameof(UpdateHpText))]
-        private int currentHp;
+        private double currentHp;
 
         [SerializeField]
         public double exp;
@@ -39,7 +39,7 @@ namespace SwordsInSpace
             hpBar.DoFade(fadeTime);
         }
 
-        private void UpdateHpText(int oldint, int newint, bool server)
+        private void UpdateHpText(double oldint, double newint, bool server)
         {
             if (hpBar != null)
                 hpBar.Resize((float)currentHp / (float)maxHp);
@@ -52,14 +52,20 @@ namespace SwordsInSpace
             Bullet bullet = collision.gameObject.GetComponentInParent<Bullet>();
             if (bullet != null && gameObject.tag != collision.gameObject.tag)
             {
-                currentHp -= 1;
+                takeDamage(bullet.damage);
                 bullet.OnHit();
-                if (currentHp <= 0)
-                {
-                    OnDeath();
-                }
             }
 
+        }
+
+        public void takeDamage(double dmg)
+        {
+            currentHp -= dmg;
+
+            if (currentHp <= 0)
+            {
+                OnDeath();
+            }
         }
 
         private void OnDeath()
