@@ -11,7 +11,7 @@ namespace SwordsInSpace
     {
         // Start is called before the first frame update
 
-        
+
 
         public UpgradeButton[] buttons;
 
@@ -56,6 +56,16 @@ namespace SwordsInSpace
             buttons[1].UpdateButton(upgrade2);
             buttons[2].UpdateButton(upgrade3);
 
+            buttons[0].ClearVote();
+            buttons[1].ClearVote();
+            buttons[2].ClearVote();
+
+
+        }
+
+        public void AddVote(int buttonnum, string username)
+        {
+            buttons[buttonnum].AddVote(username);
         }
         private void Update()
         {

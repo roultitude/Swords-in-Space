@@ -121,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _prefabId
-      value: 23
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -285,7 +285,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 9217316466230567277}
   _networkObjectCache: {fileID: 9217316466230567277}
   maxHp: 5
-  exp: 10
+  exp: 80
   hpBar: {fileID: 7109283038549124867}
 --- !u!114 &7109283038549124867 stripped
 MonoBehaviour:
@@ -324,6 +324,7 @@ MonoBehaviour:
   shotSpeed: 10
   shotLifetime: 10
   damage: 1
+  shotSpread: 0
   canFire: 1
   timerComplete: 0
 --- !u!114 &9217316466230567277 stripped

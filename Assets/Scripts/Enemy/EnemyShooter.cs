@@ -21,6 +21,7 @@ namespace SwordsInSpace
         public double shotSpeed;
         public double shotLifetime;
         public double damage;
+        public double shotSpread = 0;
         public bool canFire = true;
 
         public bool timerComplete = false;
@@ -70,7 +71,7 @@ namespace SwordsInSpace
 
             toAdd.transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360f);
 
-            toAdd.GetComponent<Bullet>().Setup(shotSpeed, shotLifetime, damage);
+            toAdd.GetComponent<Bullet>().Setup(shotSpeed, shotLifetime, damage, shotSpread);
             Spawn(toAdd);
         }
 
@@ -78,7 +79,7 @@ namespace SwordsInSpace
         {
             GameObject toAdd = Instantiate(bullet, transform.position, gameObject.transform.rotation);
             toAdd.transform.rotation = rot * transform.rotation;
-            toAdd.GetComponent<Bullet>().Setup(shotSpeed, shotLifetime, damage);
+            toAdd.GetComponent<Bullet>().Setup(shotSpeed, shotLifetime, damage, shotSpread);
             Spawn(toAdd);
         }
     }

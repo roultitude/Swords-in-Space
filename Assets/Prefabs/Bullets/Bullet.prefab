@@ -155,6 +155,7 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 1579795028985909499}
   _networkObjectCache: {fileID: 1579795028985909499}
+  damage: 0
 --- !u!114 &5659850497119933468
 MonoBehaviour:
   m_ObjectHideFlags: 0

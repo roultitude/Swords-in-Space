@@ -5,22 +5,27 @@ using FishNet.Object;
 using FishNet.Connection;
 namespace SwordsInSpace
 {
-    public class Bullet : NetworkBehaviour
+    public class Bullet : Projectile
     {
         Timer timer;
         double shotSpeed;
-        double shotLifeTime;
-        public double damage;
+        double shotSpread;
 
-        public void Setup(double shotSpeed, double shotLifeTime, double damage)
+        private bool hasSpread = false;
+
+        public override void Setup(double shotSpeed, double shotLifeTime, double damage, double spread)
         {
             timer = gameObject.AddComponent<Timer>();
             this.shotSpeed = shotSpeed;
             timer.Setup(shotLifeTime, false, true);
             timer.timeout.AddListener(OnTimeout);
             this.damage = damage;
+            this.shotSpread = spread;
 
         }
+
+
+
 
         public void OnHit()
         {
@@ -38,7 +43,14 @@ namespace SwordsInSpace
         void Update()
         {
             if (!IsServer) { return; }
+
+            if (!hasSpread)
+            {
+                hasSpread = true;
+                gameObject.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 0, UnityEngine.Random.Range((float)-shotSpread / 2, (float)shotSpread / 2));
+            }
             transform.position += transform.right * Time.deltaTime * (float)shotSpeed;
+
 
         }
 

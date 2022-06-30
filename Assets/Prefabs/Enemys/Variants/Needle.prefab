@@ -347,6 +347,7 @@ MonoBehaviour:
   shotSpeed: 30
   shotLifetime: 3
   damage: 1
+  shotSpread: 0
   canFire: 0
   timerComplete: 0
   shot1RotationOffset: {x: 0, y: 0, z: 0.9659258, w: -0.25881904}
@@ -394,7 +395,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5959219170562014505}
   _networkObjectCache: {fileID: 5959219170562014505}
   maxHp: 3
-  exp: 10
+  exp: 80
   hpBar: {fileID: 5760145152818412359}
   mover: {fileID: 7826549821664265833}
   shooter: {fileID: 7889098942661978653}
