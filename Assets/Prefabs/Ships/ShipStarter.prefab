@@ -619,24 +619,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8405907154230052790, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
       propertyPath: linkedFireCells.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8405907154230052790, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
       propertyPath: linkedFireCells.Array.data[0]
       value: 
-      objectReference: {fileID: 1328443370311965285}
+      objectReference: {fileID: 8974913899952848177}
     - target: {fileID: 8405907154230052790, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
       propertyPath: linkedFireCells.Array.data[1]
       value: 
-      objectReference: {fileID: 2536747758915550046}
+      objectReference: {fileID: 7199387719162153625}
     - target: {fileID: 8405907154230052790, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
       propertyPath: linkedFireCells.Array.data[2]
       value: 
-      objectReference: {fileID: 5921416014566759221}
+      objectReference: {fileID: 7470564604276341778}
     - target: {fileID: 8405907154230052790, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
       propertyPath: linkedFireCells.Array.data[3]
       value: 
-      objectReference: {fileID: 4643055508779123875}
+      objectReference: {fileID: 4535642848914977399}
     - target: {fileID: 8405907154230052790, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
       propertyPath: linkedFireCells.Array.data[4]
       value: 

@@ -16,6 +16,7 @@ namespace SwordsInSpace
         public Fire[] linkedFireCells;
 
         public Collider2D interactZone;
+        public Collider2D collideZone;
         public void Start()
         {
             if (!IsServer)
@@ -56,7 +57,7 @@ namespace SwordsInSpace
         private void DisableInteractZone(bool value)
         {
             interactZone.enabled = value;
-
+            collideZone.enabled = value;
 
         }
 

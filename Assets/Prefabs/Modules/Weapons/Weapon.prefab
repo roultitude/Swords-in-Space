@@ -167,6 +167,7 @@ MonoBehaviour:
   canUseOnPowerOut: 0
   linkedFireCells: []
   interactZone: {fileID: 4970288661495360416}
+  collideZone: {fileID: 2758781506738865069}
   data: {fileID: 0}
   currentAmmo: 3
   UIDisplayPrefab: {fileID: 175365271833212233, guid: 0663e54072b9f2c4bb5880f80b85611e, type: 3}
