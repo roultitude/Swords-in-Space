@@ -54,36 +54,9 @@
             "id": "0347baa0-3295-436a-8ae4-c752517820ae",
             "actions": [
                 {
-                    "name": "NitroThrust",
+                    "name": "NitroBoost",
                     "type": "Button",
                     "id": "97e37869-17fc-423a-9f73-f28a2b7f670f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ForwardThrust",
-                    "type": "Button",
-                    "id": "200175e2-a8ef-4363-a2d7-4dd0d0916cbd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "OffThrust",
-                    "type": "Button",
-                    "id": "1979d0a0-a702-4faf-a228-508f99dd758e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "BackThrust",
-                    "type": "Button",
-                    "id": "9bbf4c52-0e73-4ce2-b555-8d0479a890f9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -94,44 +67,11 @@
                 {
                     "name": "",
                     "id": "be1b3977-e229-4a91-a1b7-2229dd684835",
-                    "path": "<Keyboard>/numpad9",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NitroThrust",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "02a70e13-bce6-4968-be55-d89333ca0741",
-                    "path": "<Keyboard>/numpad6",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ForwardThrust",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b4c9f0d3-006d-4303-a2a7-4c5b676ecd87",
-                    "path": "<Keyboard>/numpad3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OffThrust",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a6672cb5-d230-4409-b4a1-3eb5ea242d9c",
-                    "path": "<Keyboard>/numpadPeriod",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "BackThrust",
+                    "action": "NitroBoost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
