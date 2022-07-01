@@ -43,6 +43,8 @@ namespace SwordsInSpace
         [SyncVar(OnChange = nameof(UpdateHpBar))]
         public double CurrentHp;
 
+        private bool isContactInvincible;
+        
         [SyncVar]
         public double CurrentMaxHp;
 
@@ -190,13 +192,13 @@ namespace SwordsInSpace
 
         public void OnCollisionEnter2D(Collision2D collision)
         {
-            if (IsServer)
+            if (!IsServer) return;
+            if (!isContactInvincible)
             {
                 fireManager.FireEventTrigger();
                 TakeDamage(shipMover.rb.velocity.magnitude);
+                StartCoroutine(OnContactInvincibilityFrames(data.ShipContactInvincibilityTime));
             }
-
-
         }
 
         public void UpdateHpBar(double oldHp, double newHp, bool isServer)
@@ -233,6 +235,13 @@ namespace SwordsInSpace
         {
             CurrentNitroFuel += change;
             Mathf.Clamp(CurrentNitroFuel + change, 0, data.ShipMaxNitroFuel);
+        }
+
+        public IEnumerator OnContactInvincibilityFrames(float invincibilityTime)
+        {
+            isContactInvincible = true;
+            yield return new WaitForSeconds(invincibilityTime);
+            isContactInvincible = false;
         }
     }
 

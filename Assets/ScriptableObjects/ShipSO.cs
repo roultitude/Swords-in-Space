@@ -9,5 +9,6 @@ namespace SwordsInSpace
     {
         public double ShipMaxHp;
         public int ShipMaxNitroFuel;
+        public float ShipContactInvincibilityTime;
     }
 };

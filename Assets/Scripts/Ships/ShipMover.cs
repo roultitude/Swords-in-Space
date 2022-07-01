@@ -13,7 +13,7 @@ namespace SwordsInSpace
         public bool canMove;
 
         [SerializeField]
-        private float speed, turnSpeed, nitroMult, backMult;
+        private float speed, turnSpeed, nitroMult, nitroInvincibilityTime;
         
         private void Awake()
         {
@@ -44,6 +44,7 @@ namespace SwordsInSpace
             {
                 rb.AddForce(1*transform.right * speed * (nitroMult - 1));
                 Ship.currentShip.ChangeNitroFuel(-1);
+                if (IsServer) Ship.currentShip.StartCoroutine(Ship.currentShip.OnContactInvincibilityFrames(nitroInvincibilityTime));
             }
             rb.AddTorque(md.Horizontal * -turnSpeed);
         }

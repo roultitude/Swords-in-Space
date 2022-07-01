@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ShipStarter
   m_EditorClassIdentifier: 
   ShipMaxHp: 100
+  ShipMaxNitroFuel: 3
