@@ -51,8 +51,9 @@ namespace SwordsInSpace
             else if (currentSteerState == SteerState.BACKWARD) mod = backMult;
             else if (currentSteerState == SteerState.FORWARD) mod = 1;
             rb.AddForce(mod * transform.right * speed);
-            float targetRotation = rb.rotation - md.Horizontal * turnSpeed;
-            rb.rotation = targetRotation;
+            rb.AddTorque(md.Horizontal * -turnSpeed);
+            //float targetRotation = rb.rotation - md.Horizontal * turnSpeed;
+            //rb.rotation = targetRotation;
             //rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, Quaternion.AngleAxis(targetRotation, Vector3.forward), (float)base.TimeManager.TickDelta * turnSpeed);
         }
 
