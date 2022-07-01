@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShipMaxHp: 100
   ShipMaxNitroFuel: 3
-  ShipInvincibilityTime: 0
+  ShipInvincibilityTime: 0.1
