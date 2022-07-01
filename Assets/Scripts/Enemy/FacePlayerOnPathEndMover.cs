@@ -12,7 +12,7 @@ namespace SwordsInSpace
         {
             if (ai.reachedDestination)
             {
-                LookAt(Ship.currentShip.transform, rotationSpeed);
+                LookAt(Ship.currentShip.transform, rotationSpeed * Time.deltaTime);
             }
         }
     }
