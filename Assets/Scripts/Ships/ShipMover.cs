@@ -11,9 +11,6 @@ namespace SwordsInSpace
     {
         public Rigidbody2D rb;
         public bool canMove;
-        
-        [SyncVar]
-        public SteerState currentSteerState;
 
         [SerializeField]
         private float speed, turnSpeed, nitroMult, backMult;
@@ -22,7 +19,6 @@ namespace SwordsInSpace
         {
             rb = GetComponent<Rigidbody2D>();
             canMove = false; //canMove from start for testing.
-            currentSteerState = SteerState.OFF;
         }
 
         public override void OnStartClient()
@@ -43,18 +39,13 @@ namespace SwordsInSpace
         [Replicate]
         private void MovePredict(MoveData md, bool asServer, bool replaying = false)
         {
-            //Vector2 newPos = new Vector2(rb.transform.position.x + moveXY.x, rb.transform.position.y + moveXY.y);
-            //rb.MovePosition(newPos);
-            //rb.velocity = moveXY;
-            float mod = 0;
-            if (currentSteerState == SteerState.NITRO) mod = nitroMult;
-            else if (currentSteerState == SteerState.BACKWARD) mod = backMult;
-            else if (currentSteerState == SteerState.FORWARD) mod = 1;
-            rb.AddForce(mod * transform.right * speed);
+            rb.AddForce(md.Vertical * transform.right * speed);
+            if (md.Dashing && Ship.currentShip.CurrentNitroFuel > 0)
+            {
+                rb.AddForce(1*transform.right * speed * (nitroMult - 1));
+                Ship.currentShip.ChangeNitroFuel(-1);
+            }
             rb.AddTorque(md.Horizontal * -turnSpeed);
-            //float targetRotation = rb.rotation - md.Horizontal * turnSpeed;
-            //rb.rotation = targetRotation;
-            //rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, Quaternion.AngleAxis(targetRotation, Vector3.forward), (float)base.TimeManager.TickDelta * turnSpeed);
         }
 
         public void Reconciliation(ReconcileData rd, bool asServer)

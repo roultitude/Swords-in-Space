@@ -8,5 +8,6 @@ namespace SwordsInSpace
     public class ShipSO : ScriptableObject
     {
         public double ShipMaxHp;
+        public int ShipMaxNitroFuel;
     }
 };

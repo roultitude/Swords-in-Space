@@ -97,6 +97,7 @@ namespace SwordsInSpace
             }
             playerInput.actions["Interact"].performed += context => interactor.Interact();
             playerInput.actions["Dash"].performed += context => { awaitingDash = true; };
+            playerInput.actions["NitroBoost"].performed += context => { awaitingDash = true; };
             playerInput.actions["ExitUI"].performed += context => OnExitUI(context);
             playerInput.actions["NextLevel"].performed += context => { 
                 if (context.performed) 

@@ -247,7 +247,6 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 5412598000014957244}
   rb: {fileID: 4703744331782941198}
   canMove: 0
-  currentSteerState: 0
   speed: 1000
   turnSpeed: 10
   nitroMult: 0
@@ -329,6 +328,7 @@ MonoBehaviour:
   background: {fileID: 220810308338604789}
   CurrentHp: 0
   CurrentMaxHp: 0
+  CurrentNitroFuel: 0
   isPowerUp: 1
 --- !u!114 &7784500117912041229
 MonoBehaviour:
@@ -348,14 +348,22 @@ MonoBehaviour:
   tier1Upgrade:
   - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
     upgradeCount: 0
+  - upgradeSo: {fileID: 11400000, guid: 1d07e19c5a69dff4cab951e95494cd65, type: 2}
+    upgradeCount: 0
   tier2Upgrade:
   - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
+    upgradeCount: 0
+  - upgradeSo: {fileID: 11400000, guid: 1d07e19c5a69dff4cab951e95494cd65, type: 2}
     upgradeCount: 0
   tier3Upgrade:
   - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
     upgradeCount: 0
+  - upgradeSo: {fileID: 11400000, guid: 1d07e19c5a69dff4cab951e95494cd65, type: 2}
+    upgradeCount: 0
   tier4Upgrade:
   - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
+    upgradeCount: 0
+  - upgradeSo: {fileID: 11400000, guid: 1d07e19c5a69dff4cab951e95494cd65, type: 2}
     upgradeCount: 0
   upgradesDisplay: {fileID: 0}
   numUpgrades: 0
@@ -767,8 +775,6 @@ MonoBehaviour:
   - {fileID: 2974684135176937384}
   - {fileID: 4485076214342864807}
   - {fileID: 7784500117912041229}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 8524240635559801792}
   - {fileID: 840958035019083572}
   SceneTransformProperties:
@@ -1224,7 +1230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6297bda6e55c144468e6b7794d3f428f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 7
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 5412598000014957244}
   _networkObjectCache: {fileID: 5412598000014957244}
   interiorTransform: {fileID: 3777107840797026398}
@@ -1274,7 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1340d34fbded0f74fae656d13b17ebf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 6
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 5412598000014957244}
   _networkObjectCache: {fileID: 5412598000014957244}
   syncTarget: {fileID: 6463308224519303839}

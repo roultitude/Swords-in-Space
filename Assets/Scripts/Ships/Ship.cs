@@ -46,17 +46,24 @@ namespace SwordsInSpace
         [SyncVar]
         public double CurrentMaxHp;
 
+        [SyncVar]
+        public int CurrentNitroFuel; //rename maybe
+
         public bool isPowerUp = true;
 
         private void Awake()
+        {
+            Setup();
+            
+        }
+        private void Setup()
         {
             currentShip = this;
             shipMover = this.GetComponentInChildren<ShipMover>();
             CurrentHp = data.ShipMaxHp;
             CurrentMaxHp = data.ShipMaxHp;
-
+            CurrentNitroFuel = data.ShipMaxNitroFuel;
         }
-
         [ServerRpc(RequireOwnership = false)]
         public void ReloadStats()
         {
@@ -220,6 +227,12 @@ namespace SwordsInSpace
                 base.RemoveOwnership();
                 Debug.Log("pilot changed to none");
             }
+        }
+        [ServerRpc(RequireOwnership = false)]
+        public void ChangeNitroFuel(int change)
+        {
+            CurrentNitroFuel += change;
+            Mathf.Clamp(CurrentNitroFuel + change, 0, data.ShipMaxNitroFuel);
         }
     }
 
