@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5150511420309096475}
   - component: {fileID: 1271647602566972295}
   - component: {fileID: 350089114656615458}
+  - component: {fileID: 8013606181629481083}
   m_Layer: 0
   m_Name: ShielderOval
   m_TagString: Untagged
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 056fd61e35aa87f4f8474af336847957, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5179334, g: 0.95297176, b: 0.9716981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,10 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1640be67244831345ad9e26f199a8ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 0
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 1271647602566972295}
-  _networkObjectCache: {fileID: 1271647602566972295}
-  size: {x: 10, y: 40}
+  _networkObjectCache: {fileID: 0}
+  size: {x: 10, y: 10}
+  turnAxis: {x: 0, y: 0}
+  turnSpeed: 2
 --- !u!114 &1271647602566972295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _networkBehaviours:
   - {fileID: 5150511420309096475}
+  - {fileID: 8013606181629481083}
   SceneTransformProperties:
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -124,7 +128,7 @@ MonoBehaviour:
   _isNetworked: 1
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
-  _prefabId: -1
+  _prefabId: 13
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects: []
@@ -154,3 +158,45 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8013606181629481083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8409513000021745705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: 1271647602566972295}
+  _networkObjectCache: {fileID: 1271647602566972295}
+  _synchronizeParent: 0
+  _packing:
+    Position: 1
+    Rotation: 1
+    Scale: 0
+  _interpolation: 2
+  _extrapolation: 2
+  _enableTeleport: 0
+  _teleportThreshold: 1
+  _clientAuthoritative: 1
+  _sendToOwner: 1
+  _interval: 1
+  _synchronizePosition: 1
+  _positionSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeRotation: 1
+  _rotationSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeScale: 1
+  _scaleSnapping:
+    X: 0
+    Y: 0
+    Z: 0

@@ -174,6 +174,11 @@ namespace SwordsInSpace
 
         void OnDisplayClosed()
         {
+            if (numUpgrades > 0)
+            {
+                DisplayManager.instance.Offer(upgradesDisplay);
+                return;
+            }
             DisplayManager.instance.DisplayCloseEvent -= OnDisplayClosed;
             currentPlayerInput.playerInput.actions["Left"].performed -= OnClickLeftButton;
             currentPlayerInput.playerInput.actions["Middle"].performed -= OnClickMiddleButton;
