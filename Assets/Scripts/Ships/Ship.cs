@@ -43,7 +43,7 @@ namespace SwordsInSpace
         [SyncVar(OnChange = nameof(UpdateHpBar))]
         public double CurrentHp;
 
-        private bool isContactInvincible;
+        private bool isInvincible;
         
         [SyncVar]
         public double CurrentMaxHp;
@@ -154,8 +154,9 @@ namespace SwordsInSpace
 
         public void TakeDamage(double amt)
         {
-            CurrentHp -= 1;
-
+            StartCoroutine(StartInvincibilityFrames(data.ShipInvincibilityTime));
+            Debug.Log(amt + " deamage taken");
+            CurrentHp -= amt;
             if (CurrentHp <= 0)
             {
                 GameManager.instance.OnLoseGame();
@@ -193,11 +194,9 @@ namespace SwordsInSpace
         public void OnCollisionEnter2D(Collision2D collision)
         {
             if (!IsServer) return;
-            if (!isContactInvincible)
+            if (!isInvincible)
             {
                 fireManager.FireEventTrigger();
-                TakeDamage(shipMover.rb.velocity.magnitude);
-                StartCoroutine(OnContactInvincibilityFrames(data.ShipContactInvincibilityTime));
             }
         }
 
@@ -237,11 +236,11 @@ namespace SwordsInSpace
             Mathf.Clamp(CurrentNitroFuel + change, 0, data.ShipMaxNitroFuel);
         }
 
-        public IEnumerator OnContactInvincibilityFrames(float invincibilityTime)
+        public IEnumerator StartInvincibilityFrames(float invincibilityTime)
         {
-            isContactInvincible = true;
+            isInvincible = true;
             yield return new WaitForSeconds(invincibilityTime);
-            isContactInvincible = false;
+            isInvincible = false;
         }
     }
 

@@ -44,7 +44,7 @@ namespace SwordsInSpace
             {
                 rb.AddForce(1*transform.right * speed * (nitroMult - 1));
                 Ship.currentShip.ChangeNitroFuel(-1);
-                if (IsServer) Ship.currentShip.StartCoroutine(Ship.currentShip.OnContactInvincibilityFrames(nitroInvincibilityTime));
+                if (IsServer) Ship.currentShip.StartCoroutine(Ship.currentShip.StartInvincibilityFrames(nitroInvincibilityTime));
             }
             rb.AddTorque(md.Horizontal * -turnSpeed);
         }

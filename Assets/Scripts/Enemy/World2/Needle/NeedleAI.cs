@@ -21,9 +21,9 @@ namespace SwordsInSpace
             //Debug.Log(collision.gameObject);
             Ship obj = collision.gameObject.GetComponent<Ship>();
 
-            if (obj != null)
+            if (obj != null && mover.currentState == NeedleMover.STATE.DASHING)
             {
-                Ship.currentShip.TakeDamage(mover.rb.velocity.magnitude);
+                Ship.currentShip.TakeDamage(mover.rb.velocity.magnitude/20);
                 mover.OnTouchPlayer();
             }
 
