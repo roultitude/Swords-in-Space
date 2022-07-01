@@ -225,6 +225,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8138893596707659371}
+  - {fileID: 8596593168639659938}
   - {fileID: 8380063203540845828}
   m_Father: {fileID: 5221657397174509498}
   m_RootOrder: 0
@@ -246,7 +247,6 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 5412598000014957244}
   rb: {fileID: 4703744331782941198}
   canMove: 0
-  currentSteerState: 0
   speed: 1000
   turnSpeed: 10
   nitroMult: 0
@@ -328,6 +328,7 @@ MonoBehaviour:
   background: {fileID: 220810308338604789}
   CurrentHp: 0
   CurrentMaxHp: 0
+  CurrentNitroFuel: 0
   isPowerUp: 1
 --- !u!114 &7784500117912041229
 MonoBehaviour:
@@ -347,14 +348,22 @@ MonoBehaviour:
   tier1Upgrade:
   - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
     upgradeCount: 0
+  - upgradeSo: {fileID: 11400000, guid: 1d07e19c5a69dff4cab951e95494cd65, type: 2}
+    upgradeCount: 0
   tier2Upgrade:
   - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
+    upgradeCount: 0
+  - upgradeSo: {fileID: 11400000, guid: 1d07e19c5a69dff4cab951e95494cd65, type: 2}
     upgradeCount: 0
   tier3Upgrade:
   - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
     upgradeCount: 0
+  - upgradeSo: {fileID: 11400000, guid: 1d07e19c5a69dff4cab951e95494cd65, type: 2}
+    upgradeCount: 0
   tier4Upgrade:
   - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
+    upgradeCount: 0
+  - upgradeSo: {fileID: 11400000, guid: 1d07e19c5a69dff4cab951e95494cd65, type: 2}
     upgradeCount: 0
   upgradesDisplay: {fileID: 0}
   numUpgrades: 0
@@ -1275,6 +1284,37 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5412598000014957244}
   _networkObjectCache: {fileID: 5412598000014957244}
   syncTarget: {fileID: 6463308224519303839}
+--- !u!1 &6773389929242679299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8596593168639659938}
+  m_Layer: 7
+  m_Name: Shooters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8596593168639659938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6773389929242679299}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6463308224519303839}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7352440916063919843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,7 +1466,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6463308224519303839}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8910735096596376939
 GameObject:
