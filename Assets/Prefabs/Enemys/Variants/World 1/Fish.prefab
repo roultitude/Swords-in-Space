@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: SceneTransformProperties.Position.y
       value: 12.631714
       objectReference: {fileID: 0}
+    - target: {fileID: 3882986017172763831, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: drawGizmos
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
 --- !u!1 &3293779481481988082 stripped

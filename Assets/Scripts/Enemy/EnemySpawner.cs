@@ -25,6 +25,7 @@ namespace SwordsInSpace
         {
             public GameObject MobType;
             public int weight;
+            public Vector2 localPackSizeRange;
         }
 
         [SerializeField]
@@ -64,26 +65,62 @@ namespace SwordsInSpace
         public void Spawn()
         {
             int currentWeight = Random.Range(0, totalWeight + 1);
-            GameObject toSpawn = spawninfos[0].MobType;
+            SpawnInfo selectedInfo = spawninfos[0];
             foreach (SpawnInfo info in spawninfos)
             {
                 currentWeight -= info.weight;
                 if (currentWeight <= 0)
                 {
-                    toSpawn = info.MobType;
+                    selectedInfo = info;
                     break;
                 }
             }
             Vector3 loc = getRandomPosition();
             int size = Random.Range(minPackDensity, maxPackDensity);
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < size * (int)Random.Range(selectedInfo.localPackSizeRange.x, selectedInfo.localPackSizeRange.y + 1); i++)
             {
-                GameObject toAdd = Instantiate(toSpawn, new Vector3(loc.x + Random.Range(-packSpawnRadius.x / 2, packSpawnRadius.x / 2),
-                    loc.y + Random.Range(-packSpawnRadius.y / 2, packSpawnRadius.y / 2),
+                Vector2 randomLocInSpawnRadius = getValidLocInSpawnRadius(loc);
+                GameObject toAdd = Instantiate(selectedInfo.MobType, new Vector3(randomLocInSpawnRadius.x, randomLocInSpawnRadius.y,
                     loc.z), transform.rotation);
                 Spawn(toAdd);
 
             }
+
+        }
+
+        private Vector2 getValidLocInSpawnRadius(Vector3 loc)
+        {
+
+            bool foundValid = false;
+            int radiusExpanded = 0;
+            int increaseSpawnRadiusAttempts = 3;
+            Vector2 currentPackSpawnRadius = packSpawnRadius;
+            Vector2 randomLocInSpawnRadius = new Vector2(loc.x, loc.y); ;
+            while (!foundValid)
+            {
+                for (int attemptsInVicinity = 0; attemptsInVicinity < 10; attemptsInVicinity++)
+                {
+                    randomLocInSpawnRadius = new Vector2(loc.x + Random.Range(-currentPackSpawnRadius.x / 2, currentPackSpawnRadius.x / 2),
+                    loc.y + Random.Range(-currentPackSpawnRadius.y / 2, currentPackSpawnRadius.y / 2));
+
+                    if (isValidSpawnPosition(randomLocInSpawnRadius))
+                    {
+                        foundValid = true;
+                        return randomLocInSpawnRadius;
+                    }
+
+                }
+                radiusExpanded += 1;
+
+                currentPackSpawnRadius *= 2;
+
+                if (radiusExpanded > increaseSpawnRadiusAttempts)
+                    break;
+
+
+            }
+
+            return randomLocInSpawnRadius;
 
         }
 
@@ -98,12 +135,16 @@ namespace SwordsInSpace
 
             Vector3 pos = new Vector3(Random.Range(-worldSize.x / 3, worldSize.x / 3), Random.Range(-worldSize.y / 3, worldSize.y / 3), 0);
 
-            if (Physics2D.OverlapCircle(new Vector2(pos.x, pos.y), UnitsFromAsteroid) != null && attempts > 0)
+            if (!isValidSpawnPosition(pos) && attempts > 0)
             {
                 return getRandomPosition(attempts--);
             }
             return pos;
 
+        }
+        private bool isValidSpawnPosition(Vector2 pos)
+        {
+            return Physics2D.OverlapCircle(new Vector2(pos.x, pos.y), UnitsFromAsteroid) == null;
         }
 
         public void StopSpawn()

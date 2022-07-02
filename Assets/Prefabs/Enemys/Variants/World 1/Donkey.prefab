@@ -121,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _prefabId
-      value: 25
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -147,6 +147,10 @@ PrefabInstance:
       propertyPath: _networkBehaviours.Array.data[4]
       value: 
       objectReference: {fileID: 114230788736614587}
+    - target: {fileID: 3882986017172763831, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: drawGizmos
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4801082456647798630, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: exp
       value: 1

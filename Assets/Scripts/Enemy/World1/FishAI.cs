@@ -12,7 +12,7 @@ namespace SwordsInSpace
         private Rigidbody2D rb;
         private FishMover mover;
         private SpriteRenderer sprite;
-        
+
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -27,7 +27,7 @@ namespace SwordsInSpace
             if (obj != null)
             {
                 Ship.currentShip.TakeDamage(contactDamage);
-                rb.AddForce(collision.GetContact(0).normal * reboundForce,ForceMode2D.Impulse); //fish bounces off ship upon collision
+                rb.AddForce(collision.GetContact(0).normal * reboundForce, ForceMode2D.Impulse); //fish bounces off ship upon collision
                 mover.OnStartRebound();
             }
 
@@ -35,9 +35,9 @@ namespace SwordsInSpace
 
         private void Update()
         {
-            Debug.Log(transform.rotation.eulerAngles.z);
+            //Debug.Log(transform.rotation.eulerAngles.z);
             sprite.flipX = transform.rotation.eulerAngles.z < 180;
-            Debug.Log(sprite.flipX);
+            //Debug.Log(sprite.flipX);
         }
     }
 }
