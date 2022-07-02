@@ -196,6 +196,10 @@ PrefabInstance:
       value: 1.3767186
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _prefabId
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -299,6 +303,9 @@ MonoBehaviour:
   maxHp: 30
   exp: 300
   hpBar: {fileID: 8001875485348929002}
+  doTeleportIfFar: 1
+  teleportCheckDuration: 5
+  teleportIfFurtherThanDistance: 200
 --- !u!4 &6342802163944579878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2241507642535770688, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}

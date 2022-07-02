@@ -179,8 +179,11 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 7276140365687493132}
   _networkObjectCache: {fileID: 7276140365687493132}
   maxHp: 2
-  exp: 10
+  exp: 90
   hpBar: {fileID: 8771121055730832482}
+  doTeleportIfFar: 1
+  teleportCheckDuration: 5
+  teleportIfFurtherThanDistance: 200
   contactDamage: 5
   reboundForce: 5
 --- !u!114 &9043123250949493189

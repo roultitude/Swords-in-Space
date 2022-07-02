@@ -200,7 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 982c9327cffe1dd438c6dc52f286711a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 0}
+  spawner: {fileID: 4444492388093359120}
+  levelComplete: 0
 --- !u!1 &4444492387278712791
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,11 +254,12 @@ MonoBehaviour:
   worldSize: 200
   randomSeed: 1
   seed: {x: 0, y: 0}
+  minAsteroidSize: 10
   threshold: 0.7
   density: 15
   distance: 5
   tile: {fileID: 11400000, guid: 790c5c8742001644a85285917735e060, type: 2}
-  spawnCullingRadius: 0
+  spawnCullingRadius: 15
 --- !u!1 &4444492388093359123
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +317,7 @@ MonoBehaviour:
   spawninfos:
   - MobType: {fileID: 8421504617852582272, guid: 825b139ee6189d249af28744eb6ec63d, type: 3}
     weight: 1
+    localPackSizeRange: {x: 1, y: 0}
   worldSize: {x: 1000, y: 1000}
   spawningComplete: 0
 --- !u!114 &4444492388093359121

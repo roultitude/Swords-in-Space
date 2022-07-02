@@ -44,7 +44,7 @@ namespace SwordsInSpace
         public double CurrentHp;
 
         private bool isInvincible;
-        
+
         [SyncVar]
         public double CurrentMaxHp;
 
@@ -56,7 +56,7 @@ namespace SwordsInSpace
         private void Awake()
         {
             Setup();
-            
+
         }
         private void Setup()
         {
@@ -155,7 +155,7 @@ namespace SwordsInSpace
         public void TakeDamage(double amt)
         {
             StartCoroutine(StartInvincibilityFrames(data.ShipInvincibilityTime));
-            Debug.Log(amt + " deamage taken");
+            //Debug.Log(amt + " deamage taken");
             CurrentHp -= amt;
             if (CurrentHp <= 0)
             {
@@ -202,7 +202,7 @@ namespace SwordsInSpace
 
         public void UpdateHpBar(double oldHp, double newHp, bool isServer)
         {
-            UiHpBar.GetComponent<UIHpBar>().Resize((float) newHp / (float)CurrentMaxHp);
+            UiHpBar.GetComponent<UIHpBar>().Resize((float)newHp / (float)CurrentMaxHp);
         }
 
         [ServerRpc(RequireOwnership = false)]

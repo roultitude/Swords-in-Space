@@ -178,6 +178,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _prefabId
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -270,6 +274,9 @@ MonoBehaviour:
   maxHp: 5
   exp: 55
   hpBar: {fileID: 7574043320882608526}
+  doTeleportIfFar: 1
+  teleportCheckDuration: 5
+  teleportIfFurtherThanDistance: 200
 --- !u!114 &3783693575054878566
 MonoBehaviour:
   m_ObjectHideFlags: 0

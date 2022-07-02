@@ -192,6 +192,9 @@ MonoBehaviour:
   maxHp: 10
   exp: 100
   hpBar: {fileID: 9133155322967439037}
+  doTeleportIfFar: 1
+  teleportCheckDuration: 5
+  teleportIfFurtherThanDistance: 200
   turnSpeed: 4.5
 --- !u!114 &7204703169322365139 stripped
 MonoBehaviour:

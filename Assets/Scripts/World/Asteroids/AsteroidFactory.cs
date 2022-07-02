@@ -54,8 +54,9 @@ namespace SwordsInSpace
                 if (randomSeed)
                     seed = new Vector2(Random.Range(0, 9000), Random.Range(0, 9000));
                 noiseGrid = new float[worldSize, worldSize];
-                offset = new Vector2(-worldSize / 2 * distance, -worldSize / 2 * distance);
                 MakeNoiseArray();
+                offset = new Vector2(-worldSize / 2 * distance, -worldSize / 2 * distance);
+
                 MakeAsteroids();
             }
         }
@@ -108,8 +109,6 @@ namespace SwordsInSpace
                         Tilemap currentMap = toAdd.GetComponentInChildren<Tilemap>();
                         if (currentMap)
                             Traverse(hasSeen, currentMap, i, j, 0, 0);
-
-                        toAdd.GetComponentInChildren<Asteroid>().Setup(0f);
 
                         Spawn(toAdd);
                     }
@@ -175,10 +174,19 @@ namespace SwordsInSpace
         [ObserversRpc(IncludeOwner = true, BufferLast = true)]
         private void ProcessAsteroids()
         {
+
             Asteroid[] asteroids = Object.FindObjectsOfType<Asteroid>();
             bool[,] hasSeen = new bool[worldSize, worldSize];
+            if (!IsServer)
+            {
+                noiseGrid = new float[worldSize, worldSize];
+                MakeNoiseArray();
+            }
+
+
             foreach (Asteroid asteroid in asteroids)
             {
+
                 Vector2 loc = new Vector2((asteroid.gameObject.transform.position.x - offset.x) / distance
                 , (asteroid.gameObject.transform.position.y - offset.y) / distance);
                 Tilemap currentMap = asteroid.GetComponentInChildren<Tilemap>();
@@ -215,6 +223,7 @@ namespace SwordsInSpace
             hasSeen[i, j] = true;
             hp++;
             currentMap.SetTile(new Vector3Int(x, y, 0), tile);
+
 
             if (i > 0 && !hasSeen[i - 1, j] && AboveThreshold(i - 1, j))
             {

@@ -9,7 +9,7 @@ namespace SwordsInSpace
     public class WorldManager : MonoBehaviour
     {
         public static WorldManager currentWorld;
-        
+
         // Start is called before the first frame update
 
         [SerializeField]
@@ -18,6 +18,8 @@ namespace SwordsInSpace
         public bool levelComplete = false;
 
         private bool levelFinished = false;
+
+        public Vector2 WorldSize = new Vector2(1000, 1000);
 
         void Start()
         {
@@ -35,6 +37,7 @@ namespace SwordsInSpace
             if (!InstanceFinder.IsServer) return;
             if (levelComplete && !levelFinished)
             {
+                WorldSpawner.level++;
                 GameManager.instance.OnLevelComplete();
                 levelFinished = true;
             }

@@ -291,6 +291,9 @@ MonoBehaviour:
   maxHp: 5
   exp: 80
   hpBar: {fileID: 7109283038549124867}
+  doTeleportIfFar: 1
+  teleportCheckDuration: 5
+  teleportIfFurtherThanDistance: 200
 --- !u!114 &7109283038549124867 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2887116319582651532, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
