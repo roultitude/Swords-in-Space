@@ -8,11 +8,16 @@ namespace SwordsInSpace
     {
         [SerializeField]
         private float contactDamage, reboundForce;
-        private Rigidbody2D rb;
 
+        private Rigidbody2D rb;
+        private FishMover mover;
+        private SpriteRenderer sprite;
+        
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
+            mover = GetComponent<FishMover>();
+            sprite = GetComponentInChildren<SpriteRenderer>();
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -23,8 +28,16 @@ namespace SwordsInSpace
             {
                 Ship.currentShip.TakeDamage(contactDamage);
                 rb.AddForce(collision.GetContact(0).normal * reboundForce,ForceMode2D.Impulse); //fish bounces off ship upon collision
+                mover.OnStartRebound();
             }
 
+        }
+
+        private void Update()
+        {
+            Debug.Log(transform.rotation.eulerAngles.z);
+            sprite.flipX = transform.rotation.eulerAngles.z < 180;
+            Debug.Log(sprite.flipX);
         }
     }
 }
