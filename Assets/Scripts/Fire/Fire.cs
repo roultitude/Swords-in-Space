@@ -17,26 +17,15 @@ namespace SwordsInSpace
         public Fire Left;
         public Fire Right;
 
+        [SyncVar(OnChange = nameof(onChange))]
         public bool fireActive = false;
-        public bool trigger;
+
 
         public UnityEvent onStartFire = new();
         public UnityEvent onEndFire = new();
-        public void Start()
-        {
-            gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
-            SetActiveAllChildren(false);
 
-        }
 
-        public void Update()
-        {
-            if (trigger)
-            {
-                trigger = false;
-                activate();
-            }
-        }
+
         public override void Interact(GameObject player)
         {
             Damage();
@@ -51,21 +40,37 @@ namespace SwordsInSpace
                 deactivate();
             }
         }
-        [ObserversRpc]
+
+        [ServerRpc(RequireOwnership = false)]
         public void activate()
         {
-            flameHp = 3;
             fireActive = true;
-            SetActiveAllChildren(true);
-            onStartFire.Invoke();
         }
 
-        [ObserversRpc]
+
         public void deactivate()
         {
             fireActive = false;
-            SetActiveAllChildren(false);
-            onEndFire.Invoke();
+        }
+
+
+        public void onChange(bool past, bool current, bool isServer)
+        {
+            Debug.Log(current);
+            if (current)
+            {
+                flameHp = 3;
+                SetActiveAllChildren(true);
+                onStartFire.Invoke();
+            }
+            else
+            {
+                SetActiveAllChildren(false);
+                onEndFire.Invoke();
+            }
+
+
+
         }
 
 
@@ -74,6 +79,8 @@ namespace SwordsInSpace
             foreach (Transform child in gameObject.transform)
             {
                 child.gameObject.SetActive(value);
+                if (value)
+                    gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
             }
         }
     }
