@@ -21,17 +21,6 @@ namespace SwordsInSpace
         public float fireStartOnCollideChance;
 
 
-        private int a = 300;
-        public void Update()
-        {
-            if (!IsServer)
-                return;
-            a--;
-            if (a == 2)
-                StartFire();
-        }
-
-
         public void StartFire()
         {
             if (fires == null || fires.Length == 0)

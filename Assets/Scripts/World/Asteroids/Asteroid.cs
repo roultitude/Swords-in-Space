@@ -38,6 +38,23 @@ namespace SwordsInSpace
             if (hp <= 0)
                 this.Despawn();
         }
+
+
+        public void OnCollisionEnter2D(Collision2D collision)
+        {
+            //Debug.Log(collision.gameObject);
+            Ship obj = collision.gameObject.GetComponent<Ship>();
+
+            if (obj != null)
+            {
+
+                Ship.currentShip.TakeDamage(Mathf.Clamp(Ship.currentShip.shipMover.rb.velocity.magnitude, 0, 7.5f));
+
+            }
+
+        }
+
+
     }
 
 };

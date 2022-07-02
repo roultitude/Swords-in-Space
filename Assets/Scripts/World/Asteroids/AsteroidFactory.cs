@@ -25,7 +25,7 @@ namespace SwordsInSpace
 
         public float[,] noiseGrid;
 
-
+        public int minAsteroidSize = 10;
 
         [SerializeField]
         public float threshold = 0.01f;
@@ -92,12 +92,18 @@ namespace SwordsInSpace
                 for (int j = 0; j < worldSize; j++)
                 {
 
-                    if (AboveThreshold(i, j) && !hasSeen[i, j] && (i * i + j * j) > spawnCullingRadius * spawnCullingRadius)
+                    if (AboveThreshold(i, j) && !hasSeen[i, j])
                     {
+                        bool[,] test = new bool[worldSize, worldSize];
+                        if (!CanSpawnAsteroid(test, i, j))
+                        {
+                            MergeBoolArray(hasSeen, test);
+                            continue;
+                        }
+
+
                         GameObject toAdd = Instantiate(asteroids[0]
                             , new Vector3(i * distance + offset.x, j * distance + offset.y, 0)
-                            //, new Vector3(i, j, 0)
-                            //, Quaternion.Euler(0, 0, Random.Range(0, 360)));
                             , Quaternion.Euler(0, 0, 0));
                         Tilemap currentMap = toAdd.GetComponentInChildren<Tilemap>();
                         if (currentMap)
@@ -114,6 +120,54 @@ namespace SwordsInSpace
             }
 
             ProcessAsteroids();
+
+
+        }
+
+        private void MergeBoolArray(bool[,] hasSeen, bool[,] test)
+        {
+            for (int i = 0; i < worldSize; i++)
+            {
+                for (int j = 0; j < worldSize; j++)
+                {
+                    hasSeen[i, j] = test[i, j] || hasSeen[i, j];
+                }
+            }
+        }
+
+        private bool CanSpawnAsteroid(bool[,] test, int i, int j)
+        {
+
+            hp = 0;
+            return testSpawnAsteroid(test, i, j) && hp > minAsteroidSize;
+        }
+
+        private bool testSpawnAsteroid(bool[,] hasSeen, int i, int j)
+        {
+
+            hasSeen[i, j] = true;
+            hp++;
+            bool result = (((i - worldSize / 2) * (i - worldSize / 2) + (j - worldSize / 2) * (j - worldSize / 2)) > spawnCullingRadius * spawnCullingRadius);
+
+
+            if (i > 0 && !hasSeen[i - 1, j] && AboveThreshold(i - 1, j))
+            {
+                result = result && testSpawnAsteroid(hasSeen, i - 1, j);
+            }
+            if (i < worldSize - 1 && !hasSeen[i + 1, j] && AboveThreshold(i + 1, j))
+            {
+                result = result && testSpawnAsteroid(hasSeen, i + 1, j);
+            }
+            if (j < worldSize - 1 && !hasSeen[i, j + 1] && AboveThreshold(i, j + 1))
+            {
+                result = result && testSpawnAsteroid(hasSeen, i, j + 1);
+            }
+            if (j > 0 && !hasSeen[i, j - 1] && AboveThreshold(i, j - 1))
+            {
+                result = result && testSpawnAsteroid(hasSeen, i, j - 1);
+            }
+
+            return result;
 
 
         }
@@ -153,6 +207,8 @@ namespace SwordsInSpace
         {
             return noiseGrid[i, j] >= threshold;
         }
+
+
 
         private void Traverse(bool[,] hasSeen, Tilemap currentMap, int i, int j, int x, int y)
         {

@@ -109,6 +109,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+--- !u!58 &3111251175292881953 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 898759745282394244, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+  m_PrefabInstance: {fileID: 2834008040987100325}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5790167024248225744 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8578976272114121589, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
@@ -157,8 +162,8 @@ MonoBehaviour:
   canUseOnPowerOut: 0
   linkedFireCells: []
   interactZone: {fileID: 5790167025525516621}
+  collideZone: {fileID: 3111251175292881953}
   UIDisplayPrefab: {fileID: 2941157506514726687, guid: 8640bdbd3fef30042a60623b4e8fea44, type: 3}
-  currentSteerState: 0
 --- !u!61 &5790167025525516621 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}

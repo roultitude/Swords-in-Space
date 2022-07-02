@@ -181,3 +181,4 @@ MonoBehaviour:
   canUseOnPowerOut: 0
   linkedFireCells: []
   interactZone: {fileID: 3997270629415217438}
+  collideZone: {fileID: 909221585954634315}

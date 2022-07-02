@@ -10,10 +10,9 @@ namespace SwordsInSpace
         public NeedleMover mover;
         public NeedleShooter shooter;
 
-
+        public double contactDamage = 15;
         public void onStartStopDash()
         {
-
             shooter.canFire = !shooter.canFire;
         }
         public void OnCollisionEnter2D(Collision2D collision)
@@ -23,7 +22,8 @@ namespace SwordsInSpace
 
             if (obj != null && mover.currentState == NeedleMover.STATE.DASHING)
             {
-                Ship.currentShip.TakeDamage(mover.rb.velocity.magnitude/20);
+                Ship.currentShip.TakeDamage(contactDamage);
+
                 mover.OnTouchPlayer();
             }
 

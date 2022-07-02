@@ -155,12 +155,18 @@ MonoBehaviour:
   canUseOnPowerOut: 1
   linkedFireCells: []
   interactZone: {fileID: 2851032637663029961}
+  collideZone: {fileID: 6694402224351252389}
   maxAmount: 200
   drainRate: 50
   refillRate: 10
   currentAmount: 200
   supplyingPower: 1
   bar: {fileID: 8692486598316717058}
+--- !u!58 &6694402224351252389 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 898759745282394244, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+  m_PrefabInstance: {fileID: 5809153563362903841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6681304026022575025
 PrefabInstance:
   m_ObjectHideFlags: 0

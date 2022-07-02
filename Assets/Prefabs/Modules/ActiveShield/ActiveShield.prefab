@@ -166,6 +166,7 @@ MonoBehaviour:
   canUseOnPowerOut: 0
   linkedFireCells: []
   interactZone: {fileID: 5190368848347501453}
+  collideZone: {fileID: 5227512333065150359}
   UIDisplayPrefab: {fileID: 175365271833212233, guid: 7b5aa21925256d04b9098e9a35ac9b2f, type: 3}
   shielder: {fileID: 0}
 --- !u!61 &5190368848347501453 stripped
