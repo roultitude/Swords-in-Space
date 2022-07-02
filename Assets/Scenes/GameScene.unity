@@ -1071,8 +1071,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4444492386302331272}
     - target: {fileID: 4444492387278712788, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: minAsteroidSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492387278712788, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: spawnCullingRadius
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: maxPackDensity
