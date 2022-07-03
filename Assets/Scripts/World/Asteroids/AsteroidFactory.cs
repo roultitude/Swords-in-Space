@@ -20,7 +20,7 @@ namespace SwordsInSpace
 
         [SerializeField]
         bool randomSeed = true;
-        [SerializeField, SyncVar]
+        [SerializeField]
         public Vector2 seed = new Vector2(1f, 1f);
 
         public float[,] noiseGrid;
@@ -61,13 +61,6 @@ namespace SwordsInSpace
             }
         }
 
-        public override void OnStartClient()
-        {
-            base.OnStartClient();
-            noiseGrid = new float[worldSize, worldSize];
-            offset = new Vector2(-worldSize / 2 * distance, -worldSize / 2 * distance);
-            MakeNoiseArray();
-        }
 
 
 
@@ -118,7 +111,7 @@ namespace SwordsInSpace
 
             }
 
-            ProcessAsteroids();
+            ProcessAsteroids(seed, threshold);
 
 
         }
@@ -172,17 +165,17 @@ namespace SwordsInSpace
         }
 
         [ObserversRpc(IncludeOwner = true, BufferLast = true)]
-        private void ProcessAsteroids()
+        private void ProcessAsteroids(Vector2 seed, float threshold)
         {
 
             Asteroid[] asteroids = Object.FindObjectsOfType<Asteroid>();
             bool[,] hasSeen = new bool[worldSize, worldSize];
-            if (!IsServer)
-            {
-                noiseGrid = new float[worldSize, worldSize];
-                MakeNoiseArray();
-            }
+            this.seed = seed;
+            this.threshold = threshold;
 
+            noiseGrid = new float[worldSize, worldSize];
+            offset = new Vector2(-worldSize / 2 * distance, -worldSize / 2 * distance);
+            MakeNoiseArray();
 
             foreach (Asteroid asteroid in asteroids)
             {
@@ -194,7 +187,7 @@ namespace SwordsInSpace
                 {
                     hp = 0;
                     Traverse(hasSeen, currentMap, (int)loc.x, (int)loc.y, 0, 0);
-
+                    Debug.Log(currentMap.cellBounds);
                     if (IsServer)
                         asteroid.hp = hp;
                 }
@@ -206,13 +199,19 @@ namespace SwordsInSpace
                 loc.y * distance + offset.y, 0);
 
             }
+            Debug.Log(falses + "\t" + occurances);
+            Debug.Log(seed);
             if (IsServer)
                 AstarPath.active.Scan();
 
         }
-
+        int falses = 0;
+        int occurances = 0;
         private bool AboveThreshold(int i, int j)
         {
+            occurances++;
+            if (!(noiseGrid[i, j] >= threshold))
+                falses++;
             return noiseGrid[i, j] >= threshold;
         }
 
@@ -220,6 +219,7 @@ namespace SwordsInSpace
 
         private void Traverse(bool[,] hasSeen, Tilemap currentMap, int i, int j, int x, int y)
         {
+            //Debug.Log(i > 0 && AboveThreshold(i - 1, j));
             hasSeen[i, j] = true;
             hp++;
             currentMap.SetTile(new Vector3Int(x, y, 0), tile);

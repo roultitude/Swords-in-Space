@@ -51,7 +51,7 @@ namespace SwordsInSpace
         {
             float currentTime = 0;
             float tickTime = 0.3f;
-            Debug.Log("!");
+
             while (true)
             {
                 yield return new WaitForSeconds(tickTime);
