@@ -159,7 +159,7 @@ MonoBehaviour:
   SceneTransformProperties:
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
-    LocalScale: {x: 1.5, y: 1.6, z: 0}
+    LocalScale: {x: 1.4, y: 1.5, z: 0}
   _isNetworked: 1
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
@@ -188,10 +188,15 @@ MonoBehaviour:
   Left: {fileID: 0}
   Right: {fileID: 0}
   fireActive: 0
-  trigger: 0
   onStartFire:
     m_PersistentCalls:
       m_Calls: []
   onEndFire:
     m_PersistentCalls:
       m_Calls: []
+  firerenderer: {fileID: 5788074847968204587}
+--- !u!212 &5788074847968204587 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8578976271361633782, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+  m_PrefabInstance: {fileID: 2836698353403132637}
+  m_PrefabAsset: {fileID: 0}

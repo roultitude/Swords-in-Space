@@ -5,7 +5,7 @@ using FishNet.Object;
 using FishNet.Connection;
 using FishNet.Object.Synchronizing;
 using UnityEngine.Events;
-
+using DG.Tweening;
 namespace SwordsInSpace
 {
     public class Fire : Interactable
@@ -24,7 +24,7 @@ namespace SwordsInSpace
         public UnityEvent onStartFire = new();
         public UnityEvent onEndFire = new();
 
-
+        public SpriteRenderer firerenderer;
 
         public override void Interact(GameObject player)
         {
@@ -39,6 +39,17 @@ namespace SwordsInSpace
             {
                 deactivate();
             }
+            else
+                doAnimation();
+        }
+
+        [ObserversRpc]
+        public void doAnimation()
+        {
+            Vector3 currentScale = firerenderer.gameObject.transform.localScale;
+            firerenderer.gameObject.transform.localScale = new Vector3(0.6f, 0.8f, 0.8f);
+            firerenderer.gameObject.transform.DOScale(currentScale, 0.3f);
+
         }
 
         [ServerRpc(RequireOwnership = false)]
@@ -80,7 +91,7 @@ namespace SwordsInSpace
             {
                 child.gameObject.SetActive(value);
                 if (value)
-                    gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+                    firerenderer.enabled = true;
             }
         }
     }

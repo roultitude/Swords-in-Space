@@ -97,16 +97,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: spawninfos.Array.data[1].weight
-      value: 99
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: spawninfos.Array.data[0].MobType
       value: 
-      objectReference: {fileID: 5012621609085105274, guid: 1602a8dcd10ae4e4ca23eee3a295ec0f, type: 3}
+      objectReference: {fileID: 4798124205982799525, guid: 5351998b7eb200e408df97ee469a6829, type: 3}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: spawninfos.Array.data[1].MobType
       value: 
-      objectReference: {fileID: 4798124205982799525, guid: 5351998b7eb200e408df97ee469a6829, type: 3}
+      objectReference: {fileID: 6450891800367982020, guid: 4a285bddf9c1d474e8cc035f6268a8a2, type: 3}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: spawninfos.Array.data[0].localPackSizeRange.x
       value: 1
@@ -123,9 +123,13 @@ PrefabInstance:
       propertyPath: spawninfos.Array.data[1].localPackSizeRange.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4444492388093359135, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+    - target: {fileID: 4444492388093359121, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: waitTime
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359135, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: waitTime
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}

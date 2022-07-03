@@ -19,16 +19,17 @@ namespace SwordsInSpace
         public float tickTime;
         public float tickChance;
         public float fireStartOnCollideChance;
-
+        private bool fireActive = false;
 
         public void StartFire()
         {
+            Debug.Log("Starting a fire");
             if (fires == null || fires.Length == 0)
                 return;
 
             fires[Random.Range(0, fires.Length)].activate();
 
-            if (fireTracker == null)
+            if (fireTracker == null || !fireActive)
                 fireTracker = StartCoroutine("TrackFire");
 
         }
@@ -37,6 +38,7 @@ namespace SwordsInSpace
         {
             while (countFires() > 0)
             {
+                fireActive = true;
                 foreach (Fire f in fires)
                 {
                     if (f.fireActive && Random.Range(0f, 1f) < tickChance)
@@ -65,6 +67,7 @@ namespace SwordsInSpace
                 }
                 yield return new WaitForSeconds(tickTime);
             }
+            fireActive = false;
             yield break;
         }
 

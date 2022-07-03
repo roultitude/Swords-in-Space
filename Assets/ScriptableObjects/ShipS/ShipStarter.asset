@@ -15,3 +15,4 @@ MonoBehaviour:
   ShipMaxHp: 100
   ShipMaxNitroFuel: 3
   ShipInvincibilityTime: 0.1
+  ShipFireInvincibilityTime: 0.1

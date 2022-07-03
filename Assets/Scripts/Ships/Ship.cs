@@ -44,6 +44,7 @@ namespace SwordsInSpace
         public double CurrentHp;
 
         private bool isInvincible;
+        private bool isInvincibleFire;
 
         [SyncVar]
         public double CurrentMaxHp;
@@ -154,6 +155,9 @@ namespace SwordsInSpace
 
         public void TakeDamage(double amt)
         {
+            if (isInvincible)
+                return;
+
             StartCoroutine(StartInvincibilityFrames(data.ShipInvincibilityTime));
             //Debug.Log(amt + " deamage taken");
             CurrentHp -= amt;
@@ -194,8 +198,10 @@ namespace SwordsInSpace
         public void OnCollisionEnter2D(Collision2D collision)
         {
             if (!IsServer) return;
-            if (!isInvincible)
+
+            if (!isInvincibleFire)
             {
+                StartCoroutine(StartFireInvincibilityFrames(data.ShipFireInvincibilityTime));
                 fireManager.FireEventTrigger();
             }
         }
@@ -241,6 +247,13 @@ namespace SwordsInSpace
             isInvincible = true;
             yield return new WaitForSeconds(invincibilityTime);
             isInvincible = false;
+        }
+
+        public IEnumerator StartFireInvincibilityFrames(float invincibilityTime)
+        {
+            isInvincibleFire = true;
+            yield return new WaitForSeconds(invincibilityTime);
+            isInvincibleFire = false;
         }
     }
 

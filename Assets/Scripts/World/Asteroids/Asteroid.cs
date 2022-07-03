@@ -22,8 +22,11 @@ namespace SwordsInSpace
             hp -= 1;
             Bullet bullet = coll.gameObject.GetComponentInParent<Bullet>();
             if (bullet != null)
+            {
                 bullet.OnHit();
-            hp -= bullet.damage;
+                hp -= bullet.damage;
+            }
+
             if (hp <= 0)
                 this.Despawn();
         }
