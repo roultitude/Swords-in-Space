@@ -168,8 +168,7 @@ namespace SwordsInSpace
         private void ProcessAsteroids(Vector2 seed, float threshold)
         {
 
-            Asteroid[] asteroids = Object.FindObjectsOfType<Asteroid>();
-            bool[,] hasSeen = new bool[worldSize, worldSize];
+
             this.seed = seed;
             this.threshold = threshold;
 
@@ -177,6 +176,18 @@ namespace SwordsInSpace
             offset = new Vector2(-worldSize / 2 * distance, -worldSize / 2 * distance);
             MakeNoiseArray();
 
+            StartCoroutine("PopulateAsteroids");
+
+            if (IsServer)
+                AstarPath.active.Scan();
+
+        }
+
+        private IEnumerator PopulateAsteroids()
+        {
+
+            Asteroid[] asteroids = Object.FindObjectsOfType<Asteroid>();
+            bool[,] hasSeen = new bool[worldSize, worldSize];
             foreach (Asteroid asteroid in asteroids)
             {
 
@@ -197,21 +208,12 @@ namespace SwordsInSpace
 
                 asteroid.gameObject.transform.position = new Vector3(loc.x * distance + offset.x,
                 loc.y * distance + offset.y, 0);
-
+                yield return new WaitForSeconds(0.01f);
             }
-            Debug.Log(falses + "\t" + occurances);
-            Debug.Log(seed);
-            if (IsServer)
-                AstarPath.active.Scan();
-
         }
-        int falses = 0;
-        int occurances = 0;
         private bool AboveThreshold(int i, int j)
         {
-            occurances++;
-            if (!(noiseGrid[i, j] >= threshold))
-                falses++;
+
             return noiseGrid[i, j] >= threshold;
         }
 
