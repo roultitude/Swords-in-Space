@@ -51,6 +51,7 @@ namespace SwordsInSpace
         [SyncVar]
         public double timeTillBoss;
 
+        [SyncVar]
         public bool spawningComplete = false;
 
         public bool IsAllBossesKilled() => bossesKilled == bossPrefabs.Length;
