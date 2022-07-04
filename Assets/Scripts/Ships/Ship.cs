@@ -212,7 +212,7 @@ namespace SwordsInSpace
         }
 
         [ServerRpc(RequireOwnership = false)]
-        public void AddHp(int amt)
+        public void AddHp(float amt)
         {
             CurrentHp += amt;
             if (CurrentHp > CurrentMaxHp)

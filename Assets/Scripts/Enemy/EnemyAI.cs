@@ -69,7 +69,7 @@ namespace SwordsInSpace
 
                 if (currentTime > teleportCheckDuration && doTeleportIfFar)
                 {
-                    Debug.Log("Teleport?");
+                    //Debug.Log("Teleport?");
                     currentTime = 0;
                     TeleportNearPlayer();
                 }
