@@ -198,7 +198,7 @@ namespace SwordsInSpace
                 {
                     hp = 0;
                     Traverse(hasSeen, currentMap, (int)loc.x, (int)loc.y, 0, 0);
-                    Debug.Log(currentMap.cellBounds);
+                    //Debug.Log(currentMap.cellBounds);
                     if (IsServer)
                         asteroid.hp = hp;
                 }
