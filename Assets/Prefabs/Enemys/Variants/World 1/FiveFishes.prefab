@@ -189,7 +189,7 @@ MonoBehaviour:
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 7204703169322365139}
   _networkObjectCache: {fileID: 7204703169322365139}
-  maxHp: 10
+  maxHp: 25
   exp: 100
   hpBar: {fileID: 9133155322967439037}
   doTeleportIfFar: 1
