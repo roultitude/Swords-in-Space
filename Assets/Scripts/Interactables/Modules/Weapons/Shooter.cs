@@ -20,6 +20,9 @@ namespace SwordsInSpace
 
         int currentBurst = 0;
 
+        [SerializeField]
+        private float rotationMin, rotationMax;
+
         public WeaponSO data;
         public void Setup()
         {
@@ -105,7 +108,8 @@ namespace SwordsInSpace
         private void Update()
         {
             if (!IsServer) return; //only rotate on server
-            transform.localRotation = Quaternion.Euler(0, 0, transform.localRotation.eulerAngles.z - data.rotationSpeed * turnAxis.x * Time.fixedDeltaTime);
+            transform.localRotation = Quaternion.Euler(0, 0,
+                Mathf.Clamp(transform.localRotation.eulerAngles.z - data.rotationSpeed * turnAxis.x * Time.fixedDeltaTime, rotationMin,rotationMax-0.25f));
         }
 
 
