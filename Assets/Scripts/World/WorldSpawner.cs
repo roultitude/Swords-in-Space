@@ -16,6 +16,7 @@ namespace SwordsInSpace
         public GameObject[] worlds;
         void Start()
         {
+            if (!IsServer) return;
             LoadWorld();
         }
 

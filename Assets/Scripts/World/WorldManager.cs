@@ -10,10 +10,7 @@ namespace SwordsInSpace
     {
         public static WorldManager currentWorld;
 
-        // Start is called before the first frame update
-
-        [SerializeField]
-        EnemySpawner spawner;
+        public EnemySpawner spawner;
 
         public bool levelComplete = false;
 
@@ -46,10 +43,9 @@ namespace SwordsInSpace
         public IEnumerator CheckIfComplete()
         {
             yield return 0;
-            if (spawner.spawningComplete && !levelComplete && FindObjectOfType(typeof(EnemyAI)) == null)
+            if (spawner.spawningComplete && !levelComplete && spawner.IsAllBossesKilled())
             {
                 levelComplete = true;
-
             }
         }
 

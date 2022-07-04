@@ -1,5 +1,8 @@
 using FishNet.Object;
 using UnityEngine;
+using System.Collections.Generic;
+using FishNet.Object.Synchronizing;
+
 namespace SwordsInSpace
 {
     public class EnemySpawner : NetworkBehaviour
@@ -31,13 +34,26 @@ namespace SwordsInSpace
         [SerializeField]
         SpawnInfo[] spawninfos;
 
+        [SerializeField]
+        GameObject[] bossPrefabs;
 
+        List<GameObject> currentEnemies;
+
+        public int bossesKilled;
         int totalWeight;
 
         [SerializeField]
         Vector2 worldSize = new Vector2(1000, 1000);
 
+        [SerializeField]
+        Timer countdownTimer;
+
+        [SyncVar]
+        public double timeTillBoss;
+
         public bool spawningComplete = false;
+
+        public bool IsAllBossesKilled() => bossesKilled == bossPrefabs.Length;
 
         private int MaxGetRandomPositionAttempts = 5;
         void Start()
@@ -47,7 +63,7 @@ namespace SwordsInSpace
             {
                 totalWeight += info.weight;
             }
-
+            bossesKilled = 0;
         }
 
 
@@ -62,7 +78,7 @@ namespace SwordsInSpace
             }
         }
 
-        public void Spawn()
+        public void SpawnMob()
         {
             int currentWeight = Random.Range(0, totalWeight + 1);
             SpawnInfo selectedInfo = spawninfos[0];
@@ -147,10 +163,31 @@ namespace SwordsInSpace
             return Physics2D.OverlapCircle(new Vector2(pos.x, pos.y), UnitsFromAsteroid) == null;
         }
 
+        public void SpawnBosses()
+        {
+            foreach(GameObject boss in bossPrefabs)
+            {
+                Vector3 loc = getRandomPosition();
+                Vector2 randomLocInSpawnRadius = getValidLocInSpawnRadius(loc);
+                GameObject toAdd = Instantiate(boss, new Vector3(randomLocInSpawnRadius.x, randomLocInSpawnRadius.y,
+                    loc.z), transform.rotation);
+                toAdd.GetComponent<EnemyAI>().SetBoss(true);
+                Spawn(toAdd);
+                GameManager.instance.MessageRPC("Boss " + boss.name + " has awoken!");
+            }
+        }
+
         public void StopSpawn()
         {
             SpawnCD.Stop();
+            SpawnBosses();
             spawningComplete = true;
+        }
+
+        private void Update()
+        {
+            if (!IsServer) return;
+            timeTillBoss = countdownTimer.waitTime - countdownTimer.currentTime;
         }
     }
 };
