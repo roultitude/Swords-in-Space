@@ -22,6 +22,7 @@ namespace SwordsInSpace
         [SerializeField]
         Hpbar hpBar;
 
+
         public bool doTeleportIfFar = true;
         public float teleportCheckDuration = 5f;
         public float teleportIfFurtherThanDistance = 300f;
@@ -30,7 +31,7 @@ namespace SwordsInSpace
 
         readonly float fadeTime = 0.8f;
         private Coroutine teleportCorountine;
-
+        private bool isBoss;
         private AIPath ai;
         // Start is called before the first frame update
         protected void Start()
@@ -131,9 +132,15 @@ namespace SwordsInSpace
             }
         }
 
+        public void SetBoss(bool isBoss)
+        {
+            this.isBoss = isBoss;
+        }
+
         private void OnDeath()
         {
             if (!IsServer) return;
+            if (isBoss) WorldManager.currentWorld.spawner.bossesKilled++;
             WorldManager.currentWorld.StartCoroutine(WorldManager.currentWorld.CheckIfComplete());
             Ship.currentShip.expManager.AddExp(exp);
             this.Despawn();

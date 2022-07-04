@@ -14,6 +14,7 @@ namespace SwordsInSpace
         public delegate void OnNewSceneLoad();
         public static OnNewSceneLoad OnNewSceneLoadEvent;
 
+        MessageDisplay messageDisplay;
 
         int currentLevel;
         List<NetworkObject> CarryNetworkObjects;
@@ -29,6 +30,7 @@ namespace SwordsInSpace
                 Destroy(instance);
             }
             instance = this;
+            messageDisplay = GetComponentInChildren<MessageDisplay>();
         }
 
         public override void OnStartServer()
@@ -71,12 +73,20 @@ namespace SwordsInSpace
         [ObserversRpc]
         public void OnLevelCompleteRPC()
         {
-            DisplayManager.instance.ShowLevelCompleteDisplay();
+            //DisplayManager.instance.ShowLevelCompleteDisplay();
         }
 
         public IEnumerator OnLevelCompleteStartCountdown()
         {
-            yield return new WaitForSeconds(10f);
+            MessageRPC("Boss defeated! Warping in 10 seconds!");
+            yield return new WaitForSeconds(5f);
+            MessageRPC("Boss defeated! Warping in 5 seconds!");
+            yield return new WaitForSeconds(2f);
+            MessageRPC("Boss defeated! Warping in 3 seconds!");
+            yield return new WaitForSeconds(1f);
+            MessageRPC("Boss defeated! Warping in 2 seconds!");
+            yield return new WaitForSeconds(1f);
+            MessageRPC("Boss defeated! Warping in 1 second!");
             Ship.currentShip.AllPlayerExitUI();
             yield return new WaitForSeconds(1f);
             GetCarryNetworkObjects(true, true);
@@ -102,6 +112,12 @@ namespace SwordsInSpace
             if(includeShip) CarryNetworkObjects.Add(Ship.currentShip.GetComponentInParent<NetworkObject>()); //get current ship
             CarryNetworkObjects.Add(UserManager.instance.GetComponent<NetworkObject>()); //always bring UserManager and GameManager
             CarryNetworkObjects.Add(GameManager.instance.GetComponent<NetworkObject>());
+        }
+
+        [ObserversRpc]
+        public void MessageRPC(string message)
+        {
+            messageDisplay.DisplayMessage(message);
         }
     }
 
