@@ -32,7 +32,7 @@ namespace SwordsInSpace
         readonly float fadeTime = 0.8f;
         private Coroutine teleportCorountine;
         private bool isBoss;
-        private AIPath ai;
+        protected AIPath ai;
         // Start is called before the first frame update
         protected void Start()
         {

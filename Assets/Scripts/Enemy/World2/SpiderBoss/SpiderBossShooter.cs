@@ -9,9 +9,8 @@ namespace SwordsInSpace
     {
         public HexagonalPlacer innerWeb;
         public HexagonalPlacer outerWeb;
-        public AIPath ai;
 
-        [SyncVar(OnChange = nameof(EnableTargets))]
+
         public bool targetEnabled = false;
 
         List<SpiderTargets> myTargets;
@@ -50,18 +49,13 @@ namespace SwordsInSpace
 
         }
 
-        public new void Update()
-        {
-            base.Update();
-            targetEnabled = ai.reachedDestination;
-        }
+
 
         public override void Shoot()
         {
             if (!IsServer)
                 return;
 
-            ShootAtPlayer();
 
             foreach (SpiderTargets spidertarget in myTargets)
             {
@@ -73,8 +67,9 @@ namespace SwordsInSpace
         }
 
 
-        public void EnableTargets(bool prev, bool next, bool asServer)
+        public void EnableTargets()
         {
+
             foreach (SpiderTargets target in myTargets)
             {
                 target.gameObject.SetActive(targetEnabled);

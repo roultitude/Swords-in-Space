@@ -24,7 +24,11 @@ namespace SwordsInSpace
         public double shotSpread = 0;
         public bool canFire = true;
 
+        public Vector2 bulletScale = new Vector2(3f, 3f);
+
         public bool timerComplete = false;
+
+
         private bool IsInRange()
         {
             return range > Vector3.Distance(gameObject.transform.position, Ship.currentShip.gameObject.transform.position);
@@ -61,12 +65,11 @@ namespace SwordsInSpace
             Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
             Quaternion rotation = Quaternion.LookRotation(endLoc.position - startLoc.position, Vector3.forward);
 
-
             GameObject toAdd = Instantiate(bullet, startLoc.position, rotation);
 
             toAdd.transform.rotation = Quaternion.RotateTowards(startLoc.rotation, targetRotation, 360f);
-
             toAdd.GetComponent<Bullet>().Setup(shotSpeed, shotLifetime, damage, shotSpread);
+            toAdd.transform.localScale *= bulletScale;
             Spawn(toAdd);
         }
 
@@ -88,6 +91,7 @@ namespace SwordsInSpace
             GameObject toAdd = Instantiate(bullet, loc, gameObject.transform.rotation);
             toAdd.transform.rotation = rot * transform.rotation;
             toAdd.GetComponent<Bullet>().Setup(shotSpeed, shotLifetime, damage, shotSpread);
+            toAdd.transform.localScale *= bulletScale;
             Spawn(toAdd);
         }
     }

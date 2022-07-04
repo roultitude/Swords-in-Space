@@ -333,6 +333,7 @@ MonoBehaviour:
   damage: 1
   shotSpread: 0
   canFire: 1
+  bulletScale: {x: 6, y: 6}
   timerComplete: 0
 --- !u!114 &9217316466230567277 stripped
 MonoBehaviour:

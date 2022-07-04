@@ -124,6 +124,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5009307279760647555, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: waitTime
+      value: 4.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5009307279760647555, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: timeout.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 978381291756485694}
@@ -247,6 +251,7 @@ MonoBehaviour:
   damage: 1
   shotSpread: 0
   canFire: 1
+  bulletScale: {x: 3, y: 3}
   timerComplete: 0
   bulletSpeeds:
   - 5
