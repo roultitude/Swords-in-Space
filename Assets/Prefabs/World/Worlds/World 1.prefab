@@ -57,11 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4444492387278712788, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: seed.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4444492387278712788, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: seed.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4444492387278712788, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: density
@@ -73,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4444492387278712788, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: randomSeed
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4444492387278712788, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: spawnCullingRadius
