@@ -21,6 +21,7 @@ namespace SwordsInSpace
             if (!InstanceFinder.IsServer) return;
             if (Ship.currentShip)
             {
+                Ship.currentShip.transform.parent.transform.position = Vector2.zero;
                 Destroy(this);
                 return;
             }
