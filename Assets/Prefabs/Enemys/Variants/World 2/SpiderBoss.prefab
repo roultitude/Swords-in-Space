@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8532637879728647144, guid: aa1d8386747fc714daab4241cd99aa6c, type: 3}
       propertyPath: range
-      value: 30
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8532637879728647144, guid: aa1d8386747fc714daab4241cd99aa6c, type: 3}
       propertyPath: size.x
@@ -261,11 +261,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5708157572430751117, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -197.04
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5708157572430751117, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -964.24
+      value: 4.62
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
@@ -368,7 +368,7 @@ MonoBehaviour:
   damage: 5
   shotSpread: 0
   canFire: 1
-  bulletScale: {x: 5, y: 5}
+  bulletScale: {x: 8, y: 8}
   timerComplete: 0
   bulletSpeeds:
   - 5
@@ -392,12 +392,12 @@ MonoBehaviour:
   bullet: {fileID: 2590286623395873651, guid: 3f9c5556cb42f9142905538a99750657, type: 3}
   range: 80
   bulletCd: {fileID: 187433521571003621}
-  shotSpeed: 15
+  shotSpeed: 7
   shotLifetime: 4.7
   damage: 1
   shotSpread: 0
   canFire: 1
-  bulletScale: {x: 3, y: 3}
+  bulletScale: {x: 5, y: 5}
   timerComplete: 0
   innerWeb: {fileID: 4373639232629221718}
   outerWeb: {fileID: 4878723274184187816}
@@ -481,7 +481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8532637879728647144, guid: aa1d8386747fc714daab4241cd99aa6c, type: 3}
       propertyPath: range
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8532637879728647144, guid: aa1d8386747fc714daab4241cd99aa6c, type: 3}
       propertyPath: size.x

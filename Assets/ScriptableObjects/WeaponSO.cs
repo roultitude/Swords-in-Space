@@ -25,6 +25,8 @@ namespace SwordsInSpace
 
         public double burstCD = 0.3;
 
+        public Vector2 bulletScale = new Vector2(3, 3);
+
         public float rotationSpeed = 10f;
     }
 };

@@ -101,6 +101,8 @@ namespace SwordsInSpace
                 lazerSetup.setShooter(this);
 
             toAdd.GetComponent<Projectile>().Setup(data.shotSpeed, data.shotLifeTime, data.damage, data.shotSpread);
+            toAdd.transform.localScale = data.bulletScale;
+
             toAdd.tag = "Friendly";
             Spawn(toAdd);
         }
@@ -109,7 +111,7 @@ namespace SwordsInSpace
         {
             if (!IsServer) return; //only rotate on server
             transform.localRotation = Quaternion.Euler(0, 0,
-                Mathf.Clamp(transform.localRotation.eulerAngles.z - data.rotationSpeed * turnAxis.x * Time.fixedDeltaTime, rotationMin,rotationMax-0.25f));
+                Mathf.Clamp(transform.localRotation.eulerAngles.z - data.rotationSpeed * turnAxis.x * Time.fixedDeltaTime, rotationMin, rotationMax - 0.25f));
         }
 
 
