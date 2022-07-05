@@ -17,10 +17,9 @@ MonoBehaviour:
   damage: 1
   shotSpeed: 15
   shotLifeTime: 3
-  shotSpread: 7
-  burst: 2
-  maxAmmo: 5
-  ammoRefill: 1
-  atkCD: 5
+  shotSpread: 360
+  burst: 5
+  atkCD: 0.1
   burstCD: 0.1
+  bulletScale: {x: 3, y: 3}
   rotationSpeed: 80

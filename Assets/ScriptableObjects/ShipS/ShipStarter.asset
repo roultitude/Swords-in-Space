@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e5bdf54d6993f4bb700400c1b92260, type: 3}
   m_Name: ShipStarter
   m_EditorClassIdentifier: 
-  ShipMaxHp: 100
+  ShipMaxHp: 1000
   ShipMaxNitroFuel: 3
   ShipInvincibilityTime: 0.1
   ShipFireInvincibilityTime: 0.1
