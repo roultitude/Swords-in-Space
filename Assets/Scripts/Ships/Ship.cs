@@ -31,8 +31,9 @@ namespace SwordsInSpace
         [SerializeField]
         GameObject UiHpBar;
 
-        [SerializeField]
-        Color TintNoPower;
+
+        public Color TintNoPower;
+        public Color TintLowPower;
 
         [SerializeField]
         GameObject background;
@@ -53,6 +54,9 @@ namespace SwordsInSpace
         public int CurrentNitroFuel; //rename maybe
 
         public bool isPowerUp = true;
+
+        private bool isLowPower = false;
+
 
         private void Awake()
         {
@@ -152,6 +156,16 @@ namespace SwordsInSpace
             ChangeBackgroundColorRPC(Color.white);
             isPowerUp = true;
         }
+
+        public void updateShipBackgroundColor(float amount)
+        {
+            background.GetComponent<RawImage>().color = new Color(
+                (Color.white.r - TintLowPower.r) * amount + TintLowPower.r,
+                (Color.white.g - TintLowPower.g) * amount + TintLowPower.g,
+                (Color.white.b - TintLowPower.b) * amount + TintLowPower.b
+                );
+        }
+
 
         public void TakeDamage(double amt)
         {

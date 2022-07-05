@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -174,10 +174,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 2021021100114843625}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -272,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -397,10 +397,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 2047891526851190135}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -579,7 +579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5879751530695200182, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5879751530695200182, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -612,10 +612,10 @@ PrefabInstance:
     - target: {fileID: 8405907154230052790, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 6373862791644709960}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 8405907154230052790, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8405907154230052790, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
       propertyPath: linkedFireCells.Array.size
@@ -759,17 +759,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
---- !u!114 &6373862791644709960 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5879751530695200182, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
-  m_PrefabInstance: {fileID: 715386989560826366}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &9028125881787846216 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8405907154230052790, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
@@ -1216,7 +1205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -1385,10 +1374,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 1488964247993361718}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -1706,7 +1695,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2546604918615904249, guid: e6541eeebaa3ab9418c0b575fe3925ba, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3337759957261113142, guid: e6541eeebaa3ab9418c0b575fe3925ba, type: 3}
       propertyPath: shielder
@@ -1715,10 +1704,10 @@ PrefabInstance:
     - target: {fileID: 3337759957261113142, guid: e6541eeebaa3ab9418c0b575fe3925ba, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 36591709447688895}
+      objectReference: {fileID: 3834662265887726975}
     - target: {fileID: 3337759957261113142, guid: e6541eeebaa3ab9418c0b575fe3925ba, type: 3}
       propertyPath: _componentIndexCache
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3337759957261113142, guid: e6541eeebaa3ab9418c0b575fe3925ba, type: 3}
       propertyPath: linkedFireCells.Array.size
@@ -1770,6 +1759,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6541eeebaa3ab9418c0b575fe3925ba, type: 3}
+--- !u!114 &3834662265887726975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2546604918615904249, guid: e6541eeebaa3ab9418c0b575fe3925ba, type: 3}
+  m_PrefabInstance: {fileID: 1612339990829208198}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4049356545720993200 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3337759957261113142, guid: e6541eeebaa3ab9418c0b575fe3925ba, type: 3}
@@ -1802,7 +1802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -1939,10 +1939,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 955308018319351252}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -2738,7 +2738,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -2843,10 +2843,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 4347053765746282185}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -3474,7 +3474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -3639,10 +3639,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 3810173898677872904}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -3737,7 +3737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -3798,10 +3798,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 2903664929769938084}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -4151,7 +4151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -4300,10 +4300,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 3208747630763964316}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -5035,7 +5035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -5120,10 +5120,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 2756322416959092859}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -5469,7 +5469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5199958325795699492, guid: 959f1685bc1e60b4896295b0b6e0f551, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5199958325795699492, guid: 959f1685bc1e60b4896295b0b6e0f551, type: 3}
       propertyPath: SceneTransformProperties.Position.x
@@ -5550,10 +5550,10 @@ PrefabInstance:
     - target: {fileID: 7689477023599607438, guid: 959f1685bc1e60b4896295b0b6e0f551, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 667266556034659714}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 7689477023599607438, guid: 959f1685bc1e60b4896295b0b6e0f551, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7689477023599607438, guid: 959f1685bc1e60b4896295b0b6e0f551, type: 3}
       propertyPath: linkedFireCells.Array.size
@@ -5620,7 +5620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -5733,10 +5733,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 6914475078164777516}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -6492,6 +6492,22 @@ PrefabInstance:
       propertyPath: fireContainer
       value: 
       objectReference: {fileID: 8647466476015172559}
+    - target: {fileID: 4485076214342864807, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: TintLowPower.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485076214342864807, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: TintLowPower.b
+      value: 0.52064794
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485076214342864807, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: TintLowPower.g
+      value: 0.52064794
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485076214342864807, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: TintLowPower.r
+      value: 0.5660378
+      objectReference: {fileID: 0}
     - target: {fileID: 4485076214342864807, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _addedNetworkObject
       value: 
@@ -10794,7 +10810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -10955,10 +10971,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 5637810082286887209}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -11140,6 +11156,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6373298081508993216, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
+      propertyPath: currentAmount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373298081508993216, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 8602505440013068456}
@@ -11192,7 +11212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -11245,10 +11265,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 4792528034150948323}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -11829,7 +11849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -11950,10 +11970,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 8914049851452363387}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -12093,10 +12113,10 @@ PrefabInstance:
     - target: {fileID: 5154871676309484324, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 3061921688263991869}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5154871676309484324, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _componentIndexCache
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5615112723805862627, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: m_Name
@@ -12104,7 +12124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7663618118891403403, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: rotationMax
@@ -12121,10 +12141,10 @@ PrefabInstance:
     - target: {fileID: 7663618118891403403, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 3061921688263991869}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 7663618118891403403, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
@@ -12155,17 +12175,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5615112723805862627, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
   m_PrefabInstance: {fileID: 7279486497725705548}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3061921688263991869 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
-  m_PrefabInstance: {fileID: 7279486497725705548}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2947901875334682543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7810606508579361086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12569,7 +12578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -12646,10 +12655,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 7653718417405105122}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -12744,7 +12753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987812446387178485, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -12901,10 +12910,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 7527969209446645429}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -13044,10 +13053,10 @@ PrefabInstance:
     - target: {fileID: 5154871676309484324, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 3903090829467182376}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5154871676309484324, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _componentIndexCache
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5615112723805862627, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: m_Name
@@ -13055,7 +13064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7663618118891403403, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: rotationMax
@@ -13072,10 +13081,10 @@ PrefabInstance:
     - target: {fileID: 7663618118891403403, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 3903090829467182376}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 7663618118891403403, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
@@ -13095,17 +13104,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5615112723805862627, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
   m_PrefabInstance: {fileID: 8741873380082494041}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3903090829467182376 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
-  m_PrefabInstance: {fileID: 8741873380082494041}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3800401195529130170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4528536549115337085 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5154871676309484324, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
@@ -13127,10 +13125,10 @@ PrefabInstance:
     - target: {fileID: 63302899025214661, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 8360697955643479725}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 63302899025214661, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 63302899025214661, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
       propertyPath: linkedFireCells.Array.size
@@ -13146,7 +13144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1089966707694479485, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1089966707694479485, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
       propertyPath: SceneTransformProperties.Position.x
@@ -13218,17 +13216,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
---- !u!114 &8360697955643479725 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1089966707694479485, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
-  m_PrefabInstance: {fileID: 8874198533462785744}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8919265996136579605 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 63302899025214661, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}

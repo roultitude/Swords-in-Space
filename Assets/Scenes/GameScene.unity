@@ -644,9 +644,11 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 1480776900}
   _networkObjectCache: {fileID: 1480776900}
+  useDebugLevel: 1
   worlds:
   - {fileID: 8277842780175238229, guid: 5182dbe8a43cb294cac3c78bd7f74bae, type: 3}
   - {fileID: 8963359739916839358, guid: 31d752ece84ca824b847c4feca93d70a, type: 3}
+  debugWorld: {fileID: 6012503926948557869, guid: 65085599267d93e4b8d891782b572959, type: 3}
 --- !u!4 &1480776902
 Transform:
   m_ObjectHideFlags: 0

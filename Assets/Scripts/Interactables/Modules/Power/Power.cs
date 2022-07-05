@@ -13,7 +13,7 @@ namespace SwordsInSpace
         // Start is called before the first frame update
 
         [SerializeField]
-        private int maxAmount = 100;
+        private float maxAmount = 100;
 
         [SerializeField]
         private int drainRate = 5;
@@ -32,6 +32,7 @@ namespace SwordsInSpace
         // Update is called once per frame
         void Update()
         {
+
             if (currentAmount == 0)
             {
 
@@ -47,10 +48,17 @@ namespace SwordsInSpace
                 supplyingPower = false;
                 Ship.currentShip.PowerDown();
             }
+
             else
             {
                 if (!supplyingPower)
                     Ship.currentShip.PowerUp();
+
+
+                Ship.currentShip.updateShipBackgroundColor(currentAmount / maxAmount);
+
+
+
                 supplyingPower = true;
             }
 
