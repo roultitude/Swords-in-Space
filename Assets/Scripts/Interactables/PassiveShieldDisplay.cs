@@ -43,6 +43,8 @@ namespace SwordsInSpace
         private int defaultCurrentShake = 5;
         private int currentShake = 5;
 
+        private int maxComboScale = 30;
+
         private int cullDrumBeatsAt = -400;
 
         public void Start()
@@ -79,14 +81,20 @@ namespace SwordsInSpace
 
         private void updateFallSpeed()
         {
+            if (increment > maxComboScale)
+                return;
+
             Drumbeat.moveSpeed = baseMoveSpeed * (Mathf.Pow((1 + incrementPercent), increment));
         }
 
         private void updateComboCounter()
         {
-            comboCounter.text = increment.ToString();
-            comboCounter.fontSize = defaultFontSize + increment * fontSizeIncrement;
-            currentShake = defaultCurrentShake + (int)increment * 2;
+            comboCounter.text = "Combo " + increment.ToString();
+            float clampedIncrement = Mathf.Clamp((float)increment, 0, maxComboScale);
+            //Debug.Log(1f - Mathf.Clamp((float)increment, 0, maxComboScale) / (float)maxComboScale);
+            comboCounter.color = new Color(1, 1f - clampedIncrement / (float)maxComboScale, 0);
+            comboCounter.fontSize = defaultFontSize + clampedIncrement * fontSizeIncrement;
+            currentShake = defaultCurrentShake + (int)clampedIncrement * 2;
             comboCounter.transform.DOShakePosition(0.2f, new Vector3(currentShake, currentShake, 0), currentShake, 90, false);
             comboCounter.transform.DOShakePosition(0.1f, new Vector3(currentShake, currentShake, 0), currentShake, 90, false);
             comboCounter.transform.DOShakePosition(0.15f, new Vector3(currentShake, currentShake, 0), currentShake, 90, false);
@@ -123,12 +131,11 @@ namespace SwordsInSpace
             if (drumbeat.identity == dir && distance < distanceThreshold * distanceThreshold)
             {
                 increment++;
-                Ship.currentShip.AddHp(1);
+                Ship.currentShip.AddHp((float)Ship.currentShip.CurrentMaxHp / 200);
             }
             else
             {
-                Debug.Log("CCCCOMBO BREAKER\t Combos achieved:\t" + increment);
-                Ship.currentShip.AddHp((int)increment / 5);
+                Ship.currentShip.AddHp((float)(increment / 150 * Ship.currentShip.CurrentMaxHp));
                 increment = 0;
                 while (drumbeats.Count > 0)
                 {

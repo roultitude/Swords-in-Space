@@ -31,9 +31,9 @@ namespace SwordsInSpace
             base.Start();
             rb = GetComponent<Rigidbody2D>();
         }
-        new public void Update()
+        public void Update()
         {
-            base.Update();
+
             currentTime += Time.deltaTime;
 
 

@@ -5,7 +5,7 @@ using FishNet.Object;
 using FishNet.Connection;
 using FishNet.Object.Synchronizing;
 using UnityEngine.Events;
-
+using DG.Tweening;
 namespace SwordsInSpace
 {
     public class Fire : Interactable
@@ -17,26 +17,24 @@ namespace SwordsInSpace
         public Fire Left;
         public Fire Right;
 
+        [SyncVar(OnChange = nameof(onChange))]
         public bool fireActive = false;
-        public bool trigger;
+
 
         public UnityEvent onStartFire = new();
         public UnityEvent onEndFire = new();
+
+        public SpriteRenderer firerenderer;
+        public Vector3 initScale;
+
+        private static float InvincibilityTime = 0.3f;
+
+        private bool IsInvincible = false;
         public void Start()
         {
-            gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
-            SetActiveAllChildren(false);
-
+            initScale = new Vector3(3f, 3f, 3f);
         }
 
-        public void Update()
-        {
-            if (trigger)
-            {
-                trigger = false;
-                activate();
-            }
-        }
         public override void Interact(GameObject player)
         {
             Damage();
@@ -45,27 +43,68 @@ namespace SwordsInSpace
         [ServerRpc(RequireOwnership = false)]
         private void Damage()
         {
+            if (IsInvincible)
+                return;
+
             flameHp -= 1;
-            if (flameHp < 0)
+            if (flameHp <= 0)
             {
                 deactivate();
             }
-        }
-        [ObserversRpc]
-        public void activate()
-        {
-            flameHp = 3;
-            fireActive = true;
-            SetActiveAllChildren(true);
-            onStartFire.Invoke();
+            else
+            {
+                StartCoroutine("doInvulnFrames");
+                doAnimation();
+            }
+
+
         }
 
         [ObserversRpc]
+        public void doAnimation()
+        {
+            firerenderer.gameObject.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            firerenderer.gameObject.transform.DOScale(initScale, InvincibilityTime);
+
+        }
+
+        private IEnumerator doInvulnFrames()
+        {
+            IsInvincible = true;
+            yield return new WaitForSeconds(InvincibilityTime);
+            IsInvincible = false;
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        public void activate()
+        {
+            fireActive = true;
+        }
+
+
         public void deactivate()
         {
             fireActive = false;
-            SetActiveAllChildren(false);
-            onEndFire.Invoke();
+        }
+
+
+        public void onChange(bool past, bool current, bool isServer)
+        {
+            Debug.Log(current);
+            if (current)
+            {
+                flameHp = 3;
+                SetActiveAllChildren(true);
+                onStartFire.Invoke();
+            }
+            else
+            {
+                SetActiveAllChildren(false);
+                onEndFire.Invoke();
+            }
+
+
+
         }
 
 
@@ -74,6 +113,8 @@ namespace SwordsInSpace
             foreach (Transform child in gameObject.transform)
             {
                 child.gameObject.SetActive(value);
+                if (value)
+                    firerenderer.enabled = true;
             }
         }
     }

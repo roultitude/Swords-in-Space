@@ -99,7 +99,7 @@ namespace SwordsInSpace
         {
 
             Interactable obj = interactables.GetInteractable(interactableId);
-            Debug.Log(obj.transform);
+            //Debug.Log(obj.transform);
             if (obj)
             {
                 if (Ship.currentShip.isPowerUp || obj.canUseOnPowerOut)

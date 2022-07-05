@@ -43,6 +43,9 @@ namespace SwordsInSpace
         [SyncVar(OnChange = nameof(UpdateHpBar))]
         public double CurrentHp;
 
+        private bool isInvincible;
+        private bool isInvincibleFire;
+
         [SyncVar]
         public double CurrentMaxHp;
 
@@ -54,7 +57,7 @@ namespace SwordsInSpace
         private void Awake()
         {
             Setup();
-            
+
         }
         private void Setup()
         {
@@ -152,8 +155,12 @@ namespace SwordsInSpace
 
         public void TakeDamage(double amt)
         {
-            CurrentHp -= 1;
+            if (isInvincible)
+                return;
 
+            StartCoroutine(StartInvincibilityFrames(data.ShipInvincibilityTime));
+            //Debug.Log(amt + " deamage taken");
+            CurrentHp -= amt;
             if (CurrentHp <= 0)
             {
                 GameManager.instance.OnLoseGame();
@@ -190,22 +197,22 @@ namespace SwordsInSpace
 
         public void OnCollisionEnter2D(Collision2D collision)
         {
-            if (IsServer)
+            if (!IsServer) return;
+
+            if (!isInvincibleFire)
             {
+                StartCoroutine(StartFireInvincibilityFrames(data.ShipFireInvincibilityTime));
                 fireManager.FireEventTrigger();
-                TakeDamage(shipMover.rb.velocity.magnitude);
             }
-
-
         }
 
         public void UpdateHpBar(double oldHp, double newHp, bool isServer)
         {
-            UiHpBar.GetComponent<UIHpBar>().Resize((float) newHp / (float)CurrentMaxHp);
+            UiHpBar.GetComponent<UIHpBar>().Resize((float)newHp / (float)CurrentMaxHp);
         }
 
         [ServerRpc(RequireOwnership = false)]
-        public void AddHp(int amt)
+        public void AddHp(float amt)
         {
             CurrentHp += amt;
             if (CurrentHp > CurrentMaxHp)
@@ -233,6 +240,20 @@ namespace SwordsInSpace
         {
             CurrentNitroFuel += change;
             Mathf.Clamp(CurrentNitroFuel + change, 0, data.ShipMaxNitroFuel);
+        }
+
+        public IEnumerator StartInvincibilityFrames(float invincibilityTime)
+        {
+            isInvincible = true;
+            yield return new WaitForSeconds(invincibilityTime);
+            isInvincible = false;
+        }
+
+        public IEnumerator StartFireInvincibilityFrames(float invincibilityTime)
+        {
+            isInvincibleFire = true;
+            yield return new WaitForSeconds(invincibilityTime);
+            isInvincibleFire = false;
         }
     }
 

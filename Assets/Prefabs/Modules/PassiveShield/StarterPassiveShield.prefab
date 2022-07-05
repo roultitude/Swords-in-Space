@@ -97,6 +97,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+--- !u!58 &2029181260041163460 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 898759745282394244, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+  m_PrefabInstance: {fileID: 1175457795652737600}
+  m_PrefabAsset: {fileID: 0}
 --- !u!61 &7448590755877861288 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 8578976271361633768, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
@@ -125,6 +130,7 @@ MonoBehaviour:
   canUseOnPowerOut: 0
   linkedFireCells: []
   interactZone: {fileID: 7448590755877861288}
+  collideZone: {fileID: 2029181260041163460}
   UIDisplayPrefab: {fileID: 2820425106572785257, guid: 7066f820b3a9004489573ac7e8f4474b, type: 3}
 --- !u!114 &1089966707694479485
 MonoBehaviour:

@@ -36,8 +36,7 @@ namespace SwordsInSpace
             if (!controlledPlayer)
             {
                 ServerSpawnPlayer();
-            }
-                
+            }   
         }
 
         private void OnEnable()
@@ -87,6 +86,7 @@ namespace SwordsInSpace
         public void UpdateUsername(string name)
         {
             username = name;
+            GameManager.instance.MessageRPC(username + " has joined the game!");
         }
 
         [ServerRpc]

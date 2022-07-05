@@ -161,7 +161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _prefabId
-      value: 8
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -397,8 +397,12 @@ MonoBehaviour:
   maxHp: 3
   exp: 80
   hpBar: {fileID: 5760145152818412359}
+  doTeleportIfFar: 1
+  teleportCheckDuration: 5
+  teleportIfFurtherThanDistance: 200
   mover: {fileID: 7826549821664265833}
   shooter: {fileID: 7889098942661978653}
+  contactDamage: 15
 --- !u!114 &7826549821664265833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,7 +415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dca9d2ed209eb44a22ad5bebf912ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugCanSeePlayer: 0
   dashChargeTime: 0.8
   dashImpulse: 10
   dashTime: 2.2

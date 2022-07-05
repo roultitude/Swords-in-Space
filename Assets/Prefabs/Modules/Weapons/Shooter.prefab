@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3427889062385703210}
   - component: {fileID: 7663618118891403403}
   - component: {fileID: 5154871676309484324}
+  - component: {fileID: 5727399962631425905}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Untagged
@@ -47,9 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 0}
-  _networkObjectCache: {fileID: 0}
+  _addedNetworkObject: {fileID: 5727399962631425905}
+  _networkObjectCache: {fileID: 5727399962631425905}
   turnAxis: {x: 0, y: 0}
+  rotationMin: 0
+  rotationMax: 360
   data: {fileID: 0}
 --- !u!114 &5154871676309484324
 MonoBehaviour:
@@ -64,8 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 1
-  _addedNetworkObject: {fileID: 0}
-  _networkObjectCache: {fileID: 0}
+  _addedNetworkObject: {fileID: 5727399962631425905}
+  _networkObjectCache: {fileID: 5727399962631425905}
   _synchronizeParent: 0
   _packing:
     Position: 1
@@ -93,6 +96,32 @@ MonoBehaviour:
     X: 0
     Y: 0
     Z: 0
+--- !u!114 &5727399962631425905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615112723805862627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _networkBehaviours:
+  - {fileID: 7663618118891403403}
+  - {fileID: 5154871676309484324}
+  SceneTransformProperties:
+    Position: {x: -0.54, y: 5.67, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    LocalScale: {x: 1, y: 1, z: 1}
+  _isNetworked: 1
+  _hasParentNetworkObjectAtEdit: 0
+  NetworkObserver: {fileID: 0}
+  _prefabId: -1
+  _scenePathHash: 0
+  _sceneId: 0
+  _sceneNetworkObjects: []
 --- !u!1 &6120919939691986411
 GameObject:
   m_ObjectHideFlags: 0

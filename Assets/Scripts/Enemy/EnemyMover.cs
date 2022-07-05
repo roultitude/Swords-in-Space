@@ -10,21 +10,14 @@ namespace SwordsInSpace
     {
         protected AIPath ai;
 
-        public bool debugCanSeePlayer = false;
+
 
         public void Start()
         {
             ai = gameObject.GetComponent<AIPath>();
         }
 
-        public void Update()
-        {
-            if (debugCanSeePlayer)
-            {
-                CanSeePlayer();
-                debugCanSeePlayer = false;
-            }
-        }
+
 
         protected void StopAstar()
         {
@@ -39,7 +32,7 @@ namespace SwordsInSpace
             ai.isStopped = false;
         }
 
-        protected void LookAt(Transform trans)
+        protected void LookAt(Transform trans, float speed)
         {
             Vector3 myLocation = transform.position;
             Vector3 targetLocation = trans.position;
@@ -49,13 +42,13 @@ namespace SwordsInSpace
             Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 0) * vectorToTarget;
             Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
             Quaternion rotation = Quaternion.LookRotation(Ship.currentShip.gameObject.transform.position - gameObject.transform.position, Vector3.forward);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360f);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, speed);
 
         }
 
         protected void LookAtPlayer()
         {
-            LookAt(Ship.currentShip.transform);
+            LookAt(Ship.currentShip.transform, 360f);
         }
 
         public bool CanSeePlayer()
@@ -71,10 +64,6 @@ namespace SwordsInSpace
 
             foreach (RaycastHit2D hit in collide)
             {
-                if (debugCanSeePlayer)
-                {
-                    Debug.Log(hit.collider.gameObject);
-                }
                 if (hit.collider.gameObject.GetComponent<ShipMover>() != null)
                 {
                     return true;

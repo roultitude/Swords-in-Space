@@ -21,13 +21,11 @@ namespace SwordsInSpace
 
         public int burst = 3;
 
-        public int maxAmmo = 3;
-
-        public int ammoRefill = 1;
-
         public double atkCD = 5;
 
         public double burstCD = 0.3;
+
+        public Vector2 bulletScale = new Vector2(3, 3);
 
         public float rotationSpeed = 10f;
     }
