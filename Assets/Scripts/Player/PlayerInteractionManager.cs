@@ -20,6 +20,7 @@ namespace SwordsInSpace
             base.OnStartNetwork();
             GameManager.OnNewSceneLoadEvent += () =>
             {
+
                 interactables = Ship.currentShip.shipInterior.GetComponent<InteractableIdManager>();
             };
         }

@@ -1,27 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FishNet.Object;
+using FishNet.Object.Synchronizing;
+
 namespace SwordsInSpace
 {
-    public class InteractableIdManager : MonoBehaviour
+    public class InteractableIdManager : NetworkBehaviour
     {
         // Start is called before the first frame update
-        List<Interactable> data;
-        void Start()
+        [SyncObject]
+        public readonly SyncList<Interactable> data = new SyncList<Interactable>();
+
+        public override void OnStartServer()
         {
-            RefreshData();
-        }
+            base.OnStartServer();
 
-        public void RefreshData()
-        {
-            data = new List<Interactable>(GetComponentsInChildren<Interactable>());
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            foreach (Interactable kid in GetComponentsInChildren<Interactable>())
+            {
+                data.Add(kid);
+            }
         }
 
         public Interactable GetInteractable(int id)
