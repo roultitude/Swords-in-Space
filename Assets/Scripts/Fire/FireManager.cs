@@ -6,7 +6,7 @@ using FishNet.Object;
 using FishNet.Managing.Scened;
 using FishNet.Connection;
 using UnityEngine.Tilemaps;
-
+using FishNet.Object.Synchronizing;
 
 namespace SwordsInSpace
 {
@@ -23,7 +23,8 @@ namespace SwordsInSpace
         [SerializeField]
         AudioSource audioFireStart, audioFireOngoing;
 
-        private bool fireActive = false;
+        [SyncVar(OnChange = nameof(OnChangeFireActive))]
+        bool fireActive = false;
 
 
 
@@ -34,8 +35,7 @@ namespace SwordsInSpace
                 return;
 
             fires[Random.Range(0, fires.Length)].activate();
-            audioFireStart.Play();
-
+            
             if (fireTracker == null || !fireActive)
                 fireTracker = StartCoroutine("TrackFire");
 
@@ -48,8 +48,7 @@ namespace SwordsInSpace
             {
                 if (!fireActive)
                 {
-                    fireActive = true;
-                    audioFireOngoing.Play();
+                    fireActive = true; 
                 }
                 foreach (Fire f in fires)
                 {
@@ -79,7 +78,6 @@ namespace SwordsInSpace
                 }
                 yield return new WaitForSeconds(tickTime);
             }
-            audioFireOngoing.Stop();
             fireActive = false;
             yield break;
         }
@@ -102,6 +100,19 @@ namespace SwordsInSpace
 
             if (IsServer && Random.Range(0f, 1f) < fireStartOnCollideChance)
                 StartFire();
+        }
+
+        public void OnChangeFireActive(bool wasFireActive, bool isFireActive, bool isServer)
+        {
+            if (!wasFireActive && isFireActive)  //from off -> on
+            {
+                audioFireStart.Play();
+                audioFireOngoing.Play();
+            }
+            else if (wasFireActive && !isFireActive)  //from on -> off
+            {
+                audioFireOngoing.Stop();
+            }
         }
     }
 };
