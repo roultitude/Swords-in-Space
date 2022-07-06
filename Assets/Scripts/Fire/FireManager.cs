@@ -34,6 +34,7 @@ namespace SwordsInSpace
                 return;
 
             fires[Random.Range(0, fires.Length)].activate();
+            audioFireStart.Play();
 
             if (fireTracker == null || !fireActive)
                 fireTracker = StartCoroutine("TrackFire");
@@ -42,12 +43,12 @@ namespace SwordsInSpace
 
         public IEnumerator TrackFire()
         {
+
             while (countFires() > 0)
             {
                 if (!fireActive)
                 {
                     fireActive = true;
-                    audioFireStart.Play();
                     audioFireOngoing.Play();
                 }
                 foreach (Fire f in fires)
@@ -88,7 +89,7 @@ namespace SwordsInSpace
             int i = 0;
             foreach (Fire f in fires)
             {
-                if (f.gameObject.activeInHierarchy)
+                if (f.fireActive)
                 {
                     i += 1;
                 }

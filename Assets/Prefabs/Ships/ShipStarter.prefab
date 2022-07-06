@@ -6487,15 +6487,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4485076214342864807, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: TintLowPower.b
-      value: 0.52064794
+      value: 0.7264151
       objectReference: {fileID: 0}
     - target: {fileID: 4485076214342864807, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: TintLowPower.g
-      value: 0.52064794
+      value: 0.7264151
       objectReference: {fileID: 0}
     - target: {fileID: 4485076214342864807, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: TintLowPower.r
-      value: 0.5660378
+      value: 0.7264151
       objectReference: {fileID: 0}
     - target: {fileID: 4485076214342864807, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _addedNetworkObject

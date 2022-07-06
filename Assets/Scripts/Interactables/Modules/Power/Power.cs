@@ -55,7 +55,7 @@ namespace SwordsInSpace
                     Ship.currentShip.PowerUp();
 
 
-                Ship.currentShip.updateShipBackgroundColor(currentAmount / maxAmount);
+                Ship.currentShip.updateShipBackgroundColor(Mathf.Clamp(4 * currentAmount / maxAmount, 0f, 1f));
 
 
 

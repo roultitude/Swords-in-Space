@@ -75,7 +75,6 @@ namespace SwordsInSpace
             IsInvincible = false;
         }
 
-        [ServerRpc(RequireOwnership = false)]
         public void activate()
         {
             fireActive = true;
