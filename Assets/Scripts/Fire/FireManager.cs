@@ -19,7 +19,13 @@ namespace SwordsInSpace
         public float tickTime;
         public float tickChance;
         public float fireStartOnCollideChance;
+
+        [SerializeField]
+        AudioSource audioFireStart, audioFireOngoing;
+
         private bool fireActive = false;
+
+
 
         public void StartFire()
         {
@@ -38,7 +44,12 @@ namespace SwordsInSpace
         {
             while (countFires() > 0)
             {
-                fireActive = true;
+                if (!fireActive)
+                {
+                    fireActive = true;
+                    audioFireStart.Play();
+                    audioFireOngoing.Play();
+                }
                 foreach (Fire f in fires)
                 {
                     if (f.fireActive && Random.Range(0f, 1f) < tickChance)
@@ -67,6 +78,7 @@ namespace SwordsInSpace
                 }
                 yield return new WaitForSeconds(tickTime);
             }
+            audioFireOngoing.Stop();
             fireActive = false;
             yield break;
         }
