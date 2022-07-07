@@ -306,21 +306,10 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 9217316466230567277}
   maxHp: 5
   exp: 80
-  hpBar: {fileID: 7109283038549124867}
+  onDamagedSound: {fileID: 8300000, guid: 81cf58358c17c164f8bd67c45e6f826a, type: 3}
   doTeleportIfFar: 1
   teleportCheckDuration: 5
   teleportIfFurtherThanDistance: 200
---- !u!114 &7109283038549124867 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2887116319582651532, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
-  m_PrefabInstance: {fileID: 5384097056713024399}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed2804f96290a8f4384d05bc4cd86c1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7456956422516612179 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3297842073833619420, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
