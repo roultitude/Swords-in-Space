@@ -8,10 +8,7 @@ namespace SwordsInSpace
     {
         public override void Shoot()
         {
-            foreach (Shooter comp in shooters)
-            {
-                comp.Fire();
-            }
+            Fire();
         }
     }
 };

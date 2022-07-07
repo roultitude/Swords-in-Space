@@ -28,6 +28,12 @@ namespace SwordsInSpace
         private bool togglingAutoFire;
         private bool firing;
         private GameObject UIDisplay;
+        Timer burstTimer;
+        Timer atkTimer;
+        bool canFire = true;
+        bool autoFire = false;
+
+        int currentBurst = 0;
         void OnEnable()
         {
             shooters = new List<Shooter>();
@@ -35,9 +41,15 @@ namespace SwordsInSpace
             {
                 Shooter compShooter = comp.GetComponentInChildren<Shooter>();
                 shooters.Add(compShooter);
-                compShooter.data = data;
-                compShooter.Setup();
+                compShooter.Setup(data);
             }
+            this.burstTimer = gameObject.AddComponent<Timer>();
+            this.burstTimer.Setup(data.burstCD, false, false);
+            this.burstTimer.timeout.AddListener(StartBurst);
+
+            this.atkTimer = gameObject.AddComponent<Timer>();
+            this.atkTimer.Setup(data.atkCD, false, false);
+            this.atkTimer.timeout.AddListener(FinishReload);
             GameManager.OnNewSceneLoadEvent += SetupUI;
         }
 
@@ -112,26 +124,74 @@ namespace SwordsInSpace
             }
         }
 
+        [ServerRpc(RequireOwnership = false)]
+        public void ToggleAutoFire()
+        {
+            autoFire = !autoFire;
+        }
+
+        public void FinishReload()
+        {
+            canFire = true;
+            if (autoFire)
+            {
+                StartAttack();
+            }
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        public void Fire()
+        {
+            if (canFire)
+            {
+                StartAttack();
+            }
+        }
+
+        public void StartAttack()
+        {
+            if (!IsServer) { return; }//Sanity check
+            canFire = false;
+            atkTimer.Start();
+            StartBurst();
+        }
+
+        private void StartBurst()
+        {
+            if (!IsServer) { return; }//Sanity check
+
+            if (currentBurst < data.burst)
+            {
+                if (autoFire) {; }
+                //Left();
+                foreach (Shooter comp in shooters)
+                {
+                    comp.SpawnBullet();
+                }
+                currentBurst += 1;
+                this.burstTimer.Start();
+
+            }
+            else
+            {
+                currentBurst = 0;
+            }
+
+        }
 
         public void OnTick()
         {
             SyncTurnAxis(turnAxis);
             if (firing) 
             {
-                foreach (Shooter comp in shooters)
-                {
-                    comp.Fire();
-                }
+                Fire();
                 firing = false;
             }
                 
             if (togglingAutoFire)
             {
-                foreach (Shooter comp in shooters)
-                {
-                    comp.ToggleAutoFire();
-                    comp.Fire();
-                }
+                ToggleAutoFire();
+                Fire();
                 togglingAutoFire = false;
             }
         }
