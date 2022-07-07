@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using FishNet;
 using FishNet.Object;
+using FishNet.Object.Synchronizing;
 
 namespace SwordsInSpace
 {
@@ -30,10 +31,16 @@ namespace SwordsInSpace
         private GameObject UIDisplay;
         Timer burstTimer;
         Timer atkTimer;
-        bool canFire = true;
+
+        [SyncVar]
+        public bool canFire = true;
         bool autoFire = false;
 
         int currentBurst = 0;
+
+        [SyncVar]
+        public float percentageReloaded;
+
         void OnEnable()
         {
             shooters = new List<Shooter>();
@@ -82,7 +89,7 @@ namespace SwordsInSpace
 
         public override void Interact(GameObject player)
         {
-            if (manager.Offer(UIDisplay))
+            if (manager.Offer(UIDisplay,this))
             {
                 InstanceFinder.TimeManager.OnTick += OnTick;
                 CameraManager.instance.ToggleWeaponCamera();
@@ -181,6 +188,7 @@ namespace SwordsInSpace
 
         public void OnTick()
         {
+            percentageReloaded = 1 - (float)((atkTimer.waitTime - atkTimer.currentTime)/ data.atkCD);
             SyncTurnAxis(turnAxis);
             if (firing) 
             {
