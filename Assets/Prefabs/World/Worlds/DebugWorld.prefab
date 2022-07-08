@@ -55,6 +55,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebugWorld
       objectReference: {fileID: 0}
+    - target: {fileID: 4444492387124331367, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: backgroundTextureMid
+      value: 
+      objectReference: {fileID: 2800000, guid: 2df7562836a5198408d164b43f99dc1c, type: 3}
+    - target: {fileID: 4444492387124331367, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: backgroundTextureBack
+      value: 
+      objectReference: {fileID: 2800000, guid: 71f60f078876e154681ca5271e701453, type: 3}
+    - target: {fileID: 4444492387124331367, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: backgroundTextureFront
+      value: 
+      objectReference: {fileID: 2800000, guid: c4f1e8615d8ee8848b9e9bf5293da7fe, type: 3}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: spawninfos.Array.size
       value: 0

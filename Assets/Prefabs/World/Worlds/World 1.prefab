@@ -63,6 +63,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: World 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4444492387124331367, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: backgroundTextureMid
+      value: 
+      objectReference: {fileID: 2800000, guid: 2df7562836a5198408d164b43f99dc1c, type: 3}
+    - target: {fileID: 4444492387124331367, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: backgroundTextureBack
+      value: 
+      objectReference: {fileID: 2800000, guid: 458f609d7ed0b444dbe867cecf4d1d8a, type: 3}
+    - target: {fileID: 4444492387124331367, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: backgroundTextureFront
+      value: 
+      objectReference: {fileID: 2800000, guid: d68b2574bb8e723419d085e29c709bb6, type: 3}
     - target: {fileID: 4444492387278712788, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: seed.x
       value: 0
