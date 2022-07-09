@@ -2,31 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace SwordsInSpace
 {
-    public class FollowUV : MonoBehaviour
+    public class ScrollUV : MonoBehaviour
     {
         MeshRenderer mr;
         Material mat;
         [SerializeField]
-        float parallax = 2f;
+        Vector2 scrollDir;
         [SerializeField]
-        Vector2 initialOffset;
-
+        float scrollSpeed;
+        [SerializeField]
+        Texture scrollTexture;
         private void Awake()
         {
             mr = GetComponent<MeshRenderer>();
             mat = mr.material;
             mr.sortingOrder = -10;
+            scrollDir = scrollDir.normalized;
+            mat.mainTexture = scrollTexture;
         }
         // Update is called once per frame
         void Update()
         {
             Vector2 offset = mat.mainTextureOffset;
-            offset.x = (initialOffset.x + transform.position.x) / (transform.localScale.x * parallax);
-            offset.y = (initialOffset.y + transform.position.y) / (transform.localScale.y * parallax);
+            offset.x += scrollDir.x * scrollSpeed * Time.deltaTime;
+            offset.y += scrollDir.y * scrollSpeed * Time.deltaTime;
             mat.mainTextureOffset = offset;
         }
     }
 }
-

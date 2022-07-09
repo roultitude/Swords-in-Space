@@ -119,7 +119,8 @@ namespace SwordsInSpace
 
             if (otherInteractable)
             {
-                data.Add(interactables.GetId(otherInteractable));
+                int id = interactables.GetId(otherInteractable);
+                if(id!= -1) data.Add(interactables.GetId(otherInteractable));
             }
 
 
