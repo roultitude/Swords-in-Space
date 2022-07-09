@@ -33,6 +33,12 @@ namespace SwordsInSpace
         {
             ObserversPlay(audioClipIndex);
         }
+        public void ServerPlay(AudioClip audioClip)
+        {
+            int index = System.Array.IndexOf(AudioClips, audioClip);
+            if (index == -1) Debug.LogError(audioClip + " is missing from AudioManager array! Please refresh clips in editor!");
+            ServerPlay(index);
+        }
 
         [ObserversRpc]
         public void ObserversPlay(int audioClipIndex)
@@ -40,6 +46,12 @@ namespace SwordsInSpace
             effectAudioSource.PlayOneShot(AudioClips[audioClipIndex]);
         }
 
+        public void ObserversPlay(AudioClip audioClip)
+        {
+            int index = System.Array.IndexOf(AudioClips, audioClip);
+            if (index == -1) Debug.LogError(audioClip + " is missing from AudioManager array! Please refresh clips in editor!");
+            ObserversPlay(index);
+        }
     }
 
 }

@@ -11,6 +11,8 @@ namespace SwordsInSpace
 
         public GameObject bulletPrefab;
 
+        public AudioClip shootSound;
+
         public double damage = 1;
 
         public int shotSpeed = 1;
@@ -28,5 +30,7 @@ namespace SwordsInSpace
         public Vector2 bulletScale = new Vector2(3, 3);
 
         public float rotationSpeed = 10f;
+
+
     }
 };

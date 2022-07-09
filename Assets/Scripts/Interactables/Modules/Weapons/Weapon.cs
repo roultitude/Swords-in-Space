@@ -174,6 +174,7 @@ namespace SwordsInSpace
                 foreach (Shooter comp in shooters)
                 {
                     comp.SpawnBullet();
+                    AudioManager.instance.ObserversPlay(data.shootSound);
                 }
                 currentBurst += 1;
                 this.burstTimer.Start();

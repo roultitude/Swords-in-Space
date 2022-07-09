@@ -18,7 +18,7 @@ namespace SwordsInSpace
         private double shotSpread;
         public float range = 600f;
         public bool hasShot = false;
-
+        public bool isFirstShot = true;
 
         private Shooter shooter;
 
@@ -104,10 +104,15 @@ namespace SwordsInSpace
             double currentTime = 0;
             while (currentTime < shotLifeTime)
             {
+                
                 DoRaycast();
-
+                if (!isFirstShot)
+                {
+                    AudioManager.instance.ObserversPlay(shooter.data.shootSound);
+                } 
                 yield return new WaitForSeconds((float)cd);
                 currentTime += cd;
+                isFirstShot = false;
             }
             StartCoroutine("Fadeout");
             yield return null;

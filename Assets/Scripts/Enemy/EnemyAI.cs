@@ -124,7 +124,7 @@ namespace SwordsInSpace
         public void takeDamage(double dmg)
         {
             currentHp -= dmg;
-            AudioManager.instance.ObserversPlay(System.Array.IndexOf(AudioManager.instance.AudioClips,onDamagedSound));
+            AudioManager.instance.ObserversPlay(onDamagedSound);
             if (currentHp <= 0)
             {
                 OnDeath();
