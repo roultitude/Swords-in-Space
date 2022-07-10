@@ -20,6 +20,9 @@ namespace SwordsInSpace
 
         public int refillRate = 3;
 
+        [SerializeField]
+        AudioClip chargeSound;
+
         [SyncVar]
         public float currentAmount = 100;
 
@@ -74,6 +77,7 @@ namespace SwordsInSpace
         public void FillPower()
         {
             currentAmount += refillRate;
+            AudioManager.instance.ObserversPlay(chargeSound);
             if (currentAmount > maxAmount)
                 currentAmount = maxAmount;
         }

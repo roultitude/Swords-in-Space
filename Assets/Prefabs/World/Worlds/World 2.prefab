@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4444492387124331352, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: _prefabId
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 4444492387124331353, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -55,6 +59,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: World 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4444492387124331367, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: backgroundTextureMid
+      value: 
+      objectReference: {fileID: 2800000, guid: ff1e8108e4f81db459bd0a6c8b8249f9, type: 3}
+    - target: {fileID: 4444492387124331367, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: backgroundTextureBack
+      value: 
+      objectReference: {fileID: 2800000, guid: c4f1e8615d8ee8848b9e9bf5293da7fe, type: 3}
+    - target: {fileID: 4444492387124331367, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: backgroundTextureFront
+      value: 
+      objectReference: {fileID: 2800000, guid: 7ebf9ade577fa6a4eba689b75f45dab6, type: 3}
     - target: {fileID: 4444492387278712788, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: density
       value: 11
@@ -121,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359135, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: waitTime
-      value: 60
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}

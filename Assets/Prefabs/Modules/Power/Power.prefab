@@ -159,6 +159,7 @@ MonoBehaviour:
   maxAmount: 200
   drainRate: 50
   refillRate: 10
+  chargeSound: {fileID: 8300000, guid: 579cd11abd86974479457879567cf30f, type: 3}
   currentAmount: 200
   supplyingPower: 1
   bar: {fileID: 8692486598316717058}
