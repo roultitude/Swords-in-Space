@@ -75,6 +75,7 @@ namespace SwordsInSpace
 
         void OnDisplayClosed()
         {
+            SetOccupied(false);
             CameraManager.instance.ToggleWeaponCamera();
             currentPlayerInput.playerInput.actions["Move"].performed -= WeaponInputMove;
             currentPlayerInput.playerInput.actions["Fire"].performed -= WeaponInputFire;
@@ -87,10 +88,11 @@ namespace SwordsInSpace
             SyncTurnAxis(Vector2.zero);
         }
 
-        public override void Interact(GameObject player)
+        public override void OnInteract(GameObject player)
         {
             if (manager.Offer(UIDisplay,this))
             {
+                SetOccupied(true);
                 InstanceFinder.TimeManager.OnTick += OnTick;
                 CameraManager.instance.ToggleWeaponCamera();
                 currentPlayerInput = player.GetComponent<PlayerInputManager>();

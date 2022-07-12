@@ -25,8 +25,6 @@ namespace SwordsInSpace
 
         public Interactable GetInteractable(int id)
         {
-            Debug.Log("getting interactable : " + id);
-            Debug.Log("getInteractable has : " + data.Count);
             if (id < data.Count)
             {
                 return data[id];
@@ -36,7 +34,6 @@ namespace SwordsInSpace
 
         public int GetId(Interactable inp)
         {
-            Debug.Log("getID has : " + data.Count);
             if (data.Contains(inp))
             {
                 return data.IndexOf(inp);

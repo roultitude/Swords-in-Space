@@ -69,7 +69,7 @@ namespace SwordsInSpace
         }
 
 
-        public override void Interact(GameObject obj)
+        public override void OnInteract(GameObject obj)
         {
             FillPower();
         }

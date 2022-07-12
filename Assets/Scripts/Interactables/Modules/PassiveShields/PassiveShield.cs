@@ -34,10 +34,11 @@ namespace SwordsInSpace
         }
 
 
-        public override void Interact(GameObject player)
+        public override void OnInteract(GameObject player)
         {
             if (manager.Offer(UIDisplay, this))
             {
+                SetOccupied(true);
                 currentPlayerInput = player.GetComponent<PlayerInputManager>();
 
 
@@ -52,7 +53,7 @@ namespace SwordsInSpace
         }
         void OnDisplayClosed()
         {
-
+            SetOccupied(false);
             currentPlayerInput.SwitchView("PlayerView");
 
             currentPlayerInput.playerInput.actions["LeftDrumstick"].performed -= PassiveShieldInputLeft;

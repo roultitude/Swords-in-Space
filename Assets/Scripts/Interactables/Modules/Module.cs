@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
+using FishNet.Object.Synchronizing;
 
 namespace SwordsInSpace
 {
@@ -17,6 +18,9 @@ namespace SwordsInSpace
 
         public Collider2D interactZone;
         public Collider2D collideZone;
+
+        [SyncVar]
+        protected bool isOccupied = false;
         public void Start()
         {
             if (!IsServer)
@@ -31,7 +35,6 @@ namespace SwordsInSpace
                 }
             }
         }
-
 
         public void OnFireNearby()
         {
@@ -52,6 +55,12 @@ namespace SwordsInSpace
             DisableInteractZone(true);
 
         }
+        public override void Interact(GameObject player)
+        {
+            Debug.Log(name + " is occupied: " + isOccupied);
+            if (!isOccupied) OnInteract(player);
+        }
+        public abstract void OnInteract(GameObject player);
 
         [ObserversRpc]
         private void DisableInteractZone(bool value)
@@ -61,6 +70,11 @@ namespace SwordsInSpace
 
         }
 
+        [ServerRpc(RequireOwnership = false)]
+        protected void SetOccupied(bool occupied)
+        {
+            isOccupied = occupied;
+        }
 
     }
 };
