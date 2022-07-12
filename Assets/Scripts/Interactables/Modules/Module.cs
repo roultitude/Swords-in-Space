@@ -39,7 +39,7 @@ namespace SwordsInSpace
         public void OnFireNearby()
         {
 
-            DisableInteractZone(false);
+            EnableInteractZone(false);
         }
 
         public void OnFireExtinguishedNearby()
@@ -52,7 +52,7 @@ namespace SwordsInSpace
             }
 
 
-            DisableInteractZone(true);
+            EnableInteractZone(true);
 
         }
         public override void Interact(GameObject player)
@@ -63,7 +63,7 @@ namespace SwordsInSpace
         public abstract void OnInteract(GameObject player);
 
         [ObserversRpc]
-        private void DisableInteractZone(bool value)
+        private void EnableInteractZone(bool value)
         {
             interactZone.enabled = value;
             collideZone.enabled = value;

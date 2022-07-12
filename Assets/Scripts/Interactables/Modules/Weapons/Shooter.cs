@@ -24,9 +24,6 @@ namespace SwordsInSpace
             this.data = data;
         }
 
- 
-
-
         public void SpawnBullet()
         {
             if (!IsServer)
