@@ -202,6 +202,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f80248c0-f85c-4870-87d8-ce89c58d1b65",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c05f5f6f-5a5e-4e22-a695-d6c20ba99f1b",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",

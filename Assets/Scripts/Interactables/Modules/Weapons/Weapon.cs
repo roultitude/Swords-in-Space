@@ -38,7 +38,6 @@ namespace SwordsInSpace
 
         int currentBurst = 0;
 
-        [SyncVar]
         public float percentageReloaded;
 
         void OnEnable()
@@ -161,6 +160,7 @@ namespace SwordsInSpace
         {
             if (!IsServer) { return; }//Sanity check
             canFire = false;
+            OnFireClient();
             atkTimer.Start();
             StartBurst();
         }
@@ -191,7 +191,7 @@ namespace SwordsInSpace
 
         public void OnTick()
         {
-            percentageReloaded = 1 - (float)((atkTimer.waitTime - atkTimer.currentTime)/ data.atkCD);
+            
             SyncTurnAxis(turnAxis);
             if (firing) 
             {
@@ -207,5 +207,14 @@ namespace SwordsInSpace
             }
         }
 
+        [ObserversRpc]
+        public void OnFireClient()
+        {
+            atkTimer.Start();
+        }
+        private void Update()
+        {
+            percentageReloaded = 1 - (float)((atkTimer.waitTime - atkTimer.currentTime) / data.atkCD);
+        }
     }
 };
