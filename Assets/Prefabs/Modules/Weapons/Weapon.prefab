@@ -168,10 +168,13 @@ MonoBehaviour:
   linkedFireCells: []
   interactZone: {fileID: 4970288661495360416}
   collideZone: {fileID: 2758781506738865069}
-  data: {fileID: 0}
+  baseData: {fileID: 0}
   currentAmmo: 3
   UIDisplayPrefab: {fileID: 175365271833212233, guid: 0663e54072b9f2c4bb5880f80b85611e, type: 3}
   shootersObj: []
+  isSuperWeapon: 0
+  canFire: 1
+  percentageReloaded: 0
 --- !u!114 &7800811835471748682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _networkBehaviours:
   - {fileID: 6735194044421036099}
+  - {fileID: 3158867932272268104}
   SceneTransformProperties:
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -197,6 +201,22 @@ MonoBehaviour:
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects: []
+--- !u!114 &3158867932272268104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4970288661826059581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6cc6b9780d90243bea4a960790a6b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: 7800811835471748682}
+  _networkObjectCache: {fileID: 7800811835471748682}
+  test: 030000000200000000000000
 --- !u!1 &6281233530299324317 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7268751382060290517, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}

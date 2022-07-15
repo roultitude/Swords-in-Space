@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using FishNet;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using static SwordsInSpace.UpgradeSO;
 
 namespace SwordsInSpace
 {
@@ -14,7 +15,40 @@ namespace SwordsInSpace
     {
         // Start is called before the first frame update
         [SerializeField]
-        public WeaponSO data;
+        public WeaponSO baseData;
+
+        public struct WeaponStruct
+        {
+            public WeaponStruct(WeaponSO baseData)
+            {
+                turretSprite = baseData.turretSprite;
+                bulletPrefab = baseData.bulletPrefab;
+                shootSound = baseData.shootSound;
+                damage = baseData.damage;
+                shotSpeed = baseData.shotSpeed;
+                shotLifeTime = baseData.shotLifeTime;
+                shotSpread = baseData.shotSpread;
+                burst = baseData.burst;
+                burstCD = baseData.burstCD;
+                atkCD = baseData.atkCD;
+                bulletScale = baseData.bulletScale;
+                rotationSpeed = baseData.rotationSpeed;
+            }
+            public Sprite turretSprite;
+            public GameObject bulletPrefab;
+            public AudioClip shootSound;
+            public double damage;
+            public int shotSpeed;
+            public double shotLifeTime;
+            public double shotSpread;
+            public int burst;
+            public double atkCD;
+            public double burstCD;
+            public Vector2 bulletScale;
+            public float rotationSpeed;
+        }
+
+        public WeaponStruct data;
 
         public int currentAmmo;
         [SerializeField]
@@ -29,6 +63,7 @@ namespace SwordsInSpace
         private bool togglingAutoFire;
         private bool firing;
         private GameObject UIDisplay;
+        public bool isSuperWeapon;
         Timer burstTimer;
         Timer atkTimer;
 
@@ -37,18 +72,24 @@ namespace SwordsInSpace
         bool autoFire = false;
 
         int currentBurst = 0;
+        private AttackManager attackManager;
 
         public float percentageReloaded;
 
         void OnEnable()
         {
             shooters = new List<Shooter>();
+            data = new WeaponStruct(baseData);
+
             foreach (GameObject comp in shootersObj)
             {
                 Shooter compShooter = comp.GetComponentInChildren<Shooter>();
                 shooters.Add(compShooter);
-                compShooter.Setup(data);
+                compShooter.UpdateRotSpeed(baseData.rotationSpeed);
             }
+
+            attackManager = GetComponent<AttackManager>();
+
             this.burstTimer = gameObject.AddComponent<Timer>();
             this.burstTimer.Setup(data.burstCD, false, false);
             this.burstTimer.timeout.AddListener(StartBurst);
@@ -57,6 +98,12 @@ namespace SwordsInSpace
             this.atkTimer.Setup(data.atkCD, false, false);
             this.atkTimer.timeout.AddListener(FinishReload);
             GameManager.OnNewSceneLoadEvent += SetupUI;
+
+        }
+
+        public void ReloadUpgrades(Dictionary<UpgradeTypes, float> stats)
+        {
+            attackManager.ReloadUpgrades(stats);
         }
 
         void OnDisable()
@@ -89,7 +136,7 @@ namespace SwordsInSpace
 
         public override void OnInteract(GameObject player)
         {
-            if (manager.Offer(UIDisplay,this))
+            if (manager.Offer(UIDisplay, this))
             {
                 SetOccupied(true);
                 InstanceFinder.TimeManager.OnTick += OnTick;
@@ -172,10 +219,41 @@ namespace SwordsInSpace
             if (currentBurst < data.burst)
             {
                 if (autoFire) {; }
-                //Left();
+
                 foreach (Shooter comp in shooters)
                 {
-                    comp.SpawnBullet();
+                    if (isSuperWeapon)
+                    {
+                        GameObject toAdd = Instantiate(data.bulletPrefab, comp.transform.position, Quaternion.Euler(comp.transform.rotation.eulerAngles));
+                        Lazer lazerSetup = toAdd.GetComponent<Lazer>();
+                        if (lazerSetup != null)
+                            lazerSetup.SetupLazer(data.shotLifeTime, data.damage, data.shotSpread, data.burstCD, data.shootSound, comp);
+
+                        toAdd.tag = "Friendly";
+
+                        Spawn(toAdd);
+                        continue;
+                    }
+
+
+
+                    List<AttackManager.BulletInfo> toSpawn = attackManager.DraftBulletLocations(data.bulletPrefab, comp.transform.position, comp.transform.rotation.eulerAngles, data.shotSpeed, data.shotSpread, data.shotLifeTime, data.damage, data.bulletScale);
+
+
+                    foreach (AttackManager.BulletInfo spawnData in toSpawn)
+                    {
+                        Debug.Log("Spawning Bullet");
+                        GameObject toAdd = Instantiate(spawnData.bulletBase, spawnData.bulletPosition, Quaternion.Euler(spawnData.bulletRotation));
+
+                        toAdd.GetComponent<Bullet>().AddMovementFunction(spawnData.fn);
+
+                        toAdd.GetComponent<Projectile>().Setup(spawnData.bulletShotSpeed, spawnData.bulletShotLifeTime, spawnData.bulletDamage, spawnData.bulletShotSpread);
+                        toAdd.transform.localScale = spawnData.bulletScale;
+
+                        toAdd.tag = "Friendly";
+
+                        Spawn(toAdd);
+                    }
                     AudioManager.instance.ObserversPlay(data.shootSound);
                 }
                 currentBurst += 1;
@@ -191,14 +269,14 @@ namespace SwordsInSpace
 
         public void OnTick()
         {
-            
+
             SyncTurnAxis(turnAxis);
-            if (firing) 
+            if (firing)
             {
                 Fire();
                 firing = false;
             }
-                
+
             if (togglingAutoFire)
             {
                 ToggleAutoFire();

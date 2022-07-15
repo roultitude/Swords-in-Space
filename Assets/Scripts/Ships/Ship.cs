@@ -84,7 +84,6 @@ namespace SwordsInSpace
                 {
                     case UpgradeTypes.maxHp:
                         TallyMaxHp += stats[type];
-
                         break;
 
                 }
