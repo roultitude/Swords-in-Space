@@ -18,7 +18,7 @@ MonoBehaviour:
   damage: 2
   shotSpeed: 15
   shotLifeTime: 10
-  shotSpread: 15
+  shotSpread: 0
   burst: 1
   atkCD: 1
   burstCD: 0.1
