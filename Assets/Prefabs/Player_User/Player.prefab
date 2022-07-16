@@ -77,6 +77,7 @@ MonoBehaviour:
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 6591759166442174641}
   _networkObjectCache: {fileID: 6591759166442174641}
+  data: 
   interactables: {fileID: 0}
 --- !u!114 &8521876381648262751
 MonoBehaviour:
@@ -152,6 +153,7 @@ MonoBehaviour:
   playerCanvas: {fileID: 1004337046429101510}
   controllingUser: {fileID: 0}
   health: 0
+  offset: 0
 --- !u!114 &1836518971643897993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +202,8 @@ MonoBehaviour:
   _graphicalObject: {fileID: 8760791468650330625}
   _smoothTicks: 1
   _smoothingDuration: 0.125
+  _enableTeleport: 0
+  _teleportThreshold: 1
   _predictionType: 2
   _rigidbody: {fileID: 0}
   _rigidbody2d: {fileID: 5198408479492109837}
@@ -445,6 +449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8760791468650330625}
   - component: {fileID: 8760791468650330630}
+  - component: {fileID: 7713551943258968123}
   m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
@@ -520,6 +525,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7713551943258968123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760791468650330631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.5, y: -0.1083521, z: 0}
+  - {x: -0.47662276, y: 0.19145624, z: 0}
+  - {x: -0.2977203, y: 0.426835, z: 0}
+  - {x: 0.014013076, y: 0.5056354, z: 0}
+  - {x: 0.3708853, y: 0.3967083, z: 0}
+  - {x: 0.5003451, y: -0.032342546, z: 0}
+  - {x: 0.3712304, y: -0.37234455, z: 0}
+  - {x: 0.0007564326, y: -0.49569622, z: 0}
+  - {x: -0.32168517, y: -0.3895599, z: 0}
+  m_ShapePathHash: -930056146
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -18092
 --- !u!1001 &1535577134566649140
 PrefabInstance:
   m_ObjectHideFlags: 0
