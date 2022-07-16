@@ -215,18 +215,16 @@ namespace SwordsInSpace
             {
                 OnUpgrade?.Invoke(TallyUpgrades());
                 BroadcastCloseScreen();
-                StartCoroutine("GoNextLevel");
-
+                StartCoroutine(DelayedSwitchScene("GameScene", 1f));
+                
             }
         }
 
-        public IEnumerator GoNextLevel()
+        IEnumerator DelayedSwitchScene(string sceneName, float delayTime)
         {
-            yield return new WaitForSeconds(0.5f);
-            GameManager.instance.GoToLevel("GameScene", true, true);
-
+            yield return new WaitForSeconds(delayTime);
+            GameManager.instance.GoToLevel(sceneName, true, true);
         }
-
 
         [ObserversRpc]
         public void BroadcastCloseScreen()
