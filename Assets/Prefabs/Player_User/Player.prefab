@@ -557,7 +557,7 @@ MonoBehaviour:
   - {x: -0.32168517, y: -0.3895599, z: 0}
   m_ShapePathHash: -930056146
   m_Mesh: {fileID: 0}
-  m_InstanceId: 154638
+  m_InstanceId: 157316
 --- !u!114 &8062086962072220328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,8 +581,8 @@ MonoBehaviour:
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
-  m_OverlapOperation: 0
+  m_LightOrder: -1
+  m_OverlapOperation: 1
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
