@@ -7,7 +7,7 @@ namespace SwordsInSpace
 {
     public class Bullet : Projectile
     {
-        Timer timer;
+        public Timer timer;
         double shotSpeed;
         double shotSpread;
         public delegate void MovementFunction(GameObject bullet);

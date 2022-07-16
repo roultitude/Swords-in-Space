@@ -1,3 +1,5 @@
+using FishNet.Object;
+using FishNet.Object.Synchronizing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,22 +12,17 @@ namespace SwordsInSpace
         [SerializeField]
         Image image;
 
-        public int currentTier;
 
         public Color tier1;
         public Color tier2;
         public Color tier3;
         public Color tier4;
 
-        public void Update()
-        {
-            updateColor(currentTier);
-        }
 
-        public void updateColor(int tier)
+        public void UpdateColor(int currenttier)
         {
 
-            switch (tier)
+            switch (currenttier)
             {
                 case 1:
                     image.color = tier1;

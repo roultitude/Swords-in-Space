@@ -826,6 +826,7 @@ MonoBehaviour:
   - {fileID: 5165411028905555709}
   - {fileID: 8094850396790781133}
   upgradesRemainingText: {fileID: 6782802732535062031}
+  upgradepanel: {fileID: 1680663642254014145}
 --- !u!1 &9074896718283519273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,7 +1520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 9074896718972142279}
-  currentTier: 1
   tier1: {r: 0, g: 0.7075472, b: 0.15411922, a: 0.5019608}
   tier2: {r: 0, g: 0.68380564, b: 0.764151, a: 0.5019608}
   tier3: {r: 0.7830189, g: 0, b: 0, a: 0.5019608}

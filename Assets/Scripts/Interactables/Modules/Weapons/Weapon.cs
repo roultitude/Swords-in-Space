@@ -98,11 +98,13 @@ namespace SwordsInSpace
             this.atkTimer.Setup(data.atkCD, false, false);
             this.atkTimer.timeout.AddListener(FinishReload);
             GameManager.OnNewSceneLoadEvent += SetupUI;
+            Ship.currentShip.upgradeManager.OnUpgrade += ReloadUpgrades;
 
         }
 
         public void ReloadUpgrades(Dictionary<UpgradeTypes, float> stats)
         {
+
             attackManager.ReloadUpgrades(stats);
 
             double TallyMaxHp = 0;//data.ShipMaxHp;
@@ -273,7 +275,8 @@ namespace SwordsInSpace
 
                     foreach (AttackManager.BulletInfo spawnData in toSpawn)
                     {
-                        Debug.Log("Spawning Bullet");
+                        if (!spawnData.isValid) continue;
+
                         GameObject toAdd = Instantiate(spawnData.bulletBase, spawnData.bulletPosition, Quaternion.Euler(spawnData.bulletRotation));
 
                         toAdd.GetComponent<Bullet>().AddMovementFunction(spawnData.fn);

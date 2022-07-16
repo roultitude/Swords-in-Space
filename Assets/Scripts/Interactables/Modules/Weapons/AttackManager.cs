@@ -16,7 +16,7 @@ namespace SwordsInSpace
 
         public record BulletInfo
         {
-            public BulletInfo(GameObject bulletBase, Vector3 bulletPosition, Vector3 bulletRotation, int bulletShotSpeed, double bulletShotSpread, double bulletShotLifeTime, double bulletDamage, Vector2 bulletScale, bool isModifiable)
+            public BulletInfo(GameObject bulletBase, Vector3 bulletPosition, Vector3 bulletRotation, int bulletShotSpeed, double bulletShotSpread, double bulletShotLifeTime, double bulletDamage, Vector2 bulletScale, bool isModifiable, bool isValid)
             {
                 this.bulletBase = bulletBase;
                 this.bulletPosition = bulletPosition;
@@ -26,6 +26,7 @@ namespace SwordsInSpace
                 this.bulletShotSpread = bulletShotSpread;
                 this.bulletDamage = bulletDamage;
                 this.isModifiable = isModifiable;
+                this.isValid = isValid;
                 this.bulletScale = bulletScale;
                 this.fn = null;
             }
@@ -39,23 +40,31 @@ namespace SwordsInSpace
             public double bulletShotLifeTime;
             public double bulletDamage;
             public double bulletShotSpread;
-            public bool isModifiable;
+            public bool isModifiable; //This bullet will be modified by other upgrades.
+            public bool isValid; //This bullet will be produced.
             public Vector2 bulletScale;
             public MovementFunction fn;
         }
 
-        public List<BulletModifier> modifiers = new List<BulletModifier>() { new MultiShot() };
+        public List<BulletModifier> modifiers = new List<BulletModifier>() {
+            new MultiShot(),
+            new SpreadShot()
+    };
+
 
         private List<BulletInfo> bullets;
 
         public void ReloadUpgrades(Dictionary<UpgradeTypes, float> stats)
         {
+
             foreach (UpgradeTypes type in stats.Keys)
             {
+                Debug.Log(type + "\t" + stats[type]);
                 foreach (BulletModifier mod in modifiers)
                 {
                     if (mod.thisUpgradeAttribute.type == type)
                     {
+                        Debug.Log(mod.thisUpgradeAttribute.type + "UPGRADE FOR BULLETS" + stats[type]);
                         mod.thisUpgradeAttribute.amount = stats[type];
                         break;
                     }
@@ -68,7 +77,7 @@ namespace SwordsInSpace
         {
             bullets = new List<BulletInfo>
             {
-                new BulletInfo(bulletBase, bulletPosition, bulletRotation, bulletShotSpeed, bulletShotSpread, bulletShotLifeTime, bulletDamage, bulletScale, true)
+                new BulletInfo(bulletBase, bulletPosition, bulletRotation, bulletShotSpeed, bulletShotSpread, bulletShotLifeTime, bulletDamage, bulletScale, true, true)
             };
 
             foreach (BulletModifier modifier in modifiers)

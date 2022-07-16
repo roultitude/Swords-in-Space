@@ -70,11 +70,16 @@ namespace SwordsInSpace
             CurrentHp = data.ShipMaxHp;
             CurrentMaxHp = data.ShipMaxHp;
             CurrentNitroFuel = data.ShipMaxNitroFuel;
+            upgradeManager.OnUpgrade += ReloadStats;
+
+
         }
-        [ServerRpc(RequireOwnership = false)]
-        public void ReloadStats()
+
+        public void ReloadStats(Dictionary<UpgradeTypes, float> stats)
         {
-            Dictionary<UpgradeTypes, float> stats = upgradeManager.TallyUpgrades();
+
+
+
             double TallyMaxHp = data.ShipMaxHp;
 
             //Base increases

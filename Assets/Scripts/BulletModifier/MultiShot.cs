@@ -10,16 +10,12 @@ namespace SwordsInSpace
         public MultiShot()
         {
             thisUpgradeAttribute = new UpgradeSO.UpgradeAttributes();
-            thisUpgradeAttribute.amount = 4;
+            thisUpgradeAttribute.amount = 0;
             thisUpgradeAttribute.type = UpgradeSO.UpgradeTypes.multiShot;
         }
 
         public override void Apply(List<AttackManager.BulletInfo> info)
         {
-            if (thisUpgradeAttribute.amount == 1)
-            {
-                return;
-            }
 
             List<AttackManager.BulletInfo> result = new List<AttackManager.BulletInfo>();
             while (info.Count > 0)
@@ -27,26 +23,39 @@ namespace SwordsInSpace
                 AttackManager.BulletInfo i = info[0];
                 info.RemoveAt(0);
 
-
-                for (int j = 0; j < (int)(thisUpgradeAttribute.amount / 2); j++)
+                if (!i.isModifiable)
                 {
-                    float offset = thisUpgradeAttribute.amount % 2 == 0 ? 0.5f : 1f;
+                    result.Add(i);
+                    continue;
+                }
+
+
+                int bulletsToFire = (int)(thisUpgradeAttribute.amount + 1);
+
+                for (int j = 0; j < (bulletsToFire / 2); j++)
+                {
+                    float offset = bulletsToFire % 2 == 0 ? 0.5f : 1f;
 
                     AttackManager.BulletInfo toSpawn = i with { };
                     toSpawn.bulletPosition += (Quaternion.Euler(toSpawn.bulletRotation) * Quaternion.Euler(0, 0, 90)) * Vector3.right * (j + offset);
+                    toSpawn.isModifiable = false;
+                    toSpawn.isValid = true;
                     result.Add(toSpawn);
 
                     toSpawn = i with { };
                     toSpawn.bulletPosition -= (Quaternion.Euler(toSpawn.bulletRotation) * Quaternion.Euler(0, 0, 90)) * Vector3.right * (j + offset);
+                    toSpawn.isModifiable = false;
+                    toSpawn.isValid = true;
                     result.Add(toSpawn);
                 }
 
 
-                if (thisUpgradeAttribute.amount % 2 == 1)
-                    result.Add(i);
+                if (bulletsToFire % 2 == 0)
+                {
+                    i.isValid = false;
+                }
 
-
-
+                result.Add(i);
             }
 
             info.AddRange(result);

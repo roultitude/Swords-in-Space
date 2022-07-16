@@ -39,7 +39,6 @@ namespace SwordsInSpace
 
         private UpgradesDisplay uiUpgrades => upgradesDisplay.GetComponent<UpgradesDisplay>();
 
-        [SyncVar]
         public int numUpgrades;
 
         public bool debugTrigger = false;
@@ -52,6 +51,10 @@ namespace SwordsInSpace
         private Dictionary<string, int> votes;
 
         PlayerInputManager currentPlayerInput;
+
+        public delegate void OnUpgradeEvent(Dictionary<UpgradeTypes, float> stats);
+
+        public OnUpgradeEvent OnUpgrade;
 
         public void Update()
         {
@@ -102,39 +105,39 @@ namespace SwordsInSpace
 
             double randChance = Random.Range(0.0f, 1.0f);
 
-            randChance = 0.1; //To Remove after implmentation of higher Upgrade tiers.
-
+            int tier = 1;
             Upgrade[] thisTier;
             if (randChance <= 0.5)
             {
 
                 thisTier = tier1Upgrade;
-
+                tier = 1;
 
             }
             else if (randChance <= 0.75)
             {
                 thisTier = tier2Upgrade;
+                tier = 2;
             }
             else if (randChance <= 0.95)
             {
                 thisTier = tier3Upgrade;
+                tier = 3;
             }
             else
             {
                 thisTier = tier4Upgrade;
+                tier = 4;
             }
 
             ShowUpgrades(thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name,
         thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name,
-        thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name);
-
-
+        thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name, tier);
 
         }
 
         [ObserversRpc(RunLocally = true)]
-        public void ShowUpgrades(string upgrade1, string upgrade2, string upgrade3)
+        public void ShowUpgrades(string upgrade1, string upgrade2, string upgrade3, int tier)
         {
             hasMadeChoice = false;
             upgradeChoice = new string[] { upgrade1, upgrade2, upgrade3 };
@@ -142,9 +145,12 @@ namespace SwordsInSpace
             uiUpgrades.SetUpgrades(upgrade1, upgrade2, upgrade3);
 
             upgradesDisplay.GetComponentInChildren<VoteTimer>().ResetTimer();
+            uiUpgrades.upgradepanel.UpdateColor(tier);
+
 
             if (IsServer)
             {
+
                 votesMade = 0;
                 votes = new Dictionary<string, int>();
                 votes.Add(upgrade1, 0);
@@ -207,10 +213,18 @@ namespace SwordsInSpace
             }
             else
             {
-                Ship.currentShip.ReloadStats();
+                OnUpgrade?.Invoke(TallyUpgrades());
                 BroadcastCloseScreen();
-                GameManager.instance.GoToLevel("GameScene", true, true);
+                StartCoroutine("GoNextLevel");
+
             }
+        }
+
+        public IEnumerator GoNextLevel()
+        {
+            yield return new WaitForSeconds(0.5f);
+            GameManager.instance.GoToLevel("GameScene", true, true);
+
         }
 
 
