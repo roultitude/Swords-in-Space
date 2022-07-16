@@ -10,7 +10,7 @@ namespace SwordsInSpace
         public MultiShot()
         {
             thisUpgradeAttribute = new UpgradeSO.UpgradeAttributes();
-            thisUpgradeAttribute.amount = 1;
+            thisUpgradeAttribute.amount = 4;
             thisUpgradeAttribute.type = UpgradeSO.UpgradeTypes.multiShot;
         }
 

@@ -73,6 +73,9 @@ namespace SwordsInSpace
 
             foreach (BulletModifier modifier in modifiers)
             {
+                if (modifier.thisUpgradeAttribute.amount == 0)
+                    continue;
+
                 modifier.Apply(bullets);
             }
             return bullets;

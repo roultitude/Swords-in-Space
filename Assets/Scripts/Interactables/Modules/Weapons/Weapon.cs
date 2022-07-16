@@ -104,6 +104,37 @@ namespace SwordsInSpace
         public void ReloadUpgrades(Dictionary<UpgradeTypes, float> stats)
         {
             attackManager.ReloadUpgrades(stats);
+
+            double TallyMaxHp = 0;//data.ShipMaxHp;
+
+            //Base increases
+            foreach (UpgradeTypes type in stats.Keys)
+            {
+                switch (type)
+                {
+                    case UpgradeTypes.bulletSpeed:
+                        TallyMaxHp += stats[type];
+                        break;
+
+                }
+            }
+
+            //%Increases, to be applied after base increase
+            foreach (UpgradeTypes type in stats.Keys)
+            {
+                switch (type)
+                {
+                    case UpgradeTypes.maxHpPercent:
+                        TallyMaxHp *= (100 + stats[type]) / 100;
+                        break;
+
+                }
+            }
+
+
+            //Assignment of values
+            //if (CurrentMaxHp != TallyMaxHp)
+            //    SetMaxHp(TallyMaxHp);
         }
 
         void OnDisable()
