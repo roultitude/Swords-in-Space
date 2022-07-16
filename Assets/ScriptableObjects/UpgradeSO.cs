@@ -25,7 +25,8 @@ namespace SwordsInSpace
             shotSpeed,
             shotSpeedPercent,
             shotLifetime,
-            shotLifetimePercent
+            shotLifetimePercent,
+            multiShot
         }
         [System.Serializable]
         public struct UpgradeAttributes

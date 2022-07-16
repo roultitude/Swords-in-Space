@@ -209,10 +209,16 @@ namespace SwordsInSpace
             {
                 Ship.currentShip.ReloadStats();
                 BroadcastCloseScreen();
-                GameManager.instance.GoToLevel("GameScene", true, true);
+                StartCoroutine(DelayedSwitchScene("GameScene", 1f));
+                
             }
         }
 
+        IEnumerator DelayedSwitchScene(string sceneName, float delayTime)
+        {
+            yield return new WaitForSeconds(delayTime);
+            GameManager.instance.GoToLevel(sceneName, true, true);
+        }
 
         [ObserversRpc]
         public void BroadcastCloseScreen()

@@ -10,6 +10,8 @@ namespace SwordsInSpace
         Timer timer;
         double shotSpeed;
         double shotSpread;
+        public delegate void MovementFunction(GameObject bullet);
+        MovementFunction moveFunction;
 
         private bool hasSpread = false;
 
@@ -21,7 +23,22 @@ namespace SwordsInSpace
             timer.timeout.AddListener(OnTimeout);
             this.damage = damage;
             this.shotSpread = spread;
+            moveFunction += BaseMovementFunction;
+        }
 
+        public void AddMovementFunction(MovementFunction fn)
+        {
+            moveFunction += fn;
+        }
+
+        public void DebugMovementFunction(GameObject bullet)
+        {
+            bullet.transform.rotation *= Quaternion.Euler(0, 0, 5 * Time.deltaTime);
+        }
+
+        public void BaseMovementFunction(GameObject bullet)
+        {
+            bullet.transform.position += bullet.transform.right * Time.deltaTime * (float)shotSpeed;
         }
 
 
@@ -49,7 +66,7 @@ namespace SwordsInSpace
                 hasSpread = true;
                 gameObject.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 0, UnityEngine.Random.Range((float)-shotSpread / 2, (float)shotSpread / 2));
             }
-            transform.position += transform.right * Time.deltaTime * (float)shotSpeed;
+            moveFunction?.Invoke(gameObject);
 
 
         }
