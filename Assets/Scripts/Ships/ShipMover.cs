@@ -12,13 +12,14 @@ namespace SwordsInSpace
         public Rigidbody2D rb;
         public bool canMove;
 
-        [SerializeField]
-        private float speed, turnSpeed, nitroMult, nitroInvincibilityTime;
-        
+
+        public float speed, turnSpeed, nitroMult, nitroInvincibilityTime;
+
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
             canMove = false; //canMove from start for testing.
+
         }
 
         public override void OnStartClient()
@@ -42,7 +43,7 @@ namespace SwordsInSpace
             rb.AddForce(md.Vertical * transform.right * speed);
             if (md.Dashing && Ship.currentShip.CurrentNitroFuel > 0)
             {
-                rb.AddForce(1*transform.right * speed * (nitroMult - 1));
+                rb.AddForce(1 * transform.right * speed * (nitroMult - 1));
                 Ship.currentShip.ChangeNitroFuel(-1);
                 if (IsServer) Ship.currentShip.StartCoroutine(Ship.currentShip.StartInvincibilityFrames(nitroInvincibilityTime));
             }

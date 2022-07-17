@@ -109,20 +109,28 @@ namespace SwordsInSpace
 
             attackManager.ReloadUpgrades(stats);
 
-            double TallyMaxHp = 0;//data.ShipMaxHp;
-
             //Base increases
             foreach (UpgradeTypes type in stats.Keys)
             {
                 switch (type)
                 {
-                    case UpgradeTypes.bulletSpeed:
-                        TallyMaxHp += stats[type];
+                    case UpgradeTypes.shotSpeed:
+                        data.shotSpeed = baseData.shotSpeed + (int)stats[type];
                         break;
+
+                    case UpgradeTypes.shotDamage:
+                        data.damage = baseData.damage + stats[type];
+                        break;
+
+                    case UpgradeTypes.shotLifetime:
+                        data.shotLifeTime = baseData.shotLifeTime + stats[type];
+                        break;
+
 
                 }
             }
 
+            /*
             //%Increases, to be applied after base increase
             foreach (UpgradeTypes type in stats.Keys)
             {
@@ -135,6 +143,7 @@ namespace SwordsInSpace
                 }
             }
 
+            */
 
             //Assignment of values
             //if (CurrentMaxHp != TallyMaxHp)

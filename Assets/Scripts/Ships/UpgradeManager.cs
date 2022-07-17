@@ -17,22 +17,24 @@ namespace SwordsInSpace
         public class Upgrade
         {
             public UpgradeSO upgradeSo;
-            public int upgradeCount;
+            public int upgradeCount = 0;
+            public int upgradeMaxCount = -1;
         }
 
         public readonly double tier1Chance = 0.5;
-        public Upgrade[] tier1Upgrade;
+        public List<Upgrade> tier1Upgrade;
 
         public readonly double tier2Chance = 0.25;
-        public Upgrade[] tier2Upgrade;
+        public List<Upgrade> tier2Upgrade;
 
         public readonly double tier3Chance = 0.2;
-        public Upgrade[] tier3Upgrade;
+        public List<Upgrade> tier3Upgrade;
 
         public readonly double tier4Chance = 0.05;
-        public Upgrade[] tier4Upgrade;
+        public List<Upgrade> tier4Upgrade;
 
         public Dictionary<string, Upgrade> upgrades;
+
 
         [SerializeField]
         public GameObject upgradesDisplay;
@@ -71,8 +73,8 @@ namespace SwordsInSpace
 
             upgrades = new Dictionary<string, Upgrade>();
 
-            Upgrade[][] tiers = { tier1Upgrade, tier2Upgrade, tier3Upgrade, tier4Upgrade };
-            foreach (Upgrade[] upgradeArr in tiers)
+            List<Upgrade>[] tiers = { tier1Upgrade, tier2Upgrade, tier3Upgrade, tier4Upgrade };
+            foreach (List<Upgrade> upgradeArr in tiers)
             {
                 foreach (Upgrade a in upgradeArr)
                 {
@@ -105,8 +107,10 @@ namespace SwordsInSpace
 
             double randChance = Random.Range(0.0f, 1.0f);
 
-            int tier = 1;
-            Upgrade[] thisTier;
+            randChance = 0.99;
+
+            int tier;
+            List<Upgrade> thisTier;
             if (randChance <= 0.5)
             {
 
@@ -128,11 +132,31 @@ namespace SwordsInSpace
             {
                 thisTier = tier4Upgrade;
                 tier = 4;
+
+                if (thisTier.Count > 0)
+                {
+                    //If the team does not want the tier 4 upgrade, switch to a tier 3 one. Last upgrade is tier 3.
+
+
+                    ShowUpgrades(thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name,
+                  thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name,
+                  tier3Upgrade[Random.Range(0, tier3Upgrade.Count)].upgradeSo.name, tier);
+
+                    return;
+
+                }
+                else
+                {
+
+                    thisTier = tier3Upgrade;
+                    tier = 3;
+                }
+
             }
 
-            ShowUpgrades(thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name,
-        thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name,
-        thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name, tier);
+            ShowUpgrades(thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name,
+        thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name,
+        thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name, tier);
 
         }
 
@@ -141,7 +165,7 @@ namespace SwordsInSpace
         {
             hasMadeChoice = false;
             upgradeChoice = new string[] { upgrade1, upgrade2, upgrade3 };
-            Debug.Log(upgrade1 + "\t" + upgrade2 + "\t" + upgrade3 + "\t" + uiUpgrades == null);
+
             uiUpgrades.SetUpgrades(upgrade1, upgrade2, upgrade3);
 
             upgradesDisplay.GetComponentInChildren<VoteTimer>().ResetTimer();
@@ -158,6 +182,7 @@ namespace SwordsInSpace
                     votes.Add(upgrade2, 0);
                 if (!votes.ContainsKey(upgrade3))
                     votes.Add(upgrade3, 0);
+
             }
         }
 
@@ -200,15 +225,38 @@ namespace SwordsInSpace
             ShowUpgradeScreen();
         }
 
+        public void RemoveUpgradeFromPool(Upgrade upg)
+        {
+
+            List<Upgrade>[] tiers = { tier1Upgrade, tier2Upgrade, tier3Upgrade, tier4Upgrade };
+            foreach (List<Upgrade> upgradeArr in tiers)
+            {
+                for (int i = 0; i < upgradeArr.Count; i++)
+                {
+                    if (upgradeArr[i] == upg)
+                    {
+                        upgradeArr.RemoveAt(i);
+                        return;
+                    }
+                }
+            }
+        }
 
         public void AddUpgrade(string upgrd)
         {
+
             upgrades[upgrd].upgradeCount += 1;
             numUpgrades -= 1;
-            Debug.Log("Upgrade Complete!");
+            Debug.Log("Upgrade Complete!" + upgrd);
+
+            if (upgrades[upgrd].upgradeMaxCount != -1 && upgrades[upgrd].upgradeCount >= upgrades[upgrd].upgradeMaxCount)
+            {
+                Debug.Log("Maxxed out" + upgrd);
+                RemoveUpgradeFromPool(upgrades[upgrd]);
+            }
+
             if (numUpgrades > 0)
             {
-
                 RollUpgrades();
             }
             else
@@ -216,7 +264,7 @@ namespace SwordsInSpace
                 OnUpgrade?.Invoke(TallyUpgrades());
                 BroadcastCloseScreen();
                 StartCoroutine(DelayedSwitchScene("GameScene", 1f));
-                
+
             }
         }
 
@@ -325,8 +373,10 @@ namespace SwordsInSpace
                 int maxValue = -1;
                 foreach (String key in votes.Keys) //n = 3
                 {
+                    Debug.Log(key + "\t" + votes[key]);
                     if (votes[key] > maxValue)
                     {
+                        maxValue = votes[key];
                         ties.Clear();
                         ties.Add(key);
                     }
@@ -336,7 +386,14 @@ namespace SwordsInSpace
                     }
                 }
 
-                AddUpgrade(ties[Random.Range(0, ties.Count)]);
+                foreach (string s in ties)
+                {
+                    Debug.Log(s);
+                }
+
+                string upgrd = ties[Random.Range(0, ties.Count)];
+
+                AddUpgrade(upgrd);
                 return;
 
             }

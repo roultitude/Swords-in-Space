@@ -49,7 +49,6 @@ namespace SwordsInSpace
             UpgradeSO upgrade2 = upgradeManager.StringToUpgradeSO(upgradestr2);
             UpgradeSO upgrade3 = upgradeManager.StringToUpgradeSO(upgradestr3);
 
-
             upgrades[0] = upgrade1;
             upgrades[1] = upgrade2;
             upgrades[2] = upgrade3;

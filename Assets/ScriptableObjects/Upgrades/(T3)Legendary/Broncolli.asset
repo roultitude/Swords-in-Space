@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16e5bdf54d6993f4bb700400c1b92260, type: 3}
-  m_Name: ShipStarter
+  m_Script: {fileID: 11500000, guid: d78f91a514a994343aea7fc54bd1e4a8, type: 3}
+  m_Name: Broncolli
   m_EditorClassIdentifier: 
-  ShipMaxHp: 100
-  ShipMaxNitroFuel: 3
-  ShipMaxSpeed: 80
-  ShipInvincibilityTime: 0.1
-  ShipFireInvincibilityTime: 0.1
+  upgradeName: Broncolli
+  description: Multishot + 1
+  sprite: {fileID: 21300000, guid: f6837ed3f05c55749ab449ef30441090, type: 3}
+  statChanges:
+  - type: 6
+    amount: 1
+  gameplayFlags: []

@@ -372,21 +372,27 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5412598000014957244}
   _networkObjectCache: {fileID: 5412598000014957244}
   tier1Upgrade:
-  - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
-    upgradeCount: 0
-  tier2Upgrade:
-  - upgradeSo: {fileID: 11400000, guid: 1d07e19c5a69dff4cab951e95494cd65, type: 2}
-    upgradeCount: 0
-  tier3Upgrade:
   - upgradeSo: {fileID: 11400000, guid: 79b46e52d7e19c94c8b1b0526487e2ea, type: 2}
     upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: 2316dcadb8bfd744c94cb70e890d19a3, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  tier2Upgrade:
+  - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  tier3Upgrade:
   - upgradeSo: {fileID: 11400000, guid: 1d07e19c5a69dff4cab951e95494cd65, type: 2}
     upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: 1bb74eeb7df8c8f44abeb3bc4632e551, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
   tier4Upgrade:
-  - upgradeSo: {fileID: 11400000, guid: 000bb54a71a6d884a9ccd935eb003978, type: 2}
+  - upgradeSo: {fileID: 11400000, guid: 60ae00d681b66c64eb8f578f48e72254, type: 2}
     upgradeCount: 0
-  - upgradeSo: {fileID: 11400000, guid: 1d07e19c5a69dff4cab951e95494cd65, type: 2}
-    upgradeCount: 0
+    upgradeMaxCount: 1
   upgradesDisplay: {fileID: 0}
   numUpgrades: 0
   debugTrigger: 0

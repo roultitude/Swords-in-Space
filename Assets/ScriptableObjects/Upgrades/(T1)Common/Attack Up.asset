@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d78f91a514a994343aea7fc54bd1e4a8, type: 3}
-  m_Name: AttackUp
+  m_Name: Attack Up
   m_EditorClassIdentifier: 
-  upgradeName: Attack Up
+  upgradeName: Attack Up (Small)
   description: Increases Attack
   sprite: {fileID: 0}
   statChanges:
-  - type: 0
-    amount: 0
+  - type: 4
+    amount: 1
   gameplayFlags: []

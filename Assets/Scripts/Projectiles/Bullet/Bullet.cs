@@ -10,7 +10,7 @@ namespace SwordsInSpace
     public class Bullet : Projectile
     {
         public Timer timer;
-        double shotSpeed;
+        public double shotSpeed;
         double shotSpread;
         public delegate void BulletBehavior(GameObject bullet);
         BulletBehavior moveFunction;

@@ -20,6 +20,7 @@ MonoBehaviour:
   shotLifeTime: 10
   shotSpread: 0
   burst: 1
+  pierce: 2
   atkCD: 1
   burstCD: 0.1
   bulletScale: {x: 3, y: 3}

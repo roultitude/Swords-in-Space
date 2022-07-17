@@ -30,7 +30,7 @@ namespace SwordsInSpace
                 }
 
 
-                int bulletsToFire = (int)(thisUpgradeAttribute.amount + 1);
+                int bulletsToFire = (int)(thisUpgradeAttribute.amount * 2 + 1);
 
                 for (int j = 0; j < (bulletsToFire / 2); j++)
                 {

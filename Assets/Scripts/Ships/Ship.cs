@@ -91,6 +91,10 @@ namespace SwordsInSpace
                         TallyMaxHp += stats[type];
                         break;
 
+                    case UpgradeTypes.maxShipSpeed:
+                        shipMover.speed = data.ShipMaxSpeed + stats[type];
+                        break;
+
                 }
             }
 

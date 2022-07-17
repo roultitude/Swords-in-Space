@@ -24,14 +24,13 @@ namespace SwordsInSpace
             maxShipSpeed,
 
             //Weapon State Changes
-            bulletSpeed,
-            bulletDamage,
             shotSpeed,
+            shotDamage,
             shotLifetime,
 
 
             //Bullet Spawning Upgrades
-            multiShot, //100% Chance, + 1 bullet fired. Bullets fired cannot be multiplied
+            multiShot, //100% Chance, + 2 bullet fired. Bullets fired cannot be multiplied
             spreadShot, //100% Chance, +2 bullets fired divided in a 180 cone. Bullets fired cannot be multiplied
 
 
@@ -39,6 +38,10 @@ namespace SwordsInSpace
             //Bullet Pathing Upgrades
             bulletCurve, //Stacking increases curve 
             bulletWave, //Stacking increases amplitude
+
+            //Special Bullet Upgrades
+            convergence
+
         }
         [System.Serializable]
         public struct UpgradeAttributes
@@ -49,22 +52,6 @@ namespace SwordsInSpace
 
 
         public UpgradeAttributes[] statChanges;
-
-
-
-        [System.Serializable]
-        public enum UpgradeBoolsTypes
-        {
-            placeholder
-        }
-        [System.Serializable]
-        public struct UpgradeBools
-        {
-            public UpgradeBoolsTypes type;
-            public bool activated;
-        }
-
-        public UpgradeBools[] gameplayFlags;
 
 
     }

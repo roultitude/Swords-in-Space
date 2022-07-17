@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d78f91a514a994343aea7fc54bd1e4a8, type: 3}
-  m_Name: Cow
+  m_Name: HP Up
   m_EditorClassIdentifier: 
-  upgradeName: Cow
-  description: Drink milk and grow strong! Adds Hull points
+  upgradeName: Hull Points Up (Small)
+  description: Adds Hull Points
   sprite: {fileID: 21300000, guid: f412543bf4087b440836e6f202e0fd67, type: 3}
   statChanges:
   - type: 0
-    amount: 5
-  - type: 1
     amount: 5
   gameplayFlags: []

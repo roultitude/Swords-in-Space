@@ -44,7 +44,7 @@ namespace SwordsInSpace
             public double bulletDamage;
             public double bulletShotSpread;
             public int bulletPierce;
-            public bool isModifiable; //This bullet will be modified by other upgrades.
+            public bool isModifiable; //This bullet will be modified by other upgrades down the line.
             public bool isValid; //This bullet will be produced.
             public Vector2 bulletScale;
             public BulletBehavior CallOnMove;
@@ -53,12 +53,18 @@ namespace SwordsInSpace
         }
 
         public List<BulletModifier> modifiers = new List<BulletModifier>() {
+
+
             //Modifiers bullet producers
 
             //Non Modifier bullet producers
             new MultiShot(),
-            new SpreadShot()
+            new SpreadShot(),
 
+
+            //Effects
+
+            new Convergence(),
 
     };
 
