@@ -16,7 +16,7 @@ namespace SwordsInSpace
 
         public record BulletInfo
         {
-            public BulletInfo(GameObject bulletBase, Vector3 bulletPosition, Vector3 bulletRotation, int bulletShotSpeed, double bulletShotSpread, double bulletShotLifeTime, double bulletDamage, Vector2 bulletScale, bool isModifiable, bool isValid)
+            public BulletInfo(GameObject bulletBase, Vector3 bulletPosition, Vector3 bulletRotation, int bulletShotSpeed, double bulletShotSpread, double bulletShotLifeTime, double bulletDamage, Vector2 bulletScale, int bulletPierce, bool isModifiable, bool isValid)
             {
                 this.bulletBase = bulletBase;
                 this.bulletPosition = bulletPosition;
@@ -28,7 +28,10 @@ namespace SwordsInSpace
                 this.isModifiable = isModifiable;
                 this.isValid = isValid;
                 this.bulletScale = bulletScale;
-                this.fn = null;
+                this.bulletPierce = bulletPierce;
+                this.CallOnMove = null;
+                this.CallOnHit = null;
+                this.CallOnTimeout = null;
             }
 
 
@@ -40,15 +43,23 @@ namespace SwordsInSpace
             public double bulletShotLifeTime;
             public double bulletDamage;
             public double bulletShotSpread;
+            public int bulletPierce;
             public bool isModifiable; //This bullet will be modified by other upgrades.
             public bool isValid; //This bullet will be produced.
             public Vector2 bulletScale;
-            public MovementFunction fn;
+            public BulletBehavior CallOnMove;
+            public BulletBehavior CallOnHit;
+            public BulletBehavior CallOnTimeout;
         }
 
         public List<BulletModifier> modifiers = new List<BulletModifier>() {
+            //Modifiers bullet producers
+
+            //Non Modifier bullet producers
             new MultiShot(),
             new SpreadShot()
+
+
     };
 
 
@@ -73,11 +84,11 @@ namespace SwordsInSpace
         }
 
 
-        public List<BulletInfo> DraftBulletLocations(GameObject bulletBase, Vector3 bulletPosition, Vector3 bulletRotation, int bulletShotSpeed, double bulletShotSpread, double bulletShotLifeTime, double bulletDamage, Vector2 bulletScale)
+        public List<BulletInfo> DraftBulletLocations(GameObject bulletBase, Vector3 bulletPosition, Vector3 bulletRotation, int bulletShotSpeed, double bulletShotSpread, double bulletShotLifeTime, double bulletDamage, Vector2 bulletScale, int bulletPierce)
         {
             bullets = new List<BulletInfo>
             {
-                new BulletInfo(bulletBase, bulletPosition, bulletRotation, bulletShotSpeed, bulletShotSpread, bulletShotLifeTime, bulletDamage, bulletScale, true, true)
+                new BulletInfo(bulletBase, bulletPosition, bulletRotation, bulletShotSpeed, bulletShotSpread, bulletShotLifeTime, bulletDamage, bulletScale, bulletPierce, true, true)
             };
 
             foreach (BulletModifier modifier in modifiers)

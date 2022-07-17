@@ -33,6 +33,7 @@ namespace SwordsInSpace
                 atkCD = baseData.atkCD;
                 bulletScale = baseData.bulletScale;
                 rotationSpeed = baseData.rotationSpeed;
+                pierce = baseData.pierce;
             }
             public Sprite turretSprite;
             public GameObject bulletPrefab;
@@ -42,6 +43,7 @@ namespace SwordsInSpace
             public double shotLifeTime;
             public double shotSpread;
             public int burst;
+            public int pierce;
             public double atkCD;
             public double burstCD;
             public Vector2 bulletScale;
@@ -270,7 +272,7 @@ namespace SwordsInSpace
 
 
 
-                    List<AttackManager.BulletInfo> toSpawn = attackManager.DraftBulletLocations(data.bulletPrefab, comp.transform.position, comp.transform.rotation.eulerAngles, data.shotSpeed, data.shotSpread, data.shotLifeTime, data.damage, data.bulletScale);
+                    List<AttackManager.BulletInfo> toSpawn = attackManager.DraftBulletLocations(data.bulletPrefab, comp.transform.position, comp.transform.rotation.eulerAngles, data.shotSpeed, data.shotSpread, data.shotLifeTime, data.damage, data.bulletScale, data.pierce);
 
 
                     foreach (AttackManager.BulletInfo spawnData in toSpawn)
@@ -278,10 +280,13 @@ namespace SwordsInSpace
                         if (!spawnData.isValid) continue;
 
                         GameObject toAdd = Instantiate(spawnData.bulletBase, spawnData.bulletPosition, Quaternion.Euler(spawnData.bulletRotation));
+                        Bullet toAddBullet = toAdd.GetComponent<Bullet>();
 
-                        toAdd.GetComponent<Bullet>().AddMovementFunction(spawnData.fn);
+                        toAddBullet.AddMovementFunction(spawnData.CallOnMove);
+                        toAddBullet.AddOnHitFunction(spawnData.CallOnHit);
+                        toAddBullet.AddTimeoutFunction(spawnData.CallOnTimeout);
 
-                        toAdd.GetComponent<Projectile>().Setup(spawnData.bulletShotSpeed, spawnData.bulletShotLifeTime, spawnData.bulletDamage, spawnData.bulletShotSpread);
+                        toAddBullet.Setup(spawnData.bulletShotSpeed, spawnData.bulletShotLifeTime, spawnData.bulletDamage, spawnData.bulletShotSpread, spawnData.bulletPierce);
                         toAdd.transform.localScale = spawnData.bulletScale;
 
                         toAdd.tag = "Friendly";

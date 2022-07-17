@@ -12,6 +12,8 @@ namespace SwordsInSpace
             thisUpgradeAttribute.type = UpgradeSO.UpgradeTypes.spreadShot;
         }
 
+
+
         public override void Apply(List<AttackManager.BulletInfo> info)
         {
             List<AttackManager.BulletInfo> result = new List<AttackManager.BulletInfo>();
@@ -47,3 +49,26 @@ namespace SwordsInSpace
         }
     }
 };
+
+/*
+ *         private class bulletMovement
+        {
+            float rotAmount;
+            float maxAmount = 15;
+
+            public bulletMovement(float amt)
+            {
+                rotAmount = Mathf.Clamp(amt, 0f, maxAmount);
+            }
+            public void MovementModifier(GameObject bullet)
+            {
+                bullet.transform.rotation *= Quaternion.Euler(0, 0, rotAmount * Time.deltaTime);
+            }
+        }
+                    toSpawn.fn += new bulletMovement(j * 5).MovementModifier;
+ * 
+ * 
+ * 
+ * 
+ * 
+ */

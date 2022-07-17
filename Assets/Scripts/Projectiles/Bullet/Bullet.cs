@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
 using FishNet.Connection;
+using System;
+
 namespace SwordsInSpace
 {
     public class Bullet : Projectile
@@ -10,12 +12,15 @@ namespace SwordsInSpace
         public Timer timer;
         double shotSpeed;
         double shotSpread;
-        public delegate void MovementFunction(GameObject bullet);
-        MovementFunction moveFunction;
+        public delegate void BulletBehavior(GameObject bullet);
+        BulletBehavior moveFunction;
+        BulletBehavior onHitFunction;
+        BulletBehavior onTimeoutFunction;
 
         private bool hasSpread = false;
+        public int pierce = 1;
 
-        public override void Setup(double shotSpeed, double shotLifeTime, double damage, double spread)
+        public override void Setup(double shotSpeed, double shotLifeTime, double damage, double spread, int pierce)
         {
             timer = gameObject.AddComponent<Timer>();
             this.shotSpeed = shotSpeed;
@@ -23,10 +28,11 @@ namespace SwordsInSpace
             timer.timeout.AddListener(OnTimeout);
             this.damage = damage;
             this.shotSpread = spread;
+            this.pierce = pierce;
             moveFunction += BaseMovementFunction;
         }
 
-        public void AddMovementFunction(MovementFunction fn)
+        public void AddMovementFunction(BulletBehavior fn)
         {
             moveFunction += fn;
         }
@@ -46,12 +52,18 @@ namespace SwordsInSpace
 
         public void OnHit()
         {
-            if (IsServer)
+
+            if (!IsServer) return;
+            pierce -= 1;
+
+            onHitFunction?.Invoke(gameObject);
+            if (pierce <= 0)
                 Despawn();
         }
 
         public void OnTimeout()
         {
+            onTimeoutFunction?.Invoke(gameObject);
             if (IsServer)
                 Despawn();
         }
@@ -71,6 +83,14 @@ namespace SwordsInSpace
 
         }
 
+        internal void AddOnHitFunction(BulletBehavior callOnHit)
+        {
+            onHitFunction += callOnHit;
+        }
 
+        internal void AddTimeoutFunction(BulletBehavior callOnTimeout)
+        {
+            onTimeoutFunction += callOnTimeout;
+        }
     }
 };
