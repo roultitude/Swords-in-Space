@@ -24,15 +24,15 @@ namespace SwordsInSpace
         public UnityEvent onStartFire = new();
         public UnityEvent onEndFire = new();
 
-        public SpriteRenderer firerenderer;
-        public Vector3 initScale;
+        public SpriteRenderer fireSpriteRenderer;
+        private Vector3 initScale;
 
         private static float InvincibilityTime = 0.3f;
 
         private bool IsInvincible = false;
         public void Start()
         {
-            initScale = new Vector3(3f, 3f, 3f);
+            initScale = fireSpriteRenderer.transform.localScale;
         }
 
         public override void Interact(GameObject player)
@@ -63,8 +63,8 @@ namespace SwordsInSpace
         [ObserversRpc]
         public void doAnimation()
         {
-            firerenderer.gameObject.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-            firerenderer.gameObject.transform.DOScale(initScale, InvincibilityTime);
+            fireSpriteRenderer.gameObject.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            fireSpriteRenderer.gameObject.transform.DOScale(initScale, InvincibilityTime);
 
         }
 
@@ -113,7 +113,7 @@ namespace SwordsInSpace
             {
                 child.gameObject.SetActive(value);
                 if (value)
-                    firerenderer.enabled = true;
+                    fireSpriteRenderer.enabled = true;
             }
         }
     }
