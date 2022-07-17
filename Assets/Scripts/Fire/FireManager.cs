@@ -35,7 +35,7 @@ namespace SwordsInSpace
                 return;
 
             fires[Random.Range(0, fires.Length)].activate();
-            
+
             if (fireTracker == null || !fireActive)
                 fireTracker = StartCoroutine("TrackFire");
 
@@ -48,7 +48,7 @@ namespace SwordsInSpace
             {
                 if (!fireActive)
                 {
-                    fireActive = true; 
+                    fireActive = true;
                 }
                 foreach (Fire f in fires)
                 {
@@ -102,6 +102,11 @@ namespace SwordsInSpace
                 StartFire();
         }
 
+        [ObserversRpc(IncludeOwner = true, RunLocally = true, BufferLast = true)]
+        public void UpdateFireHP(int hp)
+        {
+            Fire.maxFlameHP = hp;
+        }
         public void OnChangeFireActive(bool wasFireActive, bool isFireActive, bool isServer)
         {
             if (!wasFireActive && isFireActive)  //from off -> on

@@ -74,6 +74,7 @@ namespace SwordsInSpace
         public void ReloadUpgrades(Dictionary<UpgradeTypes, float> stats)
         {
 
+
             foreach (UpgradeTypes type in stats.Keys)
             {
                 Debug.Log(type + "\t" + stats[type]);

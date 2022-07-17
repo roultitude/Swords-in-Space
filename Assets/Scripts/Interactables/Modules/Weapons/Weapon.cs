@@ -130,24 +130,6 @@ namespace SwordsInSpace
                 }
             }
 
-            /*
-            //%Increases, to be applied after base increase
-            foreach (UpgradeTypes type in stats.Keys)
-            {
-                switch (type)
-                {
-                    case UpgradeTypes.maxHpPercent:
-                        TallyMaxHp *= (100 + stats[type]) / 100;
-                        break;
-
-                }
-            }
-
-            */
-
-            //Assignment of values
-            //if (CurrentMaxHp != TallyMaxHp)
-            //    SetMaxHp(TallyMaxHp);
         }
 
         void OnDisable()

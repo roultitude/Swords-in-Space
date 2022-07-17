@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d78f91a514a994343aea7fc54bd1e4a8, type: 3}
-  m_Name: PerfectedPrism
+  m_Name: MaxPower
   m_EditorClassIdentifier: 
-  upgradeName: Perfected Prism
-  description: Spread Shots + 1
+  upgradeName: More Max Power
+  description: 
   sprite: {fileID: 0}
   statChanges:
-  - type: 7
-    amount: 1
-  gameplayFlags: []
+  - type: 3
+    amount: 25

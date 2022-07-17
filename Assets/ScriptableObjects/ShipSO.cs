@@ -12,7 +12,14 @@ namespace SwordsInSpace
         public float ShipMaxSpeed;
 
         public float ShipInvincibilityTime;
-
         public float ShipFireInvincibilityTime;
+
+
+        public float powerMaxAmount;
+        public int powerDrainRate;
+        public int powerRefillRate;
+
+        public int fireHP;
+
     }
 };

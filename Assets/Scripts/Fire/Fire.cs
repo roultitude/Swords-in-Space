@@ -11,6 +11,7 @@ namespace SwordsInSpace
     public class Fire : Interactable
     {
 
+        public static int maxFlameHP = 3;
         private int flameHp = 3;
         public Fire Up;
         public Fire Down;
@@ -92,7 +93,7 @@ namespace SwordsInSpace
             Debug.Log(current);
             if (current)
             {
-                flameHp = 3;
+                flameHp = maxFlameHP;
                 SetActiveAllChildren(true);
                 onStartFire.Invoke();
             }

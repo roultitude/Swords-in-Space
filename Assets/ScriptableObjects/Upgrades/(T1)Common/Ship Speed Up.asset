@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Ship Speed Up
   description: Increases Ship Speed
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 84436035a8a80314c8392da079a708ae, type: 3}
   statChanges:
   - type: 2
-    amount: 10
-  gameplayFlags: []
+    amount: 100

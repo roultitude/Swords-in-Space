@@ -16,5 +16,5 @@ MonoBehaviour:
   description: Bullets move together.
   sprite: {fileID: 21300000, guid: f5d2b258abec02f41a256aae1e1f36b5, type: 3}
   statChanges:
-  - type: 10
+  - type: 14
     amount: 1

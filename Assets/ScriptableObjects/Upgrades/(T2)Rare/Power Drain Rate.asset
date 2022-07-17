@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d78f91a514a994343aea7fc54bd1e4a8, type: 3}
-  m_Name: HP Up
+  m_Name: Power Drain Rate
   m_EditorClassIdentifier: 
-  upgradeName: Hull Points Up (Small)
-  description: Adds Hull Points
-  sprite: {fileID: 21300000, guid: 220269d8a4cc49f4793f1d4d6fbd8414, type: 3}
+  upgradeName: Power Drain Rate
+  description: Power Drains Slower
+  sprite: {fileID: 21300000, guid: f412543bf4087b440836e6f202e0fd67, type: 3}
   statChanges:
-  - type: 0
-    amount: 5
+  - type: 4
+    amount: -1

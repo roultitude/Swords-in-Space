@@ -380,8 +380,29 @@ MonoBehaviour:
   - upgradeSo: {fileID: 11400000, guid: 2316dcadb8bfd744c94cb70e890d19a3, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: 000bb54a71a6d884a9ccd935eb003978, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: 9ff431e8bc6f943429ee699596339613, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: e1af826679af1664f9408cff79043248, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
   tier2Upgrade:
   - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: bc76a93b7c37ddb41b28514428c85428, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: bfeafc5466a72f8489737085beba9eb7, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: 1bcaec6cca0428846a4f70af36aa80dc, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: d59c9cd7291869b48a9c3eb3545a5c29, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
   tier3Upgrade:

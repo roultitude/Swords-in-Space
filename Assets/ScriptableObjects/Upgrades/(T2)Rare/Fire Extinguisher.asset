@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d78f91a514a994343aea7fc54bd1e4a8, type: 3}
-  m_Name: HP Up
+  m_Name: Fire Extinguisher
   m_EditorClassIdentifier: 
-  upgradeName: Hull Points Up (Small)
-  description: Adds Hull Points
-  sprite: {fileID: 21300000, guid: 220269d8a4cc49f4793f1d4d6fbd8414, type: 3}
+  upgradeName: Fire Extinguisher
+  description: Makes Fire Easier to Extinguish
+  sprite: {fileID: 418675219, guid: 5f100184229cb6f478174bb3c187613e, type: 3}
   statChanges:
-  - type: 0
-    amount: 5
+  - type: 6
+    amount: -1

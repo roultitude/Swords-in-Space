@@ -17,3 +17,6 @@ MonoBehaviour:
   ShipMaxSpeed: 80
   ShipInvincibilityTime: 0.1
   ShipFireInvincibilityTime: 0.1
+  powerMaxAmount: 200
+  powerDrainRate: 5
+  powerRefillRate: 50

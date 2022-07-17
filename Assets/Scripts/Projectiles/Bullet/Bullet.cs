@@ -53,12 +53,13 @@ namespace SwordsInSpace
         public void OnHit()
         {
 
+
             if (!IsServer) return;
             pierce -= 1;
 
             onHitFunction?.Invoke(gameObject);
             if (pierce <= 0)
-                Despawn();
+                OnTimeout();
         }
 
         public void OnTimeout()

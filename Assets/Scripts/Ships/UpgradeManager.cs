@@ -83,6 +83,8 @@ namespace SwordsInSpace
                 }
             }
 
+            OnUpgrade?.Invoke(TallyUpgrades());
+
         }
 
 
@@ -106,8 +108,6 @@ namespace SwordsInSpace
 
 
             double randChance = Random.Range(0.0f, 1.0f);
-
-            randChance = 0.99;
 
             int tier;
             List<Upgrade> thisTier;

@@ -22,6 +22,10 @@ namespace SwordsInSpace
             maxHp,
             maxHpPercent,
             maxShipSpeed,
+            powerMaxAmount,
+            powerDrainRate,
+            powerRefillRate,
+            fireHP,
 
             //Weapon State Changes
             shotSpeed,

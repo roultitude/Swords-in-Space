@@ -26,7 +26,7 @@ namespace SwordsInSpace
         public FireManager fireManager;
 
         [SerializeField]
-        ShipSO data;
+        public ShipSO data;
 
         [SerializeField]
         GameObject UiHpBar;
@@ -77,7 +77,7 @@ namespace SwordsInSpace
 
         public void ReloadStats(Dictionary<UpgradeTypes, float> stats)
         {
-
+            if (!IsServer) return;
 
 
             double TallyMaxHp = data.ShipMaxHp;
@@ -93,6 +93,12 @@ namespace SwordsInSpace
 
                     case UpgradeTypes.maxShipSpeed:
                         shipMover.speed = data.ShipMaxSpeed + stats[type];
+                        break;
+
+
+                    case UpgradeTypes.fireHP:
+                        int newFireHp = data.fireHP + (int)stats[type];
+                        fireManager.UpdateFireHP(Mathf.Clamp(newFireHp, 1, newFireHp));
                         break;
 
                 }
