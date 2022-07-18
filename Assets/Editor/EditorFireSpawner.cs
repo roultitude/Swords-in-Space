@@ -8,13 +8,13 @@ using FishNet.Connection;
 using UnityEngine.Tilemaps;
 using UnityEditor;
 
-
+#if UNITY_EDITOR
 namespace SwordsInSpace
 {
     [ExecuteInEditMode]
     public class EditorFireSpawner : MonoBehaviour
     {
-        public Tilemap shipGrid;
+        public Tilemap floorTileMap;
 
 
         private bool[,] spots;
@@ -34,9 +34,8 @@ namespace SwordsInSpace
 
         public void Activate()
         {
-            shipGrid = gameObject.GetComponentInChildren<Tilemap>();
-            shipGrid.CompressBounds();
-            var bounds = shipGrid.cellBounds;
+            floorTileMap.CompressBounds();
+            var bounds = floorTileMap.cellBounds;
             spots = new bool[bounds.size.x, bounds.size.y];
             GameObject[,] fires = new GameObject[bounds.size.x, bounds.size.y];
             for (int x = 0; x < bounds.size.x; x++)
@@ -45,7 +44,7 @@ namespace SwordsInSpace
                 {
                     var px = bounds.xMin + x;
                     var py = bounds.yMin + y;
-                    spots[x, y] = shipGrid.HasTile(new Vector3Int(px, py, 0));
+                    spots[x, y] = floorTileMap.HasTile(new Vector3Int(px, py, 0));
                     if (spots[x, y])
                     {
                         fires[x, y] = instantiateFire();
@@ -102,4 +101,5 @@ namespace SwordsInSpace
 
 
     }
+#endif
 };

@@ -120,7 +120,11 @@ namespace SwordsInSpace
             if (otherInteractable)
             {
                 int id = interactables.GetId(otherInteractable);
-                if(id!= -1) data.Add(interactables.GetId(otherInteractable));
+                if (id != -1) 
+                {
+                    data.Add(interactables.GetId(otherInteractable));
+                    otherInteractable.numPlayersNearby++;
+                } 
             }
 
 
@@ -141,6 +145,7 @@ namespace SwordsInSpace
             {
                 data.Remove(interactables.GetId(otherInteractable));
                 TargetExitUi(Owner);
+                otherInteractable.numPlayersNearby--;
             }
 
 

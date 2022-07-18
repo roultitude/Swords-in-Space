@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SteeringController
+  m_Controller: {fileID: 9100000, guid: d40cab19b79c59d4b8501ec55e50904c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: e1b38f87d4aab6c40ba5bcd209a7ddec, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 28c83802a9087fb45ac7667786ed72af, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 40daa533e5c32a449a368dc22b902b61, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a1fc0ba7d7ef5414b97cd073e94c6843, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: bbef3b381c51e5b49b67457c52e7daef, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 25f5494211632404f9e72c2e3f964620, type: 2}

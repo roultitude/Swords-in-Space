@@ -15,11 +15,12 @@ namespace SwordsInSpace
 
         [SerializeField]
         public Fire[] linkedFireCells;
-
+        
         public Collider2D interactZone;
         public Collider2D collideZone;
 
-        [SyncVar]
+
+        [SyncVar(OnChange = nameof(onChangeOccupied))]
         protected bool isOccupied = false;
         public void Start()
         {
@@ -75,6 +76,28 @@ namespace SwordsInSpace
         {
             isOccupied = occupied;
         }
+
+        void onChangeOccupied(bool oldOccupied, bool newOccupied, bool isServer)
+        {
+            switchAnim();
+        }
+
+        protected override void switchAnim()
+        {
+            if (numPlayersNearby > 0)
+            {
+                if (isOccupied)
+                {
+                    anim.CrossFade("PlayerOccupied", 0, 0);
+                }
+                else anim.CrossFade("PlayerNearby", 0, 0);
+            }
+            else
+            {
+                anim.CrossFade("Idle", 0, 0);
+            }
+        }
+
 
     }
 };

@@ -31,7 +31,10 @@ namespace SwordsInSpace
         [SerializeField]
         public Hpbar bar;
 
+        [SyncVar(OnChange =nameof(OnChangeAnimLocked))]
+        bool animLocked = false;
 
+        IEnumerator animLocker;
         // Update is called once per frame
         void Update()
         {
@@ -80,6 +83,32 @@ namespace SwordsInSpace
             AudioManager.instance.ObserversPlay(chargeSound);
             if (currentAmount > maxAmount)
                 currentAmount = maxAmount;
+            if (animLocker != null) StopCoroutine(animLocker); 
+            animLocker = PlayAnimOnInteract();
+            StartCoroutine(animLocker);
+        }
+
+        protected override void switchAnim()
+        {
+            if (!animLocked)
+            {
+                base.switchAnim();
+            }
+            else anim.CrossFade("PlayerOccupied",0,0);
+        }
+        IEnumerator PlayAnimOnInteract()
+        {
+            animLocked = true;
+            switchAnim();
+            yield return new WaitForSeconds(2f);
+            animLocked = false;
+            switchAnim();
+            animLocker = null;
+        }
+
+        private void OnChangeAnimLocked(bool oldAnimLocked, bool newAnimLocked, bool isServer)
+        {
+            switchAnim();
         }
 
     }
