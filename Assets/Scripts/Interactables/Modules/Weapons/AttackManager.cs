@@ -16,7 +16,7 @@ namespace SwordsInSpace
 
         public record BulletInfo
         {
-            public BulletInfo(GameObject bulletBase, Vector3 bulletPosition, Vector3 bulletRotation, int bulletShotSpeed, double bulletShotSpread, double bulletShotLifeTime, double bulletDamage, Vector2 bulletScale, int bulletPierce, bool isModifiable, bool isValid)
+            public BulletInfo(GameObject bulletBase, Vector3 bulletPosition, Vector3 bulletRotation, float bulletShotSpeed, double bulletShotSpread, double bulletShotLifeTime, double bulletDamage, Vector2 bulletScale, int bulletPierce, bool isModifiable, bool isValid)
             {
                 this.bulletBase = bulletBase;
                 this.bulletPosition = bulletPosition;
@@ -31,7 +31,7 @@ namespace SwordsInSpace
                 this.bulletPierce = bulletPierce;
                 this.CallOnMove = null;
                 this.CallOnHit = null;
-                this.CallOnTimeout = null;
+                this.CallOnDespawn = null;
             }
 
 
@@ -39,7 +39,7 @@ namespace SwordsInSpace
             public GameObject bulletBase;
             public Vector3 bulletPosition;
             public Vector3 bulletRotation;
-            public int bulletShotSpeed;
+            public float bulletShotSpeed;
             public double bulletShotLifeTime;
             public double bulletDamage;
             public double bulletShotSpread;
@@ -49,7 +49,7 @@ namespace SwordsInSpace
             public Vector2 bulletScale;
             public BulletBehavior CallOnMove;
             public BulletBehavior CallOnHit;
-            public BulletBehavior CallOnTimeout;
+            public BulletBehavior CallOnDespawn;
         }
 
         public List<BulletModifier> modifiers = new List<BulletModifier>() {
@@ -73,8 +73,6 @@ namespace SwordsInSpace
 
         public void ReloadUpgrades(Dictionary<UpgradeTypes, float> stats)
         {
-
-
             foreach (UpgradeTypes type in stats.Keys)
             {
                 Debug.Log(type + "\t" + stats[type]);
@@ -91,7 +89,7 @@ namespace SwordsInSpace
         }
 
 
-        public List<BulletInfo> DraftBulletLocations(GameObject bulletBase, Vector3 bulletPosition, Vector3 bulletRotation, int bulletShotSpeed, double bulletShotSpread, double bulletShotLifeTime, double bulletDamage, Vector2 bulletScale, int bulletPierce)
+        public List<BulletInfo> DraftBulletLocations(GameObject bulletBase, Vector3 bulletPosition, Vector3 bulletRotation, float bulletShotSpeed, double bulletShotSpread, double bulletShotLifeTime, double bulletDamage, Vector2 bulletScale, int bulletPierce)
         {
             bullets = new List<BulletInfo>
             {

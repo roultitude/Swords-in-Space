@@ -18,7 +18,7 @@ namespace SwordsInSpace
 
         public Timer bulletCd;
 
-        public double shotSpeed;
+        public float shotSpeed;
         public double shotLifetime;
         public double damage;
         public double shotSpread = 0;

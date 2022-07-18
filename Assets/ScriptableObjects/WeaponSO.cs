@@ -15,7 +15,7 @@ namespace SwordsInSpace
 
         public double damage = 1;
 
-        public int shotSpeed = 1;
+        public float shotSpeed = 1;
 
         public double shotLifeTime = 10;
 

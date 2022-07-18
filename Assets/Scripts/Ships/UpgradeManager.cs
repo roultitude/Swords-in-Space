@@ -100,6 +100,38 @@ namespace SwordsInSpace
 
         }
 
+        public Upgrade GetValidUpgrade()
+        {
+
+            double randChance = Random.Range(0.0f, 1.0f);
+
+            if (tier4Upgrade.Count == 0 && randChance > 0.95)
+                randChance = 0.9;
+
+            List<Upgrade> thisTier;
+            if (randChance <= 0.5)
+            {
+
+                thisTier = tier1Upgrade;
+
+            }
+            else if (randChance <= 0.75)
+            {
+                thisTier = tier2Upgrade;
+            }
+            else if (randChance <= 0.95)
+            {
+                thisTier = tier3Upgrade;
+            }
+            else
+            {
+                thisTier = tier4Upgrade;
+
+            }
+
+            return thisTier[Random.Range(0, thisTier.Count)];
+
+        }
         private void RollUpgrades()
         {
             if (!IsServer)
@@ -118,7 +150,7 @@ namespace SwordsInSpace
                 tier = 1;
 
             }
-            else if (randChance <= 0.75)
+            else if (randChance <= 0.8)
             {
                 thisTier = tier2Upgrade;
                 tier = 2;
@@ -266,6 +298,17 @@ namespace SwordsInSpace
                 StartCoroutine(DelayedSwitchScene("GameScene", 1f));
 
             }
+        }
+
+        public void AddUpgradeNoUI(string upgrd)
+        {
+            upgrades[upgrd].upgradeCount += 1;
+            if (upgrades[upgrd].upgradeMaxCount != -1 && upgrades[upgrd].upgradeCount >= upgrades[upgrd].upgradeMaxCount)
+            {
+                Debug.Log("Maxxed out" + upgrd);
+                RemoveUpgradeFromPool(upgrades[upgrd]);
+            }
+            OnUpgrade?.Invoke(TallyUpgrades());
         }
 
         IEnumerator DelayedSwitchScene(string sceneName, float delayTime)

@@ -18,20 +18,45 @@ namespace SwordsInSpace
         [System.Serializable]
         public enum UpgradeTypes
         {
+            playerMoveSpeed,
+            playerDashMult,
+
+
+
             //Ship Stat Changes
-            maxHp,
-            maxHpPercent,
-            maxShipSpeed,
+            maxShipHp,
+            maxShipHpPercent,
+
+            shipSpeed,
+            shipTurnSpeed,
+
+            nitroMaxAmount,
+            nitroMult,
+
             powerMaxAmount,
             powerDrainRate,
             powerRefillRate,
+
             fireHP,
+
+            healOnBeat,
+            healOnCombo,
+
+            shieldSize,
+            shieldTurnSpeed,
+
+            clawSize,
+            clawTurnSpeed,
+
 
             //Weapon State Changes
             shotSpeed,
             shotDamage,
             shotLifetime,
-
+            shotPierce,
+            shotBurst,
+            shotSpread,
+            shotCooldown,
 
             //Bullet Spawning Upgrades
             multiShot, //100% Chance, + 2 bullet fired. Bullets fired cannot be multiplied

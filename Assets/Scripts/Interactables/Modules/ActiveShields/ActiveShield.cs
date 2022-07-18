@@ -28,6 +28,8 @@ namespace SwordsInSpace
             InstanceFinder.TimeManager.OnTick -= OnTick;
         }
 
+
+
         void SetupUI()
         {
             UIDisplay = Instantiate(UIDisplayPrefab, Vector3.zero, Quaternion.identity);

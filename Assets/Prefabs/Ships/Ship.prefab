@@ -274,10 +274,10 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 5412598000014957244}
   rb: {fileID: 4703744331782941198}
   canMove: 0
-  speed: 1000
-  turnSpeed: 10
-  nitroMult: 0
   nitroInvincibilityTime: 0
+  speed: 1000
+  nitroMult: 1
+  turnSpeed: 10
 --- !u!114 &2974684135176937384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +357,7 @@ MonoBehaviour:
   CurrentHp: 0
   CurrentMaxHp: 0
   CurrentNitroFuel: 0
+  CurrentMaxNitro: 0
   isPowerUp: 1
 --- !u!114 &7784500117912041229
 MonoBehaviour:
@@ -374,29 +375,38 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5412598000014957244}
   _networkObjectCache: {fileID: 5412598000014957244}
   tier1Upgrade:
-  - upgradeSo: {fileID: 11400000, guid: 79b46e52d7e19c94c8b1b0526487e2ea, type: 2}
+  - upgradeSo: {fileID: 11400000, guid: dbee14bc6f72bb24a8b68f4c1a76e274, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
-  - upgradeSo: {fileID: 11400000, guid: 2316dcadb8bfd744c94cb70e890d19a3, type: 2}
+  - upgradeSo: {fileID: 11400000, guid: 5da8abae181a260469b51696fcf0d74d, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
-  - upgradeSo: {fileID: 11400000, guid: 000bb54a71a6d884a9ccd935eb003978, type: 2}
+  - upgradeSo: {fileID: 11400000, guid: 1a6e9234e4377d146b228a8b521cf301, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
-  - upgradeSo: {fileID: 11400000, guid: 9ff431e8bc6f943429ee699596339613, type: 2}
+  - upgradeSo: {fileID: 11400000, guid: 213cc8a32ea7a794bbd625bc4abb6787, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
-  - upgradeSo: {fileID: 11400000, guid: e1af826679af1664f9408cff79043248, type: 2}
+  - upgradeSo: {fileID: 11400000, guid: 14693af3102494d4cb70ed4287df4836, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: acf3518cc09a4d44eb840b2bfe25670c, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: a57f29d6c4633b84abe74ff6b1358089, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: 146f395a7ad220e47b2952a7f08b86c7, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
   tier2Upgrade:
-  - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
+  - upgradeSo: {fileID: 11400000, guid: 493924255f5424e4da07d8e60572ae33, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: e14749c2e9e9a284db790c5679d55edf, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
   - upgradeSo: {fileID: 11400000, guid: bc76a93b7c37ddb41b28514428c85428, type: 2}
-    upgradeCount: 0
-    upgradeMaxCount: -1
-  - upgradeSo: {fileID: 11400000, guid: bfeafc5466a72f8489737085beba9eb7, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
   - upgradeSo: {fileID: 11400000, guid: 1bcaec6cca0428846a4f70af36aa80dc, type: 2}
@@ -405,8 +415,23 @@ MonoBehaviour:
   - upgradeSo: {fileID: 11400000, guid: d59c9cd7291869b48a9c3eb3545a5c29, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: d84cb3355cee1494ea863da99575bfa3, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
   tier3Upgrade:
   - upgradeSo: {fileID: 11400000, guid: 1d07e19c5a69dff4cab951e95494cd65, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: c7be4bca55f076940ad8de89491152b0, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: 087fa495f156595478f010a4bccf6e6b, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: d82d9f88f0688e44c9948e5b697098ab, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
   - upgradeSo: {fileID: 11400000, guid: 1bb74eeb7df8c8f44abeb3bc4632e551, type: 2}

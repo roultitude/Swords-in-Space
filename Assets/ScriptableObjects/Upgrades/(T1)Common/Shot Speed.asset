@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d78f91a514a994343aea7fc54bd1e4a8, type: 3}
-  m_Name: Attack Up
+  m_Name: Shot Speed
   m_EditorClassIdentifier: 
-  upgradeName: Attack Up (Small)
-  description: Increases Attack
-  sprite: {fileID: 21300000, guid: f5d2b258abec02f41a256aae1e1f36b5, type: 3}
+  upgradeName: Bullet Speed Up
+  description: Increased Bullet Speed
+  sprite: {fileID: 0}
   statChanges:
-  - type: 4
-    amount: 1
+  - type: 18
+    amount: 0.3

@@ -7,6 +7,7 @@ namespace SwordsInSpace
 {
     public class MultiShot : BulletModifier
     {
+        //private Vector2 bulletScale = new Vector2(1, 1);
         public MultiShot()
         {
             thisUpgradeAttribute = new UpgradeSO.UpgradeAttributes();
@@ -14,6 +15,10 @@ namespace SwordsInSpace
             thisUpgradeAttribute.type = UpgradeSO.UpgradeTypes.multiShot;
         }
 
+        private float SpeedScale(int amt)
+        {
+            return 1f / (1f + 0.07f * amt);
+        }
         public override void Apply(List<AttackManager.BulletInfo> info)
         {
 
@@ -37,15 +42,22 @@ namespace SwordsInSpace
                     float offset = bulletsToFire % 2 == 0 ? 0.5f : 1f;
 
                     AttackManager.BulletInfo toSpawn = i with { };
-                    toSpawn.bulletPosition += (Quaternion.Euler(toSpawn.bulletRotation) * Quaternion.Euler(0, 0, 90)) * Vector3.right * (j + offset);
+                    toSpawn.bulletPosition += (Quaternion.Euler(toSpawn.bulletRotation) * Quaternion.Euler(0, 0, 90)) * Vector3.right * ((j + 1) * offset);
                     toSpawn.isModifiable = false;
                     toSpawn.isValid = true;
+                    toSpawn.bulletScale = toSpawn.bulletScale / 2;
+                    toSpawn.bulletDamage = toSpawn.bulletDamage / 4;
+                    toSpawn.bulletShotSpeed = (toSpawn.bulletShotSpeed * SpeedScale(j + 1));
                     result.Add(toSpawn);
 
                     toSpawn = i with { };
-                    toSpawn.bulletPosition -= (Quaternion.Euler(toSpawn.bulletRotation) * Quaternion.Euler(0, 0, 90)) * Vector3.right * (j + offset);
+                    toSpawn.bulletPosition -= (Quaternion.Euler(toSpawn.bulletRotation) * Quaternion.Euler(0, 0, 90)) * Vector3.right * ((j + 1) * offset);
                     toSpawn.isModifiable = false;
                     toSpawn.isValid = true;
+                    toSpawn.bulletScale = toSpawn.bulletScale / 2;
+                    toSpawn.bulletDamage = toSpawn.bulletDamage / 4;
+
+                    toSpawn.bulletShotSpeed = (toSpawn.bulletShotSpeed * SpeedScale(j + 1));
                     result.Add(toSpawn);
                 }
 

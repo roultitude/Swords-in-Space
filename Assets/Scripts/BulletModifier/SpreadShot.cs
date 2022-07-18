@@ -5,6 +5,7 @@ namespace SwordsInSpace
 {
     public class SpreadShot : BulletModifier
     {
+        private Vector2 bulletScale = new Vector2(1, 1);
         public SpreadShot()
         {
             thisUpgradeAttribute = new UpgradeSO.UpgradeAttributes();
@@ -35,12 +36,16 @@ namespace SwordsInSpace
                     toSpawn.bulletRotation = (Quaternion.Euler(toSpawn.bulletRotation) * Quaternion.Euler(0, 0, bulletAngle * (j + 1))).eulerAngles;
                     toSpawn.isModifiable = false;
                     toSpawn.isValid = true;
+                    toSpawn.bulletScale = bulletScale;
+                    toSpawn.bulletDamage = toSpawn.bulletDamage / 4;
                     result.Add(toSpawn);
 
                     toSpawn = i with { };
                     toSpawn.bulletRotation = (Quaternion.Euler(toSpawn.bulletRotation) * Quaternion.Euler(0, 0, -bulletAngle * (j + 1))).eulerAngles;
                     toSpawn.isModifiable = false;
                     toSpawn.isValid = true;
+                    toSpawn.bulletScale = bulletScale;
+                    toSpawn.bulletDamage = toSpawn.bulletDamage / 4;
                     result.Add(toSpawn);
                 }
             }

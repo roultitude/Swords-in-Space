@@ -19,11 +19,14 @@ namespace SwordsInSpace
         [SerializeField]
         TextMeshProUGUI Votes;
 
+        [SerializeField]
+        TextMeshProUGUI UpgradeName;
 
         public void UpdateButton(UpgradeSO data)
         {
-            Description.text = data.upgradeName + "\n" + data.description;
+            Description.text = data.description;
             UpgradeImage.sprite = data.sprite;
+            UpgradeName.text = data.upgradeName;
 
         }
 

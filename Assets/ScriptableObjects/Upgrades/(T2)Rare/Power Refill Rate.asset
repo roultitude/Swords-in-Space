@@ -16,5 +16,5 @@ MonoBehaviour:
   description: Each interaction refills more power
   sprite: {fileID: 21300000, guid: f412543bf4087b440836e6f202e0fd67, type: 3}
   statChanges:
-  - type: 5
-    amount: 10
+  - type: 10
+    amount: 5

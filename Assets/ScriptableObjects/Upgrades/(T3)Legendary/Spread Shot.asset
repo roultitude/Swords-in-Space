@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Spread Shot
   m_EditorClassIdentifier: 
   upgradeName: Spread Shot
-  description: Spread Shots + 1 \n Power depletes faster
+  description: 'Fire 2 weaker auxillary bullets in a spread '
   sprite: {fileID: 0}
   statChanges:
-  - type: 11
+  - type: 26
     amount: 1

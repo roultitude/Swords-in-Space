@@ -15,7 +15,7 @@ namespace SwordsInSpace
         public float incrementPercent = 0.03f;
 
         [SerializeField]
-        private float increment = 0;
+        public float increment = 0;
 
         public float distanceThreshold = 0.5f;
 
@@ -47,6 +47,10 @@ namespace SwordsInSpace
 
         private int cullDrumBeatsAt = -400;
 
+        private PassiveShield shield;
+
+
+
         public void Start()
         {
             drumbeats = new List<Drumbeat>();
@@ -54,6 +58,10 @@ namespace SwordsInSpace
 
         }
 
+        public void SetupUI(PassiveShield shield)
+        {
+            this.shield = shield;
+        }
         public void startGame()
         {
             increment = 0;
@@ -131,11 +139,13 @@ namespace SwordsInSpace
             if (drumbeat.identity == dir && distance < distanceThreshold * distanceThreshold)
             {
                 increment++;
-                Ship.currentShip.AddHp((float)Ship.currentShip.CurrentMaxHp / 200);
+                shield.healFromBeat();
+
             }
             else
             {
-                Ship.currentShip.AddHp((float)(increment / 150 * Ship.currentShip.CurrentMaxHp));
+                shield.healFromCombo(increment);
+
                 increment = 0;
                 while (drumbeats.Count > 0)
                 {

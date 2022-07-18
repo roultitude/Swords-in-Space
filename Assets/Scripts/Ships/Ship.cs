@@ -50,8 +50,11 @@ namespace SwordsInSpace
         [SyncVar]
         public double CurrentMaxHp;
 
+
         [SyncVar]
         public int CurrentNitroFuel; //rename maybe
+        public int CurrentMaxNitro;
+
 
         public bool isPowerUp = true;
 
@@ -87,20 +90,35 @@ namespace SwordsInSpace
             {
                 switch (type)
                 {
-                    case UpgradeTypes.maxHp:
+                    case UpgradeTypes.maxShipHp:
                         TallyMaxHp += stats[type];
                         break;
 
-                    case UpgradeTypes.maxShipSpeed:
-                        shipMover.speed = data.ShipMaxSpeed + stats[type];
-                        break;
+
 
 
                     case UpgradeTypes.fireHP:
                         int newFireHp = data.fireHP + (int)stats[type];
-                        fireManager.UpdateFireHP(Mathf.Clamp(newFireHp, 1, newFireHp));
+                        fireManager.UpdateFireHP(Mathf.Clamp(newFireHp, 1, 99));
                         break;
 
+
+
+                    case UpgradeTypes.nitroMaxAmount:
+
+                        int newMaxNitro = Mathf.Clamp(data.ShipMaxNitroFuel + (int)stats[type], 1, 999);
+
+                        if (newMaxNitro > CurrentMaxNitro)
+                        {
+                            CurrentNitroFuel += (newMaxNitro - CurrentNitroFuel);
+                        }
+                        else if (newMaxNitro < CurrentMaxNitro)
+                        {
+                            int nitroDiff = CurrentMaxNitro - CurrentNitroFuel;
+                            CurrentNitroFuel = Mathf.Clamp(newMaxNitro - nitroDiff, 0, 999);
+                        }
+                        CurrentMaxNitro = newMaxNitro;
+                        break;
                 }
             }
 
@@ -109,7 +127,7 @@ namespace SwordsInSpace
             {
                 switch (type)
                 {
-                    case UpgradeTypes.maxHpPercent:
+                    case UpgradeTypes.maxShipHpPercent:
                         TallyMaxHp *= (100 + stats[type]) / 100;
                         break;
 
@@ -267,7 +285,7 @@ namespace SwordsInSpace
         public void ChangeNitroFuel(int change)
         {
             CurrentNitroFuel += change;
-            Mathf.Clamp(CurrentNitroFuel + change, 0, data.ShipMaxNitroFuel);
+            Mathf.Clamp(CurrentNitroFuel + change, 0, CurrentMaxNitro);
         }
 
         public IEnumerator StartInvincibilityFrames(float invincibilityTime)

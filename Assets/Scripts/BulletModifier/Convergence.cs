@@ -8,15 +8,12 @@ namespace SwordsInSpace
         private class bulletMovement
         {
             float timePassed = 0.3f;
-            float mainBulletSpeed;
             Vector3 targetPos;
             Vector3 targetRot;
 
-            Bullet bull;
-            bool hasCached = false;
-            public bulletMovement(float bulletSpeed, Vector3 originalPos, Vector3 originalRot)
+
+            public bulletMovement(Vector3 originalPos, Vector3 originalRot)
             {
-                mainBulletSpeed = bulletSpeed;
                 targetPos = originalPos;
                 targetRot = originalRot;
                 targetPos += (Quaternion.Euler(targetRot) * Vector3.right) * 20;
@@ -24,20 +21,11 @@ namespace SwordsInSpace
 
             public void MovementModifier(GameObject bullet)
             {
-                if (!hasCached)
-                {
-                    bull = bullet.GetComponent<Bullet>();
-                }
-
                 timePassed -= Time.deltaTime;
-
-
-
-
 
                 if (timePassed <= 0f)
                 {
-                    timePassed = 88f;
+                    timePassed = float.MaxValue;
                     Vector3 myLocation = bullet.transform.position;
                     Vector3 targetLocation = targetPos;
                     targetLocation.z = myLocation.z;
@@ -79,9 +67,7 @@ namespace SwordsInSpace
                     if (bullet == mainBullet)
                         continue;
 
-
-
-                    bullet.CallOnMove += new bulletMovement(mainBullet.bulletShotSpeed, mainBullet.bulletPosition, mainBullet.bulletRotation).MovementModifier;
+                    bullet.CallOnMove += new bulletMovement(mainBullet.bulletPosition, mainBullet.bulletRotation).MovementModifier;
 
                 }
             }

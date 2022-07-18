@@ -11,7 +11,7 @@ namespace SwordsInSpace
     {
         public double damage;
         public double shotLifeTime;
-        public abstract void Setup(double shotSpeed, double shotLifeTime, double damage, double spread, int pierce);
+        public abstract void Setup(float shotSpeed, double shotLifeTime, double damage, double spread, int pierce);
 
     }
 };

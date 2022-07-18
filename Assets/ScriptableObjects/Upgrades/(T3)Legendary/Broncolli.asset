@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Broncolli
   m_EditorClassIdentifier: 
   upgradeName: Broncolli
-  description: Multishot + 1,  Power depletes faster
+  description: Fire 2 weaker auxillary bullets behind the main bullet
   sprite: {fileID: 21300000, guid: f6837ed3f05c55749ab449ef30441090, type: 3}
   statChanges:
-  - type: 10
+  - type: 25
     amount: 1

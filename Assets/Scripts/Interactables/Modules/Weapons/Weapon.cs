@@ -39,7 +39,7 @@ namespace SwordsInSpace
             public GameObject bulletPrefab;
             public AudioClip shootSound;
             public double damage;
-            public int shotSpeed;
+            public float shotSpeed;
             public double shotLifeTime;
             public double shotSpread;
             public int burst;
@@ -115,15 +115,36 @@ namespace SwordsInSpace
                 switch (type)
                 {
                     case UpgradeTypes.shotSpeed:
-                        data.shotSpeed = baseData.shotSpeed + (int)stats[type];
+                        data.shotSpeed = baseData.shotSpeed + stats[type];
                         break;
 
                     case UpgradeTypes.shotDamage:
                         data.damage = baseData.damage + stats[type];
+                        if (data.damage <= 0.1)
+                        {
+                            data.damage = 0.1;
+                        }
                         break;
 
                     case UpgradeTypes.shotLifetime:
                         data.shotLifeTime = baseData.shotLifeTime + stats[type];
+                        if (data.shotLifeTime < 0.1)
+                        {
+                            data.shotLifeTime = 0.1;
+                        }
+                        break;
+
+                    case UpgradeTypes.shotBurst:
+                        int newBurst = baseData.burst + (int)stats[type];
+                        newBurst = (int)Mathf.Clamp(newBurst, 1, int.MaxValue);
+                        data.burst = newBurst;
+
+                        break;
+
+                    case UpgradeTypes.shotSpread:
+                        double newShotSpread = baseData.shotSpread + stats[type];
+                        newShotSpread = (int)Mathf.Clamp((float)newShotSpread, 0, 360);
+                        data.shotSpread = newShotSpread;
                         break;
 
 
@@ -234,7 +255,7 @@ namespace SwordsInSpace
             if (!IsServer) { return; }//Sanity check
             canFire = false;
             OnFireClient();
-            atkTimer.Start();
+
             StartBurst();
         }
 
@@ -275,7 +296,7 @@ namespace SwordsInSpace
 
                         toAddBullet.AddMovementFunction(spawnData.CallOnMove);
                         toAddBullet.AddOnHitFunction(spawnData.CallOnHit);
-                        toAddBullet.AddTimeoutFunction(spawnData.CallOnTimeout);
+                        toAddBullet.AddDespawnFunction(spawnData.CallOnDespawn);
 
                         toAddBullet.Setup(spawnData.bulletShotSpeed, spawnData.bulletShotLifeTime, spawnData.bulletDamage, spawnData.bulletShotSpread, spawnData.bulletPierce);
                         toAdd.transform.localScale = spawnData.bulletScale;
@@ -289,11 +310,18 @@ namespace SwordsInSpace
                 currentBurst += 1;
                 this.burstTimer.Start();
 
+                if (currentBurst >= data.burst)
+                {
+                    atkTimer.Start();
+                }
+
             }
             else
             {
                 currentBurst = 0;
             }
+
+
 
         }
 
