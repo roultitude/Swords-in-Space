@@ -125,7 +125,7 @@ namespace SwordsInSpace
             if (awaitingDash) awaitingDash = false;
             float horizontal = playerInput.actions["Move"].ReadValue<Vector2>().x;
             float vertical = playerInput.actions["Move"].ReadValue<Vector2>().y;
-            if (horizontal == 0f && vertical == 0f) return;
+            if (horizontal == 0f && vertical == 0f && dashing == false) return;
             md = new MoveData(horizontal, vertical, dashing
                 //, 1
                 );

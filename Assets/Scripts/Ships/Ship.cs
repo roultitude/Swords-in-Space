@@ -22,17 +22,18 @@ namespace SwordsInSpace
         public UpgradeManager upgradeManager;
         public ExpManager expManager;
         public Transform fireContainer;
-
+        public SpriteRenderer shipExteriorSprite;
         public FireManager fireManager;
 
         [SerializeField]
-        ShipSO data;
+        public ShipSO data;
 
         [SerializeField]
         GameObject UiHpBar;
 
-        [SerializeField]
-        Color TintNoPower;
+
+        public Color TintNoPower;
+        public Color TintLowPower;
 
         [SerializeField]
         GameObject background;
@@ -49,10 +50,16 @@ namespace SwordsInSpace
         [SyncVar]
         public double CurrentMaxHp;
 
+
         [SyncVar]
         public int CurrentNitroFuel; //rename maybe
+        public int CurrentMaxNitro;
+
 
         public bool isPowerUp = true;
+
+        private bool isLowPower = false;
+
 
         private void Awake()
         {
@@ -66,11 +73,16 @@ namespace SwordsInSpace
             CurrentHp = data.ShipMaxHp;
             CurrentMaxHp = data.ShipMaxHp;
             CurrentNitroFuel = data.ShipMaxNitroFuel;
+            upgradeManager.OnUpgrade += ReloadStats;
+
+
         }
-        [ServerRpc(RequireOwnership = false)]
-        public void ReloadStats()
+
+        public void ReloadStats(Dictionary<UpgradeTypes, float> stats)
         {
-            Dictionary<UpgradeTypes, float> stats = upgradeManager.TallyUpgrades();
+            if (!IsServer) return;
+
+
             double TallyMaxHp = data.ShipMaxHp;
 
             //Base increases
@@ -78,11 +90,35 @@ namespace SwordsInSpace
             {
                 switch (type)
                 {
-                    case UpgradeTypes.maxHp:
+                    case UpgradeTypes.maxShipHp:
                         TallyMaxHp += stats[type];
-
                         break;
 
+
+
+
+                    case UpgradeTypes.fireHP:
+                        int newFireHp = data.fireHP + (int)stats[type];
+                        fireManager.UpdateFireHP(Mathf.Clamp(newFireHp, 1, 99));
+                        break;
+
+
+
+                    case UpgradeTypes.nitroMaxAmount:
+
+                        int newMaxNitro = Mathf.Clamp(data.ShipMaxNitroFuel + (int)stats[type], 1, 999);
+
+                        if (newMaxNitro > CurrentMaxNitro)
+                        {
+                            CurrentNitroFuel += (newMaxNitro - CurrentNitroFuel);
+                        }
+                        else if (newMaxNitro < CurrentMaxNitro)
+                        {
+                            int nitroDiff = CurrentMaxNitro - CurrentNitroFuel;
+                            CurrentNitroFuel = Mathf.Clamp(newMaxNitro - nitroDiff, 0, 999);
+                        }
+                        CurrentMaxNitro = newMaxNitro;
+                        break;
                 }
             }
 
@@ -91,7 +127,7 @@ namespace SwordsInSpace
             {
                 switch (type)
                 {
-                    case UpgradeTypes.maxHpPercent:
+                    case UpgradeTypes.maxShipHpPercent:
                         TallyMaxHp *= (100 + stats[type]) / 100;
                         break;
 
@@ -152,6 +188,16 @@ namespace SwordsInSpace
             ChangeBackgroundColorRPC(Color.white);
             isPowerUp = true;
         }
+
+        public void updateShipBackgroundColor(float amount)
+        {
+            background.GetComponent<RawImage>().color = new Color(
+                (Color.white.r - TintLowPower.r) * amount + TintLowPower.r,
+                (Color.white.g - TintLowPower.g) * amount + TintLowPower.g,
+                (Color.white.b - TintLowPower.b) * amount + TintLowPower.b
+                );
+        }
+
 
         public void TakeDamage(double amt)
         {
@@ -239,7 +285,7 @@ namespace SwordsInSpace
         public void ChangeNitroFuel(int change)
         {
             CurrentNitroFuel += change;
-            Mathf.Clamp(CurrentNitroFuel + change, 0, data.ShipMaxNitroFuel);
+            Mathf.Clamp(CurrentNitroFuel + change, 0, CurrentMaxNitro);
         }
 
         public IEnumerator StartInvincibilityFrames(float invincibilityTime)

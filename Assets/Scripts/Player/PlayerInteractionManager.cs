@@ -20,6 +20,7 @@ namespace SwordsInSpace
             base.OnStartNetwork();
             GameManager.OnNewSceneLoadEvent += () =>
             {
+
                 interactables = Ship.currentShip.shipInterior.GetComponent<InteractableIdManager>();
             };
         }
@@ -118,7 +119,12 @@ namespace SwordsInSpace
 
             if (otherInteractable)
             {
-                data.Add(interactables.GetId(otherInteractable));
+                int id = interactables.GetId(otherInteractable);
+                if (id != -1) 
+                {
+                    data.Add(interactables.GetId(otherInteractable));
+                    otherInteractable.numPlayersNearby++;
+                } 
             }
 
 
@@ -139,6 +145,7 @@ namespace SwordsInSpace
             {
                 data.Remove(interactables.GetId(otherInteractable));
                 TargetExitUi(Owner);
+                otherInteractable.numPlayersNearby--;
             }
 
 

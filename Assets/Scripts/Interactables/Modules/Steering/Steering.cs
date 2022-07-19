@@ -41,6 +41,7 @@ namespace SwordsInSpace
 
         void OnDisplayClosed()
         {
+            SetOccupied(false);
             CameraManager.instance.ToggleShipCamera();
             currentPlayerInput.SwitchView("PlayerView");
 
@@ -52,12 +53,11 @@ namespace SwordsInSpace
             currentPlayerInput = null;
         }
 
-        public override void Interact(GameObject player)
+        public override void OnInteract(GameObject player)
         {
-            if (Ship.currentShip.Owner.IsActive && !Ship.currentShip.IsOwner) return; //do nothing if someone else owns the ship
-
             if (manager.Offer(UIDisplay, this))
             {
+                SetOccupied(true);
                 currentPlayerInput = player.GetComponent<PlayerInputManager>();
                 shipMover = Ship.currentShip.shipMover;
                 CameraManager.instance.ToggleShipCamera();

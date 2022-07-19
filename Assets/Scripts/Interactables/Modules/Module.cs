@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
+using FishNet.Object.Synchronizing;
 
 namespace SwordsInSpace
 {
@@ -14,9 +15,13 @@ namespace SwordsInSpace
 
         [SerializeField]
         public Fire[] linkedFireCells;
-
+        
         public Collider2D interactZone;
         public Collider2D collideZone;
+
+
+        [SyncVar(OnChange = nameof(onChangeOccupied))]
+        protected bool isOccupied = false;
         public void Start()
         {
             if (!IsServer)
@@ -32,11 +37,10 @@ namespace SwordsInSpace
             }
         }
 
-
         public void OnFireNearby()
         {
 
-            DisableInteractZone(false);
+            EnableInteractZone(false);
         }
 
         public void OnFireExtinguishedNearby()
@@ -49,16 +53,49 @@ namespace SwordsInSpace
             }
 
 
-            DisableInteractZone(true);
+            EnableInteractZone(true);
 
         }
+        public override void Interact(GameObject player)
+        {
+            Debug.Log(name + " is occupied: " + isOccupied);
+            if (!isOccupied) OnInteract(player);
+        }
+        public abstract void OnInteract(GameObject player);
 
         [ObserversRpc]
-        private void DisableInteractZone(bool value)
+        private void EnableInteractZone(bool value)
         {
             interactZone.enabled = value;
             collideZone.enabled = value;
 
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        protected void SetOccupied(bool occupied)
+        {
+            isOccupied = occupied;
+        }
+
+        void onChangeOccupied(bool oldOccupied, bool newOccupied, bool isServer)
+        {
+            switchAnim();
+        }
+
+        protected override void switchAnim()
+        {
+            if (numPlayersNearby > 0)
+            {
+                if (isOccupied)
+                {
+                    anim.CrossFade("PlayerOccupied", 0, 0);
+                }
+                else anim.CrossFade("PlayerNearby", 0, 0);
+            }
+            else
+            {
+                anim.CrossFade("Idle", 0, 0);
+            }
         }
 
 

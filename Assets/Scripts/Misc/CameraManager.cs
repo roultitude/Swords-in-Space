@@ -1,6 +1,6 @@
 using UnityEngine;
 using Cinemachine;
-
+using System.Collections;
 
 namespace SwordsInSpace
 {
@@ -14,7 +14,10 @@ namespace SwordsInSpace
         private CinemachineVirtualCamera shipVCam;
         [SerializeField]
         private CinemachineVirtualCamera weaponVCam;
+        [SerializeField]
+        private MeshRenderer bgBack, bgMid, bgFront;
 
+        bool bgTexturesUpdated = false;
         private void Awake()
         {
             if (instance)
@@ -22,10 +25,7 @@ namespace SwordsInSpace
                 Debug.Log("There exists a CameraManager already! Destroying self!");
                 Destroy(this);
             } else instance = this;
-            GameManager.OnNewSceneLoadEvent += () =>
-            {
-                SetupShipCams();
-            };
+            GameManager.OnNewSceneLoadEvent += SetupShipCams;
         }
         private void Start()
         {
@@ -34,12 +34,15 @@ namespace SwordsInSpace
         }
         private void OnDisable()
         {
+            GameManager.OnNewSceneLoadEvent -= SetupShipCams;
             Destroy(playerVCam);
         }
         public void SetupShipCams()
         {
             shipVCam.Follow = Ship.currentShip.shipExterior;
             weaponVCam.Follow = Ship.currentShip.shipExterior;
+            Ship.currentShip.shipExteriorSprite.enabled = false;
+            StartCoroutine(UpdateBGTextures());
         }
         public void AttachToPlayer(Transform playerTransform)
         {
@@ -53,6 +56,7 @@ namespace SwordsInSpace
             int tmp = playerVCam.Priority;
             playerVCam.Priority = shipVCam.Priority;
             shipVCam.Priority = tmp;
+            Ship.currentShip.shipExteriorSprite.enabled = !Ship.currentShip.shipExteriorSprite.enabled;
         }
 
         public void ToggleWeaponCamera()
@@ -60,7 +64,23 @@ namespace SwordsInSpace
             int tmp = playerVCam.Priority;
             playerVCam.Priority = weaponVCam.Priority;
             weaponVCam.Priority = tmp;
+            Ship.currentShip.shipExteriorSprite.enabled = !Ship.currentShip.shipExteriorSprite.enabled;
 
+        }
+
+        IEnumerator UpdateBGTextures()
+        {
+            while (!bgTexturesUpdated)
+            {
+                if (WorldManager.currentWorld)
+                {
+                    bgBack.material.mainTexture = WorldManager.currentWorld.backgroundTextureBack;
+                    bgMid.material.mainTexture = WorldManager.currentWorld.backgroundTextureMid;
+                    bgFront.material.mainTexture = WorldManager.currentWorld.backgroundTextureFront;
+                    bgTexturesUpdated = true;
+                }
+                yield return 0;
+            }
         }
     }
 }

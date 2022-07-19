@@ -49,9 +49,7 @@ namespace SwordsInSpace
         {
             if (!currentUIDisplay)
                 return false;
-            currentUIDisplay.SetActive(false);
-            currentUIDisplay = null;
-            DisplayCloseEvent.Invoke();
+            StartCoroutine(CloseUI());
             return true;
         }
 
@@ -65,6 +63,14 @@ namespace SwordsInSpace
         {
             if (!levelCompleteDisplay) return;
             levelCompleteDisplay.SetActive(true);
+        }
+
+        IEnumerator CloseUI() //delay by 1 frame to avoid assertion failure on use of Exit button in UI.
+        {
+            yield return 0;
+            currentUIDisplay.SetActive(false);
+            currentUIDisplay = null;
+            DisplayCloseEvent.Invoke();
         }
     }
 

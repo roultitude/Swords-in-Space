@@ -9,8 +9,18 @@ namespace SwordsInSpace
     {
         public double ShipMaxHp;
         public int ShipMaxNitroFuel;
-        public float ShipInvincibilityTime;
 
+        public float ShipMaxSpeed;
+
+        public float ShipInvincibilityTime;
         public float ShipFireInvincibilityTime;
+
+
+        public float powerMaxAmount;
+        public int powerDrainRate;
+        public int powerRefillRate;
+
+        public int fireHP;
+
     }
 };

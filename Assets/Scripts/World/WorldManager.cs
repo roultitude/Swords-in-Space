@@ -12,6 +12,8 @@ namespace SwordsInSpace
 
         public EnemySpawner spawner;
 
+        public Texture backgroundTextureBack, backgroundTextureMid, backgroundTextureFront;
+
         public bool levelComplete = false;
 
         private bool levelFinished = false;

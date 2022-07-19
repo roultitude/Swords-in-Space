@@ -43,3 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: ShipInterior
+    uniqueID: 3679540947
+    locked: 0
+  - name: ShipExterior
+    uniqueID: 25221269
+    locked: 0

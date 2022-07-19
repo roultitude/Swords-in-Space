@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
 using FishNet.Connection;
+using System;
+
 namespace SwordsInSpace
 {
     public class Bullet : Projectile
     {
-        Timer timer;
-        double shotSpeed;
+        public Timer timer;
+        public float shotSpeed;
         double shotSpread;
+        public delegate void BulletBehavior(GameObject bullet);
+        BulletBehavior moveFunction;
+        BulletBehavior onHitFunction;
+        BulletBehavior onDespawnFunction;
 
         private bool hasSpread = false;
+        public int pierce = 1;
 
-        public override void Setup(double shotSpeed, double shotLifeTime, double damage, double spread)
+        public override void Setup(float shotSpeed, double shotLifeTime, double damage, double spread, int pierce)
         {
             timer = gameObject.AddComponent<Timer>();
             this.shotSpeed = shotSpeed;
@@ -21,7 +28,23 @@ namespace SwordsInSpace
             timer.timeout.AddListener(OnTimeout);
             this.damage = damage;
             this.shotSpread = spread;
+            this.pierce = pierce;
+            moveFunction += BaseMovementFunction;
+        }
 
+        public void AddMovementFunction(BulletBehavior fn)
+        {
+            moveFunction += fn;
+        }
+
+        public void DebugMovementFunction(GameObject bullet)
+        {
+            bullet.transform.rotation *= Quaternion.Euler(0, 0, 5 * Time.deltaTime);
+        }
+
+        public void BaseMovementFunction(GameObject bullet)
+        {
+            bullet.transform.position += bullet.transform.right * Time.deltaTime * (float)shotSpeed;
         }
 
 
@@ -29,12 +52,19 @@ namespace SwordsInSpace
 
         public void OnHit()
         {
-            if (IsServer)
-                Despawn();
+
+
+            if (!IsServer) return;
+            pierce -= 1;
+
+            onHitFunction?.Invoke(gameObject);
+            if (pierce <= 0)
+                OnTimeout();
         }
 
         public void OnTimeout()
         {
+            onDespawnFunction?.Invoke(gameObject);
             if (IsServer)
                 Despawn();
         }
@@ -49,11 +79,19 @@ namespace SwordsInSpace
                 hasSpread = true;
                 gameObject.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 0, UnityEngine.Random.Range((float)-shotSpread / 2, (float)shotSpread / 2));
             }
-            transform.position += transform.right * Time.deltaTime * (float)shotSpeed;
+            moveFunction?.Invoke(gameObject);
 
 
         }
 
+        internal void AddOnHitFunction(BulletBehavior callOnHit)
+        {
+            onHitFunction += callOnHit;
+        }
 
+        internal void AddDespawnFunction(BulletBehavior callOnTimeout)
+        {
+            onDespawnFunction += callOnTimeout;
+        }
     }
 };

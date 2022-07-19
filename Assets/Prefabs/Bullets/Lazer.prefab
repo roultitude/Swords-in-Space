@@ -155,13 +155,16 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 199712470356501859}
   _networkObjectCache: {fileID: 199712470356501859}
-  damage: 0
-  shotLifeTime: 0
   rend: {fileID: 2141828733867705419}
   afterimage: {fileID: 6070287053398652314, guid: 5df90e2ee3c2a2e4182ed99c95113770, type: 3}
   fadeSpeed: 2
+  burstCD: 0
+  shootSound: {fileID: 0}
   range: 600
   hasShot: 0
+  isFirstShot: 1
+  damage: 0
+  shotLifeTime: 0
 --- !u!114 &199712470356501859
 MonoBehaviour:
   m_ObjectHideFlags: 0

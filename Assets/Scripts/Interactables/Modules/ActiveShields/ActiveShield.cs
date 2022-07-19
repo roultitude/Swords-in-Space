@@ -28,6 +28,8 @@ namespace SwordsInSpace
             InstanceFinder.TimeManager.OnTick -= OnTick;
         }
 
+
+
         void SetupUI()
         {
             UIDisplay = Instantiate(UIDisplayPrefab, Vector3.zero, Quaternion.identity);
@@ -37,6 +39,7 @@ namespace SwordsInSpace
 
         void OnDisplayClosed()
         {
+            SetOccupied(false);
             CameraManager.instance.ToggleWeaponCamera();
             currentPlayerInput.playerInput.actions["Move"].performed -= ActiveShieldInputMove;
             DisplayManager.instance.DisplayCloseEvent -= OnDisplayClosed;
@@ -44,12 +47,14 @@ namespace SwordsInSpace
             currentPlayerInput.SwitchView("PlayerView");
             currentPlayerInput = null;
             InstanceFinder.TimeManager.OnTick -= OnTick;
+            SyncTurnAxis(Vector2.zero);
         }
 
-        public override void Interact(GameObject player)
+        public override void OnInteract(GameObject player)
         {
             if (manager.Offer(UIDisplay))
             {
+                SetOccupied(true);
                 InstanceFinder.TimeManager.OnTick += OnTick;
                 CameraManager.instance.ToggleWeaponCamera();
                 currentPlayerInput = player.GetComponent<PlayerInputManager>();

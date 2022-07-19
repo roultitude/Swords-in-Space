@@ -6,6 +6,7 @@ using UnityEngine;
 using TMPro;
 using Pathfinding;
 
+
 namespace SwordsInSpace
 {
     public class EnemyAI : NetworkBehaviour
@@ -17,11 +18,8 @@ namespace SwordsInSpace
 
         [SerializeField]
         public double exp;
-
-
         [SerializeField]
-        Hpbar hpBar;
-
+        public AudioClip onDamagedSound;
 
         public bool doTeleportIfFar = true;
         public float teleportCheckDuration = 5f;
@@ -32,6 +30,7 @@ namespace SwordsInSpace
         readonly float fadeTime = 0.8f;
         private Coroutine teleportCorountine;
         private bool isBoss;
+        private Hpbar hpBar;
         protected AIPath ai;
         // Start is called before the first frame update
         protected void Start()
@@ -44,7 +43,7 @@ namespace SwordsInSpace
                 GetComponent<Rigidbody2D>().isKinematic = true;
 
             }
-
+            hpBar = GetComponentInChildren<Hpbar>();
             hpBar.DoFade(fadeTime);
         }
 
@@ -125,7 +124,7 @@ namespace SwordsInSpace
         public void takeDamage(double dmg)
         {
             currentHp -= dmg;
-
+            AudioManager.instance.ObserversPlay(onDamagedSound);
             if (currentHp <= 0)
             {
                 OnDeath();

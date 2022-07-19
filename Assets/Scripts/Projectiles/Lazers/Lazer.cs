@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace SwordsInSpace
 {
-    public class Lazer : Projectile
+    public class Lazer : NetworkBehaviour
     {
         // Update is called once per frame
         public LineRenderer rend;
@@ -16,11 +16,18 @@ namespace SwordsInSpace
         public GameObject afterimage;
         public float fadeSpeed = 0.1f;
         private double shotSpread;
+
+        public double burstCD;
+        public AudioClip shootSound;
+
         public float range = 600f;
         public bool hasShot = false;
-
+        public bool isFirstShot = true;
 
         private Shooter shooter;
+
+        public double damage;
+        public double shotLifeTime;
 
         public void Update()
         {
@@ -86,28 +93,32 @@ namespace SwordsInSpace
 
         }
 
-        public override void Setup(double shotSpeed, double shotLifeTime, double damage, double spread)
+        public void SetupLazer(double shotLifeTime, double damage, double spread, double burstCD, AudioClip shootSound, Shooter comp)
         {
             this.damage = damage;
             this.shotLifeTime = shotLifeTime;
-            this.shotSpread = spread;
-        }
 
-        public void setShooter(Shooter s)
-        {
-            shooter = s;
+            this.shotSpread = spread;
+            this.burstCD = burstCD;
+            this.shootSound = shootSound;
+            shooter = comp;
         }
 
         IEnumerator LazerLifetime()
         {
-            double cd = shooter.data.burstCD;
+            double cd = burstCD;
             double currentTime = 0;
             while (currentTime < shotLifeTime)
             {
-                DoRaycast();
 
+                DoRaycast();
+                if (!isFirstShot)
+                {
+                    AudioManager.instance.ObserversPlay(shootSound);
+                }
                 yield return new WaitForSeconds((float)cd);
                 currentTime += cd;
+                isFirstShot = false;
             }
             StartCoroutine("Fadeout");
             yield return null;

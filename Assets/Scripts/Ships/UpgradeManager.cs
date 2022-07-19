@@ -17,29 +17,30 @@ namespace SwordsInSpace
         public class Upgrade
         {
             public UpgradeSO upgradeSo;
-            public int upgradeCount;
+            public int upgradeCount = 0;
+            public int upgradeMaxCount = -1;
         }
 
         public readonly double tier1Chance = 0.5;
-        public Upgrade[] tier1Upgrade;
+        public List<Upgrade> tier1Upgrade;
 
         public readonly double tier2Chance = 0.25;
-        public Upgrade[] tier2Upgrade;
+        public List<Upgrade> tier2Upgrade;
 
         public readonly double tier3Chance = 0.2;
-        public Upgrade[] tier3Upgrade;
+        public List<Upgrade> tier3Upgrade;
 
         public readonly double tier4Chance = 0.05;
-        public Upgrade[] tier4Upgrade;
+        public List<Upgrade> tier4Upgrade;
 
         public Dictionary<string, Upgrade> upgrades;
+
 
         [SerializeField]
         public GameObject upgradesDisplay;
 
         private UpgradesDisplay uiUpgrades => upgradesDisplay.GetComponent<UpgradesDisplay>();
 
-        [SyncVar]
         public int numUpgrades;
 
         public bool debugTrigger = false;
@@ -52,6 +53,10 @@ namespace SwordsInSpace
         private Dictionary<string, int> votes;
 
         PlayerInputManager currentPlayerInput;
+
+        public delegate void OnUpgradeEvent(Dictionary<UpgradeTypes, float> stats);
+
+        public OnUpgradeEvent OnUpgrade;
 
         public void Update()
         {
@@ -68,8 +73,8 @@ namespace SwordsInSpace
 
             upgrades = new Dictionary<string, Upgrade>();
 
-            Upgrade[][] tiers = { tier1Upgrade, tier2Upgrade, tier3Upgrade, tier4Upgrade };
-            foreach (Upgrade[] upgradeArr in tiers)
+            List<Upgrade>[] tiers = { tier1Upgrade, tier2Upgrade, tier3Upgrade, tier4Upgrade };
+            foreach (List<Upgrade> upgradeArr in tiers)
             {
                 foreach (Upgrade a in upgradeArr)
                 {
@@ -77,6 +82,8 @@ namespace SwordsInSpace
                         upgrades.Add(a.upgradeSo.name, a);
                 }
             }
+
+            OnUpgrade?.Invoke(TallyUpgrades());
 
         }
 
@@ -93,23 +100,19 @@ namespace SwordsInSpace
 
         }
 
-        private void RollUpgrades()
+        public Upgrade GetValidUpgrade()
         {
-            if (!IsServer)
-                return;
-
-
 
             double randChance = Random.Range(0.0f, 1.0f);
 
-            randChance = 0.1; //To Remove after implmentation of higher Upgrade tiers.
+            if (tier4Upgrade.Count == 0 && randChance > 0.95)
+                randChance = 0.9;
 
-            Upgrade[] thisTier;
+            List<Upgrade> thisTier;
             if (randChance <= 0.5)
             {
 
                 thisTier = tier1Upgrade;
-
 
             }
             else if (randChance <= 0.75)
@@ -123,28 +126,87 @@ namespace SwordsInSpace
             else
             {
                 thisTier = tier4Upgrade;
+
             }
 
-            ShowUpgrades(thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name,
-        thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name,
-        thisTier[Random.Range(0, thisTier.Length)].upgradeSo.name);
+            return thisTier[Random.Range(0, thisTier.Count)];
+
+        }
+        private void RollUpgrades()
+        {
+            if (!IsServer)
+                return;
 
 
+
+            double randChance = Random.Range(0.0f, 1.0f);
+
+            int tier;
+            List<Upgrade> thisTier;
+            if (randChance <= 0.5)
+            {
+
+                thisTier = tier1Upgrade;
+                tier = 1;
+
+            }
+            else if (randChance <= 0.8)
+            {
+                thisTier = tier2Upgrade;
+                tier = 2;
+            }
+            else if (randChance <= 0.95)
+            {
+                thisTier = tier3Upgrade;
+                tier = 3;
+            }
+            else
+            {
+                thisTier = tier4Upgrade;
+                tier = 4;
+
+                if (thisTier.Count > 0)
+                {
+                    //If the team does not want the tier 4 upgrade, switch to a tier 3 one. Last upgrade is tier 3.
+
+
+                    ShowUpgrades(thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name,
+                  thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name,
+                  tier3Upgrade[Random.Range(0, tier3Upgrade.Count)].upgradeSo.name, tier);
+
+                    return;
+
+                }
+                else
+                {
+
+                    thisTier = tier3Upgrade;
+                    tier = 3;
+                }
+
+            }
+
+            ShowUpgrades(thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name,
+        thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name,
+        thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name, tier);
 
         }
 
         [ObserversRpc(RunLocally = true)]
-        public void ShowUpgrades(string upgrade1, string upgrade2, string upgrade3)
+        public void ShowUpgrades(string upgrade1, string upgrade2, string upgrade3, int tier)
         {
             hasMadeChoice = false;
             upgradeChoice = new string[] { upgrade1, upgrade2, upgrade3 };
-            Debug.Log(upgrade1 + "\t" + upgrade2 + "\t" + upgrade3 + "\t" + uiUpgrades == null);
+
             uiUpgrades.SetUpgrades(upgrade1, upgrade2, upgrade3);
 
             upgradesDisplay.GetComponentInChildren<VoteTimer>().ResetTimer();
+            uiUpgrades.upgradepanel.UpdateColor(tier);
+
 
             if (IsServer)
             {
+
                 votesMade = 0;
                 votes = new Dictionary<string, int>();
                 votes.Add(upgrade1, 0);
@@ -152,6 +214,7 @@ namespace SwordsInSpace
                     votes.Add(upgrade2, 0);
                 if (!votes.ContainsKey(upgrade3))
                     votes.Add(upgrade3, 0);
+
             }
         }
 
@@ -194,25 +257,65 @@ namespace SwordsInSpace
             ShowUpgradeScreen();
         }
 
+        public void RemoveUpgradeFromPool(Upgrade upg)
+        {
+
+            List<Upgrade>[] tiers = { tier1Upgrade, tier2Upgrade, tier3Upgrade, tier4Upgrade };
+            foreach (List<Upgrade> upgradeArr in tiers)
+            {
+                for (int i = 0; i < upgradeArr.Count; i++)
+                {
+                    if (upgradeArr[i] == upg)
+                    {
+                        upgradeArr.RemoveAt(i);
+                        return;
+                    }
+                }
+            }
+        }
 
         public void AddUpgrade(string upgrd)
         {
+
             upgrades[upgrd].upgradeCount += 1;
             numUpgrades -= 1;
-            Debug.Log("Upgrade Complete!");
+            Debug.Log("Upgrade Complete!" + upgrd);
+
+            if (upgrades[upgrd].upgradeMaxCount != -1 && upgrades[upgrd].upgradeCount >= upgrades[upgrd].upgradeMaxCount)
+            {
+                Debug.Log("Maxxed out" + upgrd);
+                RemoveUpgradeFromPool(upgrades[upgrd]);
+            }
+
             if (numUpgrades > 0)
             {
-
                 RollUpgrades();
             }
             else
             {
-                Ship.currentShip.ReloadStats();
+                OnUpgrade?.Invoke(TallyUpgrades());
                 BroadcastCloseScreen();
-                GameManager.instance.GoToLevel("GameScene", true, true);
+                StartCoroutine(DelayedSwitchScene("GameScene", 1f));
+
             }
         }
 
+        public void AddUpgradeNoUI(string upgrd)
+        {
+            upgrades[upgrd].upgradeCount += 1;
+            if (upgrades[upgrd].upgradeMaxCount != -1 && upgrades[upgrd].upgradeCount >= upgrades[upgrd].upgradeMaxCount)
+            {
+                Debug.Log("Maxxed out" + upgrd);
+                RemoveUpgradeFromPool(upgrades[upgrd]);
+            }
+            OnUpgrade?.Invoke(TallyUpgrades());
+        }
+
+        IEnumerator DelayedSwitchScene(string sceneName, float delayTime)
+        {
+            yield return new WaitForSeconds(delayTime);
+            GameManager.instance.GoToLevel(sceneName, true, true);
+        }
 
         [ObserversRpc]
         public void BroadcastCloseScreen()
@@ -313,8 +416,10 @@ namespace SwordsInSpace
                 int maxValue = -1;
                 foreach (String key in votes.Keys) //n = 3
                 {
+                    Debug.Log(key + "\t" + votes[key]);
                     if (votes[key] > maxValue)
                     {
+                        maxValue = votes[key];
                         ties.Clear();
                         ties.Add(key);
                     }
@@ -324,7 +429,14 @@ namespace SwordsInSpace
                     }
                 }
 
-                AddUpgrade(ties[Random.Range(0, ties.Count)]);
+                foreach (string s in ties)
+                {
+                    Debug.Log(s);
+                }
+
+                string upgrd = ties[Random.Range(0, ties.Count)];
+
+                AddUpgrade(upgrd);
                 return;
 
             }

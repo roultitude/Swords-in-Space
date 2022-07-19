@@ -6,7 +6,7 @@ using FishNet.Object;
 using FishNet.Managing.Scened;
 using FishNet.Connection;
 using UnityEngine.Tilemaps;
-
+using FishNet.Object.Synchronizing;
 
 namespace SwordsInSpace
 {
@@ -19,7 +19,14 @@ namespace SwordsInSpace
         public float tickTime;
         public float tickChance;
         public float fireStartOnCollideChance;
-        private bool fireActive = false;
+
+        [SerializeField]
+        AudioSource audioFireStart, audioFireOngoing;
+
+        [SyncVar(OnChange = nameof(OnChangeFireActive))]
+        bool fireActive = false;
+
+
 
         public void StartFire()
         {
@@ -36,9 +43,13 @@ namespace SwordsInSpace
 
         public IEnumerator TrackFire()
         {
+
             while (countFires() > 0)
             {
-                fireActive = true;
+                if (!fireActive)
+                {
+                    fireActive = true;
+                }
                 foreach (Fire f in fires)
                 {
                     if (f.fireActive && Random.Range(0f, 1f) < tickChance)
@@ -76,7 +87,7 @@ namespace SwordsInSpace
             int i = 0;
             foreach (Fire f in fires)
             {
-                if (f.gameObject.activeInHierarchy)
+                if (f.fireActive)
                 {
                     i += 1;
                 }
@@ -89,6 +100,24 @@ namespace SwordsInSpace
 
             if (IsServer && Random.Range(0f, 1f) < fireStartOnCollideChance)
                 StartFire();
+        }
+
+        [ObserversRpc(IncludeOwner = true, RunLocally = true, BufferLast = true)]
+        public void UpdateFireHP(int hp)
+        {
+            Fire.maxFlameHP = hp;
+        }
+        public void OnChangeFireActive(bool wasFireActive, bool isFireActive, bool isServer)
+        {
+            if (!wasFireActive && isFireActive)  //from off -> on
+            {
+                audioFireStart.Play();
+                audioFireOngoing.Play();
+            }
+            else if (wasFireActive && !isFireActive)  //from on -> off
+            {
+                audioFireOngoing.Stop();
+            }
         }
     }
 };

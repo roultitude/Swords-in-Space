@@ -123,6 +123,17 @@
                 },
                 {
                     "name": "",
+                    "id": "5c71f441-7e77-467c-889b-5c8675bec2ee",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "24778aa4-a61d-4854-93a5-3c5af133b7f6",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
@@ -182,6 +193,17 @@
                     "name": "",
                     "id": "8baa5e0f-605a-42cb-a386-30095ab03b43",
                     "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f80248c0-f85c-4870-87d8-ce89c58d1b65",
+                    "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
