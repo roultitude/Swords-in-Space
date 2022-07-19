@@ -19,6 +19,7 @@ namespace SwordsInSpace
         [SerializeField]
         private int drainRate = 5;
 
+        [SerializeField]
         private int refillRate = 3;
 
         [SerializeField]

@@ -188,8 +188,12 @@ MonoBehaviour:
   anim: {fileID: 7346991262034413159}
   linkedFireCells: []
   interactZone: {fileID: 7448590755877861288}
-  collideZone: {fileID: 0}
+  collideZone: {fileID: 8284166661505368378}
   UIDisplayPrefab: {fileID: 2820425106572785257, guid: 7066f820b3a9004489573ac7e8f4474b, type: 3}
+  baseHealAmount: 1
+  baseComboHealAmount: 1
+  currentHealAmount: 0
+  currentComboHealAmount: 0
 --- !u!114 &1089966707694479485
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -47,6 +47,7 @@ namespace SwordsInSpace
             currentPlayerInput.SwitchView("PlayerView");
             currentPlayerInput = null;
             InstanceFinder.TimeManager.OnTick -= OnTick;
+            SyncTurnAxis(Vector2.zero);
         }
 
         public override void OnInteract(GameObject player)

@@ -27,7 +27,7 @@ namespace SwordsInSpace
         {
             base.OnStartServer();
             Ship.currentShip.upgradeManager.OnUpgrade += ReloadUpgrades;
-
+            currentTurnSpeed = turnSpeed;
         }
         public void ReloadUpgrades(Dictionary<UpgradeTypes, float> stats)
         {

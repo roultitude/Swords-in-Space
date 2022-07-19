@@ -247,7 +247,7 @@ MonoBehaviour:
   anim: {fileID: 5976763029475203202}
   linkedFireCells: []
   interactZone: {fileID: 5790167025525516621}
-  collideZone: {fileID: 0}
+  collideZone: {fileID: 6055079075070263687}
   UIDisplayPrefab: {fileID: 2941157506514726687, guid: 8640bdbd3fef30042a60623b4e8fea44, type: 3}
 --- !u!61 &5790167025525516621 stripped
 BoxCollider2D:
