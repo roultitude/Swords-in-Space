@@ -69,7 +69,7 @@ namespace SwordsInSpace
         Timer burstTimer;
         Timer atkTimer;
 
-        [SyncVar]
+        [SyncVar(SendRate = 5)]
         public bool canFire = true;
         bool autoFire = false;
 
@@ -235,6 +235,7 @@ namespace SwordsInSpace
         public void FinishReload()
         {
             canFire = true;
+            Debug.Log("Set CanFire to True" + Time.time);
             if (autoFire)
             {
                 StartAttack();
@@ -244,17 +245,15 @@ namespace SwordsInSpace
         [ServerRpc(RequireOwnership = false)]
         public void Fire()
         {
-            if (canFire)
-            {
-                StartAttack();
-            }
+            StartAttack();
         }
 
         public void StartAttack()
         {
-            if (!IsServer) { return; }//Sanity check
+            if (!canFire) { return; }//Sanity check
+            Debug.Log("CanFire is " + canFire + Time.time);
+            Debug.Log("Setting CanFire to false " + Time.time);
             canFire = false;
-            OnFireClient();
 
             StartBurst();
         }
@@ -312,6 +311,7 @@ namespace SwordsInSpace
 
                 if (currentBurst >= data.burst)
                 {
+                    OnFireClient();
                     atkTimer.Start();
                 }
 

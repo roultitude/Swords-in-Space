@@ -9,7 +9,7 @@ namespace SwordsInSpace
         {
             //May want to scale powerups with world level
 
-            Ship.currentShip.AddHp(WorldSpawner.level * 25);
+            Ship.currentShip.AddHp(GameManager.instance.currentLevel * 25);
         }
     }
 };
