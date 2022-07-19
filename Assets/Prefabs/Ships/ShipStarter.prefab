@@ -30726,6 +30726,10 @@ PrefabInstance:
       propertyPath: _componentIndexCache
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier1Upgrade.Array.data[2].upgradeCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7887555046593034605, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
       value: 1
