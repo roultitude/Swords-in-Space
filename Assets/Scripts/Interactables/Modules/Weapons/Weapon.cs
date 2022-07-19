@@ -33,15 +33,17 @@ namespace SwordsInSpace
                 atkCD = baseData.atkCD;
                 bulletScale = baseData.bulletScale;
                 rotationSpeed = baseData.rotationSpeed;
+                pierce = baseData.pierce;
             }
             public Sprite turretSprite;
             public GameObject bulletPrefab;
             public AudioClip shootSound;
             public double damage;
-            public int shotSpeed;
+            public float shotSpeed;
             public double shotLifeTime;
             public double shotSpread;
             public int burst;
+            public int pierce;
             public double atkCD;
             public double burstCD;
             public Vector2 bulletScale;
@@ -98,43 +100,57 @@ namespace SwordsInSpace
             this.atkTimer.Setup(data.atkCD, false, false);
             this.atkTimer.timeout.AddListener(FinishReload);
             GameManager.OnNewSceneLoadEvent += SetupUI;
+            Ship.currentShip.upgradeManager.OnUpgrade += ReloadUpgrades;
 
         }
 
         public void ReloadUpgrades(Dictionary<UpgradeTypes, float> stats)
         {
-            attackManager.ReloadUpgrades(stats);
 
-            double TallyMaxHp = 0;//data.ShipMaxHp;
+            attackManager.ReloadUpgrades(stats);
 
             //Base increases
             foreach (UpgradeTypes type in stats.Keys)
             {
                 switch (type)
                 {
-                    case UpgradeTypes.bulletSpeed:
-                        TallyMaxHp += stats[type];
+                    case UpgradeTypes.shotSpeed:
+                        data.shotSpeed = baseData.shotSpeed + stats[type];
                         break;
+
+                    case UpgradeTypes.shotDamage:
+                        data.damage = baseData.damage + stats[type];
+                        if (data.damage <= 0.1)
+                        {
+                            data.damage = 0.1;
+                        }
+                        break;
+
+                    case UpgradeTypes.shotLifetime:
+                        data.shotLifeTime = baseData.shotLifeTime + stats[type];
+                        if (data.shotLifeTime < 0.1)
+                        {
+                            data.shotLifeTime = 0.1;
+                        }
+                        break;
+
+                    case UpgradeTypes.shotBurst:
+                        int newBurst = baseData.burst + (int)stats[type];
+                        newBurst = (int)Mathf.Clamp(newBurst, 1, int.MaxValue);
+                        data.burst = newBurst;
+
+                        break;
+
+                    case UpgradeTypes.shotSpread:
+                        double newShotSpread = baseData.shotSpread + stats[type];
+                        newShotSpread = (int)Mathf.Clamp((float)newShotSpread, 0, 360);
+                        data.shotSpread = newShotSpread;
+                        break;
+
 
                 }
             }
 
-            //%Increases, to be applied after base increase
-            foreach (UpgradeTypes type in stats.Keys)
-            {
-                switch (type)
-                {
-                    case UpgradeTypes.maxHpPercent:
-                        TallyMaxHp *= (100 + stats[type]) / 100;
-                        break;
-
-                }
-            }
-
-
-            //Assignment of values
-            //if (CurrentMaxHp != TallyMaxHp)
-            //    SetMaxHp(TallyMaxHp);
         }
 
         void OnDisable()
@@ -239,7 +255,7 @@ namespace SwordsInSpace
             if (!IsServer) { return; }//Sanity check
             canFire = false;
             OnFireClient();
-            atkTimer.Start();
+
             StartBurst();
         }
 
@@ -268,17 +284,21 @@ namespace SwordsInSpace
 
 
 
-                    List<AttackManager.BulletInfo> toSpawn = attackManager.DraftBulletLocations(data.bulletPrefab, comp.transform.position, comp.transform.rotation.eulerAngles, data.shotSpeed, data.shotSpread, data.shotLifeTime, data.damage, data.bulletScale);
+                    List<AttackManager.BulletInfo> toSpawn = attackManager.DraftBulletLocations(data.bulletPrefab, comp.transform.position, comp.transform.rotation.eulerAngles, data.shotSpeed, data.shotSpread, data.shotLifeTime, data.damage, data.bulletScale, data.pierce);
 
 
                     foreach (AttackManager.BulletInfo spawnData in toSpawn)
                     {
-                        Debug.Log("Spawning Bullet");
+                        if (!spawnData.isValid) continue;
+
                         GameObject toAdd = Instantiate(spawnData.bulletBase, spawnData.bulletPosition, Quaternion.Euler(spawnData.bulletRotation));
+                        Bullet toAddBullet = toAdd.GetComponent<Bullet>();
 
-                        toAdd.GetComponent<Bullet>().AddMovementFunction(spawnData.fn);
+                        toAddBullet.AddMovementFunction(spawnData.CallOnMove);
+                        toAddBullet.AddOnHitFunction(spawnData.CallOnHit);
+                        toAddBullet.AddDespawnFunction(spawnData.CallOnDespawn);
 
-                        toAdd.GetComponent<Projectile>().Setup(spawnData.bulletShotSpeed, spawnData.bulletShotLifeTime, spawnData.bulletDamage, spawnData.bulletShotSpread);
+                        toAddBullet.Setup(spawnData.bulletShotSpeed, spawnData.bulletShotLifeTime, spawnData.bulletDamage, spawnData.bulletShotSpread, spawnData.bulletPierce);
                         toAdd.transform.localScale = spawnData.bulletScale;
 
                         toAdd.tag = "Friendly";
@@ -290,11 +310,18 @@ namespace SwordsInSpace
                 currentBurst += 1;
                 this.burstTimer.Start();
 
+                if (currentBurst >= data.burst)
+                {
+                    atkTimer.Start();
+                }
+
             }
             else
             {
                 currentBurst = 0;
             }
+
+
 
         }
 

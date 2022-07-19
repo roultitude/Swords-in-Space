@@ -18,6 +18,8 @@ namespace SwordsInSpace
         [SerializeField]
         private TMPro.TextMeshProUGUI upgradesRemainingText;
 
+        public UpgradeBackgroundPanel upgradepanel;
+
         private UpgradeManager upgradeManager;
         private UpgradeSO[] upgrades;
         private Canvas canvas;
@@ -46,7 +48,6 @@ namespace SwordsInSpace
             UpgradeSO upgrade1 = upgradeManager.StringToUpgradeSO(upgradestr1);
             UpgradeSO upgrade2 = upgradeManager.StringToUpgradeSO(upgradestr2);
             UpgradeSO upgrade3 = upgradeManager.StringToUpgradeSO(upgradestr3);
-
 
             upgrades[0] = upgrade1;
             upgrades[1] = upgrade2;

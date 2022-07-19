@@ -10,14 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d78f91a514a994343aea7fc54bd1e4a8, type: 3}
-  m_Name: Cow
+  m_Name: Convergence
   m_EditorClassIdentifier: 
-  upgradeName: Cow
-  description: Drink milk and grow strong! Adds Hull points
-  sprite: {fileID: 21300000, guid: f412543bf4087b440836e6f202e0fd67, type: 3}
+  upgradeName: Convergence
+  description: Bullets move together.
+  sprite: {fileID: 21300000, guid: f5d2b258abec02f41a256aae1e1f36b5, type: 3}
   statChanges:
-  - type: 0
-    amount: 5
-  - type: 1
-    amount: 5
-  gameplayFlags: []
+  - type: 29
+    amount: 1

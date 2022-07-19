@@ -4,6 +4,7 @@ using FishNet.Object.Synchronizing;
 using UnityEngine;
 using FishNet.Object;
 using FishNet.Connection;
+using static SwordsInSpace.UpgradeSO;
 
 namespace SwordsInSpace
 {
@@ -18,7 +19,7 @@ namespace SwordsInSpace
         [SerializeField]
         private int drainRate = 5;
 
-        public int refillRate = 3;
+        private int refillRate = 3;
 
         [SerializeField]
         AudioClip chargeSound;
@@ -35,13 +36,63 @@ namespace SwordsInSpace
         bool animLocked = false;
 
         IEnumerator animLocker;
+
+        private new void Start()
+        {
+            base.Start();
+            Ship.currentShip.upgradeManager.OnUpgrade += ReloadUpgrades;
+
+            fetchBaseStats();
+        }
+
+        private void fetchBaseStats()
+        {
+            maxAmount = Ship.currentShip.data.powerMaxAmount;
+            drainRate = Ship.currentShip.data.powerDrainRate;
+            refillRate = Ship.currentShip.data.powerRefillRate;
+            clampStats();
+        }
+
+        private void clampStats()
+        {
+            drainRate = (int)Mathf.Clamp(drainRate, 1, maxAmount / 2f);
+            refillRate = Mathf.Clamp(refillRate, drainRate + 1, refillRate);
+        }
+        public void ReloadUpgrades(Dictionary<UpgradeTypes, float> stats)
+        {
+
+
+            //Base increases
+            foreach (UpgradeTypes type in stats.Keys)
+            {
+                switch (type)
+                {
+                    case UpgradeTypes.powerMaxAmount:
+                        maxAmount = Ship.currentShip.data.powerMaxAmount + stats[type];
+                        break;
+
+                    case UpgradeTypes.powerDrainRate:
+                        drainRate = Ship.currentShip.data.powerDrainRate + (int)stats[type];
+
+                        break;
+
+                    case UpgradeTypes.powerRefillRate:
+                        refillRate = Ship.currentShip.data.powerRefillRate + (int)stats[type];
+
+                        break;
+                }
+            }
+            clampStats();
+
+        }
+
+
         // Update is called once per frame
         void Update()
         {
 
             if (currentAmount == 0)
             {
-
                 return;
             }
 

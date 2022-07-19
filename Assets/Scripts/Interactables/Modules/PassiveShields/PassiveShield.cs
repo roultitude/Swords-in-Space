@@ -1,6 +1,8 @@
+using FishNet.Object;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static SwordsInSpace.UpgradeSO;
 
 namespace SwordsInSpace
 {
@@ -16,9 +18,17 @@ namespace SwordsInSpace
         private GameObject UIDisplay;
         PlayerInputManager currentPlayerInput;
 
+        public float baseHealAmount = 1f;
+        public float baseComboHealAmount = 1f;
+
+        public float currentHealAmount, currentComboHealAmount;
+
         private void OnEnable()
         {
             GameManager.OnNewSceneLoadEvent += SetupUI;
+            currentHealAmount = baseHealAmount;
+            currentComboHealAmount = baseComboHealAmount;
+            Ship.currentShip.upgradeManager.OnUpgrade += ReloadUpgrades;
         }
         void OnDisable()
         {
@@ -31,6 +41,26 @@ namespace SwordsInSpace
             manager = DisplayManager.instance;
             UIDisplay.SetActive(false);
             display = UIDisplay.GetComponent<PassiveShieldDisplay>();
+
+
+        }
+
+        public void ReloadUpgrades(Dictionary<UpgradeTypes, float> stats)
+        {
+
+            if (stats.ContainsKey(UpgradeTypes.healOnBeat))
+            {
+                currentHealAmount = baseHealAmount + stats[UpgradeTypes.healOnBeat];
+                currentHealAmount = Mathf.Clamp(currentHealAmount, baseHealAmount, float.MaxValue);
+            }
+
+            if (stats.ContainsKey(UpgradeTypes.healOnCombo))
+            {
+                currentComboHealAmount = baseComboHealAmount + stats[UpgradeTypes.healOnCombo];
+                currentComboHealAmount = Mathf.Clamp(currentComboHealAmount, baseComboHealAmount, float.MaxValue);
+            }
+
+
         }
 
 
@@ -53,6 +83,8 @@ namespace SwordsInSpace
         }
         void OnDisplayClosed()
         {
+            if (display.increment > 0)
+                healFromCombo(display.increment);
             SetOccupied(false);
             currentPlayerInput.SwitchView("PlayerView");
 
@@ -64,6 +96,8 @@ namespace SwordsInSpace
             currentPlayerInput = null;
 
         }
+
+
 
         public void PassiveShieldInputLeft(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
@@ -80,6 +114,17 @@ namespace SwordsInSpace
             }
         }
 
+        [ServerRpc(RequireOwnerShip = false)]
+        public void healFromBeat()
+        {
+            Ship.currentShip.AddHp(currentHealAmount);
+        }
+
+        [ServerRpc(RequireOwnerShip = false)]
+        public void healFromCombo(float increment)
+        {
+            Ship.currentShip.AddHp(increment * currentComboHealAmount);
+        }
 
     }
 };

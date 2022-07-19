@@ -18,15 +18,59 @@ namespace SwordsInSpace
         [System.Serializable]
         public enum UpgradeTypes
         {
-            maxHp,
-            maxHpPercent,
-            bulletSpeed,
-            bulletSpeedPercent,
+            playerMoveSpeed,
+            playerDashMult,
+
+
+
+            //Ship Stat Changes
+            maxShipHp,
+            maxShipHpPercent,
+
+            shipSpeed,
+            shipTurnSpeed,
+
+            nitroMaxAmount,
+            nitroMult,
+
+            powerMaxAmount,
+            powerDrainRate,
+            powerRefillRate,
+
+            fireHP,
+
+            healOnBeat,
+            healOnCombo,
+
+            shieldSize,
+            shieldTurnSpeed,
+
+            clawSize,
+            clawTurnSpeed,
+
+
+            //Weapon State Changes
             shotSpeed,
-            shotSpeedPercent,
+            shotDamage,
             shotLifetime,
-            shotLifetimePercent,
-            multiShot
+            shotPierce,
+            shotBurst,
+            shotSpread,
+            shotCooldown,
+
+            //Bullet Spawning Upgrades
+            multiShot, //100% Chance, + 2 bullet fired. Bullets fired cannot be multiplied
+            spreadShot, //100% Chance, +2 bullets fired divided in a 180 cone. Bullets fired cannot be multiplied
+
+
+
+            //Bullet Pathing Upgrades
+            bulletCurve, //Stacking increases curve 
+            bulletWave, //Stacking increases amplitude
+
+            //Special Bullet Upgrades
+            convergence
+
         }
         [System.Serializable]
         public struct UpgradeAttributes
@@ -37,22 +81,6 @@ namespace SwordsInSpace
 
 
         public UpgradeAttributes[] statChanges;
-
-
-
-        [System.Serializable]
-        public enum UpgradeBoolsTypes
-        {
-            placeholder
-        }
-        [System.Serializable]
-        public struct UpgradeBools
-        {
-            public UpgradeBoolsTypes type;
-            public bool activated;
-        }
-
-        public UpgradeBools[] gameplayFlags;
 
 
     }

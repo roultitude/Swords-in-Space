@@ -5,10 +5,10 @@ namespace SwordsInSpace
 {
     public class SpiderShooter : EnemyShooter
     {
-        public double[] bulletSpeeds;
+        public float[] bulletSpeeds;
         public override void Shoot()
         {
-            foreach (double bulletSpeed in bulletSpeeds)
+            foreach (float bulletSpeed in bulletSpeeds)
             {
                 shotSpeed = bulletSpeed;
                 ShootAtPlayer();
