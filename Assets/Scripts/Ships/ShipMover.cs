@@ -11,10 +11,14 @@ namespace SwordsInSpace
     {
         public Rigidbody2D rb;
         public bool canMove;
+        public Animator shipAnimator;
+
+        [SyncVar(OnChange = nameof(OnChangeIsMoving))]
+        bool isMoving;
 
         [SerializeField]
         private float speed, turnSpeed, nitroMult, nitroInvincibilityTime;
-        
+
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -42,11 +46,15 @@ namespace SwordsInSpace
             rb.AddForce(md.Vertical * transform.right * speed);
             if (md.Dashing && Ship.currentShip.CurrentNitroFuel > 0)
             {
-                rb.AddForce(1*transform.right * speed * (nitroMult - 1));
+                rb.AddForce(1 * transform.right * speed * (nitroMult - 1));
                 Ship.currentShip.ChangeNitroFuel(-1);
                 if (IsServer) Ship.currentShip.StartCoroutine(Ship.currentShip.StartInvincibilityFrames(nitroInvincibilityTime));
             }
             rb.AddTorque(md.Horizontal * -turnSpeed);
+            if (IsServer)
+            {
+                isMoving = (md.Horizontal != 0 || md.Vertical != 0);
+            }
         }
 
         public void Reconciliation(ReconcileData rd, bool asServer)
@@ -61,6 +69,12 @@ namespace SwordsInSpace
             transform.rotation = rd.Rotation;
             rb.velocity = rd.Velocity;
             rb.angularVelocity = rd.AngularVelocity;
+        }
+
+        private void OnChangeIsMoving(bool oldMoving, bool newMoving, bool asServer)
+        {
+            if (newMoving) shipAnimator.CrossFade("ShipMoving", 0, 0);
+            else shipAnimator.CrossFade("ShipIdle", 0, 0);
         }
     }
 }

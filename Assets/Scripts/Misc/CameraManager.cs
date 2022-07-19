@@ -41,6 +41,7 @@ namespace SwordsInSpace
         {
             shipVCam.Follow = Ship.currentShip.shipExterior;
             weaponVCam.Follow = Ship.currentShip.shipExterior;
+            Ship.currentShip.shipExteriorSprite.enabled = false;
             StartCoroutine(UpdateBGTextures());
         }
         public void AttachToPlayer(Transform playerTransform)
@@ -55,6 +56,7 @@ namespace SwordsInSpace
             int tmp = playerVCam.Priority;
             playerVCam.Priority = shipVCam.Priority;
             shipVCam.Priority = tmp;
+            Ship.currentShip.shipExteriorSprite.enabled = !Ship.currentShip.shipExteriorSprite.enabled;
         }
 
         public void ToggleWeaponCamera()
@@ -62,6 +64,7 @@ namespace SwordsInSpace
             int tmp = playerVCam.Priority;
             playerVCam.Priority = weaponVCam.Priority;
             weaponVCam.Priority = tmp;
+            Ship.currentShip.shipExteriorSprite.enabled = !Ship.currentShip.shipExteriorSprite.enabled;
 
         }
 

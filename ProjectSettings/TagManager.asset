@@ -46,3 +46,6 @@ TagManager:
   - name: ShipInterior
     uniqueID: 3679540947
     locked: 0
+  - name: ShipExterior
+    uniqueID: 25221269
+    locked: 0

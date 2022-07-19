@@ -32,6 +32,7 @@ namespace SwordsInSpace
 
         protected virtual void switchAnim()
         {
+            if (!anim) return;
             if (numPlayersNearby > 0)
             {
                 anim.CrossFade("PlayerNearby", 0, 0);

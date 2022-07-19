@@ -26,7 +26,7 @@ namespace SwordsInSpace
             pos += turnAxis.x * turnSpeed * Time.deltaTime;
             Reposition(pos);
 
-            var rot = Quaternion.LookRotation(Vector3.forward, gameObject.transform.localPosition) * Quaternion.Euler(0,0,90);
+            var rot = Quaternion.LookRotation(Vector3.forward, gameObject.transform.localPosition);
             gameObject.transform.localRotation = Quaternion.RotateTowards(gameObject.transform.rotation, rot, 360f);
 
         }

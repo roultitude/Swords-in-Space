@@ -22,7 +22,7 @@ namespace SwordsInSpace
         public UpgradeManager upgradeManager;
         public ExpManager expManager;
         public Transform fireContainer;
-
+        public SpriteRenderer shipExteriorSprite;
         public FireManager fireManager;
 
         [SerializeField]
