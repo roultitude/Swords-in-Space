@@ -69,7 +69,7 @@ namespace SwordsInSpace
         Timer burstTimer;
         Timer atkTimer;
 
-        [SyncVar(SendRate = 5)]
+        [SyncVar]
         public bool canFire = true;
         bool autoFire = false;
 
@@ -245,6 +245,7 @@ namespace SwordsInSpace
         [ServerRpc(RequireOwnership = false)]
         public void Fire()
         {
+            if (!canFire) return;
             StartAttack();
         }
 
@@ -260,8 +261,8 @@ namespace SwordsInSpace
 
         private void StartBurst()
         {
-            if (!IsServer) { return; }//Sanity check
-
+            if (!IsServer || !canFire) { return; }//Sanity check
+            
             if (currentBurst < data.burst)
             {
                 if (autoFire) {; }
