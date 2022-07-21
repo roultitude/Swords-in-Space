@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[0]
@@ -150,15 +150,15 @@ PrefabInstance:
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[1]
       value: 
-      objectReference: {fileID: 2056331243416388623}
+      objectReference: {fileID: 7580986903196843102}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[2]
       value: 
-      objectReference: {fileID: 114230788736614587}
+      objectReference: {fileID: 2056331243416388623}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3478068887014341751}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[4]
       value: 
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e977376d9c1cb894894a8d6d01d0eb25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 1
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 9217316466230567277}
   _networkObjectCache: {fileID: 9217316466230567277}
   maxHp: 5
@@ -309,7 +309,24 @@ MonoBehaviour:
   onDamagedSound: {fileID: 8300000, guid: 81cf58358c17c164f8bd67c45e6f826a, type: 3}
   doTeleportIfFar: 1
   teleportCheckDuration: 5
-  teleportIfFurtherThanDistance: 200
+  isBoss: 0
+  detectionRange: 30
+  imageSpawner: {fileID: 7580986903196843102}
+--- !u!114 &3478068887014341751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6450891800367982020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4299ab5f76bdb4f92c2c2dd4a4597c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 3
+  _addedNetworkObject: {fileID: 9217316466230567277}
+  _networkObjectCache: {fileID: 9217316466230567277}
 --- !u!1 &7456956422516612179 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3297842073833619420, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
@@ -327,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f837c231c60d99b45bdf6d1103820242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 2
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 9217316466230567277}
   _networkObjectCache: {fileID: 9217316466230567277}
   bullet: {fileID: 2590286623395873651, guid: 3f9c5556cb42f9142905538a99750657, type: 3}
@@ -340,6 +357,18 @@ MonoBehaviour:
   canFire: 1
   bulletScale: {x: 3, y: 3}
   timerComplete: 0
+  isAsleep: 0
+--- !u!114 &7580986903196843102 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2561761843994730449, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+  m_PrefabInstance: {fileID: 5384097056713024399}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6450891800367982020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f96db4e65982964b949d523336a4555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &9217316466230567277 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}

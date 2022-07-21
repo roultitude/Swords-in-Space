@@ -16,7 +16,7 @@ namespace SwordsInSpace
 
         MessageDisplay messageDisplay;
 
-        int currentLevel;
+        public int currentLevel;
         List<NetworkObject> CarryNetworkObjects;
         bool nextSceneLobby;
 
@@ -54,12 +54,12 @@ namespace SwordsInSpace
         }
 
 
-        [ServerRpc(RequireOwnership =false)]
+        [ServerRpc(RequireOwnership = false)]
         public void GoToLevel(string sceneName, bool bringShip = false, bool bringPlayers = true)
         {
             Ship.currentShip.AllPlayerExitUI();
-            GetCarryNetworkObjects(bringShip,bringPlayers);
-            SceneLoadData sld= new SceneLoadData(sceneName) { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
+            GetCarryNetworkObjects(bringShip, bringPlayers);
+            SceneLoadData sld = new SceneLoadData(sceneName) { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
             InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sld);
         }
 
@@ -95,7 +95,7 @@ namespace SwordsInSpace
             yield return new WaitForSeconds(5f);
             Ship.currentShip.LevelTransition();
         }
-        
+
 
         public void GetCarryNetworkObjects(bool includeShip, bool includePlayers)
         {
@@ -103,13 +103,13 @@ namespace SwordsInSpace
             foreach (User user in UserManager.instance.users) //get all connected users
             {
                 CarryNetworkObjects.Add(user.GetComponent<NetworkObject>());
-                if (includePlayers) 
+                if (includePlayers)
                 {
                     CarryNetworkObjects.Add(user.controlledPlayer.GetComponent<NetworkObject>());
                     user.controlledPlayer.DetachUsernameCanvasRPC(false);
                 }
             }
-            if(includeShip) CarryNetworkObjects.Add(Ship.currentShip.GetComponentInParent<NetworkObject>()); //get current ship
+            if (includeShip) CarryNetworkObjects.Add(Ship.currentShip.GetComponentInParent<NetworkObject>()); //get current ship
             CarryNetworkObjects.Add(UserManager.instance.GetComponent<NetworkObject>()); //always bring UserManager and GameManager
             CarryNetworkObjects.Add(GameManager.instance.GetComponent<NetworkObject>());
         }

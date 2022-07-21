@@ -200,7 +200,7 @@ namespace SwordsInSpace
                     Traverse(hasSeen, currentMap, (int)loc.x, (int)loc.y, 0, 0);
                     //Debug.Log(currentMap.cellBounds);
                     if (IsServer)
-                        asteroid.hp = hp;
+                        asteroid.hp = hp * (2 + GameManager.instance.currentLevel);
                 }
 
 

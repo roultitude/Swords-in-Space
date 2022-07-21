@@ -191,20 +191,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[1]
       value: 
-      objectReference: {fileID: 1841974045150391443}
+      objectReference: {fileID: 7097748228570948307}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[2]
       value: 
-      objectReference: {fileID: 7937793952365762466}
+      objectReference: {fileID: 1841974045150391443}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3783693575054878566}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _networkBehaviours.Array.data[4]
+      value: 
+      objectReference: {fileID: 7937793952365762466}
     - target: {fileID: 3882986017172763831, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: drawGizmos
       value: 1
@@ -276,15 +280,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e977376d9c1cb894894a8d6d01d0eb25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 1
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 8385468830528749536}
   _networkObjectCache: {fileID: 8385468830528749536}
   maxHp: 5
   exp: 55
-  hpBar: {fileID: 7574043320882608526}
+  onDamagedSound: {fileID: 0}
   doTeleportIfFar: 1
   teleportCheckDuration: 5
-  teleportIfFurtherThanDistance: 200
+  isBoss: 0
+  detectionRange: 30
+  imageSpawner: {fileID: 7097748228570948307}
 --- !u!114 &3783693575054878566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,21 +303,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1f859cf79064542acac55a74c74cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 3
+  _addedNetworkObject: {fileID: 8385468830528749536}
+  _networkObjectCache: {fileID: 8385468830528749536}
   rotationSpeed: 90
 --- !u!4 &6779641373063595842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2241507642535770688, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
   m_PrefabInstance: {fileID: 4687526737961401602}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7574043320882608526 stripped
+--- !u!114 &7097748228570948307 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2887116319582651532, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2561761843994730449, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
   m_PrefabInstance: {fileID: 4687526737961401602}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5923215299714710345}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed2804f96290a8f4384d05bc4cd86c1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f96db4e65982964b949d523336a4555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7838859707461993182 stripped
@@ -331,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9825ba8a7481a6a45b58ea3b6f2f914d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 2
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 8385468830528749536}
   _networkObjectCache: {fileID: 8385468830528749536}
   bullet: {fileID: 2590286623395873651, guid: 3f9c5556cb42f9142905538a99750657, type: 3}
@@ -344,6 +353,7 @@ MonoBehaviour:
   canFire: 1
   bulletScale: {x: 3, y: 3}
   timerComplete: 0
+  isAsleep: 0
   RotationOffset: {x: 0, y: 0, z: 0.70710677, w: 0.70710677}
   turrets:
   - {fileID: 3933263370451571853}

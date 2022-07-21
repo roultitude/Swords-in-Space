@@ -169,7 +169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[0]
@@ -178,15 +178,15 @@ PrefabInstance:
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[1]
       value: 
-      objectReference: {fileID: 600845861269413000}
+      objectReference: {fileID: 4930325942069125146}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[2]
       value: 
-      objectReference: {fileID: 7889098942661978653}
+      objectReference: {fileID: 600845861269413000}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7826549821664265833}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[4]
       value: 
@@ -325,6 +325,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4930325942069125146 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2561761843994730449, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+  m_PrefabInstance: {fileID: 7485331682167947211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8421504617852582272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f96db4e65982964b949d523336a4555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5342804511119917079 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3297842073833619420, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
@@ -342,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceefe2e2b3728dc4f95a2e5d4a323285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 2
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 5959219170562014505}
   _networkObjectCache: {fileID: 5959219170562014505}
   bullet: {fileID: 2590286623395873651, guid: 3f9c5556cb42f9142905538a99750657, type: 3}
@@ -355,19 +366,9 @@ MonoBehaviour:
   canFire: 0
   bulletScale: {x: 3, y: 3}
   timerComplete: 0
+  isAsleep: 0
   shot1RotationOffset: {x: 0, y: 0, z: 0.9659258, w: -0.25881904}
   shot2RotationOffset: {x: 0, y: 0, z: 0.50000006, w: -0.8660254}
---- !u!114 &5760145152818412359 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2887116319582651532, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
-  m_PrefabInstance: {fileID: 7485331682167947211}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed2804f96290a8f4384d05bc4cd86c1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5959219170562014505 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
@@ -396,15 +397,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d61c01551d0227409f8e29cd2a0a4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 1
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 5959219170562014505}
   _networkObjectCache: {fileID: 5959219170562014505}
   maxHp: 3
   exp: 80
-  hpBar: {fileID: 5760145152818412359}
+  onDamagedSound: {fileID: 0}
   doTeleportIfFar: 1
   teleportCheckDuration: 5
-  teleportIfFurtherThanDistance: 200
+  isBoss: 0
+  detectionRange: 30
+  imageSpawner: {fileID: 4930325942069125146}
   mover: {fileID: 7826549821664265833}
   shooter: {fileID: 7889098942661978653}
   contactDamage: 15
@@ -420,6 +423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dca9d2ed209eb44a22ad5bebf912ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 3
+  _addedNetworkObject: {fileID: 5959219170562014505}
+  _networkObjectCache: {fileID: 5959219170562014505}
   dashChargeTime: 0.8
   dashImpulse: 10
   dashTime: 2.2

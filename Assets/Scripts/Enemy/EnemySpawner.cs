@@ -2,6 +2,7 @@ using FishNet.Object;
 using UnityEngine;
 using System.Collections.Generic;
 using FishNet.Object.Synchronizing;
+using System.Collections;
 
 namespace SwordsInSpace
 {
@@ -37,6 +38,12 @@ namespace SwordsInSpace
         [SerializeField]
         GameObject[] bossPrefabs;
 
+        [SerializeField]
+        SpawnInfo[] asleepEnemyInfos;
+
+        public int asleepMobPacks = 5;
+
+
         List<GameObject> currentEnemies;
 
         public int bossesKilled;
@@ -65,6 +72,7 @@ namespace SwordsInSpace
                 totalWeight += info.weight;
             }
             bossesKilled = 0;
+            StartCoroutine("SpawnSleepingMobs");
         }
 
 
@@ -101,6 +109,44 @@ namespace SwordsInSpace
                     loc.z), transform.rotation);
                 Spawn(toAdd);
 
+            }
+
+        }
+
+
+
+        private IEnumerator SpawnSleepingMobs()
+        {
+
+            for (int mobNo = 0; mobNo < asleepMobPacks; mobNo++)
+            {
+                int currentWeight = Random.Range(0, totalWeight + 1);
+                SpawnInfo selectedInfo = asleepEnemyInfos[0];
+                foreach (SpawnInfo info in asleepEnemyInfos)
+                {
+                    currentWeight -= info.weight;
+                    if (currentWeight <= 0)
+                    {
+                        selectedInfo = info;
+                        break;
+                    }
+                }
+
+                Vector3 loc = getRandomPosition(MaxGetRandomPositionAttempts, new Vector2(worldSize.x / 2, worldSize.y / 2));
+                int size = Random.Range(minPackDensity, maxPackDensity);
+
+                for (int i = 0; i < size * (int)Random.Range(selectedInfo.localPackSizeRange.x, selectedInfo.localPackSizeRange.y + 1); i++)
+                {
+                    Vector2 randomLocInSpawnRadius = getValidLocInSpawnRadius(loc);
+                    GameObject toAdd = Instantiate(selectedInfo.MobType, new Vector3(randomLocInSpawnRadius.x, randomLocInSpawnRadius.y,
+                        loc.z), transform.rotation);
+
+                    Spawn(toAdd);
+                    toAdd.GetComponent<EnemyAI>().SetInactive();
+
+                }
+
+                yield return new WaitForSeconds(0.1f);
             }
 
         }
@@ -144,17 +190,17 @@ namespace SwordsInSpace
         private Vector3 getRandomPosition()
         {
 
-            return getRandomPosition(MaxGetRandomPositionAttempts);
+            return getRandomPosition(MaxGetRandomPositionAttempts, new Vector2(worldSize.x / 3, worldSize.y / 3));
         }
 
-        private Vector3 getRandomPosition(int attempts)
+        private Vector3 getRandomPosition(int attempts, Vector2 SpawnArea)
         {
 
-            Vector3 pos = new Vector3(Random.Range(-worldSize.x / 3, worldSize.x / 3), Random.Range(-worldSize.y / 3, worldSize.y / 3), 0);
+            Vector3 pos = new Vector3(Random.Range(-SpawnArea.x, SpawnArea.x), Random.Range(-SpawnArea.y, SpawnArea.y), 0);
 
             if (!isValidSpawnPosition(pos) && attempts > 0)
             {
-                return getRandomPosition(attempts--);
+                return getRandomPosition(attempts--, SpawnArea);
             }
             return pos;
 
@@ -166,7 +212,7 @@ namespace SwordsInSpace
 
         public void SpawnBosses()
         {
-            foreach(GameObject boss in bossPrefabs)
+            foreach (GameObject boss in bossPrefabs)
             {
                 Vector3 loc = getRandomPosition();
                 Vector2 randomLocInSpawnRadius = getValidLocInSpawnRadius(loc);

@@ -31,13 +31,13 @@ namespace SwordsInSpace
             base.Start();
             rb = GetComponent<Rigidbody2D>();
         }
-        public override void OnDisableEnemyMover()
+        public override void OnSleepEnemyMover()
         {
             currentState = STATE.MOVING;
             StopAstar();
         }
 
-        public override void OnEnableEnemyMover()
+        public override void OnAwakeEnemyMover()
         {
             ContinueAstar();
             currentState = STATE.MOVING;

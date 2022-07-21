@@ -33,6 +33,8 @@ namespace SwordsInSpace
         protected AIPath ai;
 
         public double detectionRange = 30;
+
+        [SyncVar]
         private bool isActive = true;
 
         protected Rigidbody2D rb;
@@ -77,10 +79,19 @@ namespace SwordsInSpace
             }
         }
 
-        public void setInactive()
+        public void SetInactive()
         {
+            if (!IsServer) return;
+
+            gameObject.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+
             isActive = false;
             StartCoroutine("ScanDuringSleep");
+            foreach (EnemyMover m in GetComponentsInChildren<EnemyMover>())
+                m.OnSleepEnemyMover();
+
+            foreach (EnemyShooter s in GetComponentsInChildren<EnemyShooter>())
+                s.isAsleep = true;
         }
 
         private void Activate()
@@ -91,8 +102,10 @@ namespace SwordsInSpace
             isActive = true;
             foreach (EnemyMover mover in GetComponentsInChildren<EnemyMover>())
             {
-                mover.OnDisableEnemyMover();
+                mover.OnAwakeEnemyMover();
             }
+            foreach (EnemyShooter s in GetComponentsInChildren<EnemyShooter>())
+                s.isAsleep = false;
 
         }
 

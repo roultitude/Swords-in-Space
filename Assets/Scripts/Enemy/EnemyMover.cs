@@ -18,11 +18,14 @@ namespace SwordsInSpace
             ai = gameObject.GetComponent<AIPath>();
         }
 
-        public abstract void OnDisableEnemyMover();
-        public abstract void OnEnableEnemyMover();
+        public abstract void OnSleepEnemyMover();
+        public abstract void OnAwakeEnemyMover();
 
         protected void StopAstar()
         {
+            if (ai == null)
+                ai = gameObject.GetComponent<AIPath>();
+
             ai.canMove = false;
             ai.isStopped = true;
 

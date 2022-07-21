@@ -6,12 +6,12 @@ namespace SwordsInSpace
     public class DefaultMover : EnemyMover
     {
 
-        public override void OnDisableEnemyMover()
+        public override void OnSleepEnemyMover()
         {
             StopAstar();
         }
 
-        public override void OnEnableEnemyMover()
+        public override void OnAwakeEnemyMover()
         {
             ContinueAstar();
         }
