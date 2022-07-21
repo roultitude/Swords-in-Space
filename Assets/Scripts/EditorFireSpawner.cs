@@ -8,7 +8,6 @@ using FishNet.Connection;
 using UnityEngine.Tilemaps;
 using UnityEditor;
 
-#if UNITY_EDITOR
 namespace SwordsInSpace
 {
     [ExecuteInEditMode]
@@ -21,6 +20,7 @@ namespace SwordsInSpace
 
         public bool spawnFire = false;
 
+#if UNITY_EDITOR
         public void Update()
         {
             if (spawnFire)
@@ -99,7 +99,7 @@ namespace SwordsInSpace
             return (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Fire/Fire.prefab", typeof(GameObject)));
         }
 
-
-    }
 #endif
+    }
+
 };

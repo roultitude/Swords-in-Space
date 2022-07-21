@@ -36,7 +36,6 @@ namespace SwordsInSpace
             if (!InstanceFinder.IsServer) return;
             if (levelComplete && !levelFinished)
             {
-                WorldSpawner.level++;
                 GameManager.instance.OnLevelComplete();
                 levelFinished = true;
             }

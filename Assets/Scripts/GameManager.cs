@@ -16,7 +16,7 @@ namespace SwordsInSpace
 
         MessageDisplay messageDisplay;
 
-        public int currentLevel;
+        public int currentLevel = 0;
         List<NetworkObject> CarryNetworkObjects;
         bool nextSceneLobby;
 
@@ -45,10 +45,12 @@ namespace SwordsInSpace
             GetCarryNetworkObjects(false, false);
             SceneLoadData sld = new SceneLoadData("LobbyScene") { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
             InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sld);
+            currentLevel = 0;
         }
 
         public void OnLevelComplete()
         {
+            currentLevel++;
             OnLevelCompleteRPC();
             StartCoroutine(OnLevelCompleteStartCountdown());
         }

@@ -10,15 +10,13 @@ namespace SwordsInSpace
     public class WorldSpawner : NetworkBehaviour
     {
         // Start is called before the first frame update
-
-        public static int level = 0;
         public bool useDebugLevel = false;
 
         public GameObject[] worlds;
         public GameObject debugWorld;
-        void Start()
+        public override void OnStartServer()
         {
-            if (!IsServer) return;
+            base.OnStartServer();
             LoadWorld();
         }
 
@@ -32,7 +30,7 @@ namespace SwordsInSpace
             }
 
 
-            GameObject toAdd = Instantiate(worlds[level < worlds.Length ? level : 0]);
+            GameObject toAdd = Instantiate(worlds[GameManager.instance.currentLevel < worlds.Length ? GameManager.instance.currentLevel : 0]);
             Spawn(toAdd);
         }
     }

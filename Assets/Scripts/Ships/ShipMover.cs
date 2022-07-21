@@ -20,7 +20,7 @@ namespace SwordsInSpace
         [SyncVar]
         private float currentSpeed, currentNitroMult, currentTurnSpeed;
         [SyncVar(OnChange = nameof(OnChangeIsMoving))]
-        bool isMoving;
+        public bool isMoving;
 
         private void Awake()
         {
@@ -75,6 +75,10 @@ namespace SwordsInSpace
         {
             if (!canMove) md = default;
             MovePredict(md, asServer, replaying);
+            if(IsClient && !asServer)
+            {
+                SetIsMoving((md.Vertical != 0 || md.Horizontal != 0));
+            }
         }
 
         [Replicate]
@@ -88,10 +92,6 @@ namespace SwordsInSpace
                 if (IsServer) Ship.currentShip.StartCoroutine(Ship.currentShip.StartInvincibilityFrames(nitroInvincibilityTime));
             }
             rb.AddTorque(md.Horizontal * -currentTurnSpeed);
-            if (IsServer)
-            {
-                isMoving = (md.Horizontal != 0 || md.Vertical != 0);
-            }
         }
 
         public void Reconciliation(ReconcileData rd, bool asServer)
@@ -112,6 +112,11 @@ namespace SwordsInSpace
         {
             if (newMoving) shipAnimator.CrossFade("ShipMoving", 0, 0);
             else shipAnimator.CrossFade("ShipIdle", 0, 0);
+        }
+        [ServerRpc]
+        void SetIsMoving(bool newIsMoving)
+        {
+            isMoving = newIsMoving;
         }
     }
 }
