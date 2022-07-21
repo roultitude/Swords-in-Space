@@ -8,8 +8,13 @@ namespace SwordsInSpace
     {
         [SerializeField]
         private float turnSpeed;
+        [SerializeField]
+        Transform fiveFishesSprites;
+        [SerializeField]
+        SpriteRenderer sprite;
 
         private Rigidbody2D rb;
+        
         // Start is called before the first frame update
         private void Awake()
         {
@@ -25,7 +30,9 @@ namespace SwordsInSpace
         // Update is called once per frame
         void Update()
         {
-            rb.AddTorque(turnSpeed * Time.deltaTime);
+            sprite.flipY = transform.rotation.eulerAngles.z < 180;
+            fiveFishesSprites.localRotation = Quaternion.Euler(0,0,fiveFishesSprites.localRotation.eulerAngles.z + turnSpeed * Time.deltaTime);
+            //rb.AddTorque(turnSpeed * Time.deltaTime);
         }
     }
 }
