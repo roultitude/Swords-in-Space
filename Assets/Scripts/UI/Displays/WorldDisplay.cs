@@ -13,21 +13,21 @@ namespace SwordsInSpace
         TMPro.TextMeshProUGUI countdownText;
 
         [SerializeField]
-        EnemySpawner enemySpawner;
+        Spawner Spawner;
 
 
 
 
         private void Update()
         {
-            if (countdownText.enabled && enemySpawner.spawningComplete)
+            if (countdownText.enabled && Spawner.spawningComplete)
             {
                 countdownText.enabled = false;
             }
-                
-            if(countdownText.enabled && enemySpawner.timeTillBoss> 0) 
+
+            if (countdownText.enabled && Spawner.timeTillBoss > 0)
             {
-                countdownText.text = "Survive for " + (int) enemySpawner.timeTillBoss + " seconds!";
+                countdownText.text = "Survive for " + (int)Spawner.timeTillBoss + " seconds!";
             }
         }
     }

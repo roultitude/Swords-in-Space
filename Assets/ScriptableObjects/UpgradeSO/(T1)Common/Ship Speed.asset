@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Fireworks
   description: Increase Ship Speed
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f412543bf4087b440836e6f202e0fd67, type: 3}
   statChanges:
   - type: 4
     amount: 0.1

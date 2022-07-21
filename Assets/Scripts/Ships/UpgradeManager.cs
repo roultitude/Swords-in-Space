@@ -78,8 +78,8 @@ namespace SwordsInSpace
             {
                 foreach (Upgrade a in upgradeArr)
                 {
-                    if (a != null && !upgrades.ContainsKey(a.upgradeSo.name))
-                        upgrades.Add(a.upgradeSo.name, a);
+                    if (a != null && !upgrades.ContainsKey(a.upgradeSo.upgradeName))
+                        upgrades.Add(a.upgradeSo.upgradeName, a);
                 }
             }
 
@@ -105,29 +105,24 @@ namespace SwordsInSpace
 
             double randChance = Random.Range(0.0f, 1.0f);
 
-            if (tier4Upgrade.Count == 0 && randChance > 0.95)
-                randChance = 0.9;
+
 
             List<Upgrade> thisTier;
-            if (randChance <= 0.5)
+            if (randChance <= 0.75)
             {
 
                 thisTier = tier1Upgrade;
 
             }
-            else if (randChance <= 0.75)
+            else if (randChance <= 0.9)
             {
                 thisTier = tier2Upgrade;
             }
-            else if (randChance <= 0.95)
+            else
             {
                 thisTier = tier3Upgrade;
             }
-            else
-            {
-                thisTier = tier4Upgrade;
 
-            }
 
             return thisTier[Random.Range(0, thisTier.Count)];
 
@@ -170,9 +165,9 @@ namespace SwordsInSpace
                     //If the team does not want the tier 4 upgrade, switch to a tier 3 one. Last upgrade is tier 3.
 
 
-                    ShowUpgrades(thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name,
-                  thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name,
-                  tier3Upgrade[Random.Range(0, tier3Upgrade.Count)].upgradeSo.name, tier);
+                    ShowUpgrades(thisTier[Random.Range(0, thisTier.Count)].upgradeSo.upgradeName,
+                  thisTier[Random.Range(0, thisTier.Count)].upgradeSo.upgradeName,
+                  tier3Upgrade[Random.Range(0, tier3Upgrade.Count)].upgradeSo.upgradeName, tier);
 
                     return;
 
@@ -186,9 +181,9 @@ namespace SwordsInSpace
 
             }
 
-            ShowUpgrades(thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name,
-        thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name,
-        thisTier[Random.Range(0, thisTier.Count)].upgradeSo.name, tier);
+            ShowUpgrades(thisTier[Random.Range(0, thisTier.Count)].upgradeSo.upgradeName,
+        thisTier[Random.Range(0, thisTier.Count)].upgradeSo.upgradeName,
+        thisTier[Random.Range(0, thisTier.Count)].upgradeSo.upgradeName, tier);
 
         }
 
@@ -303,6 +298,7 @@ namespace SwordsInSpace
         public void AddUpgradeNoUI(string upgrd)
         {
             upgrades[upgrd].upgradeCount += 1;
+
             if (upgrades[upgrd].upgradeMaxCount != -1 && upgrades[upgrd].upgradeCount >= upgrades[upgrd].upgradeMaxCount)
             {
                 Debug.Log("Maxxed out" + upgrd);

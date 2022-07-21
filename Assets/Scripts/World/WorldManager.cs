@@ -10,7 +10,7 @@ namespace SwordsInSpace
     {
         public static WorldManager currentWorld;
 
-        public EnemySpawner spawner;
+        public Spawner spawner;
 
         public Texture backgroundTextureBack, backgroundTextureMid, backgroundTextureFront;
 

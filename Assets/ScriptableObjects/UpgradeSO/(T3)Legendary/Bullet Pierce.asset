@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Bullet Pierce
   description: Bullets pass through another enemy before being destroyed
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f412543bf4087b440836e6f202e0fd67, type: 3}
   statChanges:
   - type: 21
     amount: 1

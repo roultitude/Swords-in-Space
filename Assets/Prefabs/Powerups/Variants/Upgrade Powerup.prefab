@@ -9,11 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 26374965000518870, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
       propertyPath: m_Name
-      value: Nitro Pickup
+      value: Upgrade Powerup
       objectReference: {fileID: 0}
     - target: {fileID: 5150643364041696426, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5150643364041696426, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5150643364041696426, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5150643364041696426, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -63,5 +71,50 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8734357846188513889, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
+      propertyPath: _networkBehaviours.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734357846188513889, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
+      propertyPath: _networkBehaviours.Array.data[1]
+      value: 
+      objectReference: {fileID: -3378866271154358393}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
+--- !u!212 &88675366886343042 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3865328467243133283, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
+  m_PrefabInstance: {fileID: 3791870375964305633}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3801844991114630199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 26374965000518870, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
+  m_PrefabInstance: {fileID: 3791870375964305633}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-3378866271154358393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3801844991114630199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270de578cc2d0dd429694539456ad957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: 5596217503846740608}
+  _networkObjectCache: {fileID: 5596217503846740608}
+  spriterenderer: {fileID: 88675366886343042}
+--- !u!114 &5596217503846740608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8734357846188513889, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
+  m_PrefabInstance: {fileID: 3791870375964305633}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3801844991114630199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

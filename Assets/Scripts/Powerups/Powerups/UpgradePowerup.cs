@@ -12,18 +12,19 @@ namespace SwordsInSpace
 
         Upgrade upg;
 
-        SpriteRenderer spriterenderer;
-        public void Start()
+        public SpriteRenderer spriterenderer;
+        public override void OnStartServer()
         {
-            if (!IsServer) return;
+            base.OnStartServer();
             upg = Ship.currentShip.upgradeManager.GetValidUpgrade();
             //Get a suitable upgrade.
             Setup(upg.upgradeSo.upgradeName);
         }
 
-        [ObserversRpc(BufferLast = true, RunLocally = true)]
+        [ObserversRpc(BufferLast = true, RunLocally = true, IncludeOwner = true)]
         public void Setup(string upgradeName)
         {
+            Debug.Log(Ship.currentShip.upgradeManager.StringToUpgradeSO(upgradeName));
             spriterenderer.sprite = Ship.currentShip.upgradeManager.StringToUpgradeSO(upgradeName).sprite;
         }
 

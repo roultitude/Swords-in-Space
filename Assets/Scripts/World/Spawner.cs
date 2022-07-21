@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace SwordsInSpace
 {
-    public class EnemySpawner : NetworkBehaviour
+    public class Spawner : NetworkBehaviour
     {
         // Start is called before the first frame update
         [SerializeField]
@@ -25,7 +25,7 @@ namespace SwordsInSpace
         int UnitsFromAsteroid = 3;
 
         [System.Serializable]
-        public struct SpawnInfo
+        public struct EnemySpawnInfo
         {
             public GameObject MobType;
             public int weight;
@@ -33,16 +33,18 @@ namespace SwordsInSpace
         }
 
         [SerializeField]
-        SpawnInfo[] spawninfos;
+        EnemySpawnInfo[] spawninfos;
 
         [SerializeField]
         GameObject[] bossPrefabs;
 
         [SerializeField]
-        SpawnInfo[] asleepEnemyInfos;
+        EnemySpawnInfo[] asleepEnemyInfos;
 
         public int asleepMobPacks = 5;
 
+        public GameObject[] Powerups;
+        public float PowerupSpawnChance;
 
         List<GameObject> currentEnemies;
 
@@ -67,12 +69,12 @@ namespace SwordsInSpace
         void Start()
         {
             totalWeight = 0;
-            foreach (SpawnInfo info in spawninfos)
+            foreach (EnemySpawnInfo info in spawninfos)
             {
                 totalWeight += info.weight;
             }
             bossesKilled = 0;
-            StartCoroutine("SpawnSleepingMobs");
+            StartCoroutine("OnStartSpawn");
         }
 
 
@@ -90,8 +92,8 @@ namespace SwordsInSpace
         public void SpawnMob()
         {
             int currentWeight = Random.Range(0, totalWeight + 1);
-            SpawnInfo selectedInfo = spawninfos[0];
-            foreach (SpawnInfo info in spawninfos)
+            EnemySpawnInfo selectedInfo = spawninfos[0];
+            foreach (EnemySpawnInfo info in spawninfos)
             {
                 currentWeight -= info.weight;
                 if (currentWeight <= 0)
@@ -115,14 +117,14 @@ namespace SwordsInSpace
 
 
 
-        private IEnumerator SpawnSleepingMobs()
+        private IEnumerator OnStartSpawn()
         {
-
+            //Spawn Sleeping Mobs
             for (int mobNo = 0; mobNo < asleepMobPacks; mobNo++)
             {
                 int currentWeight = Random.Range(0, totalWeight + 1);
-                SpawnInfo selectedInfo = asleepEnemyInfos[0];
-                foreach (SpawnInfo info in asleepEnemyInfos)
+                EnemySpawnInfo selectedInfo = asleepEnemyInfos[0];
+                foreach (EnemySpawnInfo info in asleepEnemyInfos)
                 {
                     currentWeight -= info.weight;
                     if (currentWeight <= 0)
@@ -146,8 +148,16 @@ namespace SwordsInSpace
 
                 }
 
-                yield return new WaitForSeconds(0.1f);
+                if (Random.Range(0f, 1f) < PowerupSpawnChance)
+                {
+                    GameObject toSpawn = Instantiate(Powerups[Random.Range(0, Powerups.Length)], loc, Quaternion.Euler(0, 0, 0));
+                    Spawn(toSpawn);
+                }
+
+                yield return new WaitForSeconds(0.05f);
             }
+
+
 
         }
 

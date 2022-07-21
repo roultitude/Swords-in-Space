@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SwordsInSpace
 {
-    public class NitroBoost : Powerup
+    public class NitroPowerup : Powerup
     {
         public override void OnPowerup()
         {
