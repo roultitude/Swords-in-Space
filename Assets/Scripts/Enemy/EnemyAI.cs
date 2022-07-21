@@ -23,18 +23,32 @@ namespace SwordsInSpace
 
         public bool doTeleportIfFar = true;
         public float teleportCheckDuration = 5f;
-        public float teleportIfFurtherThanDistance = 300f;
 
         private Vector2 teleportProximityToPlayer = new Vector2(100f, 200f);
 
         readonly float fadeTime = 0.8f;
         private Coroutine teleportCorountine;
-        private bool isBoss;
+        public bool isBoss;
         private Hpbar hpBar;
         protected AIPath ai;
+
+        public double detectionRange = 30;
+        private bool isActive = true;
+
+        protected Rigidbody2D rb;
+
+        [SerializeField]
+        private AfterImageSpawner imageSpawner;
+
+        private float bossAfterimageDistance = 5f;
+        private float bossAfterimageCD = 0.05f;
+        private Vector2 bossTeleportProximityToPlayer = new Vector2(5f, 30f);
+
+
         // Start is called before the first frame update
         protected void Start()
         {
+            rb = GetComponent<Rigidbody2D>();
             currentHp = maxHp;
             ai = GetComponent<AIPath>();
             teleportCorountine = StartCoroutine("farFromPlayerCheck");
@@ -47,16 +61,54 @@ namespace SwordsInSpace
             hpBar.DoFade(fadeTime);
         }
 
+
+        public IEnumerator ScanDuringSleep()
+        {
+            while (true)
+            {
+                if (isActive)
+                    break;
+
+                float distance = Vector3.Distance(Ship.currentShip.gameObject.transform.position, gameObject.transform.position);
+                if (distance <= detectionRange)
+                    Activate();
+
+                yield return new WaitForSeconds(0.3f);
+            }
+        }
+
+        public void setInactive()
+        {
+            isActive = false;
+            StartCoroutine("ScanDuringSleep");
+        }
+
+        private void Activate()
+        {
+            if (isActive)
+                return;
+
+            isActive = true;
+            foreach (EnemyMover mover in GetComponentsInChildren<EnemyMover>())
+            {
+                mover.OnDisableEnemyMover();
+            }
+
+        }
+
         private IEnumerator farFromPlayerCheck()
         {
             float currentTime = 0;
             float tickTime = 0.3f;
-
+            float maxDistance = isBoss ? bossTeleportProximityToPlayer.y * 1.5f : teleportProximityToPlayer.y * 1.5f;
             while (true)
             {
                 yield return new WaitForSeconds(tickTime);
 
-                if ((gameObject.transform.position - Ship.currentShip.transform.position).magnitude > teleportIfFurtherThanDistance)
+                if (!isActive)
+                    continue;
+
+                if ((gameObject.transform.position - Ship.currentShip.transform.position).magnitude > maxDistance)
                 {
                     currentTime += tickTime;
                 }
@@ -68,38 +120,87 @@ namespace SwordsInSpace
 
                 if (currentTime > teleportCheckDuration && doTeleportIfFar)
                 {
-                    //Debug.Log("Teleport?");
                     currentTime = 0;
-                    TeleportNearPlayer();
+                    if (isBoss)
+                    {
+                        StartCoroutine("BossTeleport");
+                    }
+                    else
+                    {
+                        TeleportNearPlayer();
+                    }
+
+                    //Debug.Log("Teleport?");
+
+
                 }
 
             }
+        }
+
+        private IEnumerator BossTeleport()
+        {
+            Debug.Log("Boss teleport");
+            Vector3 loc = getPosNearPlayer(bossTeleportProximityToPlayer);
+            Vector3 currentLoc = gameObject.transform.position;
+
+            if (currentLoc == loc)
+                yield break;
+
+            float bossAfterImageCount = Vector3.Distance(loc, currentLoc) / bossAfterimageDistance;
+
+            rb.isKinematic = true;
+            for (float prog = 0f; prog <= 1.0f; prog += 1f / (float)bossAfterImageCount)
+            {
+                imageSpawner.SpawnImage();
+                ai.Teleport(new Vector3(Mathf.Lerp(currentLoc.x, loc.x, prog), Mathf.Lerp(currentLoc.y, loc.y, prog), 0));
+
+                yield return new WaitForSeconds(bossAfterimageCD);
+            }
+
+            rb.isKinematic = false;
+
+
         }
 
         private void TeleportNearPlayer()
         {
-            Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+            ai.Teleport(getPosNearPlayer(teleportProximityToPlayer));
+        }
+
+        private Vector3 getPosNearPlayer(Vector2 proximity)
+        {
+            Vector2 pos;
             Vector2 shipPos = new Vector2(Ship.currentShip.transform.position.x, Ship.currentShip.transform.position.y);
-            int attempts = 10;
+            int attempts = 50;
 
             for (int i = 0; i < attempts; i++)
             {
-                pos = new Vector2(Random.Range(0, teleportProximityToPlayer.y), Random.Range(0, teleportProximityToPlayer.y));
-
-                float distanceToShip = (pos - shipPos).magnitude;
-
-                if (distanceToShip < teleportProximityToPlayer.y && distanceToShip > teleportProximityToPlayer.x && isValidSpawnLocation(pos))
+                pos = new Vector2(Random.Range(0, proximity.y - proximity.x) + proximity.x, Random.Range(0, proximity.y - proximity.x) + proximity.x);
+                if (Random.Range(0, 2) == 0)
                 {
-                    ai.Teleport(new Vector3(pos.x, pos.y, 0));
+                    pos.x = -pos.x;
+                }
+
+                if (Random.Range(0, 2) == 0)
+                {
+                    pos.y = -pos.y;
+                }
+
+                pos += shipPos;
+
+                if (isValidSpawnLocation(pos))
+                {
+                    return new Vector3(pos.x, pos.y, 0);
                 }
             }
 
-
+            return new Vector3(transform.position.x, transform.position.y, 0);
         }
 
         public bool isValidSpawnLocation(Vector3 pos)
         {
-            return Physics2D.OverlapCircle(new Vector2(pos.x, pos.y), 5) == null;
+            return Physics2D.OverlapCircle(new Vector2(pos.x, pos.y), 1) == null;
         }
 
         private void UpdateHpText(double oldint, double newint, bool server)
@@ -125,6 +226,10 @@ namespace SwordsInSpace
         {
             currentHp -= dmg;
             AudioManager.instance.ObserversPlay(onDamagedSound);
+
+            if (!isActive)
+                Activate();
+
             if (currentHp <= 0)
             {
                 OnDeath();

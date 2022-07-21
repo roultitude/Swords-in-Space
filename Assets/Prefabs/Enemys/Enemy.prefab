@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 2692285520613444207}
   - component: {fileID: 5144193244893581531}
   - component: {fileID: 7670262009711396336}
+  - component: {fileID: 2561761843994730449}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -58,6 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _networkBehaviours:
   - {fileID: 6549005045294038484}
+  - {fileID: 2561761843994730449}
   SceneTransformProperties:
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -424,6 +426,23 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &2561761843994730449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386559295309661771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f96db4e65982964b949d523336a4555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: 3842234323794330338}
+  _networkObjectCache: {fileID: 3842234323794330338}
+  rend: {fileID: 2398872284527371111}
+  afterimagePrefab: {fileID: 1705159124961595878, guid: ead10e772577f3040bb5c7257ef82241, type: 3}
 --- !u!1 &3297842073833619420
 GameObject:
   m_ObjectHideFlags: 0

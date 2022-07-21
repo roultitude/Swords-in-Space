@@ -58,7 +58,6 @@ namespace SwordsInSpace
 
         public bool isPowerUp = true;
 
-        private bool isLowPower = false;
 
 
         private void Awake()

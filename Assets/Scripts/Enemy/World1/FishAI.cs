@@ -9,13 +9,13 @@ namespace SwordsInSpace
         [SerializeField]
         private float contactDamage, reboundForce;
 
-        private Rigidbody2D rb;
+
         private FishMover mover;
         private SpriteRenderer sprite;
 
         private void Awake()
         {
-            rb = GetComponent<Rigidbody2D>();
+
             mover = GetComponent<FishMover>();
             sprite = GetComponentInChildren<SpriteRenderer>();
         }

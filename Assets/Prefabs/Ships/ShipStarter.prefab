@@ -6036,7 +6036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1185405697126653920, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: turnSpeed
-      value: 35
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1185405697126653920, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _addedNetworkObject

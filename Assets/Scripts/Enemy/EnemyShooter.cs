@@ -28,6 +28,9 @@ namespace SwordsInSpace
 
         public bool timerComplete = false;
 
+        [SyncVar]
+        public bool isAsleep = false;
+
 
         private bool IsInRange()
         {
@@ -41,7 +44,7 @@ namespace SwordsInSpace
 
         public void Update()
         {
-            if (IsServer && canFire && timerComplete && IsInRange())
+            if (IsServer && canFire && timerComplete && !isAsleep && IsInRange())
             {
                 Shoot();
                 timerComplete = false;

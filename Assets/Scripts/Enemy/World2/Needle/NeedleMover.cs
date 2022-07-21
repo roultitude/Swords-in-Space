@@ -31,6 +31,19 @@ namespace SwordsInSpace
             base.Start();
             rb = GetComponent<Rigidbody2D>();
         }
+        public override void OnDisableEnemyMover()
+        {
+            currentState = STATE.MOVING;
+            StopAstar();
+        }
+
+        public override void OnEnableEnemyMover()
+        {
+            ContinueAstar();
+            currentState = STATE.MOVING;
+            currentTime = 0;
+        }
+
         public void Update()
         {
 
@@ -105,6 +118,7 @@ namespace SwordsInSpace
             //transform.position += transform.right * Time.deltaTime * (float)dashSpeed;
 
         }
+
 
     }
 };

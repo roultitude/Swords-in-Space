@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace SwordsInSpace
 {
-    public class FishMover : EnemyMover
+    public class FishMover : DefaultMover
     {
         [SerializeField]
         private float reboundPauseTime;
+
 
         public void OnStartRebound()
         {

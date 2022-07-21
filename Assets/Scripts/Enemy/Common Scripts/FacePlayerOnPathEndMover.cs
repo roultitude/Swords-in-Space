@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SwordsInSpace
 {
-    public class FacePlayerOnPathEndMover : EnemyMover
+    public class FacePlayerOnPathEndMover : DefaultMover
     {
         // Start is called before the first frame update
 

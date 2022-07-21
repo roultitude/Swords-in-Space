@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using FishNet.Object;
+using FishNet.Object.Synchronizing;
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace SwordsInSpace
 {
-    public class EnemyMover : MonoBehaviour
+    public abstract class EnemyMover : NetworkBehaviour
     {
         protected AIPath ai;
-
 
 
         public void Start()
@@ -17,7 +18,8 @@ namespace SwordsInSpace
             ai = gameObject.GetComponent<AIPath>();
         }
 
-
+        public abstract void OnDisableEnemyMover();
+        public abstract void OnEnableEnemyMover();
 
         protected void StopAstar()
         {

@@ -8,7 +8,7 @@ namespace SwordsInSpace
     public class SpiderBossAI : EnemyAI
     {
         public SpiderBossShooter shooter;
-        public Rigidbody2D rb;
+
 
 
         public bool hasLaidWeb = false;
