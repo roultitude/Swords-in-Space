@@ -47,7 +47,7 @@ namespace SwordsInSpace
 
         private int cullDrumBeatsAt = -400;
 
-        private PassiveShield shield;
+        public PassiveShield shield;
 
 
 
