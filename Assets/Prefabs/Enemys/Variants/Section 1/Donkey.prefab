@@ -322,7 +322,7 @@ MonoBehaviour:
   teleportCheckDuration: 5
   isBoss: 0
   detectionRange: 30
-  imageSpawner: {fileID: 0}
+  imageSpawner: {fileID: 707294404249343474}
 --- !u!114 &3478068887014341751
 MonoBehaviour:
   m_ObjectHideFlags: 0
