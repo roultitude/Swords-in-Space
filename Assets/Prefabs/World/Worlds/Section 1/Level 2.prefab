@@ -92,6 +92,10 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawninfos.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: bossPrefabs.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -103,6 +107,26 @@ PrefabInstance:
       propertyPath: InactiveEnemyInfos.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawninfos.Array.data[1].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawninfos.Array.data[2].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawninfos.Array.data[0].MobType
+      value: 
+      objectReference: {fileID: 4798124205982799525, guid: 5351998b7eb200e408df97ee469a6829, type: 3}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawninfos.Array.data[1].MobType
+      value: 
+      objectReference: {fileID: 2004161604143367898, guid: 13a9c8d03142b484386f810965cada43, type: 3}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawninfos.Array.data[2].MobType
+      value: 
+      objectReference: {fileID: 6450891800367982020, guid: 4a285bddf9c1d474e8cc035f6268a8a2, type: 3}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: InactiveEnemyInfos.Array.data[0].weight
       value: 1
@@ -119,6 +143,14 @@ PrefabInstance:
       propertyPath: InactiveEnemyInfos.Array.data[1].MobType
       value: 
       objectReference: {fileID: 6450891800367982020, guid: 4a285bddf9c1d474e8cc035f6268a8a2, type: 3}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawninfos.Array.data[1].localPackSizeRange.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawninfos.Array.data[2].localPackSizeRange.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: InactiveEnemyInfos.Array.data[0].localPackSizeRange.x
       value: 3
