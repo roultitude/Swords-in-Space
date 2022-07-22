@@ -92,14 +92,9 @@ namespace SwordsInSpace
 
         public void SpawnMob()
         {
-            int inactiveEnemyWeight = 0;
-            foreach (EnemySpawnInfo info in InactiveEnemyInfos)
-            {
-                inactiveEnemyWeight += info.weight;
-            }
 
 
-            int currentWeight = Random.Range(0, inactiveEnemyWeight + 1);
+            int currentWeight = Random.Range(0, totalWeight + 1);
             EnemySpawnInfo selectedInfo = spawninfos[0];
             foreach (EnemySpawnInfo info in spawninfos)
             {
@@ -127,10 +122,16 @@ namespace SwordsInSpace
 
         private IEnumerator OnStartSpawn()
         {
+            int inactiveEnemyWeight = 0;
+            foreach (EnemySpawnInfo info in InactiveEnemyInfos)
+            {
+                inactiveEnemyWeight += info.weight;
+            }
+
             //Spawn Sleeping Mobs
             for (int mobNo = 0; mobNo < InactiveMobPacks; mobNo++)
             {
-                int currentWeight = Random.Range(0, totalWeight + 1);
+                int currentWeight = Random.Range(0, inactiveEnemyWeight + 1);
                 EnemySpawnInfo selectedInfo = InactiveEnemyInfos[0];
                 foreach (EnemySpawnInfo info in InactiveEnemyInfos)
                 {
