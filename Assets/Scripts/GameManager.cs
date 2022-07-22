@@ -36,7 +36,8 @@ namespace SwordsInSpace
         public override void OnStartServer()
         {
             base.OnStartServer();
-            SceneManager.OnClientPresenceChangeEnd += arg => OnNewSceneBroadcast(arg.Connection);
+            SceneManager.OnClientPresenceChangeEnd += arg => {Debug.Log("Sending new scene loaded broadcast to " + arg.Connection);
+                OnNewSceneBroadcast(arg.Connection); };
         }
 
         public void OnLoseGame()
@@ -94,7 +95,8 @@ namespace SwordsInSpace
             GetCarryNetworkObjects(true, true);
             SceneLoadData sld = new SceneLoadData("TempScene") { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
             InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sld);
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(15f);
+            Debug.Log("levelTransitioning called");
             Ship.currentShip.LevelTransition();
         }
 
