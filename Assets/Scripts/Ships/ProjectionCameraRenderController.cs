@@ -13,6 +13,8 @@ public class ProjectionCameraRenderController : MonoBehaviour
 
     private void Update()
     {
+#if (!UNITY_SERVER || UNITY_EDITOR)
         cam.Render();
+#endif
     }
 }

@@ -72,7 +72,6 @@ namespace SwordsInSpace
             UserManager.instance.users.Remove(this);
         }
 
-        [ServerRpc(RequireOwnership =false)]
         public void ServerSpawnPlayer()
         {
             if (controlledPlayer) return; //only one player at a time
