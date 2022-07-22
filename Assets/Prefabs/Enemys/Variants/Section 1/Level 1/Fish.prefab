@@ -256,7 +256,7 @@ MonoBehaviour:
   teleportCheckDuration: 5
   isBoss: 0
   detectionRange: 30
-  imageSpawner: {fileID: 0}
+  imageSpawner: {fileID: 1351264478729102995}
   contactDamage: 5
   reboundForce: 5
 --- !u!114 &9043123250949493189

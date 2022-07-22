@@ -165,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _prefabId
-      value: 22
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -178,7 +178,7 @@ PrefabInstance:
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[1]
       value: 
-      objectReference: {fileID: 4930325942069125146}
+      objectReference: {fileID: 2632858373844142518}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[2]
       value: 
@@ -314,6 +314,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7678620060197e4899c9491a0ab45e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2632858373844142518 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4857404036556289661, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+  m_PrefabInstance: {fileID: 7485331682167947211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8421504617852582272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f96db4e65982964b949d523336a4555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4396499371431363103 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6549005045294038484, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
@@ -323,17 +334,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4930325942069125146 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2561761843994730449, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
-  m_PrefabInstance: {fileID: 7485331682167947211}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8421504617852582272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f96db4e65982964b949d523336a4555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5342804511119917079 stripped
@@ -407,7 +407,7 @@ MonoBehaviour:
   teleportCheckDuration: 5
   isBoss: 0
   detectionRange: 30
-  imageSpawner: {fileID: 4930325942069125146}
+  imageSpawner: {fileID: 2632858373844142518}
   mover: {fileID: 7826549821664265833}
   shooter: {fileID: 7889098942661978653}
   contactDamage: 15
