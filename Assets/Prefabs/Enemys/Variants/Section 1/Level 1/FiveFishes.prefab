@@ -1359,7 +1359,7 @@ MonoBehaviour:
   teleportCheckDuration: 5
   isBoss: 0
   detectionRange: 30
-  imageSpawner: {fileID: 0}
+  imageSpawner: {fileID: 1569103847458620492}
   turnSpeed: 90
   fiveFishesSprites: {fileID: 2899687421412908675}
   sprite: {fileID: 8639282033728459094}

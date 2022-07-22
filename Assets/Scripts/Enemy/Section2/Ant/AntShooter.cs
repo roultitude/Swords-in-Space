@@ -12,7 +12,7 @@ namespace SwordsInSpace
         {
             foreach (GameObject obj in turrets)
             {
-                SpawnLocalRotation(loc: obj.transform.position);
+                SpawnLocalRotation(offset: Quaternion.Euler(0, 0, -90), loc: obj.transform.position);
             }
 
         }

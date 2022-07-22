@@ -62,8 +62,6 @@ namespace SwordsInSpace
             if (offset == default)
             {
                 offset = Quaternion.Euler(0, 0, 0);
-
-
             }
             Vector3 myLocation = startLoc.position;
             Vector3 targetLocation = endLoc.position;
