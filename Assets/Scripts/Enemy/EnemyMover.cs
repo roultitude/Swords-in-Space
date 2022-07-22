@@ -33,6 +33,9 @@ namespace SwordsInSpace
 
         protected void ContinueAstar()
         {
+            if (ai == null)
+                ai = gameObject.GetComponent<AIPath>();
+
             ai.canMove = true;
             ai.isStopped = false;
         }

@@ -34,7 +34,7 @@ namespace SwordsInSpace
 
         public double detectionRange = 30;
 
-        [SyncVar]
+        [SyncVar(OnChange = nameof(ChangeActiveState))]
         private bool isActive = true;
 
         protected Rigidbody2D rb;
@@ -73,15 +73,27 @@ namespace SwordsInSpace
 
                 float distance = Vector3.Distance(Ship.currentShip.gameObject.transform.position, gameObject.transform.position);
                 if (distance <= detectionRange)
-                    Activate();
+                    SetActive();
 
                 yield return new WaitForSeconds(0.3f);
             }
         }
 
+        private void ChangeActiveState(bool prev, bool current, bool serv)
+        {
+            if (current)
+            {
+                SetActive();
+            }
+            else
+            {
+                SetInactive();
+            }
+
+        }
+
         public void SetInactive()
         {
-            if (!IsServer) return;
 
             gameObject.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
 
@@ -94,7 +106,7 @@ namespace SwordsInSpace
                 s.isAsleep = true;
         }
 
-        private void Activate()
+        private void SetActive()
         {
             if (isActive)
                 return;
@@ -235,13 +247,14 @@ namespace SwordsInSpace
 
         }
 
+
         public void takeDamage(double dmg)
         {
             currentHp -= dmg;
             AudioManager.instance.ObserversPlay(onDamagedSound);
 
             if (!isActive)
-                Activate();
+                SetActive();
 
             if (currentHp <= 0)
             {

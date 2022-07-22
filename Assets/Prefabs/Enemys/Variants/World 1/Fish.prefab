@@ -129,11 +129,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _prefabId
-      value: 33
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -142,7 +142,15 @@ PrefabInstance:
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[1]
       value: 
+      objectReference: {fileID: 1351264478729102995}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _networkBehaviours.Array.data[2]
+      value: 
       objectReference: {fileID: -878723836651048496}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _networkBehaviours.Array.data[3]
+      value: 
+      objectReference: {fileID: 9043123250949493189}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _sceneNetworkObjects.Array.data[0]
       value: 
@@ -189,6 +197,17 @@ PrefabInstance:
       objectReference: {fileID: 22100000, guid: 8edc874fb97a20a40bb6c81a734d5899, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+--- !u!114 &1351264478729102995 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4857404036556289661, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+  m_PrefabInstance: {fileID: 5884041827660337390}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4798124205982799525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f96db4e65982964b949d523336a4555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3293779481481988082 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8943456316866189084, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
@@ -227,15 +246,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26c2eb0b4bba9042853196e630e7614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 1
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 7276140365687493132}
   _networkObjectCache: {fileID: 7276140365687493132}
   maxHp: 2
-  exp: 90
+  exp: 30
   onDamagedSound: {fileID: 8300000, guid: bc75a6dee77c1ca48bbc43e41ff127b5, type: 3}
   doTeleportIfFar: 1
   teleportCheckDuration: 5
-  teleportIfFurtherThanDistance: 200
+  isBoss: 0
+  detectionRange: 30
+  imageSpawner: {fileID: 0}
   contactDamage: 5
   reboundForce: 5
 --- !u!114 &9043123250949493189
@@ -250,6 +271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eaa982fbb2483d40ada69aba8b04fc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 3
+  _addedNetworkObject: {fileID: 7276140365687493132}
+  _networkObjectCache: {fileID: 7276140365687493132}
   reboundPauseTime: 2
 --- !u!114 &7276140365687493132 stripped
 MonoBehaviour:

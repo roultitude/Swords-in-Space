@@ -261,8 +261,8 @@ namespace SwordsInSpace
 
         private void StartBurst()
         {
-            if (!IsServer || !canFire) { return; }//Sanity check
-            
+            if (!IsServer) { return; }//Sanity check
+
             if (currentBurst < data.burst)
             {
                 if (autoFire) {; }

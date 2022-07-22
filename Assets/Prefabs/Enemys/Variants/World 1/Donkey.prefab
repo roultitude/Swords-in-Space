@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _prefabId
-      value: 28
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -150,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[1]
       value: 
-      objectReference: {fileID: 7580986903196843102}
+      objectReference: {fileID: 707294404249343474}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[2]
       value: 
@@ -221,6 +221,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+--- !u!114 &707294404249343474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4857404036556289661, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+  m_PrefabInstance: {fileID: 5384097056713024399}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6450891800367982020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f96db4e65982964b949d523336a4555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1097899541890483724 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5009307279760647555, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
@@ -305,13 +316,13 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 9217316466230567277}
   _networkObjectCache: {fileID: 9217316466230567277}
   maxHp: 5
-  exp: 80
+  exp: 30
   onDamagedSound: {fileID: 8300000, guid: 81cf58358c17c164f8bd67c45e6f826a, type: 3}
   doTeleportIfFar: 1
   teleportCheckDuration: 5
   isBoss: 0
   detectionRange: 30
-  imageSpawner: {fileID: 7580986903196843102}
+  imageSpawner: {fileID: 0}
 --- !u!114 &3478068887014341751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,17 +369,6 @@ MonoBehaviour:
   bulletScale: {x: 3, y: 3}
   timerComplete: 0
   isAsleep: 0
---- !u!114 &7580986903196843102 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2561761843994730449, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
-  m_PrefabInstance: {fileID: 5384097056713024399}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6450891800367982020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f96db4e65982964b949d523336a4555, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &9217316466230567277 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}

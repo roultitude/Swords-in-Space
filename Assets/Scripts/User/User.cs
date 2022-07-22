@@ -36,7 +36,7 @@ namespace SwordsInSpace
             if (!controlledPlayer)
             {
                 ServerSpawnPlayer();
-            }   
+            }
         }
 
         private void OnEnable()
@@ -50,7 +50,6 @@ namespace SwordsInSpace
 
         public void OnPlayerSpawned(Player oldPlayer, Player newPlayer, bool onServer)
         {
-            Debug.Log(newPlayer);
             if (!newPlayer) return;
             controlledPlayer.SetupPlayer();
         }

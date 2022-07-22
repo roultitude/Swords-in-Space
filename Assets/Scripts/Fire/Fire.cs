@@ -90,7 +90,6 @@ namespace SwordsInSpace
 
         public void onChange(bool past, bool current, bool isServer)
         {
-            Debug.Log(current);
             if (current)
             {
                 flameHp = maxFlameHP;

@@ -67,8 +67,9 @@ namespace SwordsInSpace
             }
         }
 
-        public void Start()
+        public override void OnStartNetwork()
         {
+            base.OnStartNetwork();
             numUpgrades = 0;
 
             upgrades = new Dictionary<string, Upgrade>();
@@ -352,6 +353,8 @@ namespace SwordsInSpace
 
         public UpgradeSO StringToUpgradeSO(string input)
         {
+            Debug.Log(input);
+            Debug.Log(upgrades);
             return upgrades[input].upgradeSo;
         }
 

@@ -66,15 +66,16 @@ namespace SwordsInSpace
         public bool IsAllBossesKilled() => bossesKilled == bossPrefabs.Length;
 
         private int MaxGetRandomPositionAttempts = 5;
-        void Start()
+        public override void OnStartServer()
         {
+            base.OnStartServer();
             totalWeight = 0;
             foreach (EnemySpawnInfo info in spawninfos)
             {
                 totalWeight += info.weight;
             }
             bossesKilled = 0;
-            StartCoroutine("OnStartSpawn");
+            StartCoroutine(OnStartSpawn());
         }
 
 

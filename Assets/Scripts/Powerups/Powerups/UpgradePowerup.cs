@@ -31,7 +31,6 @@ namespace SwordsInSpace
         {
             if (!IsServer) return;
             Ship.currentShip.upgradeManager.AddUpgradeNoUI(upg.upgradeSo.upgradeName);
-
         }
 
     }
