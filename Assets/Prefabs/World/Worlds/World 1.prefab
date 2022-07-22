@@ -236,6 +236,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: InactiveMobPacks
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: spawninfos.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -249,6 +253,10 @@ PrefabInstance:
       objectReference: {fileID: 6062773019617976109, guid: 9695377747c910c499bad4cedab9a547, type: 3}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: asleepEnemyInfos.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: InactiveEnemyInfos.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
@@ -284,6 +292,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4798124205982799525, guid: 5351998b7eb200e408df97ee469a6829, type: 3}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: InactiveEnemyInfos.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: InactiveEnemyInfos.Array.data[0].MobType
+      value: 
+      objectReference: {fileID: 4798124205982799525, guid: 5351998b7eb200e408df97ee469a6829, type: 3}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: spawninfos.Array.data[0].localPackSizeRange.x
       value: 1
       objectReference: {fileID: 0}
@@ -313,6 +329,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: asleepEnemyInfos.Array.data[0].localPackSizeRange.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: InactiveEnemyInfos.Array.data[0].localPackSizeRange.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: InactiveEnemyInfos.Array.data[0].localPackSizeRange.y
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359121, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}

@@ -26,6 +26,8 @@ namespace SwordsInSpace
             if (ai == null)
                 ai = gameObject.GetComponent<AIPath>();
 
+            Debug.Log("Stopping AI");
+
             ai.canMove = false;
             ai.isStopped = true;
 

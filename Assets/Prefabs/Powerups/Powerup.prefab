@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8763796095478694239}
   - component: {fileID: 6433558311603806483}
   - component: {fileID: 4068224592639823873}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Powerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _networkBehaviours:
   - {fileID: 1170786279594199808}
+  - {fileID: 4068224592639823873}
   SceneTransformProperties:
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -381,9 +382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 8734357846188513889}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 8734357846188513889}
   _synchronizeParent: 0
   _packing:
     Position: 1

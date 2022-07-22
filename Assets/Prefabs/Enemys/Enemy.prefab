@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 344454711275051622}
-  - component: {fileID: 3842234323794330338}
   - component: {fileID: 6549005045294038484}
+  - component: {fileID: 3842234323794330338}
   - component: {fileID: 3882986017172763831}
   - component: {fileID: 519005804873463880}
   - component: {fileID: 9034255191475122084}
@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2692285520613444207}
   - component: {fileID: 5144193244893581531}
   - component: {fileID: 4857404036556289661}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,32 +44,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3842234323794330338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386559295309661771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _networkBehaviours:
-  - {fileID: 6549005045294038484}
-  - {fileID: 4857404036556289661}
-  SceneTransformProperties:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-    LocalScale: {x: 5, y: 5, z: 0}
-  _isNetworked: 1
-  _hasParentNetworkObjectAtEdit: 0
-  NetworkObserver: {fileID: 0}
-  _prefabId: 36
-  _scenePathHash: 0
-  _sceneId: 0
-  _sceneNetworkObjects: []
 --- !u!114 &6549005045294038484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +86,32 @@ MonoBehaviour:
     X: 0
     Y: 0
     Z: 0
+--- !u!114 &3842234323794330338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386559295309661771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _networkBehaviours:
+  - {fileID: 6549005045294038484}
+  - {fileID: 4857404036556289661}
+  SceneTransformProperties:
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    LocalScale: {x: 5, y: 5, z: 0}
+  _isNetworked: 1
+  _hasParentNetworkObjectAtEdit: 0
+  NetworkObserver: {fileID: 0}
+  _prefabId: 36
+  _scenePathHash: 0
+  _sceneId: 0
+  _sceneNetworkObjects: []
 --- !u!114 &3882986017172763831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2241507642535770688}
   - component: {fileID: 5009307279760647555}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 2398872284527371111}
   - component: {fileID: 6934256858163932103}
   - component: {fileID: 5388849994728223160}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1585844175330233833, guid: c763a0a09b3d2e04d91b538f2d2856e6, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1723196088533855416, guid: c763a0a09b3d2e04d91b538f2d2856e6, type: 3}
       propertyPath: m_SizeDelta.x
@@ -660,7 +660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2110059331164102201, guid: c763a0a09b3d2e04d91b538f2d2856e6, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2271105023981758555, guid: c763a0a09b3d2e04d91b538f2d2856e6, type: 3}
       propertyPath: m_SizeDelta.x
@@ -672,7 +672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2592615719170293733, guid: c763a0a09b3d2e04d91b538f2d2856e6, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3999234839701649083, guid: c763a0a09b3d2e04d91b538f2d2856e6, type: 3}
       propertyPath: m_Color.a
@@ -700,7 +700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4565622011260265527, guid: c763a0a09b3d2e04d91b538f2d2856e6, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4845666431401029298, guid: c763a0a09b3d2e04d91b538f2d2856e6, type: 3}
       propertyPath: m_RootOrder
@@ -752,7 +752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7457116964846262239, guid: c763a0a09b3d2e04d91b538f2d2856e6, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c763a0a09b3d2e04d91b538f2d2856e6, type: 3}
