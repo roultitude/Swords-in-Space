@@ -250,7 +250,7 @@ PrefabInstance:
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: bossPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 6062773019617976109, guid: 9695377747c910c499bad4cedab9a547, type: 3}
+      objectReference: {fileID: 806994042894368427, guid: 6d8dec840b19d454f97247deb4b47e73, type: 3}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: asleepEnemyInfos.Array.size
       value: 1
@@ -345,7 +345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359135, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: waitTime
-      value: 90
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}

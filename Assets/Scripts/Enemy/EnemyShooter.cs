@@ -57,7 +57,7 @@ namespace SwordsInSpace
             ShootAtPlayer();
         }
 
-        protected void ShootAt(Transform startLoc, Transform endLoc)
+        protected void ShootAt(Transform startLoc, Transform endLoc, Bullet.BulletBehavior fn = null)
         {
             Vector3 myLocation = startLoc.position;
             Vector3 targetLocation = endLoc.position;
@@ -69,10 +69,14 @@ namespace SwordsInSpace
             Quaternion rotation = Quaternion.LookRotation(endLoc.position - startLoc.position, Vector3.forward);
 
             GameObject toAdd = Instantiate(bullet, startLoc.position, rotation);
+            Bullet toSpawn = toAdd.GetComponent<Bullet>();
 
             toAdd.transform.rotation = Quaternion.RotateTowards(startLoc.rotation, targetRotation, 360f);
-            toAdd.GetComponent<Bullet>().Setup(shotSpeed, shotLifetime, damage, shotSpread, 1);
+            toSpawn.Setup(shotSpeed, shotLifetime, damage, shotSpread, 1);
             toAdd.transform.localScale *= bulletScale;
+
+            if (fn != null)
+                toSpawn.AddMovementFunction(fn);
             Spawn(toAdd);
         }
 
@@ -82,20 +86,37 @@ namespace SwordsInSpace
         }
 
 
-        protected void SpawnLocalRotation(Quaternion rot)
+
+        protected void SpawnLocalRotation(Quaternion offset = default, Vector3 loc = default, Bullet.BulletBehavior fn = null, float customBulletSpeed = -1f)
         {
+            if (offset == default)
+            {
+                offset = Quaternion.Euler(0, 0, 0);
+            }
 
-            SpawnLocalRotation(rot, transform.position);
+            if (loc == default)
+            {
+                loc = transform.position;
+            }
 
-        }
+            if (customBulletSpeed < 0)
+            {
+                customBulletSpeed = shotSpeed;
+            }
 
-        protected void SpawnLocalRotation(Quaternion rot, Vector3 loc)
-        {
+            offset *= Quaternion.Euler(0, 0, 90);
+
             GameObject toAdd = Instantiate(bullet, loc, gameObject.transform.rotation);
-            toAdd.transform.rotation = rot * transform.rotation;
-            toAdd.GetComponent<Bullet>().Setup(shotSpeed, shotLifetime, damage, shotSpread, 1);
+            toAdd.transform.rotation = offset * transform.rotation;
+            Bullet toSpawn = toAdd.GetComponent<Bullet>();
+            toSpawn.Setup(customBulletSpeed, shotLifetime, damage, shotSpread, 1);
             toAdd.transform.localScale *= bulletScale;
+
+            if (fn != null)
+                toSpawn.AddMovementFunction(fn);
+
             Spawn(toAdd);
         }
+
     }
 };

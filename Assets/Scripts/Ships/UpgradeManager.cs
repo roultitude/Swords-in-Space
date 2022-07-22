@@ -353,8 +353,7 @@ namespace SwordsInSpace
 
         public UpgradeSO StringToUpgradeSO(string input)
         {
-            Debug.Log(input);
-            Debug.Log(upgrades);
+
             return upgrades[input].upgradeSo;
         }
 

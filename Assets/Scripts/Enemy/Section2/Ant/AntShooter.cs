@@ -6,14 +6,13 @@ namespace SwordsInSpace
 {
     public class AntShooter : EnemyShooter
     {
-        public Quaternion RotationOffset;
         public GameObject[] turrets;
 
         public override void Shoot()
         {
             foreach (GameObject obj in turrets)
             {
-                SpawnLocalRotation(RotationOffset, obj.transform.position);
+                SpawnLocalRotation(loc: obj.transform.position);
             }
 
         }
