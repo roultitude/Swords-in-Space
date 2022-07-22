@@ -10,7 +10,7 @@ namespace SwordsInSpace
         public int numRotatingBullets;
 
         private int burst = 3;
-        private float burstcd = 1.3f;
+        private float burstcd = 2f;
         public GameObject bulletLocations;
 
         public float rotationPerShot;
