@@ -114,17 +114,16 @@ namespace SwordsInSpace
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!base.IsServer) { return; }
-            Debug.Log(other.gameObject);
             Interactable otherInteractable = other.gameObject.GetComponentInParent<Interactable>();
 
             if (otherInteractable)
             {
                 int id = interactables.GetId(otherInteractable);
-                if (id != -1) 
+                if (id != -1)
                 {
                     data.Add(interactables.GetId(otherInteractable));
                     otherInteractable.numPlayersNearby++;
-                } 
+                }
             }
 
 

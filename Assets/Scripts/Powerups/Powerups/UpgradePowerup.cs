@@ -24,7 +24,6 @@ namespace SwordsInSpace
         [ObserversRpc(BufferLast = true, RunLocally = true, IncludeOwner = true)]
         public void Setup(string upgradeName)
         {
-            Debug.Log(Ship.currentShip.upgradeManager.StringToUpgradeSO(upgradeName));
             spriterenderer.sprite = Ship.currentShip.upgradeManager.StringToUpgradeSO(upgradeName).sprite;
         }
 
