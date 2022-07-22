@@ -33,11 +33,16 @@ namespace SwordsInSpace
             messageDisplay = GetComponentInChildren<MessageDisplay>();
         }
 
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            Debug.Log("Subscribing to onLoadEnd ");
+            SceneManager.OnLoadEnd += args => OnClientLoadEnd(LocalConnection);
+        }
         public override void OnStartServer()
         {
             base.OnStartServer();
-            SceneManager.OnClientPresenceChangeEnd += arg => {Debug.Log("Sending new scene loaded broadcast to " + arg.Connection);
-                OnNewSceneBroadcast(arg.Connection); };
+            //SceneManager.OnClientPresenceChangeEnd += arg => {OnNewSceneBroadcast(arg.Connection); };
         }
 
         public void OnLoseGame()
@@ -116,6 +121,14 @@ namespace SwordsInSpace
             if (includeShip) CarryNetworkObjects.Add(Ship.currentShip.GetComponentInParent<NetworkObject>()); //get current ship
             CarryNetworkObjects.Add(UserManager.instance.GetComponent<NetworkObject>()); //always bring UserManager and GameManager
             CarryNetworkObjects.Add(GameManager.instance.GetComponent<NetworkObject>());
+        }
+
+        [ServerRpc(RequireOwnership =false)]
+        void OnClientLoadEnd(NetworkConnection conn)
+        {
+            Debug.Log("Received Client Load End");
+            OnNewSceneBroadcast(conn);
+            
         }
 
         [ObserversRpc]
