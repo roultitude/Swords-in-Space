@@ -107,6 +107,14 @@ PrefabInstance:
       propertyPath: _componentIndexCache
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2241507642535770688, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241507642535770688, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.86
+      objectReference: {fileID: 0}
     - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Size.x
       value: 2
@@ -118,10 +126,18 @@ PrefabInstance:
     - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 01c262992b492f74f8836d037f52faf4, type: 3}
+      objectReference: {fileID: 500127169, guid: f92e51fc6e8407c4498d8659d22a37ee, type: 3}
     - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739013680238319648, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739013680238319648, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3297842073833619420, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Layer
@@ -207,10 +223,22 @@ PrefabInstance:
       propertyPath: timeout.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5708157572430751117, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5708157572430751117, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.42
+      objectReference: {fileID: 0}
     - target: {fileID: 6549005045294038484, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _componentIndexCache
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6934256858163932103, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 63c3f17a330faa6459ffe108d9043dc1, type: 2}
     - target: {fileID: 7743148723566468320, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -259,7 +287,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8943456316866189084, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
   m_PrefabInstance: {fileID: 5384097056713024399}
   m_PrefabAsset: {fileID: 0}
---- !u!60 &6649287761759162971
+--- !u!60 &6115044073079296518
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,7 +304,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 6.4, y: 9.6}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -284,17 +312,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.84375, y: 0.875}
-      - {x: 0, y: 0.875}
-      - {x: -0.1875, y: 0.71875}
-      - {x: -0.375, y: 0.09375}
-      - {x: -0.375, y: -0.1875}
-      - {x: -0.125, y: -0.4375}
-      - {x: 0.34375, y: -0.875}
-      - {x: 0.375, y: -1}
-      - {x: 1, y: -1}
-      - {x: 1, y: 0.09375}
-      - {x: 0.875, y: 0.625}
+    - - {x: 0.8295344, y: 3.4174428}
+      - {x: -2.8716657, y: 0.4540738}
+      - {x: -2.9446294, y: -0.035184532}
+      - {x: -0.67166615, y: -1.7446287}
+      - {x: 1.3635184, y: -1.708148}
+      - {x: 3.1234887, y: -0.15837407}
+      - {x: 3.1234884, y: 2.3409314}
+      - {x: 1.958374, y: 3.4556985}
 --- !u!1 &6450891800367982020 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1386559295309661771, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}

@@ -17,6 +17,8 @@ namespace SwordsInSpace
         public float rotatingBulletSpeed;
 
 
+        public Animator anim;
+
         public class RotatingBullet
         {
             CardboardBoxShooter shooter;
@@ -72,6 +74,7 @@ namespace SwordsInSpace
 
         public IEnumerator StartCrossShots()
         {
+            anim.CrossFade("Attack1", 0);
             for (int i = 0; i < burst; i++)
             {
 

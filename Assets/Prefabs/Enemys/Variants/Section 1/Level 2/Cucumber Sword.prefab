@@ -12,6 +12,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 344454711275051622, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 344454711275051622, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 344454711275051622, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -67,6 +75,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cucumber Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 2241507642535770688, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241507642535770688, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.88
+      objectReference: {fileID: 0}
     - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Size.x
       value: 0.25
@@ -78,10 +94,18 @@ PrefabInstance:
     - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f6837ed3f05c55749ab449ef30441090, type: 3}
+      objectReference: {fileID: 2041913006, guid: 52108e57debfd684fb1c1f413aa0f164, type: 3}
     - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739013680238319648, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739013680238319648, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.19
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -115,6 +139,10 @@ PrefabInstance:
       propertyPath: timeout.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SwordsInSpace.EnemyShooter, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 6934256858163932103, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 047064f360b606f4092ea6027ae5f664, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
 --- !u!1 &2004161604143367898 stripped
@@ -193,6 +221,7 @@ MonoBehaviour:
   isAsleep: 0
   sideBulletPairs: 1
   shotOffset: 15
+  anim: {fileID: 7554040530841037654}
 --- !u!114 &4448538060099977843 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
@@ -226,6 +255,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7678620060197e4899c9491a0ab45e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7554040530841037654 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6934256858163932103, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+  m_PrefabInstance: {fileID: 643515609094783121}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8427273029835020173 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8943456316866189084, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
