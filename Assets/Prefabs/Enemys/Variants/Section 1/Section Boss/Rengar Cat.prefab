@@ -176,8 +176,8 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 208770173693893856}
   _networkObjectCache: {fileID: 208770173693893856}
   rotationSpeed: 90
-  dashCD: 6
-  rageDashCD: 1
+  dashCD: 10
+  rageDashCD: 6
   dashImpulse: 1000
   rb: {fileID: 3142497982122997105}
   enemyCollider: {fileID: 5237329400389076046}
@@ -196,8 +196,7 @@ MonoBehaviour:
   _componentIndexCache: 3
   _addedNetworkObject: {fileID: 208770173693893856}
   _networkObjectCache: {fileID: 208770173693893856}
-  maxHp: 5
-  currentHp: 5
+  maxHp: 10
   exp: 150
   onDamagedSound: {fileID: 0}
   doTeleportIfFar: 1

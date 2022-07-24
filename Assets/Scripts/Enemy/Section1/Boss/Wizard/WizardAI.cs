@@ -21,7 +21,7 @@ namespace SwordsInSpace
 
         private void Update()
         {
-            if (debugEnrage)
+            if (debugEnrage && IsServer)
             {
                 debugEnrage = false;
                 StartRagePhase();
@@ -53,6 +53,7 @@ namespace SwordsInSpace
 
         public void DoAllyCheck()
         {
+            if (!IsServer) return;
             int deadCat = 0;
             RageInterface aliveCat = null;
             if (currentHp <= 0)
@@ -64,7 +65,13 @@ namespace SwordsInSpace
                 aliveCat = this;
             }
 
-            if (RengarCatAI.currentHp <= 0)
+
+
+
+
+
+
+            if (RengarCatAI == null || RengarCatAI.GetCurrentHP() <= 0)
             {
                 deadCat++;
             }
@@ -73,7 +80,7 @@ namespace SwordsInSpace
                 aliveCat = RengarCatAI;
             }
 
-            if (FencingCatAI.currentHp <= 0)
+            if (FencingCatAI == null || FencingCatAI.GetCurrentHP() <= 0)
             {
                 deadCat++;
             }

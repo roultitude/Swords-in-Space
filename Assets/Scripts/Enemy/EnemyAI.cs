@@ -14,7 +14,7 @@ namespace SwordsInSpace
         [SerializeField]
         public double maxHp;
         [SyncVar(OnChange = nameof(UpdateHpText))]
-        public double currentHp;
+        protected double currentHp;
 
         [SerializeField]
         public double exp;
@@ -91,6 +91,11 @@ namespace SwordsInSpace
                 SetInactive();
             }
 
+        }
+
+        public double GetCurrentHP()
+        {
+            return currentHp;
         }
 
         public void SetInactive()

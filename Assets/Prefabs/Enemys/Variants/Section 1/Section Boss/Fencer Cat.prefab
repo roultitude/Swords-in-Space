@@ -448,7 +448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 519005804873463880, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: endReachedDistance
-      value: 50
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1386559295309661771, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Name
@@ -481,11 +481,11 @@ PrefabInstance:
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[2]
       value: 
-      objectReference: {fileID: 5750682922264547467}
+      objectReference: {fileID: 1022380214133547377}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5750682922264547467}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[4]
       value: 
@@ -568,21 +568,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1386559295309661771, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
   m_PrefabInstance: {fileID: 4014933363615571458}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5750682922264547467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2632887015420024905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc4299ab5f76bdb4f92c2c2dd4a4597c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 2
-  _addedNetworkObject: {fileID: 208770173693893856}
-  _networkObjectCache: {fileID: 208770173693893856}
 --- !u!114 &1022380214133547377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,10 +580,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5085cfc439ce41c42876b6d27a783d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 208770173693893856}
-  _networkObjectCache: {fileID: 0}
-  maxHp: 25
+  _networkObjectCache: {fileID: 208770173693893856}
+  maxHp: 15
   exp: 150
   onDamagedSound: {fileID: 0}
   doTeleportIfFar: 1
@@ -606,7 +591,23 @@ MonoBehaviour:
   isBoss: 0
   detectionRange: 30
   imageSpawner: {fileID: 8421484613521107071}
+  canDoBossDash: 1
   debugEnrage: 0
+--- !u!114 &5750682922264547467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632887015420024905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4299ab5f76bdb4f92c2c2dd4a4597c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 3
+  _addedNetworkObject: {fileID: 208770173693893856}
+  _networkObjectCache: {fileID: 208770173693893856}
 --- !u!4 &2930866769591624770 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2241507642535770688, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}

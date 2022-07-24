@@ -30911,7 +30911,7 @@ PrefabInstance:
       objectReference: {fileID: 151546134585196690}
     - target: {fileID: 5855772438624795781, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: fireStartOnCollideChance
-      value: 0
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5911424949146134401, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _networkObjectCache
@@ -31083,23 +31083,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: tier2Upgrade.Array.data[6].upgradeCount
-      value: 55
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: tier3Upgrade.Array.data[0].upgradeCount
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: tier3Upgrade.Array.data[2].upgradeCount
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: tier3Upgrade.Array.data[4].upgradeCount
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: tier4Upgrade.Array.data[0].upgradeCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: tier4Upgrade.Array.data[0].upgradeMaxCount

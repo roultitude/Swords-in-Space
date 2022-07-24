@@ -195,7 +195,7 @@ MonoBehaviour:
   _componentIndexCache: 3
   _addedNetworkObject: {fileID: 208770173693893856}
   _networkObjectCache: {fileID: 208770173693893856}
-  maxHp: 25
+  maxHp: 15
   exp: 150
   onDamagedSound: {fileID: 0}
   doTeleportIfFar: 1
@@ -203,8 +203,10 @@ MonoBehaviour:
   isBoss: 0
   detectionRange: 30
   imageSpawner: {fileID: 8421484613521107071}
+  canDoBossDash: 1
   RengarCatPrefab: {fileID: 2632887015420024905, guid: 8a9cb71506e372546b2bae43d7422a11, type: 3}
   FencingCatPrefab: {fileID: 2632887015420024905, guid: c25d392a405861441ae10eee498ee45d, type: 3}
+  hasRagedFriend: 0
   debugEnrage: 0
 --- !u!1 &5452278866936842526 stripped
 GameObject:
