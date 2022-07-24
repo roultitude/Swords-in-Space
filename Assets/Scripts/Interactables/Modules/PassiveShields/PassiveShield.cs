@@ -38,9 +38,11 @@ namespace SwordsInSpace
         void SetupUI()
         {
             UIDisplay = Instantiate(UIDisplayPrefab, Vector3.zero, Quaternion.identity);
+
             manager = DisplayManager.instance;
             UIDisplay.SetActive(false);
             display = UIDisplay.GetComponent<PassiveShieldDisplay>();
+            display.shield = this;
 
 
         }
@@ -114,13 +116,13 @@ namespace SwordsInSpace
             }
         }
 
-        [ServerRpc(RequireOwnerShip = false)]
+        [ServerRpc(RequireOwnership = false)]
         public void healFromBeat()
         {
             Ship.currentShip.AddHp(currentHealAmount);
         }
 
-        [ServerRpc(RequireOwnerShip = false)]
+        [ServerRpc(RequireOwnership = false)]
         public void healFromCombo(float increment)
         {
             Ship.currentShip.AddHp(increment * currentComboHealAmount);

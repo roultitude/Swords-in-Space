@@ -356,7 +356,8 @@ MonoBehaviour:
   _replaceScenes: 1
   _scenes:
   - ReplaceConnection
-  _connectionOnly: 1
+  - ReplaceMain
+  _connectionOnly: 0
   _automaticallyUnload: 1
   _onTriggerEnter: 1
 --- !u!1 &1155569019
@@ -488,6 +489,7 @@ MonoBehaviour:
   _replaceScenes: 1
   _scenes:
   - ReplaceGlobal
+  - ReplaceMain
   _connectionOnly: 0
   _automaticallyUnload: 1
   _onTriggerEnter: 1

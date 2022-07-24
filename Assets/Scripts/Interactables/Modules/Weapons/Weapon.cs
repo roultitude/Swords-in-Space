@@ -69,7 +69,6 @@ namespace SwordsInSpace
         Timer burstTimer;
         Timer atkTimer;
 
-        [SyncVar]
         public bool canFire = true;
         bool autoFire = false;
 
@@ -235,6 +234,8 @@ namespace SwordsInSpace
         public void FinishReload()
         {
             canFire = true;
+            Debug.Log("Set CanFire to True" + Time.time);
+            SetCanFire(true);
             if (autoFire)
             {
                 StartAttack();
@@ -244,18 +245,17 @@ namespace SwordsInSpace
         [ServerRpc(RequireOwnership = false)]
         public void Fire()
         {
-            if (canFire)
-            {
-                StartAttack();
-            }
+            if (!canFire) return;
+            StartAttack();
         }
-
+        
         public void StartAttack()
         {
-            if (!IsServer) { return; }//Sanity check
+            if (!canFire) { return; }//Sanity check
+            Debug.Log("CanFire is " + canFire + Time.time);
+            Debug.Log("Setting CanFire to false " + Time.time);
             canFire = false;
-            OnFireClient();
-
+            SetCanFire(false);
             StartBurst();
         }
 
@@ -312,6 +312,7 @@ namespace SwordsInSpace
 
                 if (currentBurst >= data.burst)
                 {
+                    OnFireClient();
                     atkTimer.Start();
                 }
 
@@ -334,7 +335,7 @@ namespace SwordsInSpace
                 Fire();
                 firing = false;
             }
-
+            Debug.Log(canFire + " " + Time.time);
             if (togglingAutoFire)
             {
                 ToggleAutoFire();
@@ -342,7 +343,11 @@ namespace SwordsInSpace
                 togglingAutoFire = false;
             }
         }
-
+        [ObserversRpc]
+        void SetCanFire(bool canFire)
+        {
+            this.canFire = canFire;
+        }
         [ObserversRpc]
         public void OnFireClient()
         {
@@ -351,6 +356,7 @@ namespace SwordsInSpace
         private void Update()
         {
             percentageReloaded = 1 - (float)((atkTimer.waitTime - atkTimer.currentTime) / data.atkCD);
+            
         }
     }
 };

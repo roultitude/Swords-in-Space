@@ -473,7 +473,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -647,6 +647,7 @@ MonoBehaviour:
   useDebugLevel: 0
   worlds:
   - {fileID: 8277842780175238229, guid: 5182dbe8a43cb294cac3c78bd7f74bae, type: 3}
+  - {fileID: 5768406578173641001, guid: 023a36b3744886941b2bec416c0bc147, type: 3}
   - {fileID: 8963359739916839358, guid: 31d752ece84ca824b847c4feca93d70a, type: 3}
   debugWorld: {fileID: 6012503926948557869, guid: 65085599267d93e4b8d891782b572959, type: 3}
 --- !u!4 &1480776902

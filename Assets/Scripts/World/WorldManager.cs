@@ -10,7 +10,7 @@ namespace SwordsInSpace
     {
         public static WorldManager currentWorld;
 
-        public EnemySpawner spawner;
+        public Spawner spawner;
 
         public Texture backgroundTextureBack, backgroundTextureMid, backgroundTextureFront;
 
@@ -36,7 +36,6 @@ namespace SwordsInSpace
             if (!InstanceFinder.IsServer) return;
             if (levelComplete && !levelFinished)
             {
-                WorldSpawner.level++;
                 GameManager.instance.OnLevelComplete();
                 levelFinished = true;
             }

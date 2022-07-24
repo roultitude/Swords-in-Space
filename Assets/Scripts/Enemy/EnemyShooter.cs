@@ -28,6 +28,9 @@ namespace SwordsInSpace
 
         public bool timerComplete = false;
 
+        [SyncVar]
+        public bool isAsleep = false;
+
 
         private bool IsInRange()
         {
@@ -41,7 +44,7 @@ namespace SwordsInSpace
 
         public void Update()
         {
-            if (IsServer && canFire && timerComplete && IsInRange())
+            if (IsServer && canFire && timerComplete && !isAsleep && IsInRange())
             {
                 Shoot();
                 timerComplete = false;
@@ -54,8 +57,12 @@ namespace SwordsInSpace
             ShootAtPlayer();
         }
 
-        protected void ShootAt(Transform startLoc, Transform endLoc)
+        protected void ShootAt(Transform startLoc, Transform endLoc, Bullet.BulletBehavior fn = null, Quaternion offset = default)
         {
+            if (offset == default)
+            {
+                offset = Quaternion.Euler(0, 0, 0);
+            }
             Vector3 myLocation = startLoc.position;
             Vector3 targetLocation = endLoc.position;
             targetLocation.z = myLocation.z;
@@ -66,33 +73,57 @@ namespace SwordsInSpace
             Quaternion rotation = Quaternion.LookRotation(endLoc.position - startLoc.position, Vector3.forward);
 
             GameObject toAdd = Instantiate(bullet, startLoc.position, rotation);
+            Bullet toSpawn = toAdd.GetComponent<Bullet>();
 
             toAdd.transform.rotation = Quaternion.RotateTowards(startLoc.rotation, targetRotation, 360f);
-            toAdd.GetComponent<Bullet>().Setup(shotSpeed, shotLifetime, damage, shotSpread, 1);
+
+
+            toAdd.transform.rotation *= offset;
+            toSpawn.Setup(shotSpeed, shotLifetime, damage, shotSpread, 1);
             toAdd.transform.localScale *= bulletScale;
+
+            if (fn != null)
+                toSpawn.AddMovementFunction(fn);
             Spawn(toAdd);
         }
 
-        protected void ShootAtPlayer()
+        protected void ShootAtPlayer(Quaternion offset = default)
         {
-            ShootAt(transform, Ship.currentShip.gameObject.transform);
+            ShootAt(transform, Ship.currentShip.gameObject.transform, offset: offset);
         }
 
 
-        protected void SpawnLocalRotation(Quaternion rot)
+
+        protected void SpawnLocalRotation(Quaternion offset = default, Vector3 loc = default, Bullet.BulletBehavior fn = null, float customBulletSpeed = -1f)
         {
+            if (offset == default)
+            {
+                offset = Quaternion.Euler(0, 0, 0);
+            }
 
-            SpawnLocalRotation(rot, transform.position);
+            if (loc == default)
+            {
+                loc = transform.position;
+            }
 
-        }
+            if (customBulletSpeed < 0)
+            {
+                customBulletSpeed = shotSpeed;
+            }
 
-        protected void SpawnLocalRotation(Quaternion rot, Vector3 loc)
-        {
+            offset *= Quaternion.Euler(0, 0, 90);
+
             GameObject toAdd = Instantiate(bullet, loc, gameObject.transform.rotation);
-            toAdd.transform.rotation = rot * transform.rotation;
-            toAdd.GetComponent<Bullet>().Setup(shotSpeed, shotLifetime, damage, shotSpread, 1);
+            toAdd.transform.rotation = offset * transform.rotation;
+            Bullet toSpawn = toAdd.GetComponent<Bullet>();
+            toSpawn.Setup(customBulletSpeed, shotLifetime, damage, shotSpread, 1);
             toAdd.transform.localScale *= bulletScale;
+
+            if (fn != null)
+                toSpawn.AddMovementFunction(fn);
+
             Spawn(toAdd);
         }
+
     }
 };

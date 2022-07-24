@@ -16,7 +16,7 @@ namespace SwordsInSpace
 
         MessageDisplay messageDisplay;
 
-        int currentLevel;
+        public int currentLevel = 0;
         List<NetworkObject> CarryNetworkObjects;
         bool nextSceneLobby;
 
@@ -33,10 +33,16 @@ namespace SwordsInSpace
             messageDisplay = GetComponentInChildren<MessageDisplay>();
         }
 
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            //Debug.Log("Subscribing to onLoadEnd ");
+            //SceneManager.OnLoadEnd += args => OnClientLoadEnd(LocalConnection);
+        }
         public override void OnStartServer()
         {
             base.OnStartServer();
-            SceneManager.OnClientPresenceChangeEnd += arg => OnNewSceneBroadcast(arg.Connection);
+            SceneManager.OnClientPresenceChangeEnd += arg => {OnNewSceneBroadcast(arg.Connection); };
         }
 
         public void OnLoseGame()
@@ -45,21 +51,23 @@ namespace SwordsInSpace
             GetCarryNetworkObjects(false, false);
             SceneLoadData sld = new SceneLoadData("LobbyScene") { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
             InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sld);
+            currentLevel = 0;
         }
 
         public void OnLevelComplete()
         {
+            currentLevel++;
             OnLevelCompleteRPC();
             StartCoroutine(OnLevelCompleteStartCountdown());
         }
 
 
-        [ServerRpc(RequireOwnership =false)]
+        [ServerRpc(RequireOwnership = false)]
         public void GoToLevel(string sceneName, bool bringShip = false, bool bringPlayers = true)
         {
             Ship.currentShip.AllPlayerExitUI();
-            GetCarryNetworkObjects(bringShip,bringPlayers);
-            SceneLoadData sld= new SceneLoadData(sceneName) { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
+            GetCarryNetworkObjects(bringShip, bringPlayers);
+            SceneLoadData sld = new SceneLoadData(sceneName) { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
             InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sld);
         }
 
@@ -92,10 +100,11 @@ namespace SwordsInSpace
             GetCarryNetworkObjects(true, true);
             SceneLoadData sld = new SceneLoadData("TempScene") { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
             InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sld);
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(15f);
+            Debug.Log("levelTransitioning called");
             Ship.currentShip.LevelTransition();
         }
-        
+
 
         public void GetCarryNetworkObjects(bool includeShip, bool includePlayers)
         {
@@ -103,15 +112,23 @@ namespace SwordsInSpace
             foreach (User user in UserManager.instance.users) //get all connected users
             {
                 CarryNetworkObjects.Add(user.GetComponent<NetworkObject>());
-                if (includePlayers) 
+                if (includePlayers)
                 {
                     CarryNetworkObjects.Add(user.controlledPlayer.GetComponent<NetworkObject>());
                     user.controlledPlayer.DetachUsernameCanvasRPC(false);
                 }
             }
-            if(includeShip) CarryNetworkObjects.Add(Ship.currentShip.GetComponentInParent<NetworkObject>()); //get current ship
+            if (includeShip) CarryNetworkObjects.Add(Ship.currentShip.GetComponentInParent<NetworkObject>()); //get current ship
             CarryNetworkObjects.Add(UserManager.instance.GetComponent<NetworkObject>()); //always bring UserManager and GameManager
             CarryNetworkObjects.Add(GameManager.instance.GetComponent<NetworkObject>());
+        }
+
+        [ServerRpc(RequireOwnership =false)]
+        void OnClientLoadEnd(NetworkConnection conn)
+        {
+            Debug.Log("Received Client Load End");
+            OnNewSceneBroadcast(conn);
+            
         }
 
         [ObserversRpc]

@@ -47,8 +47,6 @@ namespace FishNet.Object
         /// <summary>
         /// Initializes this script. This will only run once even as host.
         /// </summary>
-        /// <param name="networkObject"></param>
-        /// <param name="componentIndex"></param>
         internal void InitializeOnceInternal()
         {
             InitializeOnceSyncTypes();
@@ -57,14 +55,14 @@ namespace FishNet.Object
 
 
         /// <summary>
-        /// Serializes information about components.
+        /// Serializes information for network components.
         /// </summary>
         internal void SerializeComponents(NetworkObject nob, byte componentIndex)
         {
             _networkObjectCache = nob;
             ComponentIndex = componentIndex;
         }
-
+        
         #region Editor.
         protected virtual void Reset()
         {

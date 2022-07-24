@@ -10,6 +10,7 @@ using FishNet.Documenting;
 using FishNet.Object;
 using FishNet.Serializing;
 using FishNet.Transporting;
+using FishNet.Utility.Extension;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -427,7 +428,7 @@ namespace FishNet.Component.Transforming
             _interval = Math.Max(_interval, (byte)1);
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             if (_receivedClientData.Writer != null)
             {
@@ -1010,6 +1011,7 @@ namespace FishNet.Component.Transforming
                         * and it's thrown off. */
                         if (!HasChanged(td))
                             _queueReady = false;
+                        OnInterpolationComplete?.Invoke();
                         
                 }
             }
@@ -1186,6 +1188,7 @@ namespace FishNet.Component.Transforming
         /// <summary>
         /// Gets transform values that have changed against specified proprties.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private ChangedDelta GetChanged(ref Vector3 lastPosition, ref Quaternion lastRotation, ref Vector3 lastScale, NetworkBehaviour parentBehaviour)
         {
             ChangedDelta changed = ChangedDelta.Unset;
@@ -1200,7 +1203,7 @@ namespace FishNet.Component.Transforming
                 changed |= ChangedDelta.PositionZ;
 
             Quaternion rotation = t.localRotation;
-            if (rotation != lastRotation)
+            if (!rotation.Matches(lastRotation, true))
                 changed |= ChangedDelta.Rotation;
 
             ChangedDelta startChanged;
@@ -1282,6 +1285,7 @@ namespace FishNet.Component.Transforming
         /// <summary>
         /// Sets move rates which will occur over time.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void SetCalculatedRates(uint lastTick, RateData prevRd, TransformData prevTd, GoalData nextGd, ChangedFull changedFull, bool hasChanged, Channel channel)
         {
             /* Only update rates if data has changed.
@@ -1382,18 +1386,14 @@ namespace FishNet.Component.Transforming
                 //abnormalCorrection = 1f;
                 positionRate = (unalteredPositionRate * abnormalCorrection);
             }
-            if (positionRate == 0f)
-                positionRate = prevRd.Position;
 
             //Rotation.
             if (ChangedFullContains(changedFull, ChangedFull.Rotation))
             {
                 Quaternion lastRotation = prevTd.Rotation;
-                distance = Quaternion.Angle(lastRotation, td.Rotation);
+                distance = lastRotation.Angle(td.Rotation, true);
                 rotationRate = (distance / timePassed) * abnormalCorrection;
             }
-            if (rotationRate == 0f)
-                rotationRate = prevRd.Rotation;
 
             //Scale.
             if (ChangedFullContains(changedFull, ChangedFull.Scale))
@@ -1402,8 +1402,6 @@ namespace FishNet.Component.Transforming
                 distance = Vector3.Distance(lastScale, td.Scale);
                 scaleRate = (distance / timePassed) * abnormalCorrection;
             }
-            if (scaleRate == 0f)
-                scaleRate = prevRd.Scale;
 
             rd.Update(positionRate, rotationRate, scaleRate, unalteredPositionRate, tickDifference, abnormalRateDetected, timePassed);
 
@@ -1565,6 +1563,22 @@ namespace FishNet.Component.Transforming
             else
             {
                 _goalDataQueue.Enqueue(nextGd);
+            }
+
+            /* If the queue is excessive beyond interpolation then
+             * dequeue extras to prevent from dropping behind too
+             * quickly. This shouldn't be an issue with normal movement
+             * as the NT speeds up if the buffer unexpectedly grows, but
+             * when connections are unstable results may come in chunks
+             * and for a better experience the older parts of the chunks
+             * will be dropped. */
+            if (_goalDataQueue.Count > (_interpolation + 3))
+            {
+                while (_goalDataQueue.Count > _interpolation)
+                {
+                    GoalData tmpGd = _goalDataQueue.Dequeue();
+                    _goalDataCache.Push(tmpGd);
+                }
             }
         }
 
