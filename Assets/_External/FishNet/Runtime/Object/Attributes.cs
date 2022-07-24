@@ -20,8 +20,6 @@ namespace FishNet.Object
         /// True to also run the RPC logic locally.
         /// </summary>
         public bool RunLocally = false;
-
-        public bool RequireOwnerShip { get; set; }
     }
 
     /// <summary>

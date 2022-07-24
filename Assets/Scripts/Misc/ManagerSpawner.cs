@@ -11,7 +11,9 @@ namespace SwordsInSpace
         GameObject gameManagerPrefab, userManagerPrefab;
         public override void OnStartServer()
         {
+            
             base.OnStartServer();
+            Debug.Log("Spawning Managers " + Time.time);
             if (!GameManager.instance)
             {
                 GameObject gameManager = Instantiate(gameManagerPrefab);

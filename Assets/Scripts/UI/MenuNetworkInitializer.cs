@@ -64,6 +64,7 @@ namespace SwordsInSpace
         {
             SceneLoadData sld = new SceneLoadData("LobbyScene") { ReplaceScenes = ReplaceOption.All };
             networkManager.SceneManager.LoadGlobalScenes(sld);
+            
 #if !UNITY_SERVER || UNITY_EDITOR
             networkManager.ClientManager.StartConnection();
 #endif

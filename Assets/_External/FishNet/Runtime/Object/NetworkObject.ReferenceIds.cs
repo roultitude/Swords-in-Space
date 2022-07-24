@@ -86,8 +86,15 @@ namespace FishNet.Object
         {
             if (Application.isPlaying)
                 return;
+            //Potential Unity bug? Can sometimes be null based on editor callback order.
             if (gameObject == null)
                 return;
+            //Not a scene object.
+            if (string.IsNullOrEmpty(gameObject.scene.name))
+            {
+                SceneId = 0;
+                return;
+            }
 
             ulong startId = SceneId;
             uint startPath = _scenePathHash;
@@ -102,6 +109,7 @@ namespace FishNet.Object
              EditorUtility.IsPersistent(this))
             {
                 //These are all failing conditions, don't do additional checks.
+                SceneId = 0;
             }
             else
             {
@@ -196,11 +204,11 @@ namespace FishNet.Object
             return false;
         }
 
-        partial void PartialOnValidate()
+        private void ReferenceIds_OnValidate()
         {
             TryCreateSceneID();
         }
-        partial void PartialReset()
+        private void ReferenceIds_Reset()
         {
             TryCreateSceneID();
         }

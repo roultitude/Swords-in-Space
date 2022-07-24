@@ -36,13 +36,13 @@ namespace SwordsInSpace
         public override void OnStartClient()
         {
             base.OnStartClient();
-            Debug.Log("Subscribing to onLoadEnd ");
-            SceneManager.OnLoadEnd += args => OnClientLoadEnd(LocalConnection);
+            //Debug.Log("Subscribing to onLoadEnd ");
+            //SceneManager.OnLoadEnd += args => OnClientLoadEnd(LocalConnection);
         }
         public override void OnStartServer()
         {
             base.OnStartServer();
-            //SceneManager.OnClientPresenceChangeEnd += arg => {OnNewSceneBroadcast(arg.Connection); };
+            SceneManager.OnClientPresenceChangeEnd += arg => {OnNewSceneBroadcast(arg.Connection); };
         }
 
         public void OnLoseGame()
