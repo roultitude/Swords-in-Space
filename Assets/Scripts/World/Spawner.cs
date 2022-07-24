@@ -147,7 +147,7 @@ namespace SwordsInSpace
                     }
                 }
 
-                Vector3 loc = getRandomPosition(MaxGetRandomPositionAttempts, new Vector2(worldSize.x / 2, worldSize.y / 2));
+                Vector3 loc = getRandomPosition(MaxGetRandomPositionAttempts, new Vector2(worldSize.x / 2, worldSize.y / 2), minRange: new Vector2(50, 50));
                 int size = Random.Range(minPackDensity, maxPackDensity);
 
                 for (int i = 0; i < size * (int)Random.Range(selectedInfo.localPackSizeRange.x, selectedInfo.localPackSizeRange.y + 1); i++)
@@ -216,10 +216,27 @@ namespace SwordsInSpace
             return getRandomPosition(MaxGetRandomPositionAttempts, new Vector2(worldSize.x / 3, worldSize.y / 3));
         }
 
-        private Vector3 getRandomPosition(int attempts, Vector2 SpawnArea)
+        private Vector3 getRandomPosition(int attempts, Vector2 SpawnArea, Vector2 minRange = default)
         {
 
-            Vector3 pos = new Vector3(Random.Range(-SpawnArea.x, SpawnArea.x), Random.Range(-SpawnArea.y, SpawnArea.y), 0);
+            Vector3 pos;
+            if (minRange == default)
+                pos = new Vector3(Random.Range(-SpawnArea.x, SpawnArea.x), Random.Range(-SpawnArea.y, SpawnArea.y), 0);
+            else
+            {
+                pos = new Vector3(Random.Range(minRange.x, SpawnArea.x), Random.Range(minRange.y, SpawnArea.y), 0);
+                if (Random.Range(0, 2) == 1)
+                {
+                    pos.x = -pos.x;
+                }
+
+                if (Random.Range(0, 2) == 1)
+                {
+                    pos.y = -pos.y;
+
+                }
+
+            }
 
             if (!isValidSpawnPosition(pos) && attempts > 0)
             {

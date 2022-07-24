@@ -18,7 +18,7 @@ namespace SwordsInSpace
             {
                 if (i == 0)
                 {
-                    ShootAtPlayer();
+                    ShootAtPlayer(offset: Quaternion.Euler(0, 0, 0));
                 }
                 else
                 {

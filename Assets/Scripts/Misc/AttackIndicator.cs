@@ -12,10 +12,6 @@ namespace SwordsInSpace
         public delegate void OnTimerEndDelegate(GameObject obj);
         public OnTimerEndDelegate OnTimerEnd;
 
-        public override void OnStartServer()
-        {
-            base.OnStartServer();
-        }
 
         public void Setup(float time, OnTimerEndDelegate fn)
         {

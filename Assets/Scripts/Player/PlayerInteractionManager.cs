@@ -116,7 +116,7 @@ namespace SwordsInSpace
             if (!base.IsServer) { return; }
             Interactable otherInteractable = other.gameObject.GetComponentInParent<Interactable>();
 
-            if (otherInteractable)
+            if (otherInteractable && interactables != null)
             {
                 int id = interactables.GetId(otherInteractable);
                 if (id != -1)

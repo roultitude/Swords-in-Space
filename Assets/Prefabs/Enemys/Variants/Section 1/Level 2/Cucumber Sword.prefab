@@ -173,6 +173,7 @@ MonoBehaviour:
   isBoss: 0
   detectionRange: 30
   imageSpawner: {fileID: 5442262827895092972}
+  canDoBossDash: 1
 --- !u!114 &6987290729006462037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +221,7 @@ MonoBehaviour:
   timerComplete: 0
   isAsleep: 0
   sideBulletPairs: 1
-  shotOffset: 15
+  shotOffset: 1
   anim: {fileID: 7554040530841037654}
 --- !u!114 &4448538060099977843 stripped
 MonoBehaviour:
@@ -265,8 +266,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8943456316866189084, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
   m_PrefabInstance: {fileID: 643515609094783121}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &7436659102018425845
-CircleCollider2D:
+--- !u!70 &8439025175498974386
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -278,6 +279,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.64
+  m_Offset: {x: -3.26, y: 0}
+  m_Size: {x: 2.1, y: 7.25}
+  m_Direction: 0

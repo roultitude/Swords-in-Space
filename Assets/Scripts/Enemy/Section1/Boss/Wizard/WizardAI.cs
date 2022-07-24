@@ -89,8 +89,7 @@ namespace SwordsInSpace
                 aliveCat = FencingCatAI;
             }
 
-            Debug.Log(deadCat);
-            Debug.Log(aliveCat);
+
 
             if (deadCat == 2 && aliveCat != null && !hasRagedFriend)
             {

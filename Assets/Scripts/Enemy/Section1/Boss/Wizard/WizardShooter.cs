@@ -19,7 +19,7 @@ namespace SwordsInSpace
         {
             float currentTime = 0f;
 
-            float maxTime = 0.8f;
+            float maxTime = 0.2f;
             bool enabled = true;
             Vector3 origin;
 
@@ -113,6 +113,9 @@ namespace SwordsInSpace
         {
             bulletCd.waitTime = rageCD;
             isRaging = true;
+            damage = 3;
+            numNormalAttackIndicator = 3;
+
         }
     }
 };

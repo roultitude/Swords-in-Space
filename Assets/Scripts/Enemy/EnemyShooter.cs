@@ -77,7 +77,8 @@ namespace SwordsInSpace
 
 
             toAdd.transform.rotation = Quaternion.RotateTowards(Quaternion.Euler(0, 0, 0), targetRotation, 360f);
-            if (offset != default)
+
+            if (offset.z == 0 || offset.eulerAngles == Vector3.zero)
             {
                 offset = Quaternion.Euler(0, 0, 0);
             }

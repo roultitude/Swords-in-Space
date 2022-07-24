@@ -343,6 +343,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1976508626, guid: 6b09d48ad39d75c4194cadaa4d7e607b, type: 3}
     - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
@@ -437,6 +449,7 @@ MonoBehaviour:
   isBoss: 0
   detectionRange: 30
   imageSpawner: {fileID: 6585951123077435037}
+  canDoBossDash: 1
 --- !u!114 &6180376952315342598
 MonoBehaviour:
   m_ObjectHideFlags: 0
