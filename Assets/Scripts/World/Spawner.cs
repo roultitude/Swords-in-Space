@@ -92,7 +92,8 @@ namespace SwordsInSpace
 
         public void SpawnMob()
         {
-
+            if (spawninfos.Length == 0)
+                return;
 
             int currentWeight = Random.Range(0, totalWeight + 1);
             EnemySpawnInfo selectedInfo = spawninfos[0];
@@ -122,6 +123,9 @@ namespace SwordsInSpace
 
         private IEnumerator OnStartSpawn()
         {
+            if (InactiveEnemyInfos.Length == 0)
+                yield break;
+
             int inactiveEnemyWeight = 0;
             foreach (EnemySpawnInfo info in InactiveEnemyInfos)
             {

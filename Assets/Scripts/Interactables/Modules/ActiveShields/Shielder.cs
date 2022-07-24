@@ -26,9 +26,15 @@ namespace SwordsInSpace
         public override void OnStartServer()
         {
             base.OnStartServer();
-            Ship.currentShip.upgradeManager.OnUpgrade += ReloadUpgrades;
             currentTurnSpeed = turnSpeed;
+            currentShieldSize = baseShieldSize; 
         }
+
+        public void OnEnable()
+        {
+            Ship.currentShip.upgradeManager.OnUpgrade += ReloadUpgrades;
+        }
+
         public void ReloadUpgrades(Dictionary<UpgradeTypes, float> stats)
         {
             if (!IsServer) return;
@@ -36,8 +42,8 @@ namespace SwordsInSpace
             if (stats.ContainsKey(UpgradeTypes.shieldSize))
             {
                 float newShieldSize = baseShieldSize + stats[UpgradeTypes.shieldSize];
-                newShieldSize = Mathf.Clamp(newShieldSize, 0.1f, 10f);
-                gameObject.transform.localScale = new Vector3(newShieldSize, newShieldSize, 0);
+                currentShieldSize = Mathf.Clamp(newShieldSize, 0.1f, 100f);
+                gameObject.transform.localScale = new Vector3(currentShieldSize, currentShieldSize, 0);
             }
 
             if (stats.ContainsKey(UpgradeTypes.shieldTurnSpeed))
@@ -48,6 +54,9 @@ namespace SwordsInSpace
 
 
         }
+
+
+
 
         private void Update()
         {

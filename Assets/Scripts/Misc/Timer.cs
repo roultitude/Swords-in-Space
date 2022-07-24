@@ -66,7 +66,7 @@ namespace SwordsInSpace
                 {
                     Stop();
                 }
-                timeout.Invoke();
+                timeout?.Invoke();
 
             }
 

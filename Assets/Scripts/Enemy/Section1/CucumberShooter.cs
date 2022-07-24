@@ -22,8 +22,8 @@ namespace SwordsInSpace
                 }
                 else
                 {
-                    ShootAtPlayer(Quaternion.Euler(0, 0, shotOffset * i));
-                    ShootAtPlayer(Quaternion.Euler(0, 0, -shotOffset * i));
+                    ShootAtPlayer(offset: Quaternion.Euler(0, 0, shotOffset * i));
+                    ShootAtPlayer(offset: Quaternion.Euler(0, 0, -shotOffset * i));
                 }
 
             }
