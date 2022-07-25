@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SwordsInSpace
 {
-    public class WizardAI : EnemyAI, RageInterface
+    public class BossCatWizardAI : EnemyAI, RageInterface
     {
         [SerializeField]
         GameObject RengarCatPrefab;
@@ -25,7 +25,7 @@ namespace SwordsInSpace
             {
                 debugEnrage = false;
                 StartRagePhase();
-                GetComponentInChildren<WizardShooter>().StartRagePhase();
+                GetComponentInChildren<BossCatWizardShooter>().StartRagePhase();
             }
             DoAllyCheck();
         }
@@ -114,7 +114,7 @@ namespace SwordsInSpace
 
             if (currentHp <= 0)
             {
-                GetComponentInChildren<WizardShooter>().enabled = false;
+                GetComponentInChildren<BossCatWizardShooter>().enabled = false;
                 GetComponentInChildren<Collider2D>().enabled = false;
                 GetComponentInChildren<SpriteRenderer>().enabled = false;
                 ai.canMove = false;
@@ -125,7 +125,7 @@ namespace SwordsInSpace
 
         public void StartRagePhase()
         {
-            GetComponentInChildren<WizardShooter>().StartRagePhase();
+            GetComponentInChildren<BossCatWizardShooter>().StartRagePhase();
             StartCoroutine(BulkUp());
         }
 

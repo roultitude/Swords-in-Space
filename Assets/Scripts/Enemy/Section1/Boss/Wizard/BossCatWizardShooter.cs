@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SwordsInSpace
 {
 
-    public class WizardShooter : EnemyShooter, RageInterface
+    public class BossCatWizardShooter : EnemyShooter, RageInterface
     {
         public GameObject attackIndicator;
 
@@ -15,6 +15,12 @@ namespace SwordsInSpace
 
         public float rageCD;
         private bool isRaging = false;
+        private EnemyAnimator anim;
+
+        private void Awake()
+        {
+            anim = GetComponentInParent<BossCatWizardAI>().GetComponentInChildren<EnemyAnimator>();
+        }
         public class BulletMovement
         {
             float currentTime = 0f;
@@ -85,10 +91,14 @@ namespace SwordsInSpace
                 Spawn(toSpawn);
 
                 toSpawn.GetComponent<AttackIndicator>().Setup(1.6f, OnAttackIndicatorTimerEnd);
+                if (isRaging) anim.CrossFadeObserver("RagingAttack");
+                else anim.CrossFadeObserver("Attack");
 
                 yield return new WaitForSeconds(Random.Range(0.3f, 0.8f));
 
             }
+            if (isRaging) anim.CrossFadeObserver("RagingIdle");
+            else anim.CrossFadeObserver("Idle");
         }
 
         public void OnAttackIndicatorTimerEnd(GameObject indicator)
