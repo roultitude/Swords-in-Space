@@ -252,7 +252,7 @@ namespace SwordsInSpace
 
         }
 
-        [ObserversRpc(BufferLast = true)]
+        [ObserversRpc]
         public void BroadcastUpgradeScreen()
         {
             ShowUpgradeScreen();
