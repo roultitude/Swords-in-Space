@@ -126,7 +126,7 @@ namespace SwordsInSpace
         }
         private void FixedUpdate()
         {
-            if (currentGrabberHook) return;
+            if (!IsServer || currentGrabberHook) return;
             grabber.UpdateSprite(true);
         }
     }
