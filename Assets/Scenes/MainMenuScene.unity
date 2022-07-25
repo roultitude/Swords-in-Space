@@ -6447,6 +6447,20 @@ MonoBehaviour:
   _sceneProcessor: {fileID: 0}
   _moveClientHostObjects: 1
   _setActiveScene: 1
+--- !u!114 &2083121851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083121833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca43cf6f20e77c4f8fcc078fd85081f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _changeFrameRate: 1
+  _frameRate: 60
 --- !u!1 &2087584547
 GameObject:
   m_ObjectHideFlags: 0

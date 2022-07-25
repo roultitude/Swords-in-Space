@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: A boss has awoken!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 265d56a48a9206445bc7d944c8d989e3, type: 2}
-  m_sharedMaterial: {fileID: -5078580696487557892, guid: 265d56a48a9206445bc7d944c8d989e3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3576619954c24704daf80b0f626b0d53, type: 2}
+  m_sharedMaterial: {fileID: -3073045086147367013, guid: 3576619954c24704daf80b0f626b0d53, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.75
+  m_fontSize: 65.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
