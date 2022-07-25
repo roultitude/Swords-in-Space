@@ -121,6 +121,7 @@ namespace SwordsInSpace
 
         public void StartRagePhase()
         {
+            anim.CrossFadeObserver("RagingIdle");
             bulletCd.waitTime = rageCD;
             isRaging = true;
             damage = 3;
