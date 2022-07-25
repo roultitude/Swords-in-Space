@@ -33292,6 +33292,7 @@ MonoBehaviour:
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
+  _isGlobal: 0
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
   _prefabId: 9
@@ -33440,8 +33441,8 @@ MonoBehaviour:
     weight: 1
     localPackSizeRange: {x: 1, y: 0}
   bossPrefabs: []
-  asleepEnemyInfos: []
-  asleepMobPacks: 5
+  InactiveEnemyInfos: []
+  InactiveMobPacks: 5
   Powerups:
   - {fileID: 3801844991114630199, guid: ccf48b829bfec024db5a03b7261066c1, type: 3}
   - {fileID: 3801844991114630199, guid: 947c202a0c3508e41b83ee68ccc1c035, type: 3}

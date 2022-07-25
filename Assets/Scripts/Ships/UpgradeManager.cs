@@ -41,6 +41,7 @@ namespace SwordsInSpace
 
         private UpgradesDisplay uiUpgrades => upgradesDisplay.GetComponent<UpgradesDisplay>();
 
+
         public int numUpgrades;
 
         public bool debugTrigger = false;
@@ -96,6 +97,7 @@ namespace SwordsInSpace
                 return;
 
             this.numUpgrades = numUpgrades;
+            UpdateNumUpgradesClient(numUpgrades);
             RollUpgrades();
             BroadcastUpgradeScreen();
 
@@ -128,6 +130,8 @@ namespace SwordsInSpace
             return thisTier[Random.Range(0, thisTier.Count)];
 
         }
+
+
         private void RollUpgrades()
         {
             if (!IsServer)
@@ -269,12 +273,19 @@ namespace SwordsInSpace
                 }
             }
         }
+        [ObserversRpc]
+        public void UpdateNumUpgradesClient(int newVal)
+        {
+            if (IsServer) return;
+            numUpgrades = newVal;
+        }
 
         public void AddUpgrade(string upgrd)
         {
 
             upgrades[upgrd].upgradeCount += 1;
             numUpgrades -= 1;
+            UpdateNumUpgradesClient(numUpgrades);
             Debug.Log("Upgrade Complete!" + upgrd);
 
             if (upgrades[upgrd].upgradeMaxCount != -1 && upgrades[upgrd].upgradeCount >= upgrades[upgrd].upgradeMaxCount)
@@ -441,11 +452,11 @@ namespace SwordsInSpace
             AddVote(num, username);
         }
 
-        public void AddRandomUpgrade()
+        public void AddRandomVote()
         {
             if (hasMadeChoice)
                 return;
-            hasMadeChoice = false;
+            hasMadeChoice = true;
             int randomupgradenum = Random.Range(0, upgradeChoice.Length);
             SendRPCUpgrade(upgradeChoice[randomupgradenum], randomupgradenum, User.localUser.username);
         }

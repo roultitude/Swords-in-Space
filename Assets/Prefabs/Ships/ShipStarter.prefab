@@ -210,6 +210,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 6449322567983119221}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Left
       value: 
@@ -222,6 +226,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 6449322567983119221}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -273,6 +281,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
@@ -400,6 +412,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 6542217728054234646}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Up
       value: 
@@ -412,6 +428,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 6542217728054234646}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -463,6 +483,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
@@ -685,7 +709,11 @@ PrefabInstance:
     - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 6611009612261805382}
+      objectReference: {fileID: 36591709447688895}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 82
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Left
       value: 
@@ -697,7 +725,11 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 6611009612261805382}
+      objectReference: {fileID: 36591709447688895}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 81
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -751,12 +783,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -880,6 +916,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 6871451192160701112}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Left
       value: 
@@ -892,6 +932,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 6871451192160701112}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -943,6 +987,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
@@ -1229,6 +1277,10 @@ PrefabInstance:
     - target: {fileID: 3997270631367016324, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586346026145702956, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
+      propertyPath: _prefabId
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 4586346026145702956, guid: 41ab5a3b19ce0214e9a380718d2a0a5b, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
@@ -1557,12 +1609,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5154871676309484324, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
+      propertyPath: _networkObjectCache
+      value: 
+      objectReference: {fileID: 4615366573227739200}
+    - target: {fileID: 5154871676309484324, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _componentIndexCache
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5615112723805862627, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: m_Name
       value: Shooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
+      propertyPath: _prefabId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
+      propertyPath: _hasParentNetworkObjectAtEdit
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _networkBehaviours.Array.data[0]
@@ -1720,6 +1784,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6055003949489971329}
     - target: {fileID: 4673388321946508991, guid: e6541eeebaa3ab9418c0b575fe3925ba, type: 3}
+      propertyPath: _prefabId
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673388321946508991, guid: e6541eeebaa3ab9418c0b575fe3925ba, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
       value: 1
       objectReference: {fileID: 0}
@@ -1820,7 +1888,11 @@ PrefabInstance:
     - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 4752745100040622905}
+      objectReference: {fileID: 36591709447688895}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Left
       value: 
@@ -1832,7 +1904,11 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 4752745100040622905}
+      objectReference: {fileID: 36591709447688895}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -1886,12 +1962,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -2087,6 +2167,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 4888855237586686182}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Up
       value: 
@@ -2103,6 +2187,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 4888855237586686182}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -2154,6 +2242,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
@@ -2304,7 +2396,11 @@ PrefabInstance:
     - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 5104541148199342858}
+      objectReference: {fileID: 36591709447688895}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 52
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Left
       value: 
@@ -2316,7 +2412,11 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 5104541148199342858}
+      objectReference: {fileID: 36591709447688895}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 51
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -2370,12 +2470,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -2616,6 +2720,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 8355801899229680954}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Down
       value: 
@@ -2628,6 +2736,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 8355801899229680954}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -2679,6 +2791,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
@@ -2897,6 +3013,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
@@ -3174,6 +3294,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
@@ -3430,6 +3554,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
@@ -3690,6 +3818,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
@@ -3846,7 +3978,7 @@ PrefabInstance:
     - target: {fileID: 3158867932272268104, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 6458086078308940203}
+      objectReference: {fileID: 8789729264544711027}
     - target: {fileID: 3158867932272268104, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: _componentIndexCache
       value: 0
@@ -3854,7 +3986,7 @@ PrefabInstance:
     - target: {fileID: 3200754078692064071, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 6458086078308940203}
+      objectReference: {fileID: 8789729264544711027}
     - target: {fileID: 3200754078692064071, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: _componentIndexCache
       value: 2
@@ -3968,8 +4100,12 @@ PrefabInstance:
       value: Weapon
       objectReference: {fileID: 0}
     - target: {fileID: 5487304269457532562, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
+      propertyPath: _prefabId
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487304269457532562, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5487304269457532562, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -4014,7 +4150,7 @@ PrefabInstance:
     - target: {fileID: 6076559119840805008, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 6458086078308940203}
+      objectReference: {fileID: 8789729264544711027}
     - target: {fileID: 6076559119840805008, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: _componentIndexCache
       value: 3
@@ -4034,7 +4170,7 @@ PrefabInstance:
     - target: {fileID: 6735194044421036099, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 6458086078308940203}
+      objectReference: {fileID: 8789729264544711027}
     - target: {fileID: 6735194044421036099, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: _componentIndexCache
       value: 1
@@ -4093,7 +4229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7800811835471748682, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7800811835471748682, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -4194,6 +4330,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a694ac55704d0b047a0c89a637a2c650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8789729264544711027 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5487304269457532562, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
+  m_PrefabInstance: {fileID: 3881458680113866721}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3926989878899673295
@@ -4335,6 +4482,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
@@ -4707,6 +4858,10 @@ PrefabInstance:
       value: Weapon (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5487304269457532562, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
+      propertyPath: _prefabId
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487304269457532562, guid: 0242b49fcda2cfe48b4dc6d948150450, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
       value: 0
       objectReference: {fileID: 0}
@@ -5038,6 +5193,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
@@ -5244,6 +5403,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6378820177310901375, guid: 959f1685bc1e60b4896295b0b6e0f551, type: 3}
+      propertyPath: _prefabId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378820177310901375, guid: 959f1685bc1e60b4896295b0b6e0f551, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
       value: 0
       objectReference: {fileID: 0}
@@ -5359,7 +5522,11 @@ PrefabInstance:
     - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 2178330789620125445}
+      objectReference: {fileID: 36591709447688895}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 62
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Down
       value: 
@@ -5375,7 +5542,11 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 2178330789620125445}
+      objectReference: {fileID: 36591709447688895}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 61
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -5429,12 +5600,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -5669,6 +5844,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
@@ -5939,6 +6118,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
@@ -30770,6 +30953,10 @@ PrefabInstance:
       propertyPath: fires.Array.data[33]
       value: 
       objectReference: {fileID: 151546134585196690}
+    - target: {fileID: 5855772438624795781, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: fireStartOnCollideChance
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 5911424949146134401, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: _networkObjectCache
       value: 
@@ -30932,6 +31119,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: tier1Upgrade.Array.data[2].upgradeCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier2Upgrade.Array.data[5].upgradeCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier2Upgrade.Array.data[6].upgradeCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier3Upgrade.Array.data[0].upgradeCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier3Upgrade.Array.data[2].upgradeCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier3Upgrade.Array.data[4].upgradeCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier4Upgrade.Array.data[0].upgradeCount
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
@@ -34159,6 +34370,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
@@ -34319,10 +34534,10 @@ PrefabInstance:
     - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 1568773867735789813}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Up
@@ -34335,10 +34550,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 1568773867735789813}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -34393,12 +34608,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -34485,10 +34704,10 @@ PrefabInstance:
     - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 1693137193718019773}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 1
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Down
@@ -34501,10 +34720,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 1693137193718019773}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -34559,12 +34778,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -34861,6 +35084,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
@@ -34973,10 +35200,10 @@ PrefabInstance:
     - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 710608208283495989}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 1
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Up
@@ -34989,10 +35216,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 710608208283495989}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -35047,12 +35274,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -35259,7 +35490,11 @@ PrefabInstance:
     - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 822905180149007288}
+      objectReference: {fileID: 36591709447688895}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 44
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Up
       value: 
@@ -35271,7 +35506,11 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 822905180149007288}
+      objectReference: {fileID: 36591709447688895}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 43
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -35325,12 +35564,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -35660,6 +35903,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
@@ -35846,8 +36093,12 @@ PrefabInstance:
       value: Power
       objectReference: {fileID: 0}
     - target: {fileID: 3408158429538559995, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
+      propertyPath: _prefabId
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408158429538559995, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3408158429538559995, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -35887,7 +36138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3456108306466875768, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3456108306466875768, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -35928,7 +36179,7 @@ PrefabInstance:
     - target: {fileID: 5693034540771359278, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 8635822881458234923}
+      objectReference: {fileID: 8602505440013068456}
     - target: {fileID: 5693034540771359278, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
       propertyPath: _componentIndexCache
       value: 1
@@ -35948,7 +36199,7 @@ PrefabInstance:
     - target: {fileID: 6373298081508993216, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 8635822881458234923}
+      objectReference: {fileID: 8602505440013068456}
     - target: {fileID: 6373298081508993216, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
       propertyPath: _componentIndexCache
       value: 0
@@ -36005,9 +36256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8635822881458234923 stripped
+--- !u!114 &8602505440013068456 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3408158429538559995, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3456108306466875768, guid: 6b3a36b30c78fb04ba1b9d7634c852fc, type: 3}
   m_PrefabInstance: {fileID: 6382916989977100752}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -36027,6 +36278,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 422281378654453741}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Down
       value: 
@@ -36043,6 +36298,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 422281378654453741}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -36094,6 +36353,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
@@ -36290,6 +36553,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
@@ -36462,7 +36729,11 @@ PrefabInstance:
     - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 4196058169501509033}
+      objectReference: {fileID: 36591709447688895}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 98
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Up
       value: 
@@ -36478,7 +36749,11 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 4196058169501509033}
+      objectReference: {fileID: 36591709447688895}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 97
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -36532,12 +36807,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -36629,6 +36908,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 4363399378668580300}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Up
       value: 
@@ -36645,6 +36928,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 4363399378668580300}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -36696,6 +36983,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
@@ -36807,6 +37098,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 4337337358184788875}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Up
       value: 
@@ -36823,6 +37118,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 4337337358184788875}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -36874,6 +37173,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
@@ -37096,18 +37399,22 @@ PrefabInstance:
     - target: {fileID: 5154871676309484324, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 36591709447688895}
+      objectReference: {fileID: 3061921688263991869}
     - target: {fileID: 5154871676309484324, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _componentIndexCache
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5615112723805862627, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: m_Name
       value: Shooter
       objectReference: {fileID: 0}
     - target: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
+      propertyPath: _prefabId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: SceneTransformProperties.Position.x
@@ -37144,10 +37451,10 @@ PrefabInstance:
     - target: {fileID: 7663618118891403403, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 36591709447688895}
+      objectReference: {fileID: 3061921688263991869}
     - target: {fileID: 7663618118891403403, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _componentIndexCache
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
@@ -37178,6 +37485,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5615112723805862627, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
   m_PrefabInstance: {fileID: 7279486497725705548}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3061921688263991869 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
+  m_PrefabInstance: {fileID: 7279486497725705548}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2947901875334682543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7944063795577040091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37186,8 +37504,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 4600253120023678215}
     m_Modifications:
     - target: {fileID: 1271647602566972295, guid: beb09eb0a482f8644872c9cc759a670e, type: 3}
+      propertyPath: _prefabId
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271647602566972295, guid: beb09eb0a482f8644872c9cc759a670e, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1271647602566972295, guid: beb09eb0a482f8644872c9cc759a670e, type: 3}
       propertyPath: SceneTransformProperties.Rotation.x
@@ -37212,14 +37534,22 @@ PrefabInstance:
     - target: {fileID: 5150511420309096475, guid: beb09eb0a482f8644872c9cc759a670e, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 36591709447688895}
+      objectReference: {fileID: 9195003739446079324}
     - target: {fileID: 5150511420309096475, guid: beb09eb0a482f8644872c9cc759a670e, type: 3}
       propertyPath: _componentIndexCache
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5385093968713631753, guid: beb09eb0a482f8644872c9cc759a670e, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5385093968713631753, guid: beb09eb0a482f8644872c9cc759a670e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5385093968713631753, guid: beb09eb0a482f8644872c9cc759a670e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5385093968713631753, guid: beb09eb0a482f8644872c9cc759a670e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37262,12 +37592,16 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8013606181629481083, guid: beb09eb0a482f8644872c9cc759a670e, type: 3}
+      propertyPath: _packing.Scale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013606181629481083, guid: beb09eb0a482f8644872c9cc759a670e, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 36591709447688895}
+      objectReference: {fileID: 9195003739446079324}
     - target: {fileID: 8013606181629481083, guid: beb09eb0a482f8644872c9cc759a670e, type: 3}
       propertyPath: _componentIndexCache
-      value: 9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8409513000021745705, guid: beb09eb0a482f8644872c9cc759a670e, type: 3}
       propertyPath: m_Name
@@ -37297,6 +37631,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1640be67244831345ad9e26f199a8ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9195003739446079324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1271647602566972295, guid: beb09eb0a482f8644872c9cc759a670e, type: 3}
+  m_PrefabInstance: {fileID: 7944063795577040091}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7953902063148198939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37307,10 +37652,10 @@ PrefabInstance:
     - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 3958208584644326940}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 1
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Down
@@ -37327,10 +37672,10 @@ PrefabInstance:
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 3958208584644326940}
+      objectReference: {fileID: 36591709447688895}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _componentIndexCache
-      value: 0
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
@@ -37385,12 +37730,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -37672,6 +38021,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
@@ -37926,6 +38279,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
       value: 0
       objectReference: {fileID: 0}
@@ -38118,18 +38475,22 @@ PrefabInstance:
     - target: {fileID: 5154871676309484324, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 36591709447688895}
+      objectReference: {fileID: 3903090829467182376}
     - target: {fileID: 5154871676309484324, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _componentIndexCache
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5615112723805862627, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: m_Name
       value: Shooter (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
+      propertyPath: _prefabId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: SceneTransformProperties.Position.x
@@ -38166,10 +38527,10 @@ PrefabInstance:
     - target: {fileID: 7663618118891403403, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 36591709447688895}
+      objectReference: {fileID: 3903090829467182376}
     - target: {fileID: 7663618118891403403, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
       propertyPath: _componentIndexCache
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
@@ -38189,6 +38550,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5615112723805862627, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
   m_PrefabInstance: {fileID: 8741873380082494041}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3903090829467182376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5727399962631425905, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
+  m_PrefabInstance: {fileID: 8741873380082494041}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800401195529130170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4528536549115337085 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5154871676309484324, guid: 68bc169f0f422994faf42db9ae236285, type: 3}
@@ -38210,10 +38582,10 @@ PrefabInstance:
     - target: {fileID: 63302899025214661, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 36591709447688895}
+      objectReference: {fileID: 8360697955643479725}
     - target: {fileID: 63302899025214661, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
       propertyPath: _componentIndexCache
-      value: 29
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 63302899025214661, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
       propertyPath: linkedFireCells.Array.size
@@ -38245,7 +38617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1089966707694479485, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1089966707694479485, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
       propertyPath: _networkBehaviours.Array.size
@@ -38278,10 +38650,10 @@ PrefabInstance:
     - target: {fileID: 1139386518131713871, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 36591709447688895}
+      objectReference: {fileID: 8360697955643479725}
     - target: {fileID: 1139386518131713871, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
       propertyPath: _componentIndexCache
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7448590757826765106, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
       propertyPath: m_RootOrder
@@ -38332,6 +38704,10 @@ PrefabInstance:
       value: StarterPassiveShield
       objectReference: {fileID: 0}
     - target: {fileID: 8035095498716002970, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
+      propertyPath: _prefabId
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035095498716002970, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
       propertyPath: _hasParentNetworkObjectAtEdit
       value: 1
       objectReference: {fileID: 0}
@@ -38369,6 +38745,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
+--- !u!114 &8360697955643479725 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1089966707694479485, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
+  m_PrefabInstance: {fileID: 8874198533462785744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8424148631410137503 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1139386518131713871, guid: e9909e88d2328804dbb8819adc0d9217, type: 3}
@@ -38459,6 +38846,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 2723483179332001213}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Up
       value: 
@@ -38475,6 +38866,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 2723483179332001213}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -38526,6 +38921,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash
@@ -38629,6 +39028,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 2853038883771531182}
+    - target: {fileID: 4089832220079097810, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: Down
       value: 
@@ -38641,6 +39044,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 2853038883771531182}
+    - target: {fileID: 5715225817761966688, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _componentIndexCache
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5788074847093031336, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: m_Name
       value: Fire
@@ -38692,6 +39099,10 @@ PrefabInstance:
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _sceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
+      propertyPath: _prefabId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6381475828400757255, guid: 0fee60bcef890494abcc414cce6292ab, type: 3}
       propertyPath: _scenePathHash

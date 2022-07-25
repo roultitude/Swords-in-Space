@@ -75,7 +75,6 @@ namespace SwordsInSpace
         {
             foreach (UpgradeTypes type in stats.Keys)
             {
-                Debug.Log(type + "\t" + stats[type]);
                 foreach (BulletModifier mod in modifiers)
                 {
                     if (mod.thisUpgradeAttribute.type == type)

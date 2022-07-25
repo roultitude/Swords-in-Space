@@ -18,12 +18,12 @@ namespace SwordsInSpace
             {
                 if (i == 0)
                 {
-                    ShootAtPlayer();
+                    ShootAtPlayer(offset: Quaternion.Euler(0, 0, 0));
                 }
                 else
                 {
-                    ShootAtPlayer(Quaternion.Euler(0, 0, shotOffset * i));
-                    ShootAtPlayer(Quaternion.Euler(0, 0, -shotOffset * i));
+                    ShootAtPlayer(offset: Quaternion.Euler(0, 0, shotOffset * i));
+                    ShootAtPlayer(offset: Quaternion.Euler(0, 0, -shotOffset * i));
                 }
 
             }

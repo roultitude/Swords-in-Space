@@ -33,7 +33,7 @@ namespace SwordsInSpace
         [SerializeField]
         public Hpbar bar;
 
-        [SyncVar(OnChange =nameof(OnChangeAnimLocked))]
+        [SyncVar(OnChange = nameof(OnChangeAnimLocked))]
         bool animLocked = false;
 
         IEnumerator animLocker;
@@ -46,6 +46,10 @@ namespace SwordsInSpace
             fetchBaseStats();
         }
 
+        public void OnChangeCurrentAmount(float bef, float current, bool serv)
+        {
+            bar.Resize(currentAmount / maxAmount);
+        }
         private void fetchBaseStats()
         {
             maxAmount = Ship.currentShip.data.powerMaxAmount;
@@ -91,6 +95,7 @@ namespace SwordsInSpace
         // Update is called once per frame
         void Update()
         {
+            if (!IsServer) return;
 
             if (currentAmount == 0)
             {
@@ -120,7 +125,7 @@ namespace SwordsInSpace
                 supplyingPower = true;
             }
 
-            bar.Resize(currentAmount / maxAmount);
+            //bar.Resize(currentAmount / maxAmount);
         }
 
 
@@ -135,7 +140,7 @@ namespace SwordsInSpace
             AudioManager.instance.ObserversPlay(chargeSound);
             if (currentAmount > maxAmount)
                 currentAmount = maxAmount;
-            if (animLocker != null) StopCoroutine(animLocker); 
+            if (animLocker != null) StopCoroutine(animLocker);
             animLocker = PlayAnimOnInteract();
             StartCoroutine(animLocker);
         }
@@ -146,7 +151,7 @@ namespace SwordsInSpace
             {
                 base.switchAnim();
             }
-            else anim.CrossFade("PlayerOccupied",0,0);
+            else anim.CrossFade("PlayerOccupied", 0, 0);
         }
         IEnumerator PlayAnimOnInteract()
         {

@@ -228,7 +228,7 @@ MonoBehaviour:
   _attackResponseType: 1
   _ipv4BindAddress: 
   _ipv6BindAddress: 
-  _port: 7770
+  _port: 7771
   _maximumClients: 5237
   _clientAddress: localhost
   _timeout: 15
@@ -357,6 +357,7 @@ MonoBehaviour:
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
+  _isGlobal: 0
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
   _prefabId: -1
@@ -620,6 +621,7 @@ MonoBehaviour:
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
+  _isGlobal: 0
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
   _prefabId: -1
@@ -646,8 +648,9 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 1480776900}
   useDebugLevel: 0
   worlds:
-  - {fileID: 8277842780175238229, guid: 5182dbe8a43cb294cac3c78bd7f74bae, type: 3}
+  - {fileID: 1259787950997282478, guid: 2d41d3efeb424624aa2f6fa868b00051, type: 3}
   - {fileID: 5768406578173641001, guid: 023a36b3744886941b2bec416c0bc147, type: 3}
+  - {fileID: 8277842780175238229, guid: 5182dbe8a43cb294cac3c78bd7f74bae, type: 3}
   - {fileID: 8963359739916839358, guid: 31d752ece84ca824b847c4feca93d70a, type: 3}
   debugWorld: {fileID: 6012503926948557869, guid: 65085599267d93e4b8d891782b572959, type: 3}
 --- !u!4 &1480776902

@@ -38,7 +38,7 @@ namespace SwordsInSpace
 
         void VoteTimeout()
         {
-            Ship.currentShip.upgradeManager.AddRandomUpgrade();
+            Ship.currentShip.upgradeManager.AddRandomVote();
         }
     }
 };
