@@ -64,9 +64,10 @@ namespace SwordsInSpace
 
         public void OnTimeout()
         {
+            if (!IsServer) return;
+
             onDespawnFunction?.Invoke(gameObject);
-            if (IsServer)
-                Despawn();
+            Despawn();
         }
 
         // Update is called once per frame

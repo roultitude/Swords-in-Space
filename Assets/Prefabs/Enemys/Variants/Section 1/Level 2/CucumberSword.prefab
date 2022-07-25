@@ -221,7 +221,7 @@ MonoBehaviour:
   timerComplete: 0
   isAsleep: 0
   sideBulletPairs: 1
-  shotOffset: 1
+  shotOffset: 15
   anim: {fileID: 7554040530841037654}
 --- !u!114 &4448538060099977843 stripped
 MonoBehaviour:

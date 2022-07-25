@@ -25,7 +25,7 @@ namespace SwordsInSpace
         [SerializeField]
         AudioClip chargeSound;
 
-        [SyncVar]
+        [SyncVar(OnChange = nameof(OnChangeCurrentAmount))]
         public float currentAmount = 100;
 
         public bool supplyingPower = true;
@@ -48,7 +48,7 @@ namespace SwordsInSpace
 
         public void OnChangeCurrentAmount(float bef, float current, bool serv)
         {
-            bar.Resize(currentAmount / maxAmount);
+            bar.Resize(current / maxAmount);
         }
         private void fetchBaseStats()
         {
