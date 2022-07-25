@@ -38,8 +38,52 @@
                 },
                 {
                     "name": "",
+                    "id": "604fa1e9-129c-4bb5-9ba5-eeb38a379e20",
+                    "path": "<Keyboard>/backquote",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cade0422-8846-476a-83ce-6cb8d7fad533",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6db7fcf8-c4d4-425c-8f3a-22deed2cde84",
+                    "path": "<Keyboard>/rightShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4b5dce7c-8f51-4f5e-958e-e4288a808476",
                     "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7de9757c-a904-49fb-b56c-2f9b25480052",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -74,6 +118,28 @@
                     "action": "NitroBoost",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6aed56a5-5c73-41df-9706-b216de8fe51f",
+                    "path": "<Keyboard>/backquote",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NitroBoost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "249b3f29-6157-488e-953b-590e9f0c7e8d",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NitroBoost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -85,15 +151,6 @@
                     "name": "Fire",
                     "type": "PassThrough",
                     "id": "81118847-c8ed-4776-8c7f-a682635e328f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SteerTest",
-                    "type": "Button",
-                    "id": "86369d71-b7a4-491e-83c9-bcce40af21e2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -140,17 +197,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "ToggleAutoFire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9a8824e4-4ab6-4902-a3f8-a889f27d7524",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SteerTest",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

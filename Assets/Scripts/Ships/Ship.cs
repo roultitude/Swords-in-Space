@@ -166,6 +166,7 @@ namespace SwordsInSpace
             int storedLevels = expManager.GetStoredLevels();
             if (storedLevels > 0)
             {
+                AllPlayerExitUI();
                 Debug.Log("triggering levels: " + storedLevels);
                 upgradeManager.TriggerUpgrades(storedLevels);
             }

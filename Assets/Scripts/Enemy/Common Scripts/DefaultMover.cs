@@ -8,12 +8,14 @@ namespace SwordsInSpace
 
         public override void OnSleepEnemyMover()
         {
-            StopAstar();
+            if (IsServer)
+                StopAstar();
         }
 
         public override void OnAwakeEnemyMover()
         {
-            ContinueAstar();
+            if (IsServer)
+                ContinueAstar();
         }
 
     }

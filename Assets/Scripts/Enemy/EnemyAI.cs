@@ -58,6 +58,12 @@ namespace SwordsInSpace
             if (!IsServer)
             {
                 GetComponent<Rigidbody2D>().isKinematic = true;
+                GetComponentInChildren<Collider2D>().isTrigger = true;
+                ai.canMove = false;
+                ai.isStopped = true;
+                GetComponent<AIDestinationSetter>().enabled = false;
+                GetComponent<Seeker>().enabled = false;
+                ai.enabled = false;
 
             }
             hpBar = GetComponentInChildren<Hpbar>();

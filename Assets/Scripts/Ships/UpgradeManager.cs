@@ -223,6 +223,7 @@ namespace SwordsInSpace
             if (DisplayManager.instance.Offer(upgradesDisplay))
             {
 
+
                 Player player = User.localUser.controlledPlayer;
                 currentPlayerInput = player.GetComponent<PlayerInputManager>();
                 currentPlayerInput.SwitchView("UpgradeView");
@@ -251,7 +252,7 @@ namespace SwordsInSpace
 
         }
 
-        [ObserversRpc]
+        [ObserversRpc(BufferLast = true)]
         public void BroadcastUpgradeScreen()
         {
             ShowUpgradeScreen();
