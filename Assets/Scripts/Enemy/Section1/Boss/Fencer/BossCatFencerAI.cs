@@ -6,9 +6,15 @@ namespace SwordsInSpace
     public class BossCatFencerAI : EnemyAI, RageInterface
     {
         public bool debugEnrage = false;
+        SpriteRenderer sprite;
 
+        private void Awake()
+        {
+            sprite = GetComponentInChildren<SpriteRenderer>();
+        }
         private void Update()
         {
+            sprite.flipY = transform.rotation.eulerAngles.z < 180;
             if (debugEnrage)
             {
                 debugEnrage = false;

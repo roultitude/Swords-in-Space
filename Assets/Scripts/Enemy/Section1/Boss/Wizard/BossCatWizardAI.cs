@@ -13,12 +13,16 @@ namespace SwordsInSpace
 
         BossCatChargerAI RengarCatAI;
         BossCatFencerAI FencingCatAI;
-
+        SpriteRenderer sprite;
         public bool hasRagedFriend = false;
 
 
         public bool debugEnrage = false;
 
+        private void Awake()
+        {
+            sprite = GetComponentInChildren<SpriteRenderer>();
+        }
         private void Update()
         {
             if (debugEnrage && IsServer)
@@ -27,6 +31,7 @@ namespace SwordsInSpace
                 StartRagePhase();
                 GetComponentInChildren<BossCatWizardShooter>().StartRagePhase();
             }
+            sprite.flipY = transform.rotation.eulerAngles.z < 180;
             DoAllyCheck();
         }
 
