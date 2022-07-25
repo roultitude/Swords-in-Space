@@ -51,40 +51,40 @@ namespace FishNet.Managing.Server
         private List<(int, Scene)> _loadedScenes = new List<(int frame, Scene scene)>();
         #endregion
 
-        ///// <summary>
-        ///// True if one or more scenes are currently loading through the SceneManager.
-        ///// </summary>
-        //private bool _scenesLoading;
+        /// <summary>
+        /// True if one or more scenes are currently loading through the SceneManager.
+        /// </summary>
+        private bool _scenesLoading;
 
         internal ServerObjects(NetworkManager networkManager)
         {
             base.NetworkManager = networkManager;
-            //networkManager.SceneManager.OnLoadStart += SceneManager_OnLoadStart;
+            networkManager.SceneManager.OnLoadStart += SceneManager_OnLoadStart;
             networkManager.SceneManager.OnActiveSceneSetInternal += SceneManager_OnActiveSceneSet;
             networkManager.TimeManager.OnUpdate += TimeManager_OnUpdate;
         }
 
-        ///// <summary>
-        ///// Called when a scene load starts.
-        ///// </summary>
-        //private void SceneManager_OnLoadStart(Scened.SceneLoadStartEventArgs obj)
-        //{
-        //    _scenesLoading = true;
-        //}
+        /// <summary>
+        /// Called when a scene load starts.
+        /// </summary>
+        private void SceneManager_OnLoadStart(Scened.SceneLoadStartEventArgs obj)
+        {
+            _scenesLoading = true;
+        }
         /// <summary>
         /// Called when MonoBehaviours call Update.
         /// </summary>
         private void TimeManager_OnUpdate()
         {
-            //if (!base.NetworkManager.IsServer)
-            //{
-            //    _scenesLoading = false;
-            //    _loadedScenes.Clear();
-            //    return;
-            //}
+            if (!base.NetworkManager.IsServer)
+            {
+                _scenesLoading = false;
+                _loadedScenes.Clear();
+                return;
+            }
 
-            //if (!_scenesLoading)
-            //    IterateLoadedScenes(false);
+            if (!_scenesLoading)
+                IterateLoadedScenes(false);
             PartialOnUpdate();
         }
         partial void PartialOnUpdate();
@@ -247,7 +247,7 @@ namespace FishNet.Managing.Server
         /// </summary>
         private void SceneManager_OnActiveSceneSet()
         {
-            //_scenesLoading = false;
+            _scenesLoading = false;
             IterateLoadedScenes(true);
         }
         /// <summary>
