@@ -1,3 +1,4 @@
+using FishNet.Object;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -119,14 +120,23 @@ namespace SwordsInSpace
 
             if (currentHp <= 0)
             {
-                GetComponentInChildren<BossCatWizardShooter>().enabled = false;
-                GetComponentInChildren<Collider2D>().enabled = false;
-                GetComponentInChildren<SpriteRenderer>().enabled = false;
-                ai.canMove = false;
-                ai.isStopped = true;
-                canDoBossDash = false;
+                if (IsServer)
+                    HideWizard();
+
             }
         }
+
+        [ObserversRpc(IncludeOwner = true, RunLocally = true)]
+        public void HideWizard()
+        {
+            GetComponentInChildren<BossCatWizardShooter>().enabled = false;
+            GetComponentInChildren<Collider2D>().enabled = false;
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
+            ai.canMove = false;
+            ai.isStopped = true;
+            canDoBossDash = false;
+        }
+
 
         public void StartRagePhase()
         {
