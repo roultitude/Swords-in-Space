@@ -234,7 +234,9 @@ namespace SwordsInSpace
         public void FinishReload()
         {
             canFire = true;
-            SetCanFire(true);
+            if (IsServer)
+                SetCanFire(true);
+
             if (autoFire)
             {
                 StartAttack();
@@ -254,7 +256,8 @@ namespace SwordsInSpace
             Debug.Log("CanFire is " + canFire + Time.time);
             Debug.Log("Setting CanFire to false " + Time.time);
             canFire = false;
-            SetCanFire(false);
+            if (IsServer)
+                SetCanFire(false);
             StartBurst();
         }
 
