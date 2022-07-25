@@ -50,7 +50,7 @@ namespace SwordsInSpace
         {
             int index = System.Array.IndexOf(AudioClips, audioClip);
             if (index == -1) Debug.LogError(audioClip + " is missing from AudioManager array! Please refresh clips in editor!");
-            ObserversPlay(index);
+            else { ObserversPlay(index); }
         }
     }
 

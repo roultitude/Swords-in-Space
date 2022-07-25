@@ -661,7 +661,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 208770173693893856}
   maxHp: 15
   exp: 150
-  onDamagedSound: {fileID: 0}
+  onDamagedSound: {fileID: 8300000, guid: a0baed12b95f9ed4998a88c8de89c3fc, type: 3}
   doTeleportIfFar: 1
   teleportCheckDuration: 5
   isBoss: 0
