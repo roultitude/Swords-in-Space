@@ -58,12 +58,7 @@ namespace SwordsInSpace
 
         public override void Shoot()
         {
-            /*Non Rage phase
-                   Spawns 2 attackIndicators that explode in a burst of 36. Bullets have a slow move speed.
-             */
             StartCoroutine(SpawnAttackIndicators());
-
-
         }
 
 
@@ -91,13 +86,13 @@ namespace SwordsInSpace
                 Spawn(toSpawn);
 
                 toSpawn.GetComponent<AttackIndicator>().Setup(1.6f, OnAttackIndicatorTimerEnd);
-                if (isRaging) anim.CrossFadeObserver("RagingAttack");
+                if (isRaging) anim.CrossFadeObserver("RageAttack");
                 else anim.CrossFadeObserver("Attack");
 
                 yield return new WaitForSeconds(Random.Range(0.3f, 0.8f));
 
             }
-            if (isRaging) anim.CrossFadeObserver("RagingIdle");
+            if (isRaging) anim.CrossFadeObserver("RageIdle");
             else anim.CrossFadeObserver("Idle");
         }
 
@@ -121,7 +116,7 @@ namespace SwordsInSpace
 
         public void StartRagePhase()
         {
-            anim.CrossFadeObserver("RagingIdle");
+            anim.CrossFadeObserver("RageIdle");
             bulletCd.waitTime = rageCD;
             isRaging = true;
             damage = 3;
