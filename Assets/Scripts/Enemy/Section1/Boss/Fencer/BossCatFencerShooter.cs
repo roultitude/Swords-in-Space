@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SwordsInSpace
 {
-    public class FencerShooter : EnemyShooter, RageInterface
+    public class BossCatFencerShooter : EnemyShooter, RageInterface
     {
         // Start is called before the first frame update
 
@@ -17,10 +17,15 @@ namespace SwordsInSpace
         public GameObject mouth;
         public int mouthShots;
         public float mouthShotBurstCD;
-
+        private EnemyAnimator anim;
         public EnemyMover mover;
 
         public bool isRagePhase = false;
+
+        private void Awake()
+        {
+            anim = mover.GetComponentInChildren<EnemyAnimator>();
+        }
 
         public class BulletMovement
         {
@@ -76,6 +81,7 @@ namespace SwordsInSpace
 
         public IEnumerator ClawStrike()
         {
+            
             foreach (GameObject obj in new GameObject[] { leftClaw, rightClaw })
             {
                 mover.LookAtPlayer();
@@ -83,6 +89,7 @@ namespace SwordsInSpace
                 {
                     ShootAt(pos.position, Ship.currentShip.transform.position);
                 }
+                anim.CrossFadeObserver("Attack");
                 yield return new WaitForSeconds(clawStrikeBurstCD);
 
             }
@@ -90,14 +97,15 @@ namespace SwordsInSpace
             for (int i = 0; i < mouthShots; i++)
             {
                 ShootAt(mouth.transform.position, Ship.currentShip.transform.position);
+                anim.CrossFadeObserver("Attack");
                 yield return new WaitForSeconds(mouthShotBurstCD);
             }
-
+            anim.CrossFadeObserver("Idle");
         }
 
         public IEnumerator RageClawStrike()
         {
-
+            
             for (int i = 0; i < 8; i++)
             {
 
@@ -110,6 +118,7 @@ namespace SwordsInSpace
                 SpawnLocalRotation(Quaternion.Euler(0, 0, -offset), rightClaw.transform.position, fn: new BulletMovement(offset * 2).MovementFn);
 
                 offset += 10f;
+                anim.CrossFadeObserver("RageAttack");
                 yield return new WaitForSeconds(clawStrikeBurstCD);
 
             }
@@ -118,6 +127,7 @@ namespace SwordsInSpace
             for (int i = 0; i < mouthShots * 3; i++)
             {
                 ShootAt(mouth.transform.position, Ship.currentShip.transform.position);
+                anim.CrossFadeObserver("RageAttack");
                 yield return new WaitForSeconds(mouthShotBurstCD / 2);
             }
 

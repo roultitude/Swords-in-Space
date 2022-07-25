@@ -35,9 +35,7 @@ namespace SwordsInSpace
 
         private void Update()
         {
-            //Debug.Log(transform.rotation.eulerAngles.z);
             sprite.flipY = transform.rotation.eulerAngles.z < 180;
-            //Debug.Log(sprite.flipX);
         }
     }
 }

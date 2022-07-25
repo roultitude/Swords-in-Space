@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SwordsInSpace
 {
-    public class RengarAI : EnemyAI, RageInterface
+    public class BossCatChargerAI : EnemyAI, RageInterface
     {
         public Collider2D enemyCollider;
 
@@ -20,7 +20,7 @@ namespace SwordsInSpace
         }
         public void StartRagePhase()
         {
-            GetComponent<RengarMover>().StartRagePhase();
+            GetComponent<BossCatChargerMover>().StartRagePhase();
             StartCoroutine(BulkUp());
         }
         public IEnumerator BulkUp()

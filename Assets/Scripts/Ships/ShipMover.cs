@@ -88,8 +88,12 @@ namespace SwordsInSpace
             if (md.Dashing && Ship.currentShip.CurrentNitroFuel > 0)
             {
                 rb.AddForce(1 * transform.right * currentSpeed * (currentNitroMult - 1));
-                Ship.currentShip.ChangeNitroFuel(-1);
-                if (IsServer) Ship.currentShip.StartCoroutine(Ship.currentShip.StartInvincibilityFrames(nitroInvincibilityTime));
+
+                if (IsServer) 
+                {
+                    Ship.currentShip.ChangeNitroFuel(-1);
+                    Ship.currentShip.StartCoroutine(Ship.currentShip.StartInvincibilityFrames(nitroInvincibilityTime));
+                } 
             }
             rb.AddTorque(md.Horizontal * -currentTurnSpeed);
         }

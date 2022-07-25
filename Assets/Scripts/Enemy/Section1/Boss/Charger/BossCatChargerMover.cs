@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using FishNet.Object;
+
 namespace SwordsInSpace
 {
-    public class RengarMover : FacePlayerOnPathEndMover, RageInterface
+    public class BossCatChargerMover : DefaultMover, RageInterface
     {
         private double currentTime = -10;
         public double dashCD;
@@ -11,13 +14,20 @@ namespace SwordsInSpace
         public double dashImpulse;
         public Rigidbody2D rb;
         public Collider2D enemyCollider;
+        private EnemyAnimator anim;
+        private SpriteRenderer sprite;
+        private void Awake()
+        {
+            anim = GetComponentInChildren<EnemyAnimator>();
+            sprite = GetComponentInChildren<SpriteRenderer>();
+        }
 
         public void Update()
         {
             if (!IsServer) return;
 
             currentTime += Time.deltaTime;
-
+            sprite.flipY = transform.rotation.eulerAngles.z < 180;
 
             if (ai.reachedDestination && currentTime > dashCD)
             {
@@ -30,7 +40,11 @@ namespace SwordsInSpace
 
         public IEnumerator Dash()
         {
-
+            if (dashCD == rageDashCD)
+            {
+                anim.CrossFadeObserver("RageAttack");
+            }
+            else anim.CrossFadeObserver("Attack");
             double currentDashTime = 0;
             double maxDashTime = 2;
             StopAstar();
@@ -50,13 +64,24 @@ namespace SwordsInSpace
             enemyCollider.isTrigger = false;
 
             ContinueAstar();
+            if (dashCD == rageDashCD)
+            {
+                anim.CrossFadeObserver("RageIdle");
+            }
+            else anim.CrossFadeObserver("Idle");
         }
 
         public void StartRagePhase()
         {
             dashCD = rageDashCD;
+            TintRage();
+            anim.CrossFadeObserver("RageIdle");
         }
 
-
+        [ObserversRpc]
+        void TintRage()
+        {
+            sprite.DOColor(new Color(1f, 0.8f, 0.8f),2f);
+        }
     }
 };

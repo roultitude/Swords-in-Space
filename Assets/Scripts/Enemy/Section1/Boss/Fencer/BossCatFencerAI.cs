@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SwordsInSpace
 {
-    public class FencerAI : EnemyAI, RageInterface
+    public class BossCatFencerAI : EnemyAI, RageInterface
     {
         public bool debugEnrage = false;
 
@@ -17,7 +17,7 @@ namespace SwordsInSpace
         }
         public void StartRagePhase()
         {
-            GetComponentInChildren<FencerShooter>().StartRagePhase();
+            GetComponentInChildren<BossCatFencerShooter>().StartRagePhase();
             StartCoroutine(BulkUp());
         }
 

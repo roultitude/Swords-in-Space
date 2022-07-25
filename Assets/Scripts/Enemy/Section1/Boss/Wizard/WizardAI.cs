@@ -11,8 +11,8 @@ namespace SwordsInSpace
         [SerializeField]
         GameObject FencingCatPrefab;
 
-        RengarAI RengarCatAI;
-        FencerAI FencingCatAI;
+        BossCatChargerAI RengarCatAI;
+        BossCatFencerAI FencingCatAI;
 
         public bool hasRagedFriend = false;
 
@@ -40,7 +40,7 @@ namespace SwordsInSpace
 
             Spawn(toSpawn);
 
-            FencingCatAI = toSpawn.GetComponent<FencerAI>();
+            FencingCatAI = toSpawn.GetComponent<BossCatFencerAI>();
 
 
 
@@ -48,7 +48,7 @@ namespace SwordsInSpace
             //toSpawn.GetComponent<EnemyAI>().SetBoss(true);
             Spawn(toSpawn);
 
-            RengarCatAI = toSpawn.GetComponent<RengarAI>();
+            RengarCatAI = toSpawn.GetComponent<BossCatChargerAI>();
         }
 
         public void DoAllyCheck()

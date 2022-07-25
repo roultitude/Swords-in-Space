@@ -50,7 +50,7 @@ PrefabInstance:
     - target: {fileID: 572900173126044265, guid: ac9d7ac0848da2e49a097a1fa2ac316e, type: 3}
       propertyPath: bossPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 2632887015420024905, guid: 3da87e00e91231c48aa76d0482251480, type: 3}
+      objectReference: {fileID: 2632887015420024905, guid: c25d392a405861441ae10eee498ee45d, type: 3}
     - target: {fileID: 572900173126044265, guid: ac9d7ac0848da2e49a097a1fa2ac316e, type: 3}
       propertyPath: bossPrefabs.Array.data[1]
       value: 

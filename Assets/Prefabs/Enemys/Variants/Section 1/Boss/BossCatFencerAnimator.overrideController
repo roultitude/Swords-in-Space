@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BossCatFencerAnimator
+  m_Controller: {fileID: 9100000, guid: 2a293d9473c0ab645aa14b68deb85896, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: e232e789a24abfb43b38f8912c655aad, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b48597addfa27794a817b9298227f902, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7563679d52f8ad049a15e09b8892959e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6c2645e0900e82544b0713676aced7e9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: af3cc69507a2116479c5bc33804c8c09, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 26f1daaf6ba19b44ca22a3656b172ae1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9bdb87d97be53014d9ad99855a4b4afc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ecbdc59c1ef14904ebd64fab63ed8a5c, type: 2}
