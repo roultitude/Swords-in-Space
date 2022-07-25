@@ -19,6 +19,16 @@ namespace SwordsInSpace
         {
             GetComponentInChildren<BossCatFencerShooter>().StartRagePhase();
             StartCoroutine(BulkUp());
+            StartCoroutine(RageStateRepositioning());
+        }
+
+        public IEnumerator RageStateRepositioning()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(10f);
+                StartCoroutine(BossTeleport());
+            }
         }
 
         public IEnumerator BulkUp()

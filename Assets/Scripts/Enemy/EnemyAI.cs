@@ -175,7 +175,7 @@ namespace SwordsInSpace
             }
         }
 
-        private IEnumerator BossTeleport()
+        protected IEnumerator BossTeleport()
         {
             Debug.Log("Boss teleport");
             Vector3 loc = getPosNearPlayer(bossTeleportProximityToPlayer);

@@ -81,7 +81,7 @@ namespace SwordsInSpace
 
         public IEnumerator ClawStrike()
         {
-            
+
             foreach (GameObject obj in new GameObject[] { leftClaw, rightClaw })
             {
                 mover.LookAtPlayer();
@@ -105,26 +105,8 @@ namespace SwordsInSpace
 
         public IEnumerator RageClawStrike()
         {
-            
-            for (int i = 0; i < 8; i++)
-            {
 
-
-                float offset = 15;
-                mover.LookAtPlayer();
-
-                SpawnLocalRotation(Quaternion.Euler(0, 0, offset), leftClaw.transform.position, fn: new BulletMovement(-offset * 2).MovementFn);
-
-                SpawnLocalRotation(Quaternion.Euler(0, 0, -offset), rightClaw.transform.position, fn: new BulletMovement(offset * 2).MovementFn);
-
-                offset += 10f;
-                anim.CrossFadeObserver("RageAttack");
-                yield return new WaitForSeconds(clawStrikeBurstCD);
-
-            }
-
-
-            for (int i = 0; i < mouthShots * 3; i++)
+            for (int i = 0; i < mouthShots; i++)
             {
                 ShootAt(mouth.transform.position, Ship.currentShip.transform.position);
                 anim.CrossFadeObserver("RageAttack");
@@ -133,9 +115,30 @@ namespace SwordsInSpace
 
         }
 
+        public IEnumerator DoOutsideShots()
+        {
+            while (true)
+            {
+                float offset = 15;
+                mover.LookAtPlayer();
+
+                SpawnLocalRotation(Quaternion.Euler(0, 0, offset), leftClaw.transform.position, fn: new BulletMovement(-offset * 2).MovementFn);
+
+                SpawnLocalRotation(Quaternion.Euler(0, 0, -offset), rightClaw.transform.position, fn: new BulletMovement(offset * 2).MovementFn);
+                anim.CrossFadeObserver("RageAttack");
+                yield return new WaitForSeconds(clawStrikeBurstCD / 3);
+            }
+        }
+
+
+
         public void StartRagePhase()
         {
             isRagePhase = true;
+            StartCoroutine(DoOutsideShots());
+
+            Timer timer = gameObject.GetComponent<Timer>();
+            timer.waitTime = timer.waitTime / 3;
         }
     }
 

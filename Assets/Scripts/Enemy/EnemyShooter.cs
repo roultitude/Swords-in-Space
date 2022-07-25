@@ -106,7 +106,7 @@ namespace SwordsInSpace
 
         protected void SpawnLocalRotation(Quaternion offset = default, Vector3 loc = default, Bullet.BulletBehavior fn = null, float customBulletSpeed = -1f)
         {
-            if (offset == default)
+            if (offset.z == 0 || offset.eulerAngles == Vector3.zero)
             {
                 offset = Quaternion.Euler(0, 0, 0);
             }

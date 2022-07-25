@@ -48,7 +48,7 @@ namespace SwordsInSpace
             double currentDashTime = 0;
             double maxDashTime = 2;
             StopAstar();
-
+            enemyCollider.isTrigger = false;
             while (currentDashTime < maxDashTime || (transform.position - Ship.currentShip.transform.position).magnitude < 10f)
             {
                 currentTime = 0;
@@ -81,7 +81,7 @@ namespace SwordsInSpace
         [ObserversRpc]
         void TintRage()
         {
-            sprite.DOColor(new Color(1f, 0.8f, 0.8f),2f);
+            sprite.DOColor(new Color(1f, 0.8f, 0.8f), 2f);
         }
     }
 };
