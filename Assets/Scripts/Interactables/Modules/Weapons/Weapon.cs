@@ -253,8 +253,6 @@ namespace SwordsInSpace
         public void StartAttack()
         {
             if (!canFire) { return; }//Sanity check
-            Debug.Log("CanFire is " + canFire + Time.time);
-            Debug.Log("Setting CanFire to false " + Time.time);
             canFire = false;
             if (IsServer)
                 SetCanFire(false);
