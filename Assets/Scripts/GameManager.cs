@@ -114,11 +114,10 @@ namespace SwordsInSpace
             yield return new WaitForSeconds(1f);
             MessageRPC("Boss defeated! Warping in 1 second!");
             Ship.currentShip.AllPlayerExitUI();
-            yield return new WaitForSeconds(1f);
             GetCarryNetworkObjects(true, true);
             SceneLoadData sld = new SceneLoadData("TempScene") { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
             InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sld);
-            yield return new WaitForSeconds(15f);
+            yield return new WaitForSeconds(3f);
             Debug.Log("levelTransitioning called");
             Ship.currentShip.LevelTransition();
         }
