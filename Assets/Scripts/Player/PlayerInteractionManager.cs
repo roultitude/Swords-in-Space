@@ -11,18 +11,39 @@ namespace SwordsInSpace
     {
         public List<int> data;
 
-        [SerializeField]
-        private InteractableIdManager interactables;
+
+        private InteractableIdManager interactables 
+        { 
+            get 
+            {
+                if (!interactablesCache) interactablesCache = Ship.currentShip.shipInterior.GetComponent<InteractableIdManager>();
+                return interactablesCache;
+            }
+            set
+            {
+                interactablesCache = value;
+            }
+        }
+
+        private InteractableIdManager interactablesCache;
+
         private UserManager userManager;
 
         public override void OnStartNetwork()
         {
             base.OnStartNetwork();
+            /*
             GameManager.OnNewSceneLoadEvent += () =>
             {
 
                 interactables = Ship.currentShip.shipInterior.GetComponent<InteractableIdManager>();
             };
+            */
+        }
+
+        public override void OnStartServer()
+        {
+            base.OnStartServer();
         }
         // Start is called before the first frame update
         void Start()
@@ -33,7 +54,6 @@ namespace SwordsInSpace
                 data = new List<int>();
 
             }
-            interactables = GameObject.FindObjectOfType<InteractableIdManager>();
         }
 
         public void Interact()
@@ -159,6 +179,6 @@ namespace SwordsInSpace
             GetComponent<PlayerInputManager>().ExitUI();
         }
 
-
     }
+
 };

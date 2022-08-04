@@ -80,6 +80,11 @@ namespace SwordsInSpace
 
 
         [ServerRpc(RequireOwnership = false)]
+        public void GoToLevelClient(string sceneName, bool bringShip = false, bool bringPlayers = true)
+        {
+            GoToLevel(sceneName, bringShip, bringPlayers);
+        }
+
         public void GoToLevel(string sceneName, bool bringShip = false, bool bringPlayers = true)
         {
             Ship.currentShip.AllPlayerExitUI();

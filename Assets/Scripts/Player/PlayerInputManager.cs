@@ -47,7 +47,6 @@ namespace SwordsInSpace
     public class PlayerInputManager : NetworkBehaviour
     {
 
-        public ShipMover shipMover;
         public PlayerInput playerInput;
 
         private PlayerMover mover;
@@ -63,17 +62,12 @@ namespace SwordsInSpace
         private void Awake()
         {
             mover = GetComponent<PlayerMover>();
-            shipMover = Ship.currentShip.shipMover;
             interactor = GetComponent<PlayerInteractionManager>();
             rb = mover.rb;
             playerInput = GetComponent<PlayerInput>();
             alwaysOnInput = playerInput.actions.FindActionMap("AlwaysOn");
             alwaysOnInput.Enable();
             currentInputMap = playerInput.actions.FindActionMap("PlayerView");
-            GameManager.OnNewSceneLoadEvent += () =>
-            {
-                shipMover = Ship.currentShip.shipMover;
-            };
         }
         private void OnDisable()
         {
@@ -102,11 +96,17 @@ namespace SwordsInSpace
             playerInput.actions["NextLevel"].performed += context => { 
                 if (context.performed) 
                 {
-                    WorldManager.currentWorld.levelComplete = true;
+                    DebugLevelComplete();
                     //GameManager.instance.OnLoseGame();
                     //GameManager.instance.GoToLevel("GameScene");
                 } 
             };
+        }
+
+        [ServerRpc]
+        void DebugLevelComplete()
+        {
+            WorldManager.currentWorld.levelComplete = true;
         }
 
         private void OnDestroy()
@@ -139,19 +139,15 @@ namespace SwordsInSpace
                 CheckInput(out MoveData md);
                 if (Ship.currentShip.IsOwner) //add check for whether in steering
                 {
-                    shipMover.Reconciliation(default, false);
-                    shipMover.Move(md, false);
+                    Ship.currentShip.shipMover.Reconciliation(default, false);
+                    Ship.currentShip.shipMover.Move(md, false);
                 }
                 mover.Move(md, false);
             }
             if (base.IsServer)
             {
-                mover.Move(new MoveData(0f, 0f, false
-                    //, 1f
-                    ), true);
-                shipMover.Move(new MoveData(0f, 0f, false
-                    //, 1f
-                    ), true);
+                mover.Move(default, true);
+                Ship.currentShip.shipMover.Move(default, true);
             }
         }
         private void TimeManager_OnPostTick()
@@ -162,6 +158,8 @@ namespace SwordsInSpace
                 ReconcileData rdMover = new ReconcileData(mover.transform.position, mover.transform.rotation, rb.velocity, rb.angularVelocity
                     //, 1f
                     );
+                ShipMover shipMover = null;
+                if (Ship.currentShip.shipMover)  shipMover = Ship.currentShip.shipMover;
                 ReconcileData rdShip = default;
                 if (shipMover) rdShip = new ReconcileData(shipMover.transform.position, shipMover.transform.rotation, shipMover.rb.velocity, shipMover.rb.angularVelocity);
                 mover.Reconciliation(rdMover, true);

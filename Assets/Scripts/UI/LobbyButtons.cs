@@ -22,7 +22,7 @@ namespace SwordsInSpace
         {
             if (!UserManager.instance.allUsersReady) return;
             Ship.currentShip.AllPlayerExitUI();
-            GameManager.instance.GoToLevel("GameScene",false, true);
+            GameManager.instance.GoToLevelClient("GameScene",false, true);
             
         }
 

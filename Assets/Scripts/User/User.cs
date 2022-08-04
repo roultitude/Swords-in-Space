@@ -35,7 +35,7 @@ namespace SwordsInSpace
             UserManager.instance.users.Add(this);
             if (!controlledPlayer)
             {
-                ServerSpawnPlayer();
+                SpawnPlayer();
             }
         }
 
@@ -55,8 +55,10 @@ namespace SwordsInSpace
         }
         private void OnNewSceneLoaded()
         {
-            if (!controlledPlayer)
+            Debug.Log(controlledPlayer);
+            if (!controlledPlayer || !controlledPlayer.gameObject.activeSelf)
             {
+                Debug.Log("Asking server to spawn player");
                 ServerSpawnPlayer();
             }
             else
@@ -71,7 +73,13 @@ namespace SwordsInSpace
             UserManager.instance.users.Remove(this);
         }
 
+        [ServerRpc]
         public void ServerSpawnPlayer()
+        {
+            SpawnPlayer();
+        }
+
+        void SpawnPlayer()
         {
             if (controlledPlayer) return; //only one player at a time
             GameObject player = Instantiate(UserManager.instance.playerPrefab, Ship.currentShip.spawnTransform.position, Quaternion.identity);

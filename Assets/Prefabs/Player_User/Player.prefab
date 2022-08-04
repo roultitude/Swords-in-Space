@@ -78,7 +78,6 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 6591759166442174641}
   _networkObjectCache: {fileID: 6591759166442174641}
   data: 
-  interactables: {fileID: 0}
 --- !u!114 &8521876381648262751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +93,6 @@ MonoBehaviour:
   _componentIndexCache: 2
   _addedNetworkObject: {fileID: 6591759166442174641}
   _networkObjectCache: {fileID: 6591759166442174641}
-  shipMover: {fileID: 0}
   playerInput: {fileID: 0}
 --- !u!50 &5198408479492109837
 Rigidbody2D:
@@ -236,7 +234,7 @@ MonoBehaviour:
   _isGlobal: 0
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
-  _prefabId: 0
+  _prefabId: 11
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects: []
@@ -559,7 +557,7 @@ MonoBehaviour:
   - {x: -0.32168517, y: -0.3895599, z: 0}
   m_ShapePathHash: -930056146
   m_Mesh: {fileID: 0}
-  m_InstanceId: 96884
+  m_InstanceId: 105102
 --- !u!114 &8062086962072220328
 MonoBehaviour:
   m_ObjectHideFlags: 0
