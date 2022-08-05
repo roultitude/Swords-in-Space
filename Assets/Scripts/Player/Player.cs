@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using FishNet.Connection;
+
 namespace SwordsInSpace
 {
     public class Player : NetworkBehaviour
@@ -52,7 +54,7 @@ namespace SwordsInSpace
             }
             else DetachUsernameCanvas(true);
 
-            transform.position = Ship.currentShip.spawnTransform.position;
+            ResetPlayerPosition();
             
             if (!IsOwner) return;
             CameraManager.instance.AttachToPlayer(transform);
@@ -80,6 +82,18 @@ namespace SwordsInSpace
             }
         }
 
+        [ServerRpc(RequireOwnership = false)]
+        public void ResetPlayerPosition(NetworkConnection con = null)
+        {
+            transform.position = Ship.currentShip.spawnTransform.position;
+            SyncClientPosition(con,transform.position);
+        }
+
+        [TargetRpc]
+        public void SyncClientPosition(NetworkConnection con, Vector3 pos)
+        {
+            transform.position = pos;
+        }
         private void Update()
         {
             if(offset!= 0 && playerCanvas) playerCanvas.transform.position = new Vector2(transform.position.x, transform.position.y + offset);

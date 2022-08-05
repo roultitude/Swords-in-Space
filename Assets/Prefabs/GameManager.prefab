@@ -326,10 +326,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4123552563953444168}
   - component: {fileID: 4123552563953444175}
-  - component: {fileID: 4123552563953444174}
   - component: {fileID: 391938167873919632}
   - component: {fileID: 1620107561940000347}
   - component: {fileID: 8775231578323822262}
+  - component: {fileID: 5509626512269995326}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -366,37 +366,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 4123552563953444174}
-  _networkObjectCache: {fileID: 4123552563953444174}
---- !u!114 &4123552563953444174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4123552563953444173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _networkBehaviours:
-  - {fileID: 4123552563953444175}
-  - {fileID: 391938167873919632}
-  SceneTransformProperties:
-    Position: {x: 997.7053, y: 1000.22656, z: -0.008862003}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-    LocalScale: {x: 1, y: 1, z: 1}
-  _isNetworked: 1
-  _hasParentNetworkObjectAtEdit: 0
-  NetworkObserver: {fileID: 0}
-  _prefabId: -1
-  _scenePathHash: 0
-  _sceneId: 0
-  _sceneNetworkObjects:
-  - {fileID: 4123552563953444174}
-  - {fileID: 0}
-  - {fileID: 0}
+  _addedNetworkObject: {fileID: 5509626512269995326}
+  _networkObjectCache: {fileID: 5509626512269995326}
+  currentLevel: 0
 --- !u!114 &391938167873919632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,8 +382,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 1
-  _addedNetworkObject: {fileID: 4123552563953444174}
-  _networkObjectCache: {fileID: 4123552563953444174}
+  _addedNetworkObject: {fileID: 5509626512269995326}
+  _networkObjectCache: {fileID: 5509626512269995326}
   effectAudioSource: {fileID: 1620107561940000347}
   BGMAudioSource: {fileID: 8775231578323822262}
   AudioClips:
@@ -619,6 +591,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5509626512269995326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123552563953444173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _networkBehaviours:
+  - {fileID: 4123552563953444175}
+  - {fileID: 391938167873919632}
+  SceneTransformProperties:
+    Position: {x: 997.7053, y: 1000.22656, z: -0.008862003}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    LocalScale: {x: 1, y: 1, z: 1}
+  _isNetworked: 1
+  _isGlobal: 1
+  _hasParentNetworkObjectAtEdit: 0
+  NetworkObserver: {fileID: 0}
+  _prefabId: -1
+  _scenePathHash: 0
+  _sceneId: 0
+  _sceneNetworkObjects: []
 --- !u!1 &8328032616723423433
 GameObject:
   m_ObjectHideFlags: 0

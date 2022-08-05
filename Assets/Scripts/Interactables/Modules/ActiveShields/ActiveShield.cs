@@ -20,6 +20,7 @@ namespace SwordsInSpace
         void OnEnable()
         {
             GameManager.OnNewSceneLoadEvent += SetupUI;
+
         }
 
         void OnDisable()

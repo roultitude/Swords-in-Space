@@ -12,14 +12,14 @@ namespace SwordsInSpace
         [SerializeField]
         public GameObject UIDisplayPrefab;
         [SerializeField]
-        public GameObject GrabberLauncher;
+        public GameObject GrabberShooter;
         [SerializeField]
         float rotSpeed, baseForwardSpeed, baseRetractSpeed, baseForwardTime;
         [SerializeField]
         GameObject grabberHookPrefab;
 
         private GrabberHook currentGrabberHook;
-        private GrabberLauncher grabber;
+        private GrabberShooter grabber;
         private Vector2 turnAxis;
         private bool launching;
         private GameObject UIDisplay;
@@ -31,7 +31,7 @@ namespace SwordsInSpace
 
         void OnEnable()
         {
-            grabber = GrabberLauncher.GetComponent<GrabberLauncher>();
+            grabber = GrabberShooter.GetComponent<GrabberShooter>();
             grabber.UpdateRotSpeed(rotSpeed);
 
             GameManager.OnNewSceneLoadEvent += SetupUI;
@@ -119,10 +119,15 @@ namespace SwordsInSpace
             if (currentGrabberHook) return; //dont launch if already out
             GameObject toAdd = Instantiate(grabberHookPrefab, grabber.transform.position, grabber.transform.rotation);
             GrabberHook gh = toAdd.GetComponent<GrabberHook>();
+            grabber.UpdateSprite(false);
             gh.Setup(baseForwardSpeed, baseRetractSpeed, baseForwardTime,grabber.transform);
             currentGrabberHook = gh;
             Spawn(toAdd);
-            
+        }
+        private void FixedUpdate()
+        {
+            if (!IsServer || currentGrabberHook) return;
+            grabber.UpdateSprite(true);
         }
     }
 };

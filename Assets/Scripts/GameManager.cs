@@ -19,8 +19,9 @@ namespace SwordsInSpace
         public int currentLevel = 0;
         List<NetworkObject> CarryNetworkObjects;
         bool nextSceneLobby;
+        //List<NetworkConnection> loadedConnections;
+        //private bool transitioning;
 
-        private bool transitioning;
 
         private void Awake()
         {
@@ -36,13 +37,29 @@ namespace SwordsInSpace
         public override void OnStartClient()
         {
             base.OnStartClient();
-            //Debug.Log("Subscribing to onLoadEnd ");
-            //SceneManager.OnLoadEnd += args => OnClientLoadEnd(LocalConnection);
         }
         public override void OnStartServer()
         {
             base.OnStartServer();
-            SceneManager.OnClientPresenceChangeEnd += arg => {OnNewSceneBroadcast(arg.Connection); };
+            //loadedConnections = new List<NetworkConnection>();
+            SceneManager.OnClientPresenceChangeEnd += arg =>
+            {
+                if (!arg.Added) return;
+                Debug.Log("OnCPCE: " + arg.Connection.ClientId);
+                OnNewSceneBroadcast(arg.Connection);
+                /*
+                loadedConnections.Add(arg.Connection);
+                if(arg.Connection == LocalConnection)
+                {
+                    foreach (NetworkConnection conn in loadedConnections)
+                    {
+                        
+                    }
+                    loadedConnections.Clear();
+                    //StartCoroutine(NewSceneBroadCast());
+                }
+                */
+            };
         }
 
         public void OnLoseGame()
@@ -63,6 +80,11 @@ namespace SwordsInSpace
 
 
         [ServerRpc(RequireOwnership = false)]
+        public void GoToLevelClient(string sceneName, bool bringShip = false, bool bringPlayers = true)
+        {
+            GoToLevel(sceneName, bringShip, bringPlayers);
+        }
+
         public void GoToLevel(string sceneName, bool bringShip = false, bool bringPlayers = true)
         {
             Ship.currentShip.AllPlayerExitUI();
@@ -75,6 +97,7 @@ namespace SwordsInSpace
         public void OnNewSceneBroadcast(NetworkConnection conn)
         {
             Debug.Log("entered new scene");
+            Debug.Log("ship status: " + Ship.currentShip);
             OnNewSceneLoadEvent.Invoke();
         }
 
@@ -96,11 +119,10 @@ namespace SwordsInSpace
             yield return new WaitForSeconds(1f);
             MessageRPC("Boss defeated! Warping in 1 second!");
             Ship.currentShip.AllPlayerExitUI();
-            yield return new WaitForSeconds(1f);
             GetCarryNetworkObjects(true, true);
             SceneLoadData sld = new SceneLoadData("TempScene") { ReplaceScenes = ReplaceOption.All, MovedNetworkObjects = CarryNetworkObjects.ToArray(), };
             InstanceFinder.NetworkManager.SceneManager.LoadGlobalScenes(sld);
-            yield return new WaitForSeconds(15f);
+            yield return new WaitForSeconds(3f);
             Debug.Log("levelTransitioning called");
             Ship.currentShip.LevelTransition();
         }
@@ -114,13 +136,13 @@ namespace SwordsInSpace
                 CarryNetworkObjects.Add(user.GetComponent<NetworkObject>());
                 if (includePlayers)
                 {
-                    CarryNetworkObjects.Add(user.controlledPlayer.GetComponent<NetworkObject>());
                     user.controlledPlayer.DetachUsernameCanvasRPC(false);
+                    CarryNetworkObjects.Add(user.controlledPlayer.GetComponent<NetworkObject>());
                 }
             }
             if (includeShip) CarryNetworkObjects.Add(Ship.currentShip.GetComponentInParent<NetworkObject>()); //get current ship
             CarryNetworkObjects.Add(UserManager.instance.GetComponent<NetworkObject>()); //always bring UserManager and GameManager
-            CarryNetworkObjects.Add(GameManager.instance.GetComponent<NetworkObject>());
+            //CarryNetworkObjects.Add(GameManager.instance.GetComponent<NetworkObject>());
         }
 
         [ServerRpc(RequireOwnership =false)]

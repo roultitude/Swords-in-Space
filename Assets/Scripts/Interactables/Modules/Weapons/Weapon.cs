@@ -234,8 +234,9 @@ namespace SwordsInSpace
         public void FinishReload()
         {
             canFire = true;
-            Debug.Log("Set CanFire to True" + Time.time);
-            SetCanFire(true);
+            if (IsServer)
+                SetCanFire(true);
+
             if (autoFire)
             {
                 StartAttack();
@@ -248,14 +249,13 @@ namespace SwordsInSpace
             if (!canFire) return;
             StartAttack();
         }
-        
+
         public void StartAttack()
         {
             if (!canFire) { return; }//Sanity check
-            Debug.Log("CanFire is " + canFire + Time.time);
-            Debug.Log("Setting CanFire to false " + Time.time);
             canFire = false;
-            SetCanFire(false);
+            if (IsServer)
+                SetCanFire(false);
             StartBurst();
         }
 
@@ -335,7 +335,6 @@ namespace SwordsInSpace
                 Fire();
                 firing = false;
             }
-            Debug.Log(canFire + " " + Time.time);
             if (togglingAutoFire)
             {
                 ToggleAutoFire();
@@ -356,7 +355,7 @@ namespace SwordsInSpace
         private void Update()
         {
             percentageReloaded = 1 - (float)((atkTimer.waitTime - atkTimer.currentTime) / data.atkCD);
-            
+
         }
     }
 };

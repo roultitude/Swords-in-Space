@@ -14,7 +14,7 @@ namespace SwordsInSpace
         [SerializeField]
         public double maxHp;
         [SyncVar(OnChange = nameof(UpdateHpText))]
-        private double currentHp;
+        protected double currentHp;
 
         [SerializeField]
         public double exp;
@@ -35,13 +35,14 @@ namespace SwordsInSpace
         public double detectionRange = 30;
 
         [SyncVar(OnChange = nameof(ChangeActiveState))]
-        private bool isActive = true;
+        protected bool isActive = true;
 
         protected Rigidbody2D rb;
 
         [SerializeField]
         private AfterImageSpawner imageSpawner;
 
+        public bool canDoBossDash = true;
         private float bossAfterimageDistance = 5f;
         private float bossAfterimageCD = 0.05f;
         private Vector2 bossTeleportProximityToPlayer = new Vector2(5f, 30f);
@@ -57,6 +58,12 @@ namespace SwordsInSpace
             if (!IsServer)
             {
                 GetComponent<Rigidbody2D>().isKinematic = true;
+                GetComponentInChildren<Collider2D>().isTrigger = true;
+                ai.canMove = false;
+                ai.isStopped = true;
+                GetComponent<AIDestinationSetter>().enabled = false;
+                GetComponent<Seeker>().enabled = false;
+                ai.enabled = false;
 
             }
             hpBar = GetComponentInChildren<Hpbar>();
@@ -92,6 +99,11 @@ namespace SwordsInSpace
 
         }
 
+        public double GetCurrentHP()
+        {
+            return currentHp;
+        }
+
         public void SetInactive()
         {
 
@@ -106,7 +118,7 @@ namespace SwordsInSpace
                 s.isAsleep = true;
         }
 
-        private void SetActive()
+        public void SetActive()
         {
             if (isActive)
                 return;
@@ -146,7 +158,7 @@ namespace SwordsInSpace
                 if (currentTime > teleportCheckDuration && doTeleportIfFar)
                 {
                     currentTime = 0;
-                    if (isBoss)
+                    if (isBoss && canDoBossDash)
                     {
                         StartCoroutine("BossTeleport");
                     }
@@ -163,7 +175,7 @@ namespace SwordsInSpace
             }
         }
 
-        private IEnumerator BossTeleport()
+        protected IEnumerator BossTeleport()
         {
             Debug.Log("Boss teleport");
             Vector3 loc = getPosNearPlayer(bossTeleportProximityToPlayer);
@@ -248,7 +260,7 @@ namespace SwordsInSpace
         }
 
 
-        public void takeDamage(double dmg)
+        public virtual void takeDamage(double dmg)
         {
             currentHp -= dmg;
             AudioManager.instance.ObserversPlay(onDamagedSound);
@@ -267,7 +279,7 @@ namespace SwordsInSpace
             this.isBoss = isBoss;
         }
 
-        private void OnDeath()
+        public void OnDeath()
         {
             if (!IsServer) return;
             if (isBoss) WorldManager.currentWorld.spawner.bossesKilled++;

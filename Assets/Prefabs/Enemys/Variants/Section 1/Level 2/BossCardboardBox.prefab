@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 4304845585654554194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4881528062191383345}
@@ -320,7 +320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1386559295309661771, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Name
-      value: Cardboard Box
+      value: BossCardboardBox
       objectReference: {fileID: 0}
     - target: {fileID: 2029872035726437235, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Constraints
@@ -343,6 +343,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1976508626, guid: 6b09d48ad39d75c4194cadaa4d7e607b, type: 3}
     - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
@@ -352,7 +364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[2]
@@ -364,6 +376,10 @@ PrefabInstance:
       objectReference: {fileID: 6180376952315342598}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[4]
+      value: 
+      objectReference: {fileID: 9004794875020023356}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _networkBehaviours.Array.data[5]
       value: 
       objectReference: {fileID: 7423739676898208664}
     - target: {fileID: 5009307279760647555, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
@@ -402,6 +418,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 30f1d6a254d1eec43b2c5b22067e788c, type: 2}
+    - target: {fileID: 7276266282284117724, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _componentIndexCache
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
 --- !u!4 &510709718403711648 stripped
@@ -431,12 +451,13 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 3269423500304251394}
   maxHp: 25
   exp: 100
-  onDamagedSound: {fileID: 0}
+  onDamagedSound: {fileID: 8300000, guid: 19ffd2b3895af53479bfcb531809e1ac, type: 3}
   doTeleportIfFar: 1
   teleportCheckDuration: 5
   isBoss: 0
   detectionRange: 30
   imageSpawner: {fileID: 6585951123077435037}
+  canDoBossDash: 1
 --- !u!114 &6180376952315342598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,7 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9efb3263174ecaf449e1f3551d0f9f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 4
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 3269423500304251394}
   _networkObjectCache: {fileID: 3269423500304251394}
   bullet: {fileID: 2590286623395873651, guid: 3f9c5556cb42f9142905538a99750657, type: 3}
@@ -558,3 +579,14 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 6934256858163932103, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
   m_PrefabInstance: {fileID: 1733050895003941088}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9004794875020023356 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7276266282284117724, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+  m_PrefabInstance: {fileID: 1733050895003941088}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7210406738282524668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9727f50362ebb4e43af414b38d924d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

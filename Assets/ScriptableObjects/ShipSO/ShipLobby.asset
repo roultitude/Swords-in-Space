@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e5bdf54d6993f4bb700400c1b92260, type: 3}
   m_Name: ShipLobby
   m_EditorClassIdentifier: 
-  MaxHp: 1000
+  ShipMaxHp: 200
+  ShipMaxNitroFuel: 0
+  ShipMaxSpeed: 0
+  ShipInvincibilityTime: 0
+  ShipFireInvincibilityTime: 0
+  powerMaxAmount: 1000
+  powerDrainRate: 1
+  powerRefillRate: 100
+  fireHP: 3

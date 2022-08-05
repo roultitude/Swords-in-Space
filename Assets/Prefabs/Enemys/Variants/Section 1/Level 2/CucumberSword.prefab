@@ -73,15 +73,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1386559295309661771, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Name
-      value: Cucumber Sword
+      value: CucumberSword
       objectReference: {fileID: 0}
     - target: {fileID: 2241507642535770688, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.73
+      value: 3.07
       objectReference: {fileID: 0}
     - target: {fileID: 2241507642535770688, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.88
+      value: 1.53
       objectReference: {fileID: 0}
     - target: {fileID: 2398872284527371111, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Size.x
@@ -105,11 +105,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2739013680238319648, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.19
+      value: 3.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739013680238319648, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739013680238319648, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739013680238319648, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[2]
@@ -121,6 +133,10 @@ PrefabInstance:
       objectReference: {fileID: 6987290729006462037}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[4]
+      value: 
+      objectReference: {fileID: 7787928444946476621}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _networkBehaviours.Array.data[5]
       value: 
       objectReference: {fileID: 5173367514934632405}
     - target: {fileID: 5009307279760647555, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
@@ -139,10 +155,34 @@ PrefabInstance:
       propertyPath: timeout.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SwordsInSpace.EnemyShooter, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 5708157572430751117, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5708157572430751117, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5708157572430751117, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5708157572430751117, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5708157572430751117, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 6934256858163932103, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 047064f360b606f4092ea6027ae5f664, type: 2}
+    - target: {fileID: 7276266282284117724, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: _componentIndexCache
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
 --- !u!1 &2004161604143367898 stripped
@@ -167,12 +207,13 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 4448538060099977843}
   maxHp: 8
   exp: 30
-  onDamagedSound: {fileID: 0}
+  onDamagedSound: {fileID: 8300000, guid: bc75a6dee77c1ca48bbc43e41ff127b5, type: 3}
   doTeleportIfFar: 1
   teleportCheckDuration: 5
   isBoss: 0
   detectionRange: 30
   imageSpawner: {fileID: 5442262827895092972}
+  canDoBossDash: 1
 --- !u!114 &6987290729006462037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ac507b2982b364c8f878ff66323594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 4
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 4448538060099977843}
   _networkObjectCache: {fileID: 4448538060099977843}
   bullet: {fileID: 2590286623395873651, guid: 3f9c5556cb42f9142905538a99750657, type: 3}
@@ -260,13 +301,24 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 6934256858163932103, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
   m_PrefabInstance: {fileID: 643515609094783121}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7787928444946476621 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7276266282284117724, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+  m_PrefabInstance: {fileID: 643515609094783121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427273029835020173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9727f50362ebb4e43af414b38d924d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8427273029835020173 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8943456316866189084, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
   m_PrefabInstance: {fileID: 643515609094783121}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &7436659102018425845
-CircleCollider2D:
+--- !u!70 &8439025175498974386
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -278,6 +330,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.64
+  m_Offset: {x: -3.26, y: 0}
+  m_Size: {x: 2.1, y: 7.25}
+  m_Direction: 0

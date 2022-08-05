@@ -57,28 +57,33 @@ namespace SwordsInSpace
             ShootAtPlayer();
         }
 
-        protected void ShootAt(Transform startLoc, Transform endLoc, Bullet.BulletBehavior fn = null, Quaternion offset = default)
+        protected void ShootAt(Vector3 startLoc, Vector3 endLoc, Bullet.BulletBehavior fn = null, Quaternion offset = default)
         {
-            if (offset == default)
-            {
-                offset = Quaternion.Euler(0, 0, 0);
-            }
-            Vector3 myLocation = startLoc.position;
-            Vector3 targetLocation = endLoc.position;
+
+            Vector3 myLocation = startLoc;
+            Vector3 targetLocation = endLoc;
             targetLocation.z = myLocation.z;
             Vector3 vectorToTarget = targetLocation - myLocation;
 
             Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 90) * vectorToTarget;
             Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
-            Quaternion rotation = Quaternion.LookRotation(endLoc.position - startLoc.position, Vector3.forward);
+            Quaternion rotation = Quaternion.LookRotation(endLoc - startLoc, Vector3.forward);
 
-            GameObject toAdd = Instantiate(bullet, startLoc.position, rotation);
+
+
+
+            GameObject toAdd = Instantiate(bullet, startLoc, rotation);
             Bullet toSpawn = toAdd.GetComponent<Bullet>();
 
-            toAdd.transform.rotation = Quaternion.RotateTowards(startLoc.rotation, targetRotation, 360f);
 
+            toAdd.transform.rotation = Quaternion.RotateTowards(Quaternion.Euler(0, 0, 0), targetRotation, 360f);
 
-            toAdd.transform.rotation *= offset;
+            if (offset.z == 0 || offset.eulerAngles == Vector3.zero)
+            {
+                offset = Quaternion.Euler(0, 0, 0);
+            }
+            toAdd.transform.rotation = offset * toAdd.transform.rotation;
+
             toSpawn.Setup(shotSpeed, shotLifetime, damage, shotSpread, 1);
             toAdd.transform.localScale *= bulletScale;
 
@@ -87,16 +92,21 @@ namespace SwordsInSpace
             Spawn(toAdd);
         }
 
-        protected void ShootAtPlayer(Quaternion offset = default)
+        protected void ShootAt(Transform startLoc, Transform endLoc, Bullet.BulletBehavior fn = null, Quaternion offset = default)
         {
-            ShootAt(transform, Ship.currentShip.gameObject.transform, offset: offset);
+            ShootAt(startLoc.position, endLoc.position, fn, offset);
+        }
+
+        protected void ShootAtPlayer(Bullet.BulletBehavior fn = null, Quaternion offset = default)
+        {
+            ShootAt(transform, Ship.currentShip.gameObject.transform, fn: fn, offset: offset);
         }
 
 
 
         protected void SpawnLocalRotation(Quaternion offset = default, Vector3 loc = default, Bullet.BulletBehavior fn = null, float customBulletSpeed = -1f)
         {
-            if (offset == default)
+            if (offset.z == 0 || offset.eulerAngles == Vector3.zero)
             {
                 offset = Quaternion.Euler(0, 0, 0);
             }
@@ -110,6 +120,7 @@ namespace SwordsInSpace
             {
                 customBulletSpeed = shotSpeed;
             }
+
 
             offset *= Quaternion.Euler(0, 0, 90);
 

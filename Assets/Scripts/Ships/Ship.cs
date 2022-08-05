@@ -166,6 +166,7 @@ namespace SwordsInSpace
             int storedLevels = expManager.GetStoredLevels();
             if (storedLevels > 0)
             {
+                AllPlayerExitUI();
                 Debug.Log("triggering levels: " + storedLevels);
                 upgradeManager.TriggerUpgrades(storedLevels);
             }
@@ -280,7 +281,6 @@ namespace SwordsInSpace
                 Debug.Log("pilot changed to none");
             }
         }
-        [ServerRpc(RequireOwnership = false)]
         public void ChangeNitroFuel(int change)
         {
             CurrentNitroFuel += change;

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BossCatChargerAnimator
+  m_Controller: {fileID: 9100000, guid: 2a293d9473c0ab645aa14b68deb85896, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: e232e789a24abfb43b38f8912c655aad, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e1f98cf26a6d223499d280646b2c1b34, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7563679d52f8ad049a15e09b8892959e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f8b1c322d64d4c2459ab01040130ec31, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: af3cc69507a2116479c5bc33804c8c09, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 986d7a20e6c8ca6468d4b9411b29c1a9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9bdb87d97be53014d9ad99855a4b4afc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b5d00f18fa3543b48884d9fc14cd55e4, type: 2}

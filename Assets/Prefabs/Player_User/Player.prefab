@@ -78,7 +78,6 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 6591759166442174641}
   _networkObjectCache: {fileID: 6591759166442174641}
   data: 
-  interactables: {fileID: 0}
 --- !u!114 &8521876381648262751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +93,6 @@ MonoBehaviour:
   _componentIndexCache: 2
   _addedNetworkObject: {fileID: 6591759166442174641}
   _networkObjectCache: {fileID: 6591759166442174641}
-  shipMover: {fileID: 0}
   playerInput: {fileID: 0}
 --- !u!50 &5198408479492109837
 Rigidbody2D:
@@ -201,6 +199,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 6591759166442174641}
   _graphicalObject: {fileID: 8760791468650330625}
   _smoothTicks: 1
+  _durationType: 0
   _smoothingDuration: 0.125
   _enableTeleport: 0
   _teleportThreshold: 1
@@ -232,9 +231,10 @@ MonoBehaviour:
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
+  _isGlobal: 0
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
-  _prefabId: 0
+  _prefabId: 11
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects: []
@@ -557,7 +557,7 @@ MonoBehaviour:
   - {x: -0.32168517, y: -0.3895599, z: 0}
   m_ShapePathHash: -930056146
   m_Mesh: {fileID: 0}
-  m_InstanceId: 89700
+  m_InstanceId: 105102
 --- !u!114 &8062086962072220328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,6 +731,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2498391187588961353, guid: 634aa3a31f524c24387a0d0099ca6d2e, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 3576619954c24704daf80b0f626b0d53, type: 2}
+    - target: {fileID: 2498391187588961353, guid: 634aa3a31f524c24387a0d0099ca6d2e, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3073045086147367013, guid: 3576619954c24704daf80b0f626b0d53, type: 2}
     - target: {fileID: 3188710027252143194, guid: 634aa3a31f524c24387a0d0099ca6d2e, type: 3}
       propertyPath: m_SortingLayerID
       value: -615426349

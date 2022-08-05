@@ -21,7 +21,8 @@ namespace SwordsInSpace
         public void StartGame()
         {
             if (!UserManager.instance.allUsersReady) return;
-            GameManager.instance.GoToLevel("GameScene",false,true);
+            Ship.currentShip.AllPlayerExitUI();
+            GameManager.instance.GoToLevelClient("GameScene",false, true);
             
         }
 

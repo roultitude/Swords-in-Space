@@ -49,6 +49,8 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 8903271479302812557}
   _networkObjectCache: {fileID: 8903271479302812557}
   username: 
+  controlledPlayer: {fileID: 0}
+  isReady: 0
 --- !u!114 &8903271479302812557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +70,7 @@ MonoBehaviour:
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
+  _isGlobal: 0
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
   _prefabId: -1
