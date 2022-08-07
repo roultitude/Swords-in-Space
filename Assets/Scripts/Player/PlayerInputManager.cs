@@ -107,6 +107,7 @@ namespace SwordsInSpace
         void DebugLevelComplete()
         {
             WorldManager.currentWorld.levelComplete = true;
+            Ship.currentShip.expManager.AddExp(500);
         }
 
         private void OnDestroy()

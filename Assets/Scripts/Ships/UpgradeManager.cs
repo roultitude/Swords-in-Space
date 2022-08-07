@@ -195,6 +195,7 @@ namespace SwordsInSpace
         [ObserversRpc(RunLocally = true)]
         public void ShowUpgrades(string upgrade1, string upgrade2, string upgrade3, int tier)
         {
+            if (IsServerOnly) return;
             hasMadeChoice = false;
             upgradeChoice = new string[] { upgrade1, upgrade2, upgrade3 };
 
@@ -455,6 +456,7 @@ namespace SwordsInSpace
 
         public void AddRandomVote()
         {
+            if (IsServerOnly) return;
             if (hasMadeChoice)
                 return;
             hasMadeChoice = true;
