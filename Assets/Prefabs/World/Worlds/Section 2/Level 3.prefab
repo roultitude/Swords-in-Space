@@ -80,12 +80,24 @@ PrefabInstance:
       value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: startCost
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: InactiveMobPacks
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: spawninfos.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: InactiveMobCostRange.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: InactiveMobCostRange.y
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: bossPrefabs.Array.size
@@ -98,6 +110,18 @@ PrefabInstance:
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: InactiveEnemyInfos.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawninfos.Array.data[0].cost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawninfos.Array.data[1].cost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawninfos.Array.data[2].cost
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: spawninfos.Array.data[0].weight
@@ -123,6 +147,10 @@ PrefabInstance:
       propertyPath: spawninfos.Array.data[2].MobType
       value: 
       objectReference: {fileID: 8421504617852582272, guid: 825b139ee6189d249af28744eb6ec63d, type: 3}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: InactiveEnemyInfos.Array.data[0].cost
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: InactiveEnemyInfos.Array.data[0].weight
       value: 1

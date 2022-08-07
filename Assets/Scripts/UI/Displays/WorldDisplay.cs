@@ -25,9 +25,9 @@ namespace SwordsInSpace
                 countdownText.enabled = false;
             }
 
-            if (countdownText.enabled && Spawner.timeTillBoss > 0)
+            if (countdownText.enabled && Spawner.questObjectiveCollected < Spawner.NumQuestObjectivePowerupToSpawn)
             {
-                countdownText.text = "Survive for " + (int)Spawner.timeTillBoss + " seconds!";
+                countdownText.text = "Collect " + (Spawner.NumQuestObjectivePowerupToSpawn - Spawner.questObjectiveCollected) + " more fuel cells!";
             }
         }
     }

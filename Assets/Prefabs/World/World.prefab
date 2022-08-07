@@ -33394,7 +33394,6 @@ GameObject:
   - component: {fileID: 4444492388093359122}
   - component: {fileID: 4444492388093359120}
   - component: {fileID: 4444492388093359121}
-  - component: {fileID: 4444492388093359135}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -33433,26 +33432,31 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 4444492387124331352}
   _networkObjectCache: {fileID: 4444492387124331352}
   SpawnCD: {fileID: 4444492388093359121}
-  minPackDensity: 2
-  maxPackDensity: 3
+  minPackDensity: 1
+  maxPackDensity: 1
   packSpawnRadius: {x: 5, y: 5}
   UnitsFromAsteroid: 3
   spawninfos:
   - MobType: {fileID: 8421504617852582272, guid: 825b139ee6189d249af28744eb6ec63d, type: 3}
-    weight: 1
+    cost: 0
     localPackSizeRange: {x: 1, y: 0}
+  SpawnMobProximityToPlayers: {x: 20, y: 50}
+  startCost: 3
+  costGrowthMultiplier: 1.25
   bossPrefabs: []
   InactiveEnemyInfos: []
-  InactiveMobPacks: 5
+  InactiveMobPacks: 40
+  InactiveMobCostRange: {x: 1, y: 1}
   Powerups:
   - {fileID: 3801844991114630199, guid: ccf48b829bfec024db5a03b7261066c1, type: 3}
   - {fileID: 3801844991114630199, guid: 947c202a0c3508e41b83ee68ccc1c035, type: 3}
   - {fileID: 3801844991114630199, guid: 5c1fd1f8acc6133428ddd1ced6b4f85b, type: 3}
   PowerupSpawnChance: 1
+  QuestObjectivePowerup: {fileID: 2821289808871175928, guid: 9a400ebd62e6a124ab99c39d71ac3b6e, type: 3}
+  NumQuestObjectivePowerupToSpawn: 1
+  questObjectiveCollected: 0
   bossesKilled: 0
   worldSize: {x: 1000, y: 1000}
-  countdownTimer: {fileID: 4444492388093359135}
-  timeTillBoss: 0
   spawningComplete: 0
 --- !u!114 &4444492388093359121
 MonoBehaviour:
@@ -33473,39 +33477,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4444492388093359120}
-        m_TargetAssemblyTypeName: SwordsInSpace.EnemySpawner, Assembly-CSharp
-        m_MethodName: SpawnMob
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  currentTime: 0
---- !u!114 &4444492388093359135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4444492388093359123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7678620060197e4899c9491a0ab45e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  autoplay: 0
-  repeat: 0
-  waitTime: 20
-  timeout:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4444492388093359120}
-        m_TargetAssemblyTypeName: SwordsInSpace.EnemySpawner, Assembly-CSharp
-        m_MethodName: StopSpawn
+        m_TargetAssemblyTypeName: SwordsInSpace.Spawner, Assembly-CSharp
+        m_MethodName: OnMobPackTimerComplete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

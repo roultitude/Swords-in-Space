@@ -28,12 +28,17 @@ namespace SwordsInSpace
         public struct EnemySpawnInfo
         {
             public GameObject MobType;
-            public int weight;
+            public int cost;
             public Vector2 localPackSizeRange;
         }
 
         [SerializeField]
         EnemySpawnInfo[] spawninfos;
+
+        public Vector2 SpawnMobProximityToPlayers;
+        public float startCost;
+        public float costGrowthMultiplier;
+        private float currentGrowthMultiplier = 1;
 
         [SerializeField]
         GameObject[] bossPrefabs;
@@ -42,9 +47,14 @@ namespace SwordsInSpace
         EnemySpawnInfo[] InactiveEnemyInfos;
 
         public int InactiveMobPacks = 5;
+        public Vector2 InactiveMobCostRange = new Vector2(3, 6);
 
         public GameObject[] Powerups;
         public float PowerupSpawnChance;
+
+        public GameObject QuestObjectivePowerup;
+        public int NumQuestObjectivePowerupToSpawn;
+        public int questObjectiveCollected = 0;
 
         List<GameObject> currentEnemies;
 
@@ -54,25 +64,20 @@ namespace SwordsInSpace
         [SerializeField]
         Vector2 worldSize = new Vector2(1000, 1000);
 
-        [SerializeField]
-        Timer countdownTimer;
-
-        [SyncVar]
-        public double timeTillBoss;
-
         [SyncVar]
         public bool spawningComplete = false;
 
         public bool IsAllBossesKilled() => bossesKilled == bossPrefabs.Length;
 
         private int MaxGetRandomPositionAttempts = 5;
+
         public override void OnStartServer()
         {
             base.OnStartServer();
             totalWeight = 0;
             foreach (EnemySpawnInfo info in spawninfos)
             {
-                totalWeight += info.weight;
+                totalWeight += info.cost;
             }
             bossesKilled = 0;
             StartCoroutine(OnStartSpawn());
@@ -90,35 +95,57 @@ namespace SwordsInSpace
             }
         }
 
-        public void SpawnMob()
+        public void OnMobPackTimerComplete()
         {
             if (spawninfos.Length == 0)
                 return;
 
-            int currentWeight = Random.Range(0, totalWeight + 1);
-            EnemySpawnInfo selectedInfo = spawninfos[0];
-            foreach (EnemySpawnInfo info in spawninfos)
-            {
-                currentWeight -= info.weight;
-                if (currentWeight <= 0)
-                {
-                    selectedInfo = info;
-                    break;
-                }
-            }
-            Vector3 loc = getRandomPosition();
-            int size = Random.Range(minPackDensity, maxPackDensity);
-            for (int i = 0; i < size * (int)Random.Range(selectedInfo.localPackSizeRange.x, selectedInfo.localPackSizeRange.y + 1); i++)
-            {
-                Vector2 randomLocInSpawnRadius = getValidLocInSpawnRadius(loc);
-                GameObject toAdd = Instantiate(selectedInfo.MobType, new Vector3(randomLocInSpawnRadius.x, randomLocInSpawnRadius.y,
-                    loc.z), transform.rotation);
-                Spawn(toAdd);
+            currentGrowthMultiplier *= costGrowthMultiplier;
 
-            }
+            Vector2 toSpawnLoc = new Vector2(Random.Range(SpawnMobProximityToPlayers.x, SpawnMobProximityToPlayers.y), Random.Range(SpawnMobProximityToPlayers.x, SpawnMobProximityToPlayers.y));
+
+            if (Random.Range(0, 2) == 0)
+                toSpawnLoc.x = -toSpawnLoc.x;
+
+            if (Random.Range(0, 2) == 0)
+                toSpawnLoc.y = -toSpawnLoc.y;
+
+
+            Vector2 mobPackLoc = new Vector2(Ship.currentShip.gameObject.transform.position.x, Ship.currentShip.gameObject.transform.position.y) + toSpawnLoc;
+            SpawnMobPack(spawninfos, startCost * currentGrowthMultiplier, mobPackLoc);
 
         }
 
+        public void SpawnMobPack(EnemySpawnInfo[] spawnInfo, float currentCost, Vector2 toSpawnLoc, bool IsActive = true)
+        {
+            /*
+             * Cost Based System deducts currentCost until the cost is negative, each mob will have equal chance to spawn.
+             * Spawning a higher cost mob will just mean that the pack will be smaller.
+             */
+
+            while (currentCost > 0)
+            {
+                EnemySpawnInfo currentEnemyInfo = spawnInfo[Random.Range(0, spawnInfo.Length)];
+                currentCost -= currentEnemyInfo.cost;
+
+                int size = Random.Range(minPackDensity, maxPackDensity);
+                for (int i = 0; i < size * (int)Random.Range(currentEnemyInfo.localPackSizeRange.x, currentEnemyInfo.localPackSizeRange.y + 1); i++)
+                {
+                    Vector2 randomLocInSpawnRadius = getValidLocInSpawnRadius(toSpawnLoc);
+                    GameObject toAdd = Instantiate(currentEnemyInfo.MobType, new Vector3(randomLocInSpawnRadius.x, randomLocInSpawnRadius.y,
+                        0), transform.rotation);
+
+                    if (!IsActive)
+                        toAdd.GetComponent<EnemyAI>().SetInactive();
+
+                    Spawn(toAdd);
+
+                }
+
+            }
+
+
+        }
 
 
         private IEnumerator OnStartSpawn()
@@ -129,37 +156,19 @@ namespace SwordsInSpace
             int inactiveEnemyWeight = 0;
             foreach (EnemySpawnInfo info in InactiveEnemyInfos)
             {
-                inactiveEnemyWeight += info.weight;
+                inactiveEnemyWeight += info.cost;
             }
+
+            SpawnQuestObjectives();
 
             //Spawn Sleeping Mobs
             for (int mobNo = 0; mobNo < InactiveMobPacks; mobNo++)
             {
-                int currentWeight = Random.Range(0, inactiveEnemyWeight + 1);
-                EnemySpawnInfo selectedInfo = InactiveEnemyInfos[0];
-                foreach (EnemySpawnInfo info in InactiveEnemyInfos)
-                {
-                    currentWeight -= info.weight;
-                    if (currentWeight <= 0)
-                    {
-                        selectedInfo = info;
-                        break;
-                    }
-                }
 
                 Vector3 loc = getRandomPosition(MaxGetRandomPositionAttempts, new Vector2(worldSize.x / 2, worldSize.y / 2), minRange: new Vector2(100, 100));
                 int size = Random.Range(minPackDensity, maxPackDensity);
 
-                for (int i = 0; i < size * (int)Random.Range(selectedInfo.localPackSizeRange.x, selectedInfo.localPackSizeRange.y + 1); i++)
-                {
-                    Vector2 randomLocInSpawnRadius = getValidLocInSpawnRadius(loc);
-                    GameObject toAdd = Instantiate(selectedInfo.MobType, new Vector3(randomLocInSpawnRadius.x, randomLocInSpawnRadius.y,
-                        loc.z), transform.rotation);
-
-                    Spawn(toAdd);
-                    toAdd.GetComponent<EnemyAI>().SetInactive();
-
-                }
+                SpawnMobPack(InactiveEnemyInfos, Random.Range(InactiveMobCostRange.x, InactiveMobCostRange.y), loc, false);
 
                 if (Random.Range(0f, 1f) < PowerupSpawnChance)
                 {
@@ -172,6 +181,16 @@ namespace SwordsInSpace
 
 
 
+        }
+
+        private void SpawnQuestObjectives()
+        {
+            for (int questObjectiveSpawned = 0; questObjectiveSpawned < NumQuestObjectivePowerupToSpawn; questObjectiveSpawned++)
+            {
+                Vector3 loc = getRandomPosition(MaxGetRandomPositionAttempts, new Vector2(worldSize.x / 2, worldSize.y / 2), minRange: new Vector2(100, 100));
+                GameObject toSpawn = Instantiate(QuestObjectivePowerup, loc, Quaternion.Euler(0, 0, 0));
+                Spawn(toSpawn);
+            }
         }
 
         private Vector2 getValidLocInSpawnRadius(Vector3 loc)
@@ -250,6 +269,17 @@ namespace SwordsInSpace
             return Physics2D.OverlapCircle(new Vector2(pos.x, pos.y), UnitsFromAsteroid) == null;
         }
 
+        public void collectObjective()
+        {
+            questObjectiveCollected += 1;
+            if (questObjectiveCollected >= NumQuestObjectivePowerupToSpawn)
+                OnCompleteCollectObjectives();
+
+
+
+
+        }
+
         public void SpawnBosses()
         {
             foreach (GameObject boss in bossPrefabs)
@@ -264,17 +294,12 @@ namespace SwordsInSpace
             }
         }
 
-        public void StopSpawn()
+        public void OnCompleteCollectObjectives()
         {
             SpawnCD.Stop();
-            SpawnBosses();
             spawningComplete = true;
+            SpawnBosses();
         }
 
-        private void Update()
-        {
-            if (!IsServer) return;
-            timeTillBoss = countdownTimer.waitTime - countdownTimer.currentTime;
-        }
     }
 };
