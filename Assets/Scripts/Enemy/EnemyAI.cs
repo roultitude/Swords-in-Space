@@ -16,8 +16,7 @@ namespace SwordsInSpace
         [SyncVar(OnChange = nameof(UpdateHpText))]
         protected double currentHp;
 
-        [SerializeField]
-        public double exp;
+
         [SerializeField]
         public AudioClip onDamagedSound;
 
@@ -284,7 +283,6 @@ namespace SwordsInSpace
             if (!IsServer) return;
             if (isBoss) WorldManager.currentWorld.spawner.bossesKilled++;
             WorldManager.currentWorld.StartCoroutine(WorldManager.currentWorld.CheckIfComplete());
-            Ship.currentShip.expManager.AddExp(exp);
             this.Despawn();
         }
 

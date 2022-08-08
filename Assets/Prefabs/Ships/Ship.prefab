@@ -634,7 +634,6 @@ GameObject:
   - component: {fileID: 4703744331782941198}
   - component: {fileID: 4485076214342864807}
   - component: {fileID: 7784500117912041229}
-  - component: {fileID: 3722305566664632514}
   - component: {fileID: 3006086760405494744}
   m_Layer: 7
   m_Name: ShipExterior
@@ -704,6 +703,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 5412598000014957244}
   _graphicalObject: {fileID: 8138893596707659371}
   _smoothTicks: 1
+  _durationType: 0
   _smoothingDuration: 0.125
   _enableTeleport: 0
   _teleportThreshold: 1
@@ -755,7 +755,6 @@ MonoBehaviour:
   spawnTransform: {fileID: 3376241738065158074}
   playerTracker: {fileID: 7927405157388670407}
   upgradeManager: {fileID: 7784500117912041229}
-  expManager: {fileID: 3722305566664632514}
   fireContainer: {fileID: 0}
   shipExteriorSprite: {fileID: 332264357021096619}
   fireManager: {fileID: 0}
@@ -806,7 +805,11 @@ MonoBehaviour:
   - upgradeSo: {fileID: 11400000, guid: a57f29d6c4633b84abe74ff6b1358089, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
+  tier1CombatUpgrade:
   - upgradeSo: {fileID: 11400000, guid: 146f395a7ad220e47b2952a7f08b86c7, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: d82d9f88f0688e44c9948e5b697098ab, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
   tier2Upgrade:
@@ -831,6 +834,13 @@ MonoBehaviour:
   - upgradeSo: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
+  tier2CombatUpgrade:
+  - upgradeSo: {fileID: 11400000, guid: 493924255f5424e4da07d8e60572ae33, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: e14749c2e9e9a284db790c5679d55edf, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
   tier3Upgrade:
   - upgradeSo: {fileID: 11400000, guid: 1d07e19c5a69dff4cab951e95494cd65, type: 2}
     upgradeCount: 0
@@ -847,31 +857,30 @@ MonoBehaviour:
   - upgradeSo: {fileID: 11400000, guid: 1bb74eeb7df8c8f44abeb3bc4632e551, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
+  tier3CombatUpgrade:
+  - upgradeSo: {fileID: 11400000, guid: 1d07e19c5a69dff4cab951e95494cd65, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: c7be4bca55f076940ad8de89491152b0, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: 087fa495f156595478f010a4bccf6e6b, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
+  - upgradeSo: {fileID: 11400000, guid: 1bb74eeb7df8c8f44abeb3bc4632e551, type: 2}
+    upgradeCount: 0
+    upgradeMaxCount: -1
   tier4Upgrade:
+  - upgradeSo: {fileID: 11400000, guid: 0b2c3b9037648ee41ae525918b4af232, type: 2}
+    upgradeCount: 5
+    upgradeMaxCount: 1
+  tier4CombatUpgrade:
   - upgradeSo: {fileID: 11400000, guid: 60ae00d681b66c64eb8f578f48e72254, type: 2}
     upgradeCount: 0
     upgradeMaxCount: -1
   upgradesDisplay: {fileID: 0}
   numUpgrades: 0
   debugTrigger: 0
---- !u!114 &3722305566664632514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249428066534560750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ace2dd9983b50004ea3070eb47e78e85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLevel: 0
-  currentExp: 0
-  storedLevels: 0
-  onLevel:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!61 &3006086760405494744
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1542,6 +1551,7 @@ MonoBehaviour:
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
+  _isGlobal: 0
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
   _prefabId: 4

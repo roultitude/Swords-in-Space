@@ -20,7 +20,6 @@ namespace SwordsInSpace
         public Transform spawnTransform;
         public Transform playerTracker;
         public UpgradeManager upgradeManager;
-        public ExpManager expManager;
         public Transform fireContainer;
         public SpriteRenderer shipExteriorSprite;
         public FireManager fireManager;
@@ -163,17 +162,14 @@ namespace SwordsInSpace
                 return;
             }
 
-            int storedLevels = expManager.GetStoredLevels();
-            if (storedLevels > 0)
-            {
-                AllPlayerExitUI();
-                Debug.Log("triggering levels: " + storedLevels);
-                upgradeManager.TriggerUpgrades(storedLevels);
-            }
-            else
-            {
-                GameManager.instance.GoToLevel("GameScene", true, true);
-            }
+
+            AllPlayerExitUI();
+            Debug.Log("triggering upgrades");
+            upgradeManager.TriggerUpgrades();
+
+
+            //GameManager.instance.GoToLevel("GameScene", true, true);
+
         }
 
         public void PowerDown()
