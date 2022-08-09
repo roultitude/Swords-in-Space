@@ -153,11 +153,7 @@ namespace SwordsInSpace
             if (InactiveEnemyInfos.Length == 0)
                 yield break;
 
-            int inactiveEnemyWeight = 0;
-            foreach (EnemySpawnInfo info in InactiveEnemyInfos)
-            {
-                inactiveEnemyWeight += info.cost;
-            }
+            yield return new WaitForSeconds(0.05f);
 
             SpawnQuestObjectives();
 
@@ -185,6 +181,12 @@ namespace SwordsInSpace
 
         private void SpawnQuestObjectives()
         {
+            if (NumQuestObjectivePowerupToSpawn == 0)
+            {
+                OnCompleteCollectObjectives();
+                return;
+            }
+
             for (int questObjectiveSpawned = 0; questObjectiveSpawned < NumQuestObjectivePowerupToSpawn; questObjectiveSpawned++)
             {
                 Vector3 loc = getRandomPosition(MaxGetRandomPositionAttempts, new Vector2(worldSize.x / 2, worldSize.y / 2), minRange: new Vector2(100, 100));
@@ -192,6 +194,7 @@ namespace SwordsInSpace
                 Spawn(toSpawn);
             }
         }
+
 
         private Vector2 getValidLocInSpawnRadius(Vector3 loc)
         {
