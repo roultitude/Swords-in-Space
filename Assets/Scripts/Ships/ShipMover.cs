@@ -41,10 +41,10 @@ namespace SwordsInSpace
         public override void OnStartServer()
         {
             base.OnStartServer();
-            Ship.currentShip.upgradeManager.OnUpgrade += ReloadUpgrades;
             currentSpeed = speed;
             currentNitroMult = nitroMult;
             currentTurnSpeed = turnSpeed;
+            Ship.currentShip.upgradeManager.OnUpgrade += ReloadUpgrades;
 
         }
         public void ReloadUpgrades(Dictionary<UpgradeTypes, float> stats)
@@ -60,7 +60,8 @@ namespace SwordsInSpace
             if (stats.ContainsKey(UpgradeTypes.shipTurnSpeed))
             {
                 float newTurnSpeed = turnSpeed + stats[UpgradeTypes.shipTurnSpeed];
-                currentTurnSpeed = Mathf.Clamp(newTurnSpeed, 1f, 1000f);
+                currentTurnSpeed = Mathf.Clamp(newTurnSpeed, 1f, 100000f);
+
             }
             if (stats.ContainsKey(UpgradeTypes.nitroMult))
             {
@@ -75,7 +76,7 @@ namespace SwordsInSpace
         {
             if (!canMove) md = default;
             MovePredict(md, asServer, replaying);
-            if(IsClient && !asServer)
+            if (IsClient && !asServer)
             {
                 SetIsMoving((md.Vertical != 0 || md.Horizontal != 0));
             }
@@ -89,11 +90,11 @@ namespace SwordsInSpace
             {
                 rb.AddForce(1 * transform.right * currentSpeed * (currentNitroMult - 1));
 
-                if (IsServer) 
+                if (IsServer)
                 {
                     Ship.currentShip.ChangeNitroFuel(-1);
                     Ship.currentShip.StartCoroutine(Ship.currentShip.StartInvincibilityFrames(nitroInvincibilityTime));
-                } 
+                }
             }
             rb.AddTorque(md.Horizontal * -currentTurnSpeed);
         }

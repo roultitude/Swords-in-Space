@@ -23,15 +23,19 @@ namespace SwordsInSpace
 
         public readonly double tier1Chance = 0.5;
         public List<Upgrade> tier1Upgrade;
+        public List<Upgrade> tier1CombatUpgrade;
 
         public readonly double tier2Chance = 0.25;
         public List<Upgrade> tier2Upgrade;
+        public List<Upgrade> tier2CombatUpgrade;
 
         public readonly double tier3Chance = 0.2;
         public List<Upgrade> tier3Upgrade;
+        public List<Upgrade> tier3CombatUpgrade;
 
         public readonly double tier4Chance = 0.05;
         public List<Upgrade> tier4Upgrade;
+        public List<Upgrade> tier4CombatUpgrade;
 
         public Dictionary<string, Upgrade> upgrades;
 
@@ -59,12 +63,15 @@ namespace SwordsInSpace
 
         public OnUpgradeEvent OnUpgrade;
 
+        private bool givenCombatUpgrade = false;
+
+
         public void Update()
         {
             if (debugTrigger)
             {
                 debugTrigger = false;
-                TriggerUpgrades(2);
+                TriggerUpgrades();
             }
         }
 
@@ -75,7 +82,7 @@ namespace SwordsInSpace
 
             upgrades = new Dictionary<string, Upgrade>();
 
-            List<Upgrade>[] tiers = { tier1Upgrade, tier2Upgrade, tier3Upgrade, tier4Upgrade };
+            List<Upgrade>[] tiers = { tier1Upgrade, tier2Upgrade, tier3Upgrade, tier4Upgrade, tier1CombatUpgrade, tier2CombatUpgrade, tier3CombatUpgrade, tier4CombatUpgrade };
             foreach (List<Upgrade> upgradeArr in tiers)
             {
                 foreach (Upgrade a in upgradeArr)
@@ -91,12 +98,13 @@ namespace SwordsInSpace
 
 
 
-        public void TriggerUpgrades(int numUpgrades)
+        public void TriggerUpgrades()
         {
             if (!IsServer)
                 return;
+            givenCombatUpgrade = false;
+            this.numUpgrades = 3;
 
-            this.numUpgrades = numUpgrades;
             UpdateNumUpgradesClient(numUpgrades);
             RollUpgrades();
             BroadcastUpgradeScreen();
@@ -146,23 +154,23 @@ namespace SwordsInSpace
             if (randChance <= 0.5)
             {
 
-                thisTier = tier1Upgrade;
+                thisTier = givenCombatUpgrade ? tier1Upgrade : tier1CombatUpgrade;
                 tier = 1;
 
             }
             else if (randChance <= 0.8)
             {
-                thisTier = tier2Upgrade;
+                thisTier = givenCombatUpgrade ? tier2Upgrade : tier2CombatUpgrade;
                 tier = 2;
             }
             else if (randChance <= 0.95)
             {
-                thisTier = tier3Upgrade;
+                thisTier = givenCombatUpgrade ? tier3Upgrade : tier3CombatUpgrade;
                 tier = 3;
             }
             else
             {
-                thisTier = tier4Upgrade;
+                thisTier = givenCombatUpgrade ? tier4Upgrade : tier4CombatUpgrade;
                 tier = 4;
 
                 if (thisTier.Count > 0)
@@ -180,15 +188,20 @@ namespace SwordsInSpace
                 else
                 {
 
-                    thisTier = tier3Upgrade;
+                    thisTier = givenCombatUpgrade ? tier3Upgrade : tier3CombatUpgrade;
                     tier = 3;
                 }
 
             }
+            if (!givenCombatUpgrade)
+                givenCombatUpgrade = true;
 
             ShowUpgrades(thisTier[Random.Range(0, thisTier.Count)].upgradeSo.upgradeName,
-        thisTier[Random.Range(0, thisTier.Count)].upgradeSo.upgradeName,
-        thisTier[Random.Range(0, thisTier.Count)].upgradeSo.upgradeName, tier);
+    thisTier[Random.Range(0, thisTier.Count)].upgradeSo.upgradeName,
+    thisTier[Random.Range(0, thisTier.Count)].upgradeSo.upgradeName, tier);
+
+
+
 
         }
 

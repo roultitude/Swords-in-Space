@@ -16,5 +16,5 @@ MonoBehaviour:
   description: Reduce Bullet Spread
   sprite: {fileID: 21300000, guid: f412543bf4087b440836e6f202e0fd67, type: 3}
   statChanges:
-  - type: 23
+  - type: 13
     amount: -1

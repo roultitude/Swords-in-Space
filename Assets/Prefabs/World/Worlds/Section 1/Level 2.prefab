@@ -80,6 +80,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: startCost
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: maxPackDensity
       value: 4
       objectReference: {fileID: 0}
@@ -96,6 +100,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: InactiveMobCostRange.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: InactiveMobCostRange.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: bossPrefabs.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -105,6 +117,18 @@ PrefabInstance:
       objectReference: {fileID: 806994042894368427, guid: 6d8dec840b19d454f97247deb4b47e73, type: 3}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: InactiveEnemyInfos.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawninfos.Array.data[0].cost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawninfos.Array.data[1].cost
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: spawninfos.Array.data[2].cost
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
@@ -127,6 +151,14 @@ PrefabInstance:
       propertyPath: spawninfos.Array.data[2].MobType
       value: 
       objectReference: {fileID: 6450891800367982020, guid: 4a285bddf9c1d474e8cc035f6268a8a2, type: 3}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: InactiveEnemyInfos.Array.data[0].cost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: InactiveEnemyInfos.Array.data[1].cost
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: InactiveEnemyInfos.Array.data[0].weight
       value: 1
@@ -153,23 +185,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: InactiveEnemyInfos.Array.data[0].localPackSizeRange.x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: InactiveEnemyInfos.Array.data[0].localPackSizeRange.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: InactiveEnemyInfos.Array.data[1].localPackSizeRange.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359120, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: InactiveEnemyInfos.Array.data[1].localPackSizeRange.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359121, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: waitTime
-      value: 7
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444492388093359121, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: currentTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4444492388093359135, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: waitTime
