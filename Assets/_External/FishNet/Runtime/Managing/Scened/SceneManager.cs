@@ -21,8 +21,17 @@ namespace FishNet.Managing.Scened
     /// Handles loading, unloading, and scene visibility for clients.
     /// </summary>
     [DisallowMultipleComponent]
+    [AddComponentMenu("FishNet/Manager/SceneManager")]
     public sealed class SceneManager : MonoBehaviour
     {
+        #region Types.
+        internal enum LightProbeUpdateType
+        {
+            Asynchronous = 0,
+            BlockThread = 1,
+            Off = 2,
+        }
+        #endregion
 
         #region Public.
         /// <summary>
@@ -89,6 +98,12 @@ namespace FishNet.Managing.Scened
         [Tooltip("Script to handle addressables loading and unloading. This field may be blank if addressables are not being used.")]
         [SerializeField]
         private SceneProcessorBase _sceneProcessor;
+        /// <summary>
+        /// How to update light probes after loading or unloading scenes.
+        /// </summary>
+        [Tooltip("How to update light probes after loading or unloading scenes.")]
+        [SerializeField]
+        private LightProbeUpdateType _lightProbeUpdating = LightProbeUpdateType.Asynchronous;
         /// <summary>
         /// True to move objects visible to clientHost that are within an unloading scene. This ensures the objects are despawned on the client side rather than when the scene is destroyed.
         /// </summary>
@@ -831,7 +846,7 @@ namespace FishNet.Managing.Scened
                         continue;
                     /* Cannot unload global scenes. If
                      * replace scenes was used for a global
-                     * load then global scenes would have bene reset
+                     * load then global scenes would have been reset
                      * before this. */
                     if (IsGlobalScene(s))
                         continue;
@@ -1252,7 +1267,7 @@ namespace FishNet.Managing.Scened
             if (scenes.Length == 0 && !asClientHost)
             {
                 if (_networkManager.CanLog(LoggingType.Warning))
-                    Debug.LogWarning($"No scenes were found to unload. This warning can generally be ignored when unloading scenes as clientHost.");
+                    Debug.LogWarning($"No scenes were found to unload.");
                 yield break;
             }
 
@@ -1894,7 +1909,7 @@ namespace FishNet.Managing.Scened
         {
             if (!_setActiveScene)
                 return;
-            
+
             Scene s = default;
             if (_globalScenes != null && _globalScenes.Length > 0)
                 s = GetScene(_globalScenes[0]);
@@ -1905,13 +1920,18 @@ namespace FishNet.Managing.Scened
             if (string.IsNullOrEmpty(s.name) && UnitySceneManager.GetActiveScene() == _movedObjectsScene)
                 s = GetFallbackActiveScene();
 
-            
             //If was changed then update active scene.
             if (!string.IsNullOrEmpty(s.name))
                 UnitySceneManager.SetActiveScene(s);
-            Debug.Log("setting ActiveScene: " + s.name + Time.time);
+
             OnActiveSceneSet?.Invoke();
             OnActiveSceneSetInternal?.Invoke();
+
+            //Also update light probes.
+            if (_lightProbeUpdating == LightProbeUpdateType.Asynchronous)
+                LightProbes.TetrahedralizeAsync();
+            else if (_lightProbeUpdating == LightProbeUpdateType.BlockThread)
+                LightProbes.Tetrahedralize();
         }
 
         /// <summary>

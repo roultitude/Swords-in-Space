@@ -61,6 +61,10 @@ namespace FishNet.Configuring
 #pragma warning restore CS0162 // Unreachable code detected
             }
         }
+        /// <summary>
+        /// Technique to strip methods.
+        /// </summary>
+        public static StrippingTypes StrippingType => (StrippingTypes)Configuration.ConfigurationData.StrippingType;
 
         private static object _compilationContext;
         public int callbackOrder => 0;
@@ -109,6 +113,6 @@ namespace FishNet.Configuring
                 BuildingEnded();
         }
 #endif
-    }
+        }
 
 }

@@ -18,20 +18,8 @@ namespace FishNet.Object
         /// <summary>
         /// 
         /// </summary>
-        [SerializeField, HideInInspector]
-        private short _prefabId = -1;
-        /// <summary>
-        /// Id to use when spawning this object over the network as a prefab.
-        /// </summary>
-        public short PrefabId => _prefabId;
-        /// <summary>
-        /// Sets PrefabId.
-        /// </summary>
-        /// <param name="value"></param>
-        internal void SetPrefabId(short value)
-        {
-            _prefabId = value;
-        }
+        [field: SerializeField, HideInInspector]
+        public short PrefabId { get; internal set; } = -1;
 #pragma warning disable 414 //Disabled because Unity thinks tihs is unused when building.
         /// <summary>
         /// Hash to the scene which this object resides.
@@ -40,18 +28,20 @@ namespace FishNet.Object
         private uint _scenePathHash;
 #pragma warning restore 414
         /// <summary>
-        /// 
+        /// Network Id for this scene object.
         /// </summary>
-        [SerializeField, HideInInspector]
-        private ulong _sceneId;
+        [field: SerializeField, HideInInspector]
+        internal ulong SceneId { get; private set; }
         /// <summary>
-        /// Id for this scene object.
+        /// Hash for the path which this asset resides. This value is set during edit time.
+        /// </summary> 
+        [field: SerializeField, HideInInspector]
+        public ulong AssetPathHash { get; private set; }
+        /// <summary>
+        /// Sets AssetPathhash value.
         /// </summary>
-        internal ulong SceneId
-        {
-            get => _sceneId;
-            private set => _sceneId = value;
-        }
+        /// <param name="value">Value to use.</param>
+        public void SetAssetPathHash(ulong value) => AssetPathHash = value;
         #endregion
 
 #if UNITY_EDITOR
@@ -86,7 +76,7 @@ namespace FishNet.Object
         {
             if (Application.isPlaying)
                 return;
-            //Potential Unity bug? Can sometimes be null based on editor callback order.
+            //Unity bug, sometimes this can be null depending on editor callback orders.
             if (gameObject == null)
                 return;
             //Not a scene object.
@@ -109,7 +99,6 @@ namespace FishNet.Object
              EditorUtility.IsPersistent(this))
             {
                 //These are all failing conditions, don't do additional checks.
-                SceneId = 0;
             }
             else
             {

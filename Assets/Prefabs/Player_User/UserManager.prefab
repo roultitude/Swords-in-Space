@@ -45,18 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <IsNested>k__BackingField: 0
+  <ComponentIndex>k__BackingField: 0
   _networkBehaviours:
   - {fileID: 7416266385889539328}
-  SceneTransformProperties:
-    Position: {x: -4.6701136, y: -1.1930311, z: 0.0061147064}
-    Rotation: {x: 0, y: 0, z: 0, w: 1}
-    LocalScale: {x: 1, y: 1, z: 1}
+  <ParentNetworkObject>k__BackingField: {fileID: 0}
+  <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
-  _hasParentNetworkObjectAtEdit: 0
+  _isGlobal: 0
+  _disableOnDespawn: 0
   NetworkObserver: {fileID: 0}
-  _prefabId: -1
+  <PrefabId>k__BackingField: -1
   _scenePathHash: 0
-  _sceneId: 0
+  <SceneId>k__BackingField: 0
+  <AssetPathHash>k__BackingField: 508428973457574685
   _sceneNetworkObjects:
   - {fileID: 7416266385889539341}
   - {fileID: 0}
@@ -78,3 +80,4 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 7416266385889539341}
   playerPrefab: {fileID: 1826261824456996878, guid: da0601c3d7f9bb64abc6aeca458eb43d, type: 3}
   localUserData: {fileID: 11400000, guid: faee9d077035d7745b5ea6ee496c6a3e, type: 2}
+  allUsersReady: 0

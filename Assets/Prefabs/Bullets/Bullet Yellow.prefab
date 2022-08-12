@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1579795028985909499, guid: 3f9c5556cb42f9142905538a99750657, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 2844852665398706137
+      objectReference: {fileID: 0}
     - target: {fileID: 2590286623395873651, guid: 3f9c5556cb42f9142905538a99750657, type: 3}
       propertyPath: m_Name
       value: Bullet Yellow

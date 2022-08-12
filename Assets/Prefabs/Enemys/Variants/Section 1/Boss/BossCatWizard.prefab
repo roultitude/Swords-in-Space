@@ -108,6 +108,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 16056430835839970099
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[2]
       value: 
       objectReference: {fileID: 3421827465686092225}
@@ -269,7 +273,6 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 208770173693893856}
   _networkObjectCache: {fileID: 208770173693893856}
   maxHp: 15
-  exp: 150
   onDamagedSound: {fileID: 8300000, guid: 5ea82c2a601c4184da57d7a1292770d1, type: 3}
   doTeleportIfFar: 1
   teleportCheckDuration: 5

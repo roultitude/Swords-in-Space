@@ -12,6 +12,7 @@ namespace FishNet.Component.Spawning
     /// Spawns a player object for clients when they connect.
     /// Must be placed on or beneath the NetworkManager object.
     /// </summary>
+    [AddComponentMenu("FishNet/Component/PlayerSpawner")]
     public class PlayerSpawner : MonoBehaviour
     {
         #region Public.
@@ -96,7 +97,6 @@ namespace FishNet.Component.Spawning
             Vector3 position;
             Quaternion rotation;
             SetSpawn(_playerPrefab.transform, out position, out rotation);
-
             NetworkObject nob = Instantiate(_playerPrefab, position, rotation);
             _networkManager.ServerManager.Spawn(nob, conn);
 

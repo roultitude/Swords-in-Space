@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: _prefabId
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 4444492387124331352, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 16791861451297230645
+      objectReference: {fileID: 0}
     - target: {fileID: 4444492387124331353, guid: 0a06379f9df6bab4f91d634f106405c6, type: 3}
       propertyPath: m_RootOrder
       value: 0

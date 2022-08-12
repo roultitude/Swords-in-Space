@@ -194,6 +194,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 15779670295791053068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.data[1]
       value: 
       objectReference: {fileID: 172693178274139007}
@@ -295,13 +299,13 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 8385468830528749536}
   _networkObjectCache: {fileID: 8385468830528749536}
   maxHp: 5
-  exp: 55
   onDamagedSound: {fileID: 0}
   doTeleportIfFar: 1
   teleportCheckDuration: 5
   isBoss: 0
   detectionRange: 30
   imageSpawner: {fileID: 172693178274139007}
+  canDoBossDash: 1
 --- !u!114 &3783693575054878566
 MonoBehaviour:
   m_ObjectHideFlags: 0

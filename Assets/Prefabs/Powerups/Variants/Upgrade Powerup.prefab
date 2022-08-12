@@ -76,6 +76,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8734357846188513889, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 15162771607561176282
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734357846188513889, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
       propertyPath: _networkBehaviours.Array.data[1]
       value: 
       objectReference: {fileID: -3378866271154358393}

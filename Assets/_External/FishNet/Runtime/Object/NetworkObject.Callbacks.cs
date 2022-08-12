@@ -28,7 +28,11 @@ namespace FishNet.Object
             if (asServer)
             {
                 for (int i = 0; i < NetworkBehaviours.Length; i++)
+                {
                     NetworkBehaviours[i].OnStartServer();
+                    
+                }
+
                 for (int i = 0; i < NetworkBehaviours.Length; i++)
                     NetworkBehaviours[i].InvokeSyncTypeCallbacks(true);
 
@@ -62,7 +66,7 @@ namespace FishNet.Object
         internal void InvokePostOnServerStart(NetworkConnection conn)
         {
             for (int i = 0; i < NetworkBehaviours.Length; i++)
-                NetworkBehaviours[i].OnSendBufferedRpcs(conn);
+                NetworkBehaviours[i].SendBufferedRpcs(conn);
 
             for (int i = 0; i < NetworkBehaviours.Length; i++)
                 NetworkBehaviours[i].OnSpawnServer(conn);

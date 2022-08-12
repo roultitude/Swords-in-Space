@@ -1,8 +1,9 @@
-﻿using FishNet.Object;
+﻿using FishNet.Connection; //remove on 2023/01/01 move to correct folder.
+using FishNet.Object;
 using FishNet.Observing;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Serialization;
 
 namespace FishNet.Managing.Observing
 {
@@ -11,6 +12,7 @@ namespace FishNet.Managing.Observing
     /// Additional options for managing the observer system.
     /// </summary>
     [DisallowMultipleComponent]
+    [AddComponentMenu("FishNet/Manager/ObserverManager")]
     public sealed class ObserverManager : MonoBehaviour
     {
         #region Serialized.
@@ -18,19 +20,76 @@ namespace FishNet.Managing.Observing
         /// 
         /// </summary>
         [Tooltip("True to update visibility for clientHost based on if they are an observer or not.")]
+        [FormerlySerializedAs("_setHostVisibility")]
         [SerializeField]
-        private bool _setHostVisibility = true;
+        private bool _updateHostVisibility = true;
         /// <summary>
         /// True to update visibility for clientHost based on if they are an observer or not.
         /// </summary>
-        public bool SetHostVisibility => _setHostVisibility;
+        public bool UpdateHostVisibility
+        {
+            get => _updateHostVisibility;
+            private set => _updateHostVisibility = value;
+        }
         /// <summary>
         /// 
         /// </summary>
         [Tooltip("Default observer conditions for networked objects.")]
         [SerializeField]
         private List<ObserverCondition> _defaultConditions = new List<ObserverCondition>();
+        /// <summary>
+        /// NetworkManager on object.
+        /// </summary>
+        private NetworkManager _networkManager;
         #endregion
+
+        /// <summary>
+        /// Initializes this script for use.
+        /// </summary>
+        /// <param name="manager"></param>
+        internal void InitializeOnceInternal(NetworkManager manager)
+        {
+            _networkManager = manager;
+        }
+
+        /// <summary>
+        /// Sets a new value for UpdateHostVisibility.
+        /// </summary>
+        /// <param name="value">New value.</param>
+        /// <param name="updateType">Which objects to update.</param>
+        public void SetUpdateHostVisibility(bool value, HostVisibilityUpdateTypes updateType)
+        {
+            //Unchanged.
+            if (value == UpdateHostVisibility)
+                return;
+
+            /* Update even if server state is not known.
+             * The setting should be updated so when the server
+             * does start spawned objects have latest setting. */
+            if (HostVisibilityUpdateContains(updateType, HostVisibilityUpdateTypes.Manager))
+                UpdateHostVisibility = value;
+
+            /* If to update spawned as well then update all networkobservers
+             * with the setting and also update renderers. */
+            if (_networkManager.IsServer && HostVisibilityUpdateContains(updateType, HostVisibilityUpdateTypes.Spawned))
+            {
+                NetworkConnection clientConn = _networkManager.ClientManager.Connection;
+                foreach (NetworkObject n in _networkManager.ServerManager.Objects.Spawned.Values)
+                {
+                    if (n.NetworkObserver != null)
+                        n.NetworkObserver.SetUpdateHostVisibility(value);
+
+                    //Only check to update renderers if clientHost. If not client then clientConn won't be active.
+                    if (clientConn.IsActive)
+                        n.SetRenderersVisible(n.Observers.Contains(clientConn), true);
+                }
+            }
+
+            bool HostVisibilityUpdateContains(HostVisibilityUpdateTypes whole, HostVisibilityUpdateTypes part)
+            {
+                return (whole & part) == part;
+            }
+        }
 
         /// <summary>
         /// Adds default observer conditions to nob and returns the NetworkObserver used.
@@ -70,14 +129,14 @@ namespace FishNet.Managing.Observing
                 {
                     obs.ObserverConditionsInternal.Clear();
                     obs.OverrideType = NetworkObserver.ConditionOverrideType.IgnoreManager;
-                }                
+                }
             }
-          
+
             //If ignoring manager then use whatever is already configured.
             if (obs.OverrideType == NetworkObserver.ConditionOverrideType.IgnoreManager)
-            { 
+            {
                 //Do nothing.
-            }            
+            }
             //If using manager then replace all with conditions.
             else if (obs.OverrideType == NetworkObserver.ConditionOverrideType.UseManager)
             {

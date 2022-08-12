@@ -1,4 +1,6 @@
-﻿using FishNet.Utility.Constant;
+﻿using FishNet.Documenting;
+using FishNet.Serializing.Helping;
+using FishNet.Utility.Constant;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -47,6 +49,8 @@ namespace FishNet.Object
         /// <summary>
         /// Initializes this script. This will only run once even as host.
         /// </summary>
+        /// <param name="networkObject"></param>
+        /// <param name="componentIndex"></param>
         internal void InitializeOnceInternal()
         {
             InitializeOnceSyncTypes();
@@ -62,7 +66,23 @@ namespace FishNet.Object
             _networkObjectCache = nob;
             ComponentIndex = componentIndex;
         }
-        
+
+        /// <summary>
+        /// Manually initializes network content for the NetworkBehaviour if the object it's on is disabled.
+        /// </summary>
+        internal void InitializeIfDisabled()
+        {
+            if (gameObject.activeInHierarchy)
+                return;
+
+            NetworkInitializeIfDisabledInternal();
+        }
+        /// <summary>
+        /// Long name is to prevent users from potentially creating their own method named the same.
+        /// </summary>
+        [CodegenMakePublic] //internal.
+        [APIExclude]
+        protected internal virtual void NetworkInitializeIfDisabledInternal() { }
         #region Editor.
         protected virtual void Reset()
         {

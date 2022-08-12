@@ -37,8 +37,8 @@ namespace FishNet.CodeGenerating.Helping
         private MethodReference NetworkManager_LogWarning_MethodRef;
         private MethodReference NetworkManager_LogError_MethodRef;
         internal MethodReference Debug_LogCommon_MethodRef;
-        private MethodReference Debug_LogWarning_MethodRef;
-        private MethodReference Debug_LogError_MethodRef;
+        internal MethodReference Debug_LogWarning_MethodRef;
+        internal MethodReference Debug_LogError_MethodRef;
         internal MethodReference Comparers_EqualityCompare_MethodRef;
         internal MethodReference Comparers_IsDefault_MethodRef;
         internal MethodReference IsServer_MethodRef;
@@ -910,6 +910,31 @@ namespace FishNet.CodeGenerating.Helping
             bool hasReader = CodegenSession.ReaderHelper.HasDeserializer(typeRef, create);
 
             return (hasWriter && hasReader);
+        }
+
+        /// <summary>
+        /// Creates a return of default value for methodDef.
+        /// </summary>
+        /// <returns></returns>
+        public List<Instruction> CreateRetDefault(MethodDefinition methodDef, ModuleDefinition importReturnModule = null)
+        {
+            ILProcessor processor = methodDef.Body.GetILProcessor();
+            List<Instruction> instructions = new List<Instruction>();
+            //If requires a value return.
+            if (methodDef.ReturnType != methodDef.Module.TypeSystem.Void)
+            {
+                //Import type first.
+                methodDef.Module.ImportReference(methodDef.ReturnType);
+                if (importReturnModule != null)
+                    importReturnModule.ImportReference(methodDef.ReturnType);
+                VariableDefinition vd = CodegenSession.GeneralHelper.CreateVariable(methodDef, methodDef.ReturnType);
+                instructions.Add(processor.Create(OpCodes.Ldloca_S, vd));
+                instructions.Add(processor.Create(OpCodes.Initobj, vd.VariableType));
+                instructions.Add(processor.Create(OpCodes.Ldloc, vd));
+            }
+            instructions.Add(processor.Create(OpCodes.Ret));
+
+            return instructions;
         }
 
     }

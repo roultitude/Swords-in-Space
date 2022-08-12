@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: _prefabId
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 572900174296399137, guid: ac9d7ac0848da2e49a097a1fa2ac316e, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 18348630014443653713
+      objectReference: {fileID: 0}
     - target: {fileID: 572900174296399139, guid: ac9d7ac0848da2e49a097a1fa2ac316e, type: 3}
       propertyPath: m_Name
       value: Section1 Boss

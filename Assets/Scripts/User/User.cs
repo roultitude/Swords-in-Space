@@ -1,3 +1,4 @@
+using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System.Collections;
@@ -13,7 +14,7 @@ namespace SwordsInSpace
         [SyncVar]
         public string username;
 
-        [SyncVar(OnChange = nameof(OnPlayerSpawned))]
+        [SyncVar]
         public Player controlledPlayer;
 
         [SyncVar]
@@ -23,6 +24,7 @@ namespace SwordsInSpace
         public override void OnStartClient()
         {
             base.OnStartClient();
+            Debug.Log("OnStartClient fired");
             if (IsOwner)
             {
                 localUser = this;
@@ -32,11 +34,18 @@ namespace SwordsInSpace
         public override void OnStartServer()
         {
             base.OnStartServer();
+            Debug.Log("OnStartServer fired for User " + OwnerId);
             UserManager.instance.users.Add(this);
             if (!controlledPlayer)
             {
                 SpawnPlayer();
             }
+        }
+
+        public override void OnSpawnServer(NetworkConnection connection)
+        {
+            base.OnSpawnServer(connection);
+            Debug.Log("Spawned for client" + connection.ClientId);
         }
 
         private void OnEnable()
@@ -86,6 +95,8 @@ namespace SwordsInSpace
             controlledPlayer = player.GetComponent<Player>();
             controlledPlayer.controllingUser = this;
             Spawn(player, Owner);
+            
+            Debug.Log("Completed Spawn Player");
         }
 
         [ServerRpc]

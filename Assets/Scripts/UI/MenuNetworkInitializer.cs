@@ -62,6 +62,7 @@ namespace SwordsInSpace
 
         private void ServerStarted(FishNet.Transporting.ServerConnectionStateArgs args)
         {
+            if (args.ConnectionState != FishNet.Transporting.LocalConnectionState.Started) return;
             SceneLoadData sld = new SceneLoadData("LobbyScene") { ReplaceScenes = ReplaceOption.All };
             networkManager.SceneManager.LoadGlobalScenes(sld);
             

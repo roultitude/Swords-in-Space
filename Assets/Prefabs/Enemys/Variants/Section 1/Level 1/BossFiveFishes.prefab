@@ -1114,7 +1114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1386559295309661771, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_Name
-      value: FiveFishes
+      value: BossFiveFishes
       objectReference: {fileID: 0}
     - target: {fileID: 2009227026747533191, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1155,6 +1155,10 @@ PrefabInstance:
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _networkBehaviours.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 13837455823520805947
       objectReference: {fileID: 0}
     - target: {fileID: 3842234323794330338, guid: 780f90cea5f8c9b49809a9918cc9c1b8, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
@@ -1353,13 +1357,13 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 7204703169322365139}
   _networkObjectCache: {fileID: 7204703169322365139}
   maxHp: 25
-  exp: 100
   onDamagedSound: {fileID: 8300000, guid: 5ea82c2a601c4184da57d7a1292770d1, type: 3}
   doTeleportIfFar: 1
   teleportCheckDuration: 5
   isBoss: 0
   detectionRange: 30
   imageSpawner: {fileID: 1569103847458620492}
+  canDoBossDash: 1
   turnSpeed: 90
   fiveFishesSprites: {fileID: 2899687421412908675}
   sprite: {fileID: 8639282033728459094}

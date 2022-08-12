@@ -44,7 +44,11 @@ namespace SwordsInSpace
             }
             //SetupPlayer();
         }
-
+        public override void OnStartServer()
+        {
+            base.OnStartServer();
+            Debug.Log("onstartserver Player" + Owner.ClientId);
+        }
         public void SetupPlayer()
         {
             if (offset == 0) offset = playerCanvas.transform.localPosition.y;
