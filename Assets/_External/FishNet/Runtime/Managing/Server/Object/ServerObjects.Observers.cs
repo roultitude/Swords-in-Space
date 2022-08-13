@@ -250,11 +250,8 @@ namespace FishNet.Managing.Server
         {
             int count = nobs.Written;
             List<NetworkObject> collection = nobs.Collection;
-            for (int i = 0; i < count; i++) {
-                Debug.Log("rebuilding obs for " + collection[i].name);
+            for (int i = 0; i < count; i++)
                 RebuildObservers(collection[i]);
-            }
-
         }
         /// <summary>
         /// Rebuilds observers on NetworkObjects for connections.

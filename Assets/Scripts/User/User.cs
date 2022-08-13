@@ -64,7 +64,6 @@ namespace SwordsInSpace
         }
         private void OnNewSceneLoaded()
         {
-            Debug.Log(controlledPlayer);
             if (!controlledPlayer || !controlledPlayer.gameObject.activeSelf)
             {
                 Debug.Log("Asking server to spawn player");

@@ -418,7 +418,6 @@ namespace FishNet.Object
                 }
             }
 
-           //Debug.Log("Setting componentIndex on " + gameObject.name + " to " + componentIndex + ". SceneId is " + this.SceneId);
             ComponentIndex = componentIndex;
             ParentNetworkObject = parentNob;
 
@@ -473,7 +472,6 @@ namespace FishNet.Object
             for (int i = 0; i < written; i++)
             {
                 NetworkBehaviours[i] = nbs[i];
-                Debug.Log(name + " setting NetworkBehaviours" + i + " " + nbs[i].name);
                 NetworkBehaviours[i].SerializeComponents(this, (byte)i);
             }
 

@@ -28,11 +28,7 @@ namespace FishNet.Object
             if (asServer)
             {
                 for (int i = 0; i < NetworkBehaviours.Length; i++)
-                {
                     NetworkBehaviours[i].OnStartServer();
-                    
-                }
-
                 for (int i = 0; i < NetworkBehaviours.Length; i++)
                     NetworkBehaviours[i].InvokeSyncTypeCallbacks(true);
 

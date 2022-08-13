@@ -42,12 +42,11 @@ namespace SwordsInSpace
             {
                 return;
             }
-            //SetupPlayer();
+            SetupPlayer();
         }
         public override void OnStartServer()
         {
             base.OnStartServer();
-            Debug.Log("onstartserver Player" + Owner.ClientId);
         }
         public void SetupPlayer()
         {
