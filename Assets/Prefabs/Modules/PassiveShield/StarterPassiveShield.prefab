@@ -22,7 +22,7 @@ PrefabInstance:
     - target: {fileID: 2278815515621489935, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: _addedNetworkObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4390943929603413839}
     - target: {fileID: 2278815515621489935, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: _networkObjectCache
       value: 
@@ -30,6 +30,10 @@ PrefabInstance:
     - target: {fileID: 2278815515621489935, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: _componentIndexCache
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224529634480819471, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 14925823274900629546
       objectReference: {fileID: 0}
     - target: {fileID: 4124712946598687454, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: <AssetPathHash>k__BackingField
@@ -169,6 +173,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4390943929603413839 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3224529634480819471, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+  m_PrefabInstance: {fileID: 1175457795652737600}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7448590757826765109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &7346991262034413159 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8477411685805431847, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
@@ -197,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 0}
+  _addedNetworkObject: {fileID: 4390943929603413839}
   _networkObjectCache: {fileID: 0}
   numPlayersNearby: 0
   canUseOnPowerOut: 0

@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d939ed2a52d97604a8d836c9f901223d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  targets: []
   pointerRect: {fileID: 3759894323239794928}
-  borderThickness: 50
+  borderThickness: 75
 --- !u!1 &8875395994230592263
 GameObject:
   m_ObjectHideFlags: 0

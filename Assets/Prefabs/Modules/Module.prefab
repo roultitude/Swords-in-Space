@@ -216,8 +216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 0}
-  _networkObjectCache: {fileID: 0}
+  _addedNetworkObject: {fileID: 3224529634480819471}
+  _networkObjectCache: {fileID: 3224529634480819471}
   IgnoredParameters: []
   _animator: {fileID: 8477411685805431847}
   _smoothFloats: 0
@@ -234,6 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8578976272114121586}
   - component: {fileID: 5453624584050232479}
+  - component: {fileID: 3224529634480819471}
   m_Layer: 0
   m_Name: Module
   m_TagString: Untagged
@@ -269,3 +270,30 @@ SortingGroup:
   m_SortingLayerID: -615426349
   m_SortingLayer: 1
   m_SortingOrder: 0
+--- !u!114 &3224529634480819471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8578976272114121589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsNested>k__BackingField: 0
+  <ComponentIndex>k__BackingField: 0
+  _networkBehaviours:
+  - {fileID: 2278815515621489935}
+  <ParentNetworkObject>k__BackingField: {fileID: 0}
+  <ChildNetworkObjects>k__BackingField: []
+  _isNetworked: 1
+  _isGlobal: 0
+  _disableOnDespawn: 0
+  NetworkObserver: {fileID: 0}
+  <PrefabId>k__BackingField: -1
+  _scenePathHash: 0
+  <SceneId>k__BackingField: 0
+  <AssetPathHash>k__BackingField: 10650754410726130897
+  _sceneNetworkObjects: []

@@ -8,12 +8,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2278815515621489935, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: _addedNetworkObject
+      value: 
+      objectReference: {fileID: 7838613681756015097}
+    - target: {fileID: 2278815515621489935, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2278815515621489935, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: _componentIndexCache
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224529634480819471, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 15801997557725788597
       objectReference: {fileID: 0}
     - target: {fileID: 4124712946598687454, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: <AssetPathHash>k__BackingField
@@ -180,7 +188,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 8578976271361633769, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+    - {fileID: 0}
     - {fileID: 898759745282394244, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
 --- !u!1 &2641440193788499235 stripped
@@ -242,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 8739905300521203240}
+  _addedNetworkObject: {fileID: 7838613681756015097}
   _networkObjectCache: {fileID: 0}
   numPlayersNearby: 0
   canUseOnPowerOut: 0
@@ -268,9 +276,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8739905300521203240 stripped
+--- !u!114 &7838613681756015097 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4124712946598687454, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3224529634480819471, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
   m_PrefabInstance: {fileID: 4645336583177143542}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3997270631367016323}

@@ -18,7 +18,7 @@ PrefabInstance:
     - target: {fileID: 2278815515621489935, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: _addedNetworkObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1420486691297260394}
     - target: {fileID: 2278815515621489935, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: _networkObjectCache
       value: 
@@ -26,6 +26,10 @@ PrefabInstance:
     - target: {fileID: 2278815515621489935, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: _componentIndexCache
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224529634480819471, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 6570322481524741677
       objectReference: {fileID: 0}
     - target: {fileID: 4124712946598687454, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: <AssetPathHash>k__BackingField
@@ -174,6 +178,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 898759745282394244, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+--- !u!114 &1420486691297260394 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3224529634480819471, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+  m_PrefabInstance: {fileID: 4542233721016843877}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5190368848160720144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2348270017424261994 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2278815515621489935, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
@@ -203,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 0}
+  _addedNetworkObject: {fileID: 1420486691297260394}
   _networkObjectCache: {fileID: 0}
   numPlayersNearby: 0
   canUseOnPowerOut: 0

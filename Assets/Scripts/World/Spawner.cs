@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using FishNet.Object.Synchronizing;
 using System.Collections;
+using System.Linq;
 
 namespace SwordsInSpace
 {
@@ -63,6 +64,9 @@ namespace SwordsInSpace
 
         [SerializeField]
         Vector2 worldSize = new Vector2(1000, 1000);
+
+        [SerializeField]
+        QuestMarkerTracker questMarker;
 
         [SyncVar]
         public bool spawningComplete = false;
@@ -186,13 +190,16 @@ namespace SwordsInSpace
                 OnCompleteCollectObjectives();
                 return;
             }
-
+            List<NetworkObject> spawned = new List<NetworkObject>();
             for (int questObjectiveSpawned = 0; questObjectiveSpawned < NumQuestObjectivePowerupToSpawn; questObjectiveSpawned++)
             {
                 Vector3 loc = getRandomPosition(MaxGetRandomPositionAttempts, new Vector2(worldSize.x / 2, worldSize.y / 2), minRange: new Vector2(100, 100));
                 GameObject toSpawn = Instantiate(QuestObjectivePowerup, loc, Quaternion.Euler(0, 0, 0));
                 Spawn(toSpawn);
+                spawned.Add(toSpawn.GetComponent<NetworkObject>());
             }
+            SetupQuestMarker(spawned.ToArray());
+
         }
 
 
@@ -232,6 +239,19 @@ namespace SwordsInSpace
 
         }
 
+
+        [ObserversRpc(BufferLast =true)]
+        public void SetupQuestMarker(NetworkObject[] objs)
+        {
+            Transform[] transforms = objs.Select(nob => nob.transform).ToArray();
+            questMarker.Setup(transforms);
+        }
+
+        [ObserversRpc(BufferLast =true)]
+        public void AddQuestMarker(NetworkObject obj)
+        {
+            questMarker.AddTarget(obj.transform);
+        }
         private Vector3 getRandomPosition()
         {
 
@@ -293,6 +313,7 @@ namespace SwordsInSpace
                     loc.z), transform.rotation);
                 toAdd.GetComponent<EnemyAI>().SetBoss(true);
                 Spawn(toAdd);
+                AddQuestMarker(toAdd.GetComponent<NetworkObject>());
                 GameManager.instance.MessageRPC("Boss " + boss.name + " has awoken!");
             }
         }

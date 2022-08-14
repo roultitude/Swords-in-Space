@@ -24,7 +24,6 @@ namespace SwordsInSpace
         public override void OnStartClient()
         {
             base.OnStartClient();
-            Debug.Log("OnStartClient fired");
             if (IsOwner)
             {
                 localUser = this;
@@ -34,7 +33,6 @@ namespace SwordsInSpace
         public override void OnStartServer()
         {
             base.OnStartServer();
-            Debug.Log("OnStartServer fired for User " + OwnerId);
             UserManager.instance.users.Add(this);
             if (!controlledPlayer)
             {
@@ -45,7 +43,6 @@ namespace SwordsInSpace
         public override void OnSpawnServer(NetworkConnection connection)
         {
             base.OnSpawnServer(connection);
-            Debug.Log("Spawned for client" + connection.ClientId);
         }
 
         private void OnEnable()
@@ -66,7 +63,7 @@ namespace SwordsInSpace
         {
             if (!controlledPlayer || !controlledPlayer.gameObject.activeSelf)
             {
-                Debug.Log("Asking server to spawn player");
+                if (!IsOwner) return;
                 ServerSpawnPlayer();
             }
             else
@@ -94,8 +91,7 @@ namespace SwordsInSpace
             controlledPlayer = player.GetComponent<Player>();
             controlledPlayer.controllingUser = this;
             Spawn(player, Owner);
-            
-            Debug.Log("Completed Spawn Player");
+
         }
 
         [ServerRpc]

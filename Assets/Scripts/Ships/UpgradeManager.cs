@@ -208,7 +208,19 @@ namespace SwordsInSpace
         [ObserversRpc(RunLocally = true)]
         public void ShowUpgrades(string upgrade1, string upgrade2, string upgrade3, int tier)
         {
+            if (IsServer)
+            {
+                votesMade = 0;
+                votes = new Dictionary<string, int>();
+                votes.Add(upgrade1, 0);
+                if (!votes.ContainsKey(upgrade2))
+                    votes.Add(upgrade2, 0);
+                if (!votes.ContainsKey(upgrade3))
+                    votes.Add(upgrade3, 0);
+            }
+
             if (IsServerOnly) return;
+
             hasMadeChoice = false;
             upgradeChoice = new string[] { upgrade1, upgrade2, upgrade3 };
 
@@ -217,19 +229,6 @@ namespace SwordsInSpace
             upgradesDisplay.GetComponentInChildren<VoteTimer>().ResetTimer();
             uiUpgrades.upgradepanel.UpdateColor(tier);
 
-
-            if (IsServer)
-            {
-
-                votesMade = 0;
-                votes = new Dictionary<string, int>();
-                votes.Add(upgrade1, 0);
-                if (!votes.ContainsKey(upgrade2))
-                    votes.Add(upgrade2, 0);
-                if (!votes.ContainsKey(upgrade3))
-                    votes.Add(upgrade3, 0);
-
-            }
         }
 
         public void ShowUpgradeScreen()

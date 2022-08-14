@@ -215,7 +215,6 @@ namespace SwordsInSpace
 
         public void ExitUI()
         {
-            Debug.Log("esc pressed");
             DisplayManager.instance.Close();
             mover.canMove = true;
         }

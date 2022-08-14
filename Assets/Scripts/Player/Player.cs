@@ -37,12 +37,8 @@ namespace SwordsInSpace
             SetParent();
             //playerCanvas = Instantiate(playerCanvasPrefab).GetComponent<Canvas>();
             StartCoroutine(checkForUsernameUpdate(controllingUser.username));
-
-            if (!IsOwner)
-            {
-                return;
-            }
             SetupPlayer();
+
         }
         public override void OnStartServer()
         {
@@ -57,9 +53,10 @@ namespace SwordsInSpace
             }
             else DetachUsernameCanvas(true);
 
-            ResetPlayerPosition();
-            
+
             if (!IsOwner) return;
+            ResetPlayerPosition();
+
             CameraManager.instance.AttachToPlayer(transform);
         }
         public void SetParent()

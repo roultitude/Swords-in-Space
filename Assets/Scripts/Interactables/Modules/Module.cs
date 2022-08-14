@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using FishNet.Connection;
 
 namespace SwordsInSpace
 {
@@ -37,6 +38,10 @@ namespace SwordsInSpace
             }
         }
 
+        public override void OnSpawnServer(NetworkConnection connection)
+        {
+            base.OnSpawnServer(connection);
+        }
         public void OnFireNearby()
         {
 

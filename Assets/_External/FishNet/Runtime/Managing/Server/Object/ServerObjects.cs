@@ -439,25 +439,20 @@ namespace FishNet.Managing.Server
                     SpawnWithoutChecks(item, ownerConnection);
             }
 
-            ListCache<NetworkObject> spawnCacheCopy = ListCaches.GetNetworkObjectCache();
-            for (int i = 0; i < _spawnCache.Written; i++)
-                spawnCacheCopy.AddValue(_spawnCache.Collection[i]);
-            _spawnCache.Reset();
-
             //Also rebuild observers for the object so it spawns for others.
-            RebuildObservers(spawnCacheCopy);
+            RebuildObservers(_spawnCache);
 
             /* If also client then we need to make sure the object renderers have correct visibility.
              * Set visibility based on if the observers contains the clientHost connection. */
             if (NetworkManager.IsClient)
             {
-                int count = spawnCacheCopy.Written;
-                List<NetworkObject> collection = spawnCacheCopy.Collection;
+                int count = _spawnCache.Written;
+                List<NetworkObject> collection = _spawnCache.Collection;
                 for (int i = 0; i < count; i++)
                     collection[i].SetRenderersVisible(networkObject.Observers.Contains(NetworkManager.ClientManager.Connection));
             }
 
-            ListCaches.StoreCache(spawnCacheCopy);
+            _spawnCache.Reset();
         }
 
         /// <summary>

@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: _componentIndexCache
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3224529634480819471, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 7070845928368048212
+      objectReference: {fileID: 0}
     - target: {fileID: 4124712946598687454, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: <AssetPathHash>k__BackingField
       value: 7070845928368048212
@@ -186,9 +190,9 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2278815515621489935, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
---- !u!114 &2188774214956173315 stripped
+--- !u!114 &856298011804071890 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4124712946598687454, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3224529634480819471, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
   m_PrefabInstance: {fileID: 2836698353403132637}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5788074847093031336}
@@ -215,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 2188774214956173315}
+  _addedNetworkObject: {fileID: 856298011804071890}
   _networkObjectCache: {fileID: 0}
   numPlayersNearby: 0
   canUseOnPowerOut: 1

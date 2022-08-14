@@ -1,4 +1,5 @@
 using FishNet;
+using FishNet.Connection;
 using FishNet.Object;
 using System.Collections;
 using System.Collections.Generic;
@@ -37,6 +38,11 @@ namespace SwordsInSpace
             GameManager.OnNewSceneLoadEvent += SetupUI;
             //Ship.currentShip.upgradeManager.OnUpgrade += ReloadUpgrades;
 
+        }
+
+        public override void OnSpawnServer(NetworkConnection connection)
+        {
+            base.OnSpawnServer(connection);
         }
 
         void OnDisable()
