@@ -8,7 +8,7 @@ namespace SwordsInSpace
     {
         public override void OnPowerup()
         {
-            WorldManager.currentWorld.spawner.collectObjective();
+            if(WorldManager.currentWorld) WorldManager.currentWorld.spawner.collectObjective();
         }
     }
 };

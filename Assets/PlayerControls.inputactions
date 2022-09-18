@@ -362,17 +362,6 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "4e85c9ba-3f90-4872-929a-9b4b58f9576a",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LeftDrumstick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "807e1ec6-c7f6-45b6-8d45-6a0487dad97a",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
@@ -390,17 +379,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "LeftDrumstick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d26ee8c2-72a4-45c7-9af9-e569c0492396",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RightDrumstick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

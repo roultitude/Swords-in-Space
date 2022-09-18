@@ -4,6 +4,7 @@ using UnityEngine;
 using FishNet.Object;
 using FishNet;
 using UnityEngine.InputSystem;
+using FishNet.Connection;
 
 namespace SwordsInSpace
 {

@@ -14,15 +14,27 @@ PrefabInstance:
     - target: {fileID: 2278815515621489935, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7838613681756015097}
     - target: {fileID: 2278815515621489935, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: _componentIndexCache
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3224529634480819471, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: _networkBehaviours.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224529634480819471, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: <AssetPathHash>k__BackingField
       value: 15801997557725788597
       objectReference: {fileID: 0}
+    - target: {fileID: 3224529634480819471, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: _networkBehaviours.Array.data[0]
+      value: 
+      objectReference: {fileID: 8405907154230052790}
+    - target: {fileID: 3224529634480819471, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
+      propertyPath: _networkBehaviours.Array.data[1]
+      value: 
+      objectReference: {fileID: 6910905165384186361}
     - target: {fileID: 4124712946598687454, guid: 36010ac739f4e21468116eb58d0c91fb, type: 3}
       propertyPath: <AssetPathHash>k__BackingField
       value: 15801997557725788597
@@ -251,13 +263,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 7838613681756015097}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 7838613681756015097}
   numPlayersNearby: 0
   canUseOnPowerOut: 0
   anim: {fileID: 3878263392599480529}
   linkedFireCells: []
   interactZone: {fileID: 3997270629415217438}
-  collideZone: {fileID: 0}
+  collideZone: {fileID: 1954498113387354233}
   UIDisplayPrefab: {fileID: 175365271833212233, guid: 9211d9f0f18ed184093c107e6b2c4d4f, type: 3}
   GrabberShooter: {fileID: 0}
   rotSpeed: 80

@@ -3976,11 +3976,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3427889062385703210, guid: da940111dd48ba04eba87b76c69b58fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.75
+      value: -10.78
       objectReference: {fileID: 0}
     - target: {fileID: 3427889062385703210, guid: da940111dd48ba04eba87b76c69b58fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.82
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 3427889062385703210, guid: da940111dd48ba04eba87b76c69b58fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -31862,6 +31862,46 @@ PrefabInstance:
       propertyPath: _componentIndexCache
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier1Upgrade.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier2Upgrade.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier1Upgrade.Array.data[0].upgradeSo
+      value: 
+      objectReference: {fileID: 11400000, guid: dbee14bc6f72bb24a8b68f4c1a76e274, type: 2}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier1Upgrade.Array.data[2].upgradeSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 5da8abae181a260469b51696fcf0d74d, type: 2}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier1Upgrade.Array.data[3].upgradeSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a6e9234e4377d146b228a8b521cf301, type: 2}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier1Upgrade.Array.data[4].upgradeSo
+      value: 
+      objectReference: {fileID: 11400000, guid: acf3518cc09a4d44eb840b2bfe25670c, type: 2}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier1Upgrade.Array.data[5].upgradeSo
+      value: 
+      objectReference: {fileID: 11400000, guid: a57f29d6c4633b84abe74ff6b1358089, type: 2}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier2Upgrade.Array.data[3].upgradeSo
+      value: 
+      objectReference: {fileID: 11400000, guid: d84cb3355cee1494ea863da99575bfa3, type: 2}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier2Upgrade.Array.data[4].upgradeSo
+      value: 
+      objectReference: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
+    - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
+      propertyPath: tier2Upgrade.Array.data[5].upgradeSo
+      value: 
+      objectReference: {fileID: 11400000, guid: e8b753cea655f0c46a479670f4871b52, type: 2}
     - target: {fileID: 7784500117912041229, guid: 4c59cc02a305659499841b34ab65ab1b, type: 3}
       propertyPath: tier1Upgrade.Array.data[2].upgradeCount
       value: 0

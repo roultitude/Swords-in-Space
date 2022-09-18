@@ -90,6 +90,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 2156344472115141258}
-  Lcolor: {r: 0.94509804, g: 0.39607844, b: 0.2901961, a: 1}
-  Rcolor: {r: 0.28627452, g: 0.49803922, b: 0.8980392, a: 1}
+  LSprite: {fileID: -446946554, guid: a4a7e9e9edbd47f48b365b5c08d563f3, type: 3}
+  RSprite: {fileID: 1752425482, guid: a4a7e9e9edbd47f48b365b5c08d563f3, type: 3}
   identity: 

@@ -11,6 +11,8 @@ namespace SwordsInSpace
         [SerializeField]
         Image readyButton, startButton;
 
+        [SerializeField]
+        Sprite readyButtonReady, readyButtonNotReady;
 
         public void ToggleReady()
         {
@@ -22,19 +24,20 @@ namespace SwordsInSpace
         {
             if (!UserManager.instance.allUsersReady) return;
             Ship.currentShip.AllPlayerExitUI();
-            GameManager.instance.GoToLevelClient("GameScene",false, true);
+            GameManager.instance.GoToLevelClient("GameScene",false, false);
             
         }
 
         public void UpdateReadyButtonGraphic()
         {
             if (!User.localUser) return;
-            readyButton.color = User.localUser.isReady? Color.green : Color.red;
+            if (User.localUser.isReady) readyButton.sprite = readyButtonReady;
+            else readyButton.sprite = readyButtonNotReady;
         }
 
         public void UpdateStartButtonGraphic()
         {
-            startButton.color = UserManager.instance.allUsersReady? Color.green : Color.red;
+            startButton.GetComponent<Button>().interactable = UserManager.instance.allUsersReady;
         }
 
         private void Update()

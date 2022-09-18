@@ -244,7 +244,7 @@ namespace SwordsInSpace
             if (!isInvincibleFire)
             {
                 StartCoroutine(StartFireInvincibilityFrames(data.ShipFireInvincibilityTime));
-                fireManager.FireEventTrigger();
+                if(fireManager) fireManager.FireEventTrigger();
             }
         }
 

@@ -56,7 +56,7 @@ namespace SwordsInSpace
 
             if (!IsOwner) return;
             ResetPlayerPosition();
-
+            GetComponentInChildren<PlayerInputManager>().SwitchView("PlayerView");
             CameraManager.instance.AttachToPlayer(transform);
         }
         public void SetParent()

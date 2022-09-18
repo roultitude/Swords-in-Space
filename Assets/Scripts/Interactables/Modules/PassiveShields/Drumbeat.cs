@@ -13,7 +13,7 @@ public class Drumbeat : MonoBehaviour
     private RectTransform rt;
 
     [SerializeField]
-    private Color Lcolor, Rcolor;
+    private Sprite LSprite, RSprite;
 
 
 
@@ -36,10 +36,10 @@ public class Drumbeat : MonoBehaviour
         switch (dir)
         {
             case "L":
-                image.color = Lcolor;
+                image.sprite = LSprite;
                 break;
             case "R":
-                image.color = Rcolor;
+                image.sprite = RSprite;
                 break;
         }
     }

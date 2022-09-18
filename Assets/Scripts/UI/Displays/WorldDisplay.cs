@@ -27,7 +27,7 @@ namespace SwordsInSpace
 
             if (countdownText.enabled && Spawner.questObjectiveCollected < Spawner.NumQuestObjectivePowerupToSpawn)
             {
-                countdownText.text = "Collect " + (Spawner.NumQuestObjectivePowerupToSpawn - Spawner.questObjectiveCollected) + " more fuel cells!";
+                countdownText.text = "Collect " + (Spawner.NumQuestObjectivePowerupToSpawn - Spawner.questObjectiveCollected) + " more Sword Crystals!";
             }
         }
     }

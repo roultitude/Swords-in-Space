@@ -49,7 +49,7 @@ namespace SwordsInSpace
         void Start()
         {
             userManager = UserManager.instance;
-            if (base.IsServer && data == null)
+            if (base.IsServer)
             {
                 data = new List<int>();
 

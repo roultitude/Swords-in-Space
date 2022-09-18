@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d78f91a514a994343aea7fc54bd1e4a8, type: 3}
-  m_Name: Ship Hp
+  m_Name: BulletDmgT1
   m_EditorClassIdentifier: 
-  upgradeName: Cow
-  description: Drink milk and grow strong! Adds Hull points
-  sprite: {fileID: 21300000, guid: f412543bf4087b440836e6f202e0fd67, type: 3}
+  upgradeName: Cheese
+  description: Small increase in Shot Dmg
+  sprite: {fileID: -688620716, guid: b6492a332e2f385488275d7c57beb5f6, type: 3}
   statChanges:
-  - type: 2
-    amount: 15
-  - type: 3
-    amount: 15
+  - type: 19
+    amount: 0.5

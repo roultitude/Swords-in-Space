@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Shield Turn Speed
   m_EditorClassIdentifier: 
   upgradeName: Oiled Gears
-  description: Increased Shield Turn Speed
-  sprite: {fileID: 21300000, guid: f412543bf4087b440836e6f202e0fd67, type: 3}
+  description: Moderate increase to Shield Turn Speed
+  sprite: {fileID: 1889465691, guid: b6492a332e2f385488275d7c57beb5f6, type: 3}
   statChanges:
   - type: 15
-    amount: 0.2
+    amount: 0.3

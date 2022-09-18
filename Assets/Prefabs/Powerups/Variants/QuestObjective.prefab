@@ -22,7 +22,7 @@ PrefabInstance:
     - target: {fileID: 3865328467243133283, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 84436035a8a80314c8392da079a708ae, type: 3}
+      objectReference: {fileID: 21300000, guid: 2fb4d3686c556af44a39fdd50cf3697e, type: 3}
     - target: {fileID: 3865328467243133283, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -113,6 +113,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8734357846188513889, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
       propertyPath: SceneTransformProperties.LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8763796095478694239, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8763796095478694239, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8763796095478694239, guid: 32fd00e05ecdb664ab2aa560c41d19c7, type: 3}
+      propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

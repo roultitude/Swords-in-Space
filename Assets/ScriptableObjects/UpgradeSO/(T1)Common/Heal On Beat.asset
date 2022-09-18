@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Heal On Beat
   m_EditorClassIdentifier: 
   upgradeName: Heartbeat
-  description: Increased Hull Point recovery
-  sprite: {fileID: 21300000, guid: f412543bf4087b440836e6f202e0fd67, type: 3}
+  description: Moderate increase to Hull Point Recovery
+  sprite: {fileID: 294251967, guid: b6492a332e2f385488275d7c57beb5f6, type: 3}
   statChanges:
   - type: 12
     amount: 0.5

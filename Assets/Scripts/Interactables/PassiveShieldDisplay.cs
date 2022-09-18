@@ -35,9 +35,15 @@ namespace SwordsInSpace
         private List<Drumbeat> drumbeats;
 
         [SerializeField]
+        private GameObject LDrumButton, RDrumButton;
+
+        [SerializeField]
         private TMPro.TextMeshProUGUI comboCounter;
 
-        private int defaultFontSize = 36;
+        [SerializeField]
+        private AudioClip hitSound, failSound, drumSound;
+
+        private int defaultFontSize = 88;
 
         private int fontSizeIncrement = 5;
         private int defaultCurrentShake = 5;
@@ -131,6 +137,8 @@ namespace SwordsInSpace
 
         public void Drum(string dir)
         {
+            animateDrum(dir);
+            AudioManager.instance.effectAudioSource.PlayOneShot(drumSound);
             if (drumbeats.Count == 0)
                 return;
             Drumbeat drumbeat = drumbeats[0];
@@ -140,7 +148,7 @@ namespace SwordsInSpace
             {
                 increment++;
                 shield.healFromBeat();
-
+                AudioManager.instance.effectAudioSource.PlayOneShot(hitSound);
             }
             else
             {
@@ -152,12 +160,24 @@ namespace SwordsInSpace
                     Destroy(drumbeats[0].gameObject);
                     drumbeats.RemoveAt(0);
                 }
-
+                AudioManager.instance.effectAudioSource.PlayOneShot(failSound);
             }
             updateAll();
             Destroy(drumbeat.gameObject);
 
         }
 
+        private void animateDrum(string dir)
+        {
+            switch (dir)
+            {
+                case "L":
+                    LDrumButton.transform.DOScale(1.2f, 0.1f).SetEase(Ease.InOutSine).OnComplete(() => LDrumButton.transform.DOScale(1f, 0.1f).SetEase(Ease.InOutBounce));
+                    break;
+                case "R":
+                    RDrumButton.transform.DOScale(1.2f, 0.1f).SetEase(Ease.InOutSine).OnComplete(() => RDrumButton.transform.DOScale(1f, 0.1f).SetEase(Ease.InOutBounce));
+                    break;
+            }
+        }
     }
 };

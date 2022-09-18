@@ -11,7 +11,7 @@ namespace SwordsInSpace
         public static AudioManager instance;
 
         [SerializeField]
-        private AudioSource effectAudioSource, BGMAudioSource;
+        public AudioSource effectAudioSource, BGMAudioSource;
 
         [SerializeField]
         public AudioClip[] AudioClips;
@@ -52,6 +52,8 @@ namespace SwordsInSpace
             if (index == -1) Debug.LogError(audioClip + " is missing from AudioManager array! Please refresh clips in editor!");
             else { ObserversPlay(index); }
         }
+
+
     }
 
 }
